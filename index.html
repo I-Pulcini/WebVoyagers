@@ -16,15 +16,15 @@
             background-attachment: fixed;
             margin: 0;
         }
-        .main-content{
-            marging-top: 50px;
-            max_width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            background: rgba(255,255,255,0.9);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+        /* Nuovo stile per il titolo in alto sul cielo */
+        .main-title {
+            text-align: center;
+            color: white;
+            font-size: 3.5em; /* Molto più grande */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6); /* Aiuta la leggibilità */
         }
 
         /* Contenitore generale del menu in alto a destra */
@@ -70,25 +70,7 @@
             font-size: 16px;
             border-bottom: 1px solid #eee;
         }
-        
-    /* IL BLOCCO TRASPARENTE / SPECCHIATO (Glassmorphism) */
-        .main-content {
-            max-width: 650px;
-            width: 90%;
-            /* Sfondo semi-trasparente bianco */
-            background: rgba(255, 255, 255, 0.15); 
-            /* Effetto sfocatura sfondo (fondamentale per l'effetto specchio/vetro) */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            
-            padding: 40px;
-            border-radius: 20px;
-            /* Bordo sottile per dare definizione al vetro */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            color: white;
-        }
+
         .menu-dropdown a:last-child {
             border-bottom: none;
         }
@@ -98,22 +80,24 @@
             color: #007bff;
         }
 
-        /* Layout dei contenuti principali */
+        /* Layout dei contenuti principali modificato (unite le due classi e corretto) */
         .main-content {
-            margin-top: 50px;
+            margin-top: 5vh; /* Più centrale nello schermo */
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            background: white;
+            background: rgba(100, 100, 100, 0.4); /* Grigio quasi trasparente */
+            backdrop-filter: blur(5px); /* Leggera sfocatura per far leggere meglio il testo */
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .intro-text {
             font-size: 1.1em;
-            color: #555;
+            color: #ffffff; /* Testo bianco per contrastare il riquadro grigio */
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .form-group {
@@ -124,6 +108,7 @@
             display: block;
             font-weight: bold;
             margin-bottom: 8px;
+            color: #ffffff; /* Testo bianco */
         }
 
         input[type="text"], select {
@@ -133,11 +118,6 @@
             border-radius: 5px;
             font-size: 16px;
             box-sizing: border-box; /* Importante per non far uscire i bordi */
-        }
-
-        h2 {
-            text-align: center;
-            color: #222;
         }
     </style>
 </head>
@@ -152,8 +132,9 @@
         </div>
     </div>
 
+    <h1 class="main-title">WebVoyagers</h1>
+
     <div class="main-content">
-        <h2>WebVoyagers</h2>
         
         <div class="intro-text">
             <p>Scopri le destinazioni più uniche e remote del mondo.</p>
@@ -165,7 +146,7 @@
           <select id="parla" name="parla" required>
                 <option value="" disabled selected>Scegli un periodo</option>
                 <option value="Gennaio">Gennaio</option>
-                <option value="Febbraio">Febrbaio</option>
+                <option value="Febbraio">Febbraio</option>
                 <option value="Marzo">Marzo</option>
                 <option value="Aprile">Aprile</option>
                 <option value="Maggio">Maggio</option>

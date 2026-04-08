@@ -24,9 +24,9 @@
             font-size: 3.5em; 
             margin-top: 20px;
             margin-bottom: 0px; 
-            font-weight: 900; /* Testo più cicciotto per far risaltare il bordo */
-            -webkit-text-stroke: 3px black; /* Il contorno nero spesso */
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Leggera ombra per dare profondità */
+            font-weight: 900; 
+            -webkit-text-stroke: 3px black; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
         }
 
         /* Contenitore generale del menu in alto a destra */
@@ -43,7 +43,8 @@
             font-size: 35px;
             cursor: pointer;
             user-select: none;
-            color: #333;
+            color: #ffffff; /* Fatte bianche come richiesto */
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Ombra per renderle visibili sul cielo chiaro */
         }
 
         /* Stile del menu a comparsa */
@@ -73,6 +74,22 @@
             border-bottom: 1px solid #eee;
         }
 
+        /* Stile specifico per le voci del sottomenu */
+        .submenu-content {
+            display: none; /* Nascosto di default */
+            background-color: #f8f9fa; /* Sfondo leggermente più scuro per differenziarlo */
+        }
+
+        .submenu-content.show {
+            display: block;
+        }
+
+        .submenu-content a {
+            padding: 12px 20px 12px 40px; /* Più rientrato a destra per far capire che è un sottomenu */
+            font-size: 15px;
+            border-bottom: 1px solid #e9e9e9;
+        }
+
         .menu-dropdown a:last-child {
             border-bottom: none;
         }
@@ -84,7 +101,7 @@
 
         /* Layout dei contenuti principali */
         .main-content {
-            margin-top: 35vh; /* Casella abbassata ulteriormente */
+            margin-top: 35vh; 
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -99,7 +116,6 @@
             margin-bottom: 20px;
         }
 
-        /* L'ultimo form-group non ha bisogno di margine sotto */
         .form-group:last-child {
             margin-bottom: 0;
         }
@@ -126,9 +142,17 @@
     <div class="menu-container">
         <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
         <div id="myDropdown" class="menu-dropdown">
-            <a href="#">Home</a>
-            <a href="#">Viaggi</a>
-            <a href="#">Informazioni utili</a>
+            
+            <a href="#" onclick="toggleSubmenu(event)">Esplora &#9662;</a>
+            <div id="esploraSubmenu" class="submenu-content">
+                <a href="#">In Programma</a>
+                <a href="#">In Arrivo</a>
+                <a href="#">Last Minute</a>
+            </div>
+
+            <a href="#">Chi Siamo</a>
+            <a href="#">F.A.Q.</a>
+            <a href="#">Contattaci</a>
         </div>
     </div>
 
@@ -359,19 +383,33 @@
     </div>
 
     <script>
-        // Funzione per aprire/chiudere il menu
+        // Funzione per aprire/chiudere il menu principale
         function toggleMenu() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
-        // Chiude il menu se l'utente clicca fuori.
+        // Funzione per aprire/chiudere il sottomenu "Esplora"
+        function toggleSubmenu(event) {
+            event.preventDefault(); // Evita che la pagina scatti verso l'alto
+            event.stopPropagation(); // Evita che il click chiuda il menu genitore
+            document.getElementById("esploraSubmenu").classList.toggle("show");
+        }
+
+        // Chiude i menu se l'utente clicca fuori.
         window.onclick = function(event) {
-            if (!event.target.matches('.hamburger')) {
+            // Controlla se il click NON è sull'hamburger e NON è all'interno del sottomenu
+            if (!event.target.matches('.hamburger') && !event.target.closest('.menu-dropdown')) {
                 var dropdowns = document.getElementsByClassName("menu-dropdown");
                 for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
                     if (openDropdown.classList.contains('show')) {
                         openDropdown.classList.remove('show');
+                        
+                        // Chiudi anche il sottomenu quando si clicca fuori
+                        var submenus = document.getElementsByClassName("submenu-content");
+                        for(var j = 0; j < submenus.length; j++) {
+                            submenus[j].classList.remove('show');
+                        }
                     }
                 }
             }

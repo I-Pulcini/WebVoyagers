@@ -23,17 +23,22 @@
             color: white;
             font-size: 3.5em; 
             margin-top: 20px;
-            margin-bottom: 0px; /* Azzerato per avvicinare il sottotitolo */
+            margin-bottom: 0px; 
             text-shadow: 2px 2px 6px rgba(0,0,0,0.6); 
         }
 
-        /* Scritte sotto il titolo, ingrandite a 2/3 del titolo (3.5 * 2/3 = ~2.33) */
+        /* Scritte nere, più piccole, centrate sul bordo destro */
         .intro-text {
-            text-align: center;
-            font-size: 2.33em; 
-            color: #ffffff;  
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8); 
-            margin-bottom: 20px;
+            position: fixed;
+            top: 50%; /* Metà altezza dello schermo */
+            right: 20px; /* Bordo destro */
+            transform: translateY(-50%); /* Centra perfettamente sull'asse verticale */
+            text-align: right; /* Allineato a destra */
+            font-size: 1em; /* Più piccole */
+            color: #000000; /* Nere */
+            text-shadow: none; /* Tolta l'ombra */
+            max-width: 250px; /* Evita che il testo si sovrapponga alla casella centrale */
+            z-index: 10;
         }
 
         /* Contenitore generale del menu in alto a destra */
@@ -91,7 +96,7 @@
 
         /* Layout dei contenuti principali */
         .main-content {
-            margin-top: 15vh; /* Casella riposizionata per bilanciare il testo sopra */
+            margin-top: 15vh; 
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;

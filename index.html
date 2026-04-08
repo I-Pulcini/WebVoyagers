@@ -17,6 +17,18 @@
             margin: 0;
         }
 
+        /* Stile per il titolo in alto sul cielo con contorno stile foto */
+        .main-title {
+            text-align: center;
+            color: white;
+            font-size: 3.5em; 
+            margin-top: 20px;
+            margin-bottom: 0px; 
+            font-weight: 900; /* Testo più cicciotto per far risaltare il bordo */
+            -webkit-text-stroke: 3px black; /* Il contorno nero spesso */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Leggera ombra per dare profondità */
+        }
+
         /* Contenitore generale del menu in alto a destra */
         .menu-container {
             position: absolute; 
@@ -70,33 +82,33 @@
             color: #007bff;
         }
 
-        /* Layout dei contenuti principali unificato e corretto */
+        /* Layout dei contenuti principali */
         .main-content {
-            margin-top: 15vh; /* <--- Casella abbassata e più centrale */
+            margin-top: 35vh; /* Casella abbassata ulteriormente */
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            background: rgba(100, 100, 100, 0.4); /* <--- Grigio semitrasparente */
-            backdrop-filter: blur(5px); /* <--- Sfocatura sfondo */
+            background: rgba(100, 100, 100, 0.4); 
+            backdrop-filter: blur(5px); 
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .intro-text {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 20px;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
 
+        /* L'ultimo form-group non ha bisogno di margine sotto */
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
         label {
             display: block;
             font-weight: bold;
             margin-bottom: 8px;
+            color: #ffffff; 
         }
 
         input[type="text"], select {
@@ -105,16 +117,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
-            box-sizing: border-box; /* Importante per non far uscire i bordi */
-        }
-
-        /* Stile per il titolo unificato con effetto contorno come in foto */
-        h2 {
-            text-align: center;
-            color: white; /* <--- Testo bianco */
-            /* <--- Contorno nero spesso multi-direzionale tramite ombre di testo */
-            text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-            font-size: 2.5em; /* <--- Un po' più grande per l'impatto */
+            box-sizing: border-box; 
         }
     </style>
 </head>
@@ -129,20 +132,15 @@
         </div>
     </div>
 
-    <div class="main-content">
-        <h2>WebVoyagers</h2>
-        
-        <div class="intro-text">
-            <p>Scopri le destinazioni più uniche e remote del mondo.</p>
-            <p>Raggiungi i confini che altri non osano esplorare.</p>
-        </div>
+    <h1 class="main-title">WebVoyagers</h1>
 
+    <div class="main-content">
         <div class="form-group">
             <label for="parla"> Quando? :</label> 
           <select id="parla" name="parla" required>
                 <option value="" disabled selected>Scegli un periodo</option>
                 <option value="Gennaio">Gennaio</option>
-                <option value="Febbraio">Febrbaio</option>
+                <option value="Febbraio">Febbraio</option>
                 <option value="Marzo">Marzo</option>
                 <option value="Aprile">Aprile</option>
                 <option value="Maggio">Maggio</option>
@@ -165,94 +163,4 @@
                 <option value="Algeria">Algeria</option>
                 <option value="Andorra">Andorra</option>
                 <option value="Angola">Angola</option>
-                <option value="Antigua e Barbuda">Antigua e Barbuda</option>
-                <option value="Arabia Saudita">Arabia Saudita</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Armenia">Armenia</option>
-                <option value="Australia">Australia</option>
-                <option value="Austria">Austria</option>
-                <option value="Azerbaigian">Azerbaigian</option>
-                <option value="Bahamas">Bahamas</option>
-                <option value="Bahrein">Bahrein</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Barbados">Barbados</option>
-                <option value="Belgio">Belgio</option>
-                <option value="Belize">Belize</option>
-                <option value="Benin">Benin</option>
-                <option value="Bhutan">Bhutan</option>
-                <option value="Bielorussia">Bielorussia</option>
-                <option value="Birmania">Birmania</option>
-                <option value="Bolivia">Bolivia</option>
-                <option value="Bosnia ed Erzegovina">Bosnia ed Erzegovina</option>
-                <option value="Botswana">Botswana</option>
-                <option value="Brasile">Brasile</option>
-                <option value="Brunei">Brunei</option>
-                <option value="Bulgaria">Bulgaria</option>
-                <option value="Burkina Faso">Burkina Faso</option>
-                <option value="Burundi">Burundi</option>
-                <option value="Cambogia">Cambogia</option>
-                <option value="Camerun">Camerun</option>
-                <option value="Canada">Canada</option>
-                <option value="Capo Verde">Capo Verde</option>
-                <option value="Ciad">Ciad</option>
-                <option value="Cile">Cile</option>
-                <option value="Cina">Cina</option>
-                <option value="Cipro">Cipro</option>
-                <option value="Città del Vaticano">Città del Vaticano</option>
-                <option value="Colombia">Colombia</option>
-                <option value="Comore">Comore</option>
-                <option value="Corea del Nord">Corea del Nord</option>
-                <option value="Corea del Sud">Corea del Sud</option>
-                <option value="Costa d'Avorio">Costa d'Avorio</option>
-                <option value="Costa Rica">Costa Rica</option>
-                <option value="Croazia">Croazia</option>
-                <option value="Cuba">Cuba</option>
-                <option value="Danimarca">Danimarca</option>
-                <option value="Dominica">Dominica</option>
-                <option value="Ecuador">Ecuador</option>
-                <option value="Egitto">Egitto</option>
-                <option value="El Salvador">El Salvador</option>
-                <option value="Emirati Arabi Uniti">Emirati Arabi Uniti</option>
-                <option value="Eritrea">Eritrea</option>
-                <option value="Estonia">Estonia</option>
-                <option value="Etiopia">Etiopia</option>
-                <option value="Figi">Figi</option>
-                <option value="Filippine">Filippine</option>
-                <option value="Finlandia">Finlandia</option>
-                <option value="Francia">Francia</option>
-                <option value="Gabon">Gabon</option>
-                <option value="Gambia">Gambia</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Germania">Germania</option>
-                <option value="Ghana">Ghana</option>
-                <option value="Giamaica">Giamaica</option>
-                <option value="Giappone">Giappone</option>
-                <option value="Gibuti">Gibuti</option>
-                <option value="Giordania">Giordania</option>
-                <option value="Grecia">Grecia</option>
-                <option value="Grenada">Grenada</option>
-                <option value="Guatemala">Guatemala</option>
-                <option value="Guinea">Guinea</option>
-                <option value="Guinea-Bissau">Guinea-Bissau</option>
-                <option value="Guinea Equatoriale">Guinea Equatoriale</option>
-                <option value="Guyana">Guyana</option>
-                <option value="Haiti">Haiti</option>
-                <option value="Honduras">Honduras</option>
-                <option value="India">India</option>
-                <option value="Indonesia">Indonesia</option>
-                <option value="Iran">Iran</option>
-                <option value="Iraq">Iraq</option>
-                <option value="Irlanda">Irlanda</option>
-                <option value="Islanda">Islanda</option>
-                <option value="Isole Marshall">Isole Marshall</option>
-                <option value="Isole Salomone">Isole Salomone</option>
-                <option value="Israele">Israele</option>
-                <option value="Italia">Italia</option>
-                <option value="Kazakistan">Kazakistan</option>
-                <option value="Kenya">Kenya</option>
-                <option value="Kirghizistan">Kirghizistan</option>
-                <option value="Kiribati">Kiribati</option>
-                <option value="Kuwait">Kuwait</option>
-                <option value="Laos">Laos</option>
-                <option value="Lesotho">Lesotho</option>
-                <option value="Lettonia">Lettonia</option>
+                <option value="Antigua e Barbuda">Ant

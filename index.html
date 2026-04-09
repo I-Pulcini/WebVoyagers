@@ -139,8 +139,8 @@
 </head>
 <body>
 
-    <div class="menu-container">
-        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="menu-container"> /*apre tutto il sistema del menu in alto a destra*/
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div> /*apre le tre lineette*/
         <div id="myDropdown" class="menu-dropdown">
             
             <a href="#" onclick="toggleSubmenu(event)">Esplora &#9662;</a>
@@ -158,7 +158,7 @@
 
     <h1 class="main-title">WebVoyagers</h1>
 
-    <div class="main-content">
+    <div class="main-content"> /*apre il riguadro centrale */
         <div class="form-group">
             <label for="parla"> Quando? :</label> 
           <select id="parla" name="parla" required>
@@ -178,7 +178,7 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"> /*apre il gruppo*/
             <label for="paese">Scegli un paese:</label>
             <select id="paese" name="paese" required>
                 <option value="" disabled selected>Scegli una destinazione...</option>
@@ -379,18 +379,16 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
-        </div>
-        <div class="form-group">
+        </div> /* bottoneCerca = fa partire un'azione */
+        <div class="form-group"> /*Crea un contenitore trasparente attorno al bottone*/
             <button id="bottoneCerca" style="width: 100%; padding: 12px; margin-top: 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer;">
                 Cerca Destinazione
             </button>
         </div>
     </div>
-<p>
-    <button type=""> Cerca </button>
-    
-</p>
-    
+
+
+    /*adesso scriviamo il modello JavaScript*/
     <script>
         // Funzione per aprire/chiudere il menu principale
         function toggleMenu() {

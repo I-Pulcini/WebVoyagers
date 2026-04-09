@@ -5,57 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algeria</title>
     <style>
-          body {
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: white;
             margin: 0;
-          }
-          
-            */scatola per la foto e il titolo*/
-            .fascia-foto{
+        }
+        
+        /* SCATOLA PER LA FOTO IN ALTO */
+        .fascia-foto {
             background-image: url('algeria.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            margin: 0;
             width: 100%;
-            height:50%;
-            dispay:flex;
-            hustify-content: center;
+            height: 50vh; /* FONDAMENTALE: 50vh e non 50% */
+            display: flex; /* CORRETTO: display e non dispay */
+            justify-content: center; /* CORRETTO: justify e non hustify */
             align-items: center;
         }   
-           /* Stile per il titolo in alto sul cielo con contorno stile foto */
-        .fascia-titolo {  /*server per il titolo, centra il testo,lo colora di bianco */
+
+        /* STILE PER IL TITOLO SULLA FOTO */
+        .fascia-titolo {  
             text-align: center;
             color: white;
-            font-size: 4em; /*rende il testo più grande */
-            margin-top: 20px; /*gestisce la distanza da cio che sta sopra e sotto*/
-            margin-bottom: 0px;  /*gestisce la distanza da cio che sta sopra e sotto*/
+            font-size: 4em; 
+            margin: 0; 
             font-weight: 900; 
-            -webkit-text-stroke: 3px black; /*crea il bordo nero intorno a quello bianco del testo*/
+            -webkit-text-stroke: 3px black; 
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
         }
-        /*la scatola per il testo (metà inferiore)*/
-        .fascia-testo{
-            padding: 50px 20px; /* Crea spazio sopra/sotto e ai lati del testo */
-            max-width: 800px; /* Evita che il testo diventi troppo largo su PC */
-            margin: 0 auto; /* Centra il blocco di testo nella pagina */
-            line-height: 1.8; /* Aumenta lo spazio tra le righe per leggere meglio */
-            font-size: 1.2em; /* Grandezza del testo del paragrafo */
-            text-align: justify; /* Allinea il testo a blocco come nei libri */
+
+        /* SCATOLA PER IL TESTO IN BASSO */
+        .fascia-testo {
+            padding: 50px 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            line-height: 1.8; 
+            font-size: 1.2em; 
+            text-align: justify; 
+            color: #333; 
         }
-        
     </style>
 </head>
 
-    <body>
-        <div class="fascia-foto">
-        <h1>Algeria</h1>
-        </div>
-        <div class="fascia-testo">
+<body>
+
+    <div class="fascia-foto">
+        <h1 class="fascia-titolo">ALGERIA</h1>
+    </div>
+
+    <div class="fascia-testo">
         <p>
-            <h2>L’Algeria è un paese immenso. A nord, si affaccia sull’Europa con la costa mediterranea, a latitudini maggiori di quelle della Sicilia; a sud, si protende tra Mali e Niger, incuneandosi nel profondo dell’Africa nera. Nel mezzo, la vastità del deserto del Sahara domina la scena. Partendo dalla capitale Algeri e dalla sua bianca Casbah che si tuffa nel Mediterraneo, ci lanceremo, a bordo di 4×4 guidati da driver locali, in un on the road leggendario lungo la N1, la mitica Transahariana, da Ghardaïa a Tamanrasset. Qui, nel profondo sud, andremo alla scoperta dell’Assekrem, la «Fine del Mondo» dei touareg, tra gli incredibili scenari del massiccio dell’Hoggar: trascorreremo un notte in rifugio a 2600 metri, e ammireremo il tramonto e l’alba più belli di tutto il Sahara.</h2>
+            L’Algeria è un paese immenso. A nord, si affaccia sull’Europa con la costa mediterranea, a latitudini maggiori di quelle della Sicilia; a sud, si protende tra Mali e Niger, incuneandosi nel profondo dell’Africa nera. Nel mezzo, la vastità del deserto del Sahara domina la scena. Partendo dalla capitale Algeri e dalla sua bianca Casbah che si tuffa nel Mediterraneo, ci lanceremo, a bordo di 4×4 guidati da driver locali, in un on the road leggendario lungo la N1, la mitica Transahariana, da Ghardaïa a Tamanrasset. Qui, nel profondo sud, andremo alla scoperta dell’Assekrem, la «Fine del Mondo» dei touareg, tra gli incredibili scenari del massiccio dell’Hoggar: trascorreremo una notte in rifugio a 2600 metri, e ammireremo il tramonto e l’alba più belli di tutto il Sahara.
         </p>
-        </div>
-    </body>
+    </div>
+
+</body>
 </html>

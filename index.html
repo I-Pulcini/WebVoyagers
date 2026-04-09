@@ -380,6 +380,11 @@
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
         </div>
+        <div class="form-group">
+            <button id="bottoneCerca" style="width: 100%; padding: 12px; margin-top: 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer;">
+                Cerca Destinazione
+            </button>
+        </div>
     </div>
 <p>
     <button type=""> Cerca </button>
@@ -418,6 +423,24 @@
                 }
             }
         }
+        // Funzione per il bottone di ricerca
+        document.getElementById("bottoneCerca").addEventListener("click", function() {
+            var mese = document.getElementById("parla").value;
+            var paese = document.getElementById("paese").value;
+
+            // Controlla se l'utente ha scelto entrambe le opzioni
+            if (mese !== "" && paese !== "") {
+                // Trasforma in minuscolo e sostituisce gli spazi con l'underscore "_"
+                var nomeMese = mese.toLowerCase();
+                var nomePaese = paese.toLowerCase().replace(/ /g, "_");
+                
+                // Crea il nome esatto del file da cercare e ci va
+                var nomePagina = nomeMese + "_" + nomePaese + ".html";
+                window.location.href = nomePagina;
+            } else {
+                alert("Per favore, seleziona sia il mese che la destinazione.");
+            }
+        });
     </script>
 
 </body>

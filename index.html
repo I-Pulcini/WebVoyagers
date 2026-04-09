@@ -432,9 +432,25 @@
                 var nomeMese = mese.toLowerCase();
                 var nomePaese = paese.toLowerCase().replace(/ /g, "_");
                 
-                // Crea il nome esatto del file da cercare e ci va
+                // Crea il nome esatto del file da cercare
                 var nomePagina = nomeMese + "_" + nomePaese + ".html";
-                window.location.href = nomePagina;
+                
+                // Usa il comando "fetch" per controllare se il file esiste
+                fetch(nomePagina, { method: 'HEAD' })
+                    .then(function(response) {
+                        if (response.ok) {
+                            // Il file esiste! Mandiamo l'utente alla pagina del viaggio
+                            window.location.href = nomePagina;
+                        } else {
+                            // Il file non esiste (Errore 404). Lo mandiamo alla pagina "non disponibile"
+                            window.location.href = "non_disponibile.html";
+                        }
+                    })
+                    .catch(function(error) {
+                        // Se c'è un problema di rete, per sicurezza mandalo alla pagina non disponibile
+                        window.location.href = "non_disponibile.html";
+                    });
+                    
             } else {
                 alert("Per favore, seleziona sia il mese che la destinazione.");
             }

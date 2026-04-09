@@ -111,17 +111,20 @@
 
         /* La scatolina bianca mezza trasparente sopra la foto per leggere il testo */
         .testo-giorno {
-            background-color: rgba(255, 255, 255, 0.90); /* 0.90 è la trasparenza, si vede un po' la foto sotto */
+            /* MODIFICATO: Abbassata l'opacità a 0.6 per far intravedere molto di più la foto sotto */
+            background-color: rgba(255, 255, 255, 0.6); 
             margin: 30px; /* Lascia spazio ai bordi per far vedere bene la foto */
             padding: 25px;
             border-radius: 8px;
             color: #333;
             line-height: 1.6;
             font-size: 1.1em;
+            /* Aggiunta una leggera ombra al testo per migliorarne la leggibilità sulla trasparenza */
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
         }
         
         .testo-giorno b {
-            color: #333;
+            color: #000; /* Nero pieno per i titoli dei momenti della giornata */
         }
     </style>
 </head>
@@ -162,7 +165,7 @@
         <button class="accordion">Day 3: Casbah di Algeri</button>
         <div class="panel" style="background-image: url('martiri.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> itinerario a piedi alla scoperta della Casbah di Algeri. Da piazza dei Martiri, immersione nei vicoli della parte bassa della Casbah, visita del palazzo Dar Aziza e, da fuori,  della moschea Ketchaoua, risalente al XVII secolo. Vista della Casbah di Algeri dall’alto, prosecuzione dell’esplorazione dei tortuosi vicoli tra i bianchi palazzi decadenti con porte colorate e pranzo a base di street food<br><br>
+                <b>Mattina:</b> itinerario a piedi alla scoperta della Casbah di Algeri. Da piazza dei Martiri, immersione nei vicoli della parte bassa della Casbah, visita del palazzo Dar Aziza e, da fuori,  della moschea Ketchaoua, risalente al XVII secolo. Vista della Casbah di Algeri dall’alto, prosecuzione dell’esplorazione dei tortuosi vicoli tra i bianchi palazzi decadenti con porte colorate e pranzo a base di street food<br><br>
                 <b>Pomeriggio:</b> discesa verso la costa, ai margini della Casbah, con visita al Palais des Rais. Trasferimento in aeroporto a metà pomeriggio per il volo interno per Ghardaïa<br><br>
                 <b>Sera:</b> arrivo a Ghardaïa, check-in in hotel e cena
             </div>
@@ -171,7 +174,7 @@
         <button class="accordion">Day 4: Ghardaïa e valle dello M'zab</button>
         <div class="panel" style="background-image: url('ghardaia.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>  visita di Ghardaïa, capitale della Pentapoli mozabita, i 5 villaggi fortificati del Wadi M’zab, a partire dalla splendida piazza del mercato, che si trova ai piedi della città, abbarbicata su un colle dominato dalla moschea<br><br>
+                <b>Mattina:</b>  visita di Ghardaïa, capitale della Pentapoli mozabita, i 5 villaggi fortificati del Wadi M’zab, a partire dalla splendida piazza del mercato, che si trova ai piedi della città, abbarbicata su un colle dominato dalla moschea<br><br>
                 <b>Pomeriggio:</b> visita degli altri villaggi della Pentapoli, in particolare El Atteuf, Bou Noura e la città santa Beni Isguen: tutte le città della valle dello M’zab sono costruite secondo lo stesso schema, con la moschea, fulcro della vita spirituale, posta in alto, e il centro del villaggio che degrada armoniosamente verso il basso. La Pentapoli mozabita è considerata un capolavoro di urbanistica antica, e ha ispirato i lavori del grande urbanista francese Le Corbusier. Relax nelle fresche oasi ai piedi dei villaggi mozabiti<br><br>
                 <b>Sera:</b> cena e serata a Ghardaïa
             </div>
@@ -180,9 +183,7 @@
         <button class="accordion">Day 5: El Menia</button>
         <div class="panel" style="background-image: url('menia.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> partenza in 4×4 verso sud, addentrandoci nel profondo del Sahara lungo la N1, la leggendaria strada transahariana che attraversa l’Algeria da nord a sud, in direzione dell’oasi di El Menia, un tempo nota come El Goléa. Arrivo in tarda mattinata, check-in in hotel e pranzo
-
-<br><br>
+                <b>Mattina:</b> partenza in 4×4 verso sud, addentrandoci nel profondo del Sahara lungo la N1, la leggendaria strada transahariana che attraversa l’Algeria da nord a sud, in direzione dell’oasi di El Menia, un tempo nota come El Goléa. Arrivo in tarda mattinata, check-in in hotel e pranzo<br><br>
                 <b>Pomeriggio:</b> visita dell’imponente ksar (fortezza) berbero e della chiesa di San Giuseppe, nel cui cortile si trova la tomba di Charles de Foucauld: soldato, esploratore, e in seguito prete cristiano, Foucauld si ritirò in eremitaggio presso le comunità touareg del Sahara algerino. Assassinato nel 1916, è considerato un martire della Chiesa cattolica, nonché beato dal 2005 e prossimo alla santificazione<br><br>
                 <b>Sera:</b> cena e serata a El Menia
             </div>
@@ -209,9 +210,7 @@
         <button class="accordion">Day 8: Assekrem</button>
         <div class="panel" style="background-image: url('assekrem.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> salita in 4×4 all’Assekrem, «Fine del Mondo» nella lingua dei touareg, stupendo altopiano incastonato tra le vette dell’Hoggar. Ascesa su una pista sterrata costeggiando il picco Adaouda e il monte Akar Akar,  attraverso paesaggi straordinari di montagna desertica e antiche sorgenti e wadi
-
-<br><br>
+                <b>Mattina:</b> salita in 4×4 all’Assekrem, «Fine del Mondo» nella lingua dei touareg, stupendo altopiano incastonato tra le vette dell’Hoggar. Ascesa su una pista sterrata costeggiando il picco Adaouda e il monte Akar Akar,  attraverso paesaggi straordinari di montagna desertica e antiche sorgenti e wadi<br><br>
                 <b>Pomeriggio:</b> arrivo al piccolo rifugio di montagna, posto a circa 2600 metri di altitudine, e check-in. Con un trekking di circa un’ora, salita sino all’eremo di padre Foucauld, del 1911: sito a 2725 metri, è in una posizione meravigliosa con affaccio sulla vetta del monte Tahat, che si colora di rosso nel tardo pomeriggio per lo spettacolo del tramonto, tra i più belli del Sahara e del pianeta<br><br>
                 <b>Sera:</b> cena e sguardo al cielo per ammirare la meravigliosa notte stellata dal rifugio sull’Assekrem
             </div>
@@ -252,7 +251,9 @@
             </div>
         </div>
 
-    </div> <script>
+    </div> 
+    
+    <script>
         var accordions = document.getElementsByClassName("accordion");
 
         for (var i = 0; i < accordions.length; i++) {

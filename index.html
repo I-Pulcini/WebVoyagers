@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebVoyagers</title>
-    <style>
+    <style>  /* da qui inizia il codice CSS che decide l'aspetto visivo del sito web*/
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 40px 20px;
@@ -18,14 +18,14 @@
         }
 
         /* Stile per il titolo in alto sul cielo con contorno stile foto */
-        .main-title {
+        .main-title {  /*server per il titolo, centra il testo,lo colora di bianco */
             text-align: center;
             color: white;
-            font-size: 3.5em; 
-            margin-top: 20px;
-            margin-bottom: 0px; 
+            font-size: 3.5em; /*rende il testo più bianco */
+            margin-top: 20px; /*gestisce la distanza da cio che sta sopra e sotto*/
+            margin-bottom: 0px;  /*gestisce la distanza da cio che sta sopra e sotto*/
             font-weight: 900; 
-            -webkit-text-stroke: 3px black; 
+            -webkit-text-stroke: 3px black; /*crea il bordo nero intorno a quello bianco del testo*/
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
         }
 
@@ -39,33 +39,33 @@
         }
 
         /* Stile delle tre linette (Hamburger) */
-        .hamburger {
+        .hamburger {  
             font-size: 35px;
-            cursor: pointer;
+            cursor: pointer;  /* fa comparire la manina quando ci passi sopra*/
             user-select: none;
             color: #ffffff; /* Fatte bianche come richiesto */
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Ombra per renderle visibili sul cielo chiaro */
         }
 
         /* Stile del menu a comparsa */
-        .menu-dropdown {
+        .menu-dropdown { 
             display: none; 
             position: absolute;
             right: 0;
             background-color: #ffffff;
             min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /*sfondo bianco e un'ombra e bordi arrotondati*/
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #ddd;
         }
 
         /* Classe attivata da JS per mostrare il menu */
-        .menu-dropdown.show {
+        .menu-dropdown.show {  /*quando javaScript aggiunge la parola show all'HTML del menu questo passa da invisibil e a visibile (blocK)
             display: block;
         }
 
-        .menu-dropdown a {
+        .menu-dropdown a {  /* definisce l'aspetto di link dentro al menu*/
             color: #333;
             padding: 14px 20px;
             text-decoration: none;
@@ -75,23 +75,23 @@
         }
 
         /* Stile specifico per le voci del sottomenu */
-        .submenu-content {
+        .submenu-content {  /* è il sottomenu che si trova cliccando Esplora  he inizialmente è invisibile ma se lo clicchi no*/
             display: none; /* Nascosto di default */
             background-color: #f8f9fa; /* Sfondo leggermente più scuro per differenziarlo */
         }
 
         .submenu-content.show {
-            display: block;
+            display: block; /*menu visibile */
         }
 
-        .submenu-content a {
+        .submenu-content a {  /*i link dentro menu*/
             padding: 12px 20px 12px 40px; /* Più rientrato a destra per far capire che è un sottomenu */
             font-size: 15px;
             border-bottom: 1px solid #e9e9e9;
         }
 
         .menu-dropdown a:last-child {
-            border-bottom: none;
+            border-bottom: none;  /* dice al browser di non mettere la riga del mouse quadno passi sul menu*/
         }
 
         .menu-dropdown a:hover {
@@ -381,7 +381,11 @@
             </select>
         </div>
     </div>
-
+<p>
+    <button type=""> Cerca </button>
+    
+</p>
+    
     <script>
         // Funzione per aprire/chiudere il menu principale
         function toggleMenu() {

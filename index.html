@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebVoyagers</title>
+    
     <link rel="stylesheet" href="style.css">
+    
     <script src="script.js" defer></script>
 </head>
-<body>
-
-    <nav class="menu-container"> 
+<body class="home-body"> <nav class="menu-container"> 
         <div class="hamburger" id="hamburgerBtn">&#9776;</div> 
+        
         <div id="myDropdown" class="menu-dropdown">
             <a href="#" id="esploraBtn">Esplora &#9662;</a>
             <div id="esploraSubmenu" class="submenu-content">
@@ -30,9 +31,12 @@
     </header>
 
     <main class="main-content"> 
+        
         <form id="ricercaViaggio">
+            
             <div class="form-group">
                 <label for="parla">Quando? :</label> 
+                
                 <select id="parla" name="parla" required>
                     <option value="" disabled selected>Caricamento mesi...</option>
                 </select>
@@ -40,6 +44,7 @@
 
             <div class="form-group"> 
                 <label for="paese">Scegli un paese:</label>
+                
                 <select id="paese" name="paese" required>
                     <option value="" disabled selected>Caricamento destinazioni...</option>
                 </select>
@@ -48,6 +53,7 @@
             <div class="form-group"> 
                 <button type="submit" id="bottoneCerca">Cerca Destinazione</button>
             </div>
+            
         </form>
     </main>
 

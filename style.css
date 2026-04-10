@@ -1,0 +1,62 @@
+/* --- APPLICAZIONE FLEXBOX (Rif: slide 03-responsive-design.pdf) --- */
+/* Per l'header con la foto di copertina ho scelto di usare Flexbox.
+   Mi è sembrata la soluzione più pulita ed efficiente per centrare il titolo 
+   sia orizzontalmente (justify-content) che verticalmente (align-items) 
+   rispetto al suo contenitore genitore. */
+.fascia-foto {
+    background-image: url('algeria.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    width: 100%;
+    height: 75vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}   
+
+/* --- APPLICAZIONE CSS GRID (Rif: slide 03-responsive-design.pdf) --- */
+/* Per impaginare la galleria di immagini ho preferito utilizzare CSS Grid 
+   invece di Flexbox, così da gestire al meglio il layout bidimensionale. 
+   Con repeat(3, 1fr) ho impostato dinamicamente 3 colonne di uguali dimensioni 
+   (1 frazione ciascuna). */
+.galleria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Ho sfruttato la proprietà 'gap' per definire lo spazio tra le immagini in modo nativo */
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+}
+
+.foto-grid {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+/* --- MEDIA QUERIES E RESPONSIVE DESIGN (Rif: slide 03-responsive-design.pdf) --- */
+/* Per garantire un'ottima user experience anche sui dispositivi mobili, 
+   ho implementato questa Media Query impostando un breakpoint a 768px 
+   (misura standard per i tablet). Sotto questa soglia, sovrascrivo le regole per adattare la vista. */
+@media screen and (max-width: 768px) {
+    
+    /* Riduco la dimensione dei font principali per evitare overflow orizzontale sugli schermi piccoli */
+    .main-title, .fascia-titolo {
+        font-size: 2.5em; 
+    }
+    
+    /* Modifico le grandezze del contenitore principale per sfruttare quasi tutta la larghezza del display */
+    .main-content {
+        width: 90%; 
+        padding: 20px;
+    }
+    
+    /* Linearizzazione del layout: per evitare che le foto della galleria diventino 
+       troppo strette e illeggibili, modifico il template della Grid passando 
+       da 3 colonne a 1 colonna singola (1fr). Le foto si impileranno verticalmente. */
+    .galleria-grid {
+        grid-template-columns: 1fr; 
+    }
+}

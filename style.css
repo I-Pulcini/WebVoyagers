@@ -1,8 +1,15 @@
-/* --- APPLICAZIONE FLEXBOX (Rif: slide 03-responsive-design.pdf) --- */
-/* Per l'header con la foto di copertina ho scelto di usare Flexbox.
-   Mi è sembrata la soluzione più pulita ed efficiente per centrare il titolo 
-   sia orizzontalmente (justify-content) che verticalmente (align-items) 
-   rispetto al suo contenitore genitore. */
+/* --- STILI BASE --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa; 
+    margin: 0;
+}
+
+/* --- APPLICAZIONE FLEXBOX --- */
+/* Per il posizionamento del titolo principale sulla foto di copertina, ho deciso di 
+   utilizzare il modello Flexbox. Impostando 'display: flex' sul contenitore, ho potuto 
+   usare 'justify-content: center' e 'align-items: center' per centrare l'elemento 
+   figlio in entrambi gli assi (verticale e orizzontale) con estrema semplicità. */
 .fascia-foto {
     background-image: url('algeria.jpg');
     background-size: cover;
@@ -15,15 +22,103 @@
     align-items: center; 
 }   
 
-/* --- APPLICAZIONE CSS GRID (Rif: slide 03-responsive-design.pdf) --- */
-/* Per impaginare la galleria di immagini ho preferito utilizzare CSS Grid 
-   invece di Flexbox, così da gestire al meglio il layout bidimensionale. 
-   Con repeat(3, 1fr) ho impostato dinamicamente 3 colonne di uguali dimensioni 
-   (1 frazione ciascuna). */
+.fascia-titolo {  
+    text-align: center;
+    color: white;
+    font-size: 5em; 
+    margin: 0; 
+    font-weight: 900; 
+    -webkit-text-stroke: 3px black; 
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
+}
+
+.fascia-testo {
+    padding: 60px 40px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    line-height: 1.8; 
+    font-size: 1.2em; 
+    text-align: justify; 
+    color: #333; 
+}
+
+.titolo-sezione {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- STILI ACCORDION --- */
+.itinerario-container {
+    max-width: 1000px;
+    margin: 0 auto 80px auto; 
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+.accordion {
+    background-color: white;
+    color: #20b2aa; 
+    cursor: pointer;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #eee; 
+    outline: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    transition: 0.3s;
+}
+
+.accordion:hover { background-color: #f9f9f9; }
+
+.accordion:after {
+    content: '\002B'; 
+    font-size: 1.5em;
+    font-weight: normal;
+    color: #20b2aa;
+}
+
+.active:after { content: "\2212"; }
+
+.panel {
+    display: none; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    border-bottom: 1px solid #eee;
+}
+
+.testo-giorno {
+    background-color: rgba(255, 255, 255, 0.6); 
+    margin: 30px; 
+    padding: 25px;
+    border-radius: 8px;
+    color: #333;
+    line-height: 1.6;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+}
+
+.testo-giorno b { color: #000; }
+
+/* --- APPLICAZIONE CSS GRID --- */
+/* Per creare la galleria fotografica ho implementato la CSS Grid. Utilizzando 
+   'grid-template-columns: repeat(3, 1fr)' ho istruito il browser a creare dinamicamente 
+   3 colonne di larghezza identica (1 frazione ciascuna). Il comando 'gap' mi permette 
+   di distanziare le immagini senza usare i vecchi margini. */
 .galleria-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; /* Ho sfruttato la proprietà 'gap' per definire lo spazio tra le immagini in modo nativo */
+    gap: 20px; 
     max-width: 1000px;
     margin: 0 auto 50px auto;
     padding: 0 20px;
@@ -36,26 +131,17 @@
     border-radius: 10px;
 }
 
-/* --- MEDIA QUERIES E RESPONSIVE DESIGN (Rif: slide 03-responsive-design.pdf) --- */
-/* Per garantire un'ottima user experience anche sui dispositivi mobili, 
-   ho implementato questa Media Query impostando un breakpoint a 768px 
-   (misura standard per i tablet). Sotto questa soglia, sovrascrivo le regole per adattare la vista. */
+/* --- MEDIA QUERIES E RESPONSIVE DESIGN --- */
+/* Per garantire che il layout sia fluido su tutti i device, ho inserito questa Media Query. 
+   Ho impostato il breakpoint a 768px (risoluzione tipica dei dispositivi mobili). 
+   Sotto questa soglia, rimpicciolisco i testi troppo grandi e modifico la struttura della Grid: 
+   passo da 3 colonne a 1 colonna singola (1fr), impilando le foto in verticale per evitare 
+   che diventino troppo strette. */
 @media screen and (max-width: 768px) {
-    
-    /* Riduco la dimensione dei font principali per evitare overflow orizzontale sugli schermi piccoli */
-    .main-title, .fascia-titolo {
+    .fascia-titolo {
         font-size: 2.5em; 
     }
     
-    /* Modifico le grandezze del contenitore principale per sfruttare quasi tutta la larghezza del display */
-    .main-content {
-        width: 90%; 
-        padding: 20px;
-    }
-    
-    /* Linearizzazione del layout: per evitare che le foto della galleria diventino 
-       troppo strette e illeggibili, modifico il template della Grid passando 
-       da 3 colonne a 1 colonna singola (1fr). Le foto si impileranno verticalmente. */
     .galleria-grid {
         grid-template-columns: 1fr; 
     }

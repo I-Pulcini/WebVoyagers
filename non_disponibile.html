@@ -2,51 +2,24 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinazione non disponibile</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 40px;
-            background-color: #f4f4f9;
-            text-align: center;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #ff4d4d;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .back-link:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body>
+<body class="error-body">
 
-    <div class="container">
-        <h1>Mi dispiace! 🌍</h1>
-        <p>Al momento non abbiamo ancora organizzato un viaggio per questa destinazione nel mese che hai scelto.</p>
-        <p>Stiamo lavorando per aggiungere sempre nuove mete. Riprova con un'altra combinazione!</p>
-        
-        <a href="index.html" class="back-link">Torna alla ricerca</a>
-    </div>
+    <main class="error-container">
+        <section>
+            <h1 class="error-title">Mi dispiace! 🌍</h1>
+            <p>Al momento non abbiamo ancora organizzato un viaggio per questa destinazione nel mese che hai scelto.</p>
+            <p>Stiamo lavorando per aggiungere sempre nuove mete. Riprova con un'altra combinazione!</p>
+            
+            <a href="index.html" class="back-link">Torna alla ricerca</a>
+        </section>
+    </main>
 
 </body>
 </html>

@@ -1,50 +1,59 @@
 <script setup>
+// Abbiamo importato 'ref' per la reattività e 'onMounted' per gestire l'avvio della pagina
 import { ref, onMounted } from 'vue'
+// Abbiamo importato 'useRouter' per poter cambiare pagina via codice dopo il submit del form
 import { useRouter } from 'vue-router'
 
-/* VUE ROUTER: Importiamo il router di Vue per poter cambiare pagina 
-   senza ricaricare il browser (logica Single Page Application) */
+/* VUE ROUTER: Abbiamo inizializzato il router per poter navigare tra le rotte 
+   senza ricaricare il browser, mantenendo la logica Single Page Application */
 const router = useRouter()
 
-/* COMPOSITION API: Usiamo ref() per creare variabili reattive. 
-   Quando queste cambiano, l'HTML si aggiorna da solo! */
-const mesi = ref([])
-const paesi = ref([])
-const selectedMese = ref("")
-const selectedPaese = ref("")
+/* COMPOSITION API: Abbiamo usato ref() per creare variabili "intelligenti". 
+   Quando queste liste o selezioni cambiano, Vue aggiorna l'HTML della pagina all'istante! */
+const mesi = ref([]) // Qui salveremo la lista dei mesi caricata dal JSON
+const paesi = ref([]) // Qui salveremo la lista dei paesi caricata dal JSON
+const selectedMese = ref("") // Qui memorizzeremo cosa sceglie l'utente nel primo menu
+const selectedPaese = ref("") // Qui memorizzeremo cosa sceglie l'utente nel secondo menu
 
-/* LIFECYCLE HOOKS: onMounted scatta non appena la pagina viene caricata.
-   Qui facciamo la chiamata AJAX per prendere i dati dal JSON. */
+/* LIFECYCLE HOOKS: Abbiamo usato onMounted perché vogliamo che i dati vengano 
+   scaricati non appena l'utente apre la Home Page. */
 onMounted(() => {
-  // Il file destinazioni.json deve essere nella cartella /public
+  // Abbiamo usato la funzione fetch per leggere il file 'destinazioni.json' nella cartella public
   fetch('/destinazioni.json')
-    .then(res => res.json())
+    .then(res => res.json()) // Abbiamo convertito la risposta del server in un oggetto JavaScript
     .then(data => {
-      // Popoliamo le variabili reattive con i dati del JSON
+      // Abbiamo popolato le nostre variabili reattive con i dati estratti dal file
       mesi.value = data.mesi
       paesi.value = data.paesi
 
-      // WEB STORAGE: Ripristiniamo l'ultima ricerca se esiste
+      // WEB STORAGE: Abbiamo aggiunto una funzione di memoria "di cortesia"
+      // Abbiamo controllato se nel browser esiste una vecchia ricerca salvata
       const ultimaMeta = localStorage.getItem('ultimaMeta')
       if (ultimaMeta) {
+        // Se esiste, l'abbiamo pre-selezionata nel menu a tendina per l'utente
         selectedPaese.value = ultimaMeta
       }
     })
-    .catch(err => console.error("Errore fetch:", err))
+    .catch(err => console.error("Errore fetch:", err)) // Abbiamo previsto un log in caso di file mancante
 })
 
-/* GESTIONE EVENTI: Funzione chiamata al submit del form */
+/* GESTIONE EVENTI: Abbiamo definito la logica che scatta quando si preme il tasto Cerca */
 const cercaDestinazione = () => {
+  // Abbiamo verificato che l'utente abbia selezionato entrambi i campi obbligatori
   if (selectedMese.value && selectedPaese.value) {
-    // Salviamo nel LocalStorage
+    
+    // Abbiamo salvato la scelta del paese nel LocalStorage per ricordarcela alla prossima visita
     localStorage.setItem("ultimaMeta", selectedPaese.value)
 
-    // Costruiamo il path (es: /agosto_algeria)
+    // Abbiamo trasformato le scelte dell'utente in un formato adatto all'URL (tutto minuscolo)
     let nomeMese = selectedMese.value.toLowerCase()
+    // Abbiamo sostituito gli spazi con i trattini bassi (es: "Cape Verde" diventa "cape_verde")
     let nomePaese = selectedPaese.value.toLowerCase().replace(/ /g, "_")
+    
+    // Abbiamo costruito la stringa finale del percorso (es: /agosto_algeria)
     let pathName = `/${nomeMese}_${nomePaese}`
 
-    // Usiamo il router per navigare alla nuova pagina virtuale
+    // Abbiamo usato il router per "spingere" l'utente verso la nuova pagina del viaggio scelto
     router.push(pathName)
   }
 }
@@ -84,19 +93,21 @@ const cercaDestinazione = () => {
 </template>
 
 <style scoped>
-/* SCOPED CSS: Aggiungendo 'scoped', queste regole CSS avranno effetto 
-   SOLO su questa specifica pagina e non sballeranno il resto del sito. */
+/* Abbiamo aggiunto l'attributo 'scoped' per isolare questi stili solo alla Home Page */
 .home-wrapper {
-  background-image: url('/web.jpg'); /* Prende l'immagine dalla cartella public */
+  /* Abbiamo richiamato l'immagine web.jpg dalla cartella public per lo sfondo */
+  background-image: url('/web.jpg'); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
+  /* Abbiamo usato il posizionamento assoluto per assicurarci che lo sfondo copra tutto lo schermo */
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  padding-top: 100px; /* Lascia spazio in alto per il menu in App.vue */
+  /* Abbiamo aggiunto un padding per non far finire il titolo sotto il menu fisso */
+  padding-top: 100px; 
 }
 </style>

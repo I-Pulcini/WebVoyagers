@@ -1,35 +1,54 @@
+/* Abbiamo importato il file base.css che contiene le variabili colore e i reset fondamentali */
 @import './base.css';
 
+/* Abbiamo definito le regole per il contenitore principale di tutta l'applicazione Vue */
 #app {
+  /* Abbiamo impostato una larghezza massima per evitare che il sito si "allarghi" troppo su monitor giganti */
   max-width: 1280px;
+  /* Abbiamo centrato il contenitore orizzontalmente usando i margini automatici */
   margin: 0 auto;
+  /* Abbiamo aggiunto uno spazio interno di circa 32px (2rem) per non far toccare i testi ai bordi */
   padding: 2rem;
+  /* Abbiamo impostato uno spessore del font normale per i testi base */
   font-weight: normal;
 }
 
+/* Abbiamo definito lo stile per tutti i link (tag <a>) e per gli elementi con classe 'green' */
 a,
 .green {
+  /* Abbiamo rimosso la sottolineatura classica dei link per un design più pulito */
   text-decoration: none;
+  /* Abbiamo scelto una tonalità di verde specifica usando il formato HSLA (colore, saturazione, luminosità, opacità) */
   color: hsla(160, 100%, 37%, 1);
+  /* Abbiamo aggiunto una transizione fluida di 0.4 secondi per i cambi di colore */
   transition: 0.4s;
+  /* Abbiamo dato un piccolo respiro interno ai link */
   padding: 3px;
 }
 
+/* Abbiamo creato una regola specifica che si attiva solo sui dispositivi che hanno un mouse (hover) */
 @media (hover: hover) {
+  /* Abbiamo impostato un effetto di sfondo verde semitrasparente quando l'utente passa il mouse sopra un link */
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
 
+/* --- RESPONSIVE DESIGN PER SCHERMI GRANDI (Desktop) --- */
+/* Abbiamo inserito questa Media Query per gestire il layout quando lo schermo è più largo di 1024px */
 @media (min-width: 1024px) {
   body {
+    /* Abbiamo usato Flexbox sul body per centrare il contenuto verticalmente nella pagina */
     display: flex;
     place-items: center;
   }
 
   #app {
+    /* Abbiamo trasformato il contenitore principale in una Grid a due colonne */
     display: grid;
+    /* Abbiamo diviso lo spazio in due frazioni uguali (1fr 1fr) */
     grid-template-columns: 1fr 1fr;
+    /* Abbiamo regolato il padding per gli schermi desktop */
     padding: 0 2rem;
   }
 }

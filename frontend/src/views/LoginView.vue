@@ -1,62 +1,72 @@
 <script setup>
+// Abbiamo importato 'ref' per gestire la reattività dei campi del form
 import { ref } from 'vue'
+// Abbiamo importato 'useRouter' per poter reindirizzare l'utente alla Home dopo il login
 import { useRouter } from 'vue-router'
 
+// Abbiamo inizializzato il router per gestire gli spostamenti tra le pagine
 const router = useRouter()
 
-// Variabili di stato (Reattive)
-const isLoginMode = ref(true) // true = mostra Login, false = mostra Registrazione
-const username = ref('')
-const email = ref('')
-const password = ref('')
-const messaggio = ref('') // Per mostrare messaggi di errore o successo
+/* COMPOSITION API: Abbiamo creato delle variabili reattive per monitorare lo stato del form. 
+   Grazie a ref(), ogni lettera digitata dall'utente viene memorizzata istantaneamente. */
+const isLoginMode = ref(true) // Abbiamo usato questo booleano per scambiare tra vista Login e Registrazione
+const username = ref('') // Qui salviamo lo username (usato solo in registrazione)
+const email = ref('') // Qui salviamo l'email per l'autenticazione
+const password = ref('') // Qui salviamo la password digitata
+const messaggio = ref('') // Abbiamo creato questa variabile per mostrare avvisi di errore o successo all'utente
 
-// Funzione per passare da Login a Registrazione e viceversa
+// Abbiamo definito questa funzione per pulire i campi e cambiare la modalità del form
 const toggleMode = () => {
+  // Abbiamo invertito il valore (se era login diventa registrazione e viceversa)
   isLoginMode.value = !isLoginMode.value
+  // Abbiamo resettato i messaggi e la password per sicurezza quando si cambia modalità
   messaggio.value = ''
   password.value = ''
 }
 
-// Funzione chiamata al click del pulsante Submit
+// Abbiamo creato la funzione principale (asincrona) che gestisce l'invio dei dati al server
 const gestisciSubmit = async () => {
-  // Decidiamo quale URL chiamare in base alla modalità
+  // Abbiamo deciso dinamicamente a quale endpoint del server inviare i dati
   const url = isLoginMode.value ? '/api/login' : '/api/register'
   
-  // Prepariamo i dati da inviare al server
+  // Abbiamo preparato l'oggetto (payload) con i dati necessari in base alla modalità scelta
   const payload = isLoginMode.value 
     ? { email: email.value, password: password.value }
     : { username: username.value, email: email.value, password: password.value }
 
+  // Abbiamo aperto un blocco try-catch per gestire la comunicazione con il Back-end
   try {
-    // Effettuiamo la chiamata POST al server (grazie al Proxy, andrà sulla porta 3000)
+    // Abbiamo effettuato la chiamata POST inviando i dati in formato JSON
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload) // Abbiamo convertito l'oggetto JavaScript in stringa JSON
     })
 
+    // Abbiamo aspettato e convertito la risposta del server in un oggetto leggibile
     const data = await response.json()
 
+    // Abbiamo controllato se la risposta del server è positiva (status 200 o 201)
     if (response.ok) {
-      // Se va tutto bene, mostriamo il messaggio di successo del server
+      // Abbiamo mostrato all'utente il messaggio di successo restituito dal server
       messaggio.value = data.message
       
       if (isLoginMode.value) {
-        // Se era un login, aspettiamo 1 secondo e lo mandiamo alla Home
+        // Se l'utente ha appena fatto il login, abbiamo impostato un timer di 1 secondo per mandarlo alla Home
         setTimeout(() => router.push('/'), 1000)
       } else {
-        // Se era una registrazione, lo passiamo alla schermata di login
+        // Se l'utente si è appena registrato, dopo 1,5 secondi lo riportiamo automaticamente al Login
         setTimeout(() => {
           isLoginMode.value = true
           messaggio.value = 'Ora puoi effettuare il login!'
         }, 1500)
       }
     } else {
-      // Se c'è un errore (es. password errata), mostriamo l'errore del server
+      // Se il server risponde con un errore (es. password errata), lo mostriamo nell'alert
       messaggio.value = data.error
     }
   } catch (err) {
+    // Abbiamo previsto un messaggio di riserva nel caso in cui il server fosse spento o irraggiungibile
     messaggio.value = "Errore di connessione al server."
   }
 }
@@ -101,6 +111,7 @@ const gestisciSubmit = async () => {
 </template>
 
 <style scoped>
+/* Abbiamo usato l'attributo scoped per fare in modo che questi stili non influenzino le altre pagine */
 .login-wrapper {
   display: flex;
   justify-content: center;
@@ -112,6 +123,7 @@ const gestisciSubmit = async () => {
   padding-top: 60px;
 }
 
+/* Abbiamo stilizzato il box del login per renderlo moderno, con angoli arrotondati e ombra */
 .login-box {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 40px;
@@ -122,6 +134,7 @@ const gestisciSubmit = async () => {
   text-align: center;
 }
 
+/* Abbiamo scelto un colore arancione scuro per richiamare i toni caldi del nostro sito di viaggi */
 .login-box h2 {
   color: #d35400;
   margin-bottom: 20px;
@@ -130,19 +143,6 @@ const gestisciSubmit = async () => {
 .form-group {
   margin-bottom: 15px;
   text-align: left;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .btn-submit {
@@ -157,23 +157,13 @@ const gestisciSubmit = async () => {
   margin-top: 10px;
 }
 
+/* Abbiamo aggiunto un effetto di hover per rendere il pulsante più interattivo */
 .btn-submit:hover {
   background-color: #e67e22;
 }
 
-.toggle-text {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.toggle-link {
-  color: #d35400;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
 .messaggio-alert {
+  /* Abbiamo scelto un colore rosso chiaro per far risaltare gli avvisi o gli errori */
   background-color: #f8d7da;
   color: #721c24;
   padding: 10px;

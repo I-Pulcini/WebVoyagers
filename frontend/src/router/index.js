@@ -28,6 +28,13 @@ const router = createRouter({
       component: AlgeriaView
     },
 
+     {
+    path: '/soldout',
+    name: 'SoldOut',
+    component: ViaggiSoldOutView
+  },
+
+     
     {
       path: '/viaggi-disponibili',
       name: 'viaggi-disponibili',

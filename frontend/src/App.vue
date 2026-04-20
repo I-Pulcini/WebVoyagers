@@ -58,7 +58,8 @@ onUnmounted(() => {
       
       <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">
         <RouterLink to="/viaggi-disponibili" @click="closeMenu">Viaggi disponibili</RouterLink>
-        <a href="#" @click="closeMenu">Viaggi sold out</a>
+       <RouterLink to="/soldout">Viaggi sold out</RouterLink>
+         
         <a href="#" @click="closeMenu">Viaggi in arrivo</a>
         <a href="#" @click="closeMenu">Viaggio fai da te</a>
       </div>

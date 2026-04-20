@@ -1,4 +1,5 @@
 # Logs
+# Abbiamo deciso di ignorare tutti i file di log, che sono registrazioni tecniche create automaticamente
 logs
 *.log
 npm-debug.log*
@@ -7,15 +8,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Abbiamo escluso la cartella node_modules perché è pesantissima e può essere 
+# rigenerata in ogni momento con il comando 'npm install'
 node_modules
+
+# Abbiamo ignorato i file di sistema specifici di Mac (.DS_Store)
 .DS_Store
+
+# Abbiamo escluso le cartelle 'dist' e 'dist-ssr' perché contengono il codice compilato
+# per la produzione; su GitHub vogliamo caricare solo il codice sorgente
 dist
 dist-ssr
+
+# Abbiamo ignorato i report sui test (coverage) e i file di configurazione locale
 coverage
 *.local
 
 # Editor directories and files
+# Abbiamo deciso di ignorare le configurazioni personali del nostro editor di codice (VS Code o IntelliJ)
 .vscode/*
+# Abbiamo però creato un'eccezione per 'extensions.json', così se un altro sviluppatore
+# apre il progetto, il suo editor gli consiglierà i plugin giusti
 !.vscode/extensions.json
 .idea
 *.suo
@@ -24,16 +37,22 @@ coverage
 *.sln
 *.sw?
 
+# Abbiamo ignorato i file temporanei della compilazione TypeScript
 *.tsbuildinfo
 
+# Abbiamo escluso la cache di ESLint, che serve solo a velocizzare il controllo degli errori in locale
 .eslintcache
 
 # Cypress
+# Abbiamo deciso di non caricare su GitHub i video e gli screenshot generati 
+# automaticamente durante i test dei componenti
 /cypress/videos/
 /cypress/screenshots/
 
 # Vitest
+# Abbiamo escluso anche qui i file grafici generati dai test automatici
 __screenshots__/
 
 # Vite
+# Abbiamo ignorato i file temporanei creati da Vite durante l'esecuzione del server di sviluppo
 *.timestamp-*-*.mjs

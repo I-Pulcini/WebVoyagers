@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import ViaggiDisponibiliView from '../views/ViaggiDisponibiliView.vue'
 import ViaggiSoldOutView from '../views/ViaggiSoldOutView.vue'
 
+
 /* --- VUE ROUTER (Rif: Parte 2.pdf) --- */
 /* Configuro il Router per gestire la navigazione SPA (Single Page Application).
    L'oggetto history utilizza le API del browser per creare percorsi puliti senza il simbolo #. */

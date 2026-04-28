@@ -106,7 +106,7 @@ const cambiaMese = (nuovoMese) => {
 .fascia-foto {
   width: 100%;
   height: 60vh; 
-  background-image: url('/Sfondo.jpg'); 
+  background-image: url('/Sfondo2.jpg'); 
   background-size: cover;
   background-position: center;
   position: relative;

@@ -83,56 +83,72 @@ const cambiaMese = (nuovoMese) => {
 </template>
 
 <style scoped>
+/* Applica il box-sizing a tutto dentro questo componente per evitare che i padding sfalsino le larghezze */
+.ViaggiSoldOut-wrapper,
+.ViaggiSoldOut-wrapper * {
+  box-sizing: border-box;
+}
+
 /* SFONDO BIANCO TOTALE */
 .ViaggiSoldOut-wrapper {
   background-color: white;
   min-height: 100vh;
-  width: 100%; /* Assicura che prenda tutto lo spazio orizzontale */
+  width: 100%;
+  max-width: 100vw;
   font-family: sans-serif;
+  overflow-x: hidden; /* Evita qualsiasi scroll orizzontale imprevisto della pagina */
 }
 
 .header-pulito {
-  padding: 80px 5% 40px 5%; /* Uso le percentuali per adattare lo spazio lateralmente */
-  text-align: center;
+  padding: 80px 20px 40px 20px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra perfettamente il contenuto */
+  text-align: center;
 }
 
 .titolo-orizzontale {
-  font-size: 3rem;
+  font-size: 4.5rem; /* Reso molto più grande */
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .testo-descrizione {
-  font-size: 1.1rem;
+  font-size: 1.5rem; /* Reso più grande e leggibile */
   color: #666;
-  width: 100%; /* Tolto il max-width: 800px */
-  margin: 0 auto;
+  max-width: 1200px; /* Esteso orizzontalmente per essere più lungo */
   line-height: 1.6;
 }
 
 .contenuto-principale {
-  width: 100%; /* Tolto il max-width: 1100px */
-  margin: 0 auto;
-  padding: 20px 5%; /* Il 5% di padding mantiene il contenuto staccato dai bordi dello schermo, ma largo */
+  width: 100%;
+  padding: 20px 5%; /* I margini laterali ora funzionano perfettamente grazie al box-sizing */
 }
 
+/* MESI IN UNA SOLA RIGA */
 .mesi-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 60px;
-  width: 100%; /* Si estende su tutto lo spazio */
+  flex-wrap: nowrap; /* FORZA i bottoni a restare su una riga */
+  gap: 15px;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 80px;
+  overflow-x: auto; /* Se su schermi piccolissimi non entrano, si scrolleranno senza andare a capo */
+  padding-bottom: 10px; /* Spazio per l'eventuale barra di scorrimento */
 }
 
 .btn-mese {
   background-color: white;
   border: 1px solid #ddd;
-  border-radius: 25px;
-  padding: 8px 18px;
+  border-radius: 30px;
+  padding: 15px 25px; /* Bottoni più grandi */
   cursor: pointer;
   transition: 0.3s;
+  font-size: 1.2rem; /* Testo più grande */
+  white-space: nowrap; /* Il testo del mese non va mai a capo */
+  flex-grow: 1; /* Permette ai bottoni di estendersi uniformemente */
+  text-align: center;
 }
 
 .btn-mese.selezionato {
@@ -147,26 +163,39 @@ const cambiaMese = (nuovoMese) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 0;
+  padding: 35px 0; /* Riga più alta e ariosa */
   border-bottom: 1px solid #f0f0f0;
-  width: 100%; /* Occupa l'intera larghezza disponibile */
+  width: 100%;
 }
 
 .colonna-date {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Aggiunto flex per bilanciare le colonne a tutto schermo */
+  flex: 1;
 }
 
-.periodo { font-size: 0.8rem; color: #999; text-transform: uppercase; }
-.data-esatta { font-size: 1.4rem; color: #333; }
+.periodo { font-size: 1rem; color: #999; text-transform: uppercase; } /* Ingrandito */
+.data-esatta { font-size: 2rem; color: #333; font-weight: bold; } /* Ingrandito e marcato */
 
-.colonna-destinazione { flex: 2; padding-left: 40px; font-size: 1.2rem; }
-.colonna-prezzo { flex: 1; font-size: 1.1rem; color: #444; text-align: center; }
-.colonna-info { flex: 2; }
+.colonna-destinazione { 
+  flex: 2; 
+  padding-left: 20px; 
+  font-size: 1.8rem; /* Destinazione più grande */
+}
+
+.colonna-prezzo { 
+  flex: 1; 
+  font-size: 1.6rem; /* Prezzo più grande */
+  color: #444; 
+  text-align: center; 
+}
+
+.colonna-info { 
+  flex: 1; 
+}
 
 .colonna-azione {
-  flex: 1; /* Aiuta a distribuire il pulsante correttamente a destra */
+  flex: 1;
   display: flex;
   justify-content: flex-end;
 }
@@ -175,15 +204,17 @@ const cambiaMese = (nuovoMese) => {
   background-color: transparent;
   color: #d81b60;
   border: 2px solid #d81b60;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 15px 30px; /* Tasto più grande */
+  border-radius: 8px; /* Leggermente più squadrato per dargli stabilità */
+  font-size: 1.2rem; /* Font del tasto più grande */
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .nessun-viaggio {
   text-align: center;
-  padding: 60px;
+  padding: 80px;
+  font-size: 1.5rem;
   color: #bbb;
   font-style: italic;
   width: 100%;

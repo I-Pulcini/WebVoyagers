@@ -13,7 +13,7 @@ const viaggi = ref([
   { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-30 ', destinazione: ' CAMBOGIA', prezzo: '2300€', stato: 'in arrivo', posti totali: 11},
   { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-07 ', destinazione: ' FILIPPINE', prezzo: '4200€', stato: 'in arrivo', posti totali: 8},
   { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-17 ', destinazione: ' PALMA DI MALLORCA', prezzo: '1500€', stato: 'in arrivo', posti totali: 10},
-  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-11 ', destinazione: ' KAZAKISTAN', prezzo: '3100€', stato: 'in arrivo', posti totali: 17},
+  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-19 ', destinazione: ' INDIA', prezzo: '3100€', stato: 'in arrivo', posti totali: 17},
   { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-09 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'in arrivo', posti totali: 12},
   { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' ZANZIBAR', prezzo: '3200€', stato: 'in arrivo', posti totali: 11},
   { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-03 ', destinazione: ' YEMEN', prezzo: '5100€', stato: 'in arrivo', posti totali: 4},

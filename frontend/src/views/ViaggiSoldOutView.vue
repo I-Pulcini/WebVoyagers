@@ -71,7 +71,7 @@ const cambiaMese = (nuovoMese) => {
           </div>
 
           <div class="colonna-info">
-             </div>
+              </div>
 
           <div class="colonna-azione">
             <button class="btn-soldout">SOLD OUT</button>
@@ -87,12 +87,14 @@ const cambiaMese = (nuovoMese) => {
 .ViaggiSoldOut-wrapper {
   background-color: white;
   min-height: 100vh;
+  width: 100%; /* Assicura che prenda tutto lo spazio orizzontale */
   font-family: sans-serif;
 }
 
 .header-pulito {
-  padding: 80px 20px 40px 20px;
+  padding: 80px 5% 40px 5%; /* Uso le percentuali per adattare lo spazio lateralmente */
   text-align: center;
+  width: 100%;
 }
 
 .titolo-orizzontale {
@@ -104,15 +106,15 @@ const cambiaMese = (nuovoMese) => {
 .testo-descrizione {
   font-size: 1.1rem;
   color: #666;
-  max-width: 800px;
+  width: 100%; /* Tolto il max-width: 800px */
   margin: 0 auto;
   line-height: 1.6;
 }
 
 .contenuto-principale {
-  max-width: 1100px;
+  width: 100%; /* Tolto il max-width: 1100px */
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 5%; /* Il 5% di padding mantiene il contenuto staccato dai bordi dello schermo, ma largo */
 }
 
 .mesi-container {
@@ -121,6 +123,7 @@ const cambiaMese = (nuovoMese) => {
   gap: 12px;
   justify-content: center;
   margin-bottom: 60px;
+  width: 100%; /* Si estende su tutto lo spazio */
 }
 
 .btn-mese {
@@ -146,19 +149,27 @@ const cambiaMese = (nuovoMese) => {
   justify-content: space-between;
   padding: 25px 0;
   border-bottom: 1px solid #f0f0f0;
+  width: 100%; /* Occupa l'intera larghezza disponibile */
 }
 
 .colonna-date {
   display: flex;
   flex-direction: column;
+  flex: 1; /* Aggiunto flex per bilanciare le colonne a tutto schermo */
 }
 
 .periodo { font-size: 0.8rem; color: #999; text-transform: uppercase; }
 .data-esatta { font-size: 1.4rem; color: #333; }
 
 .colonna-destinazione { flex: 2; padding-left: 40px; font-size: 1.2rem; }
-.colonna-prezzo { flex: 1; font-size: 1.1rem; color: #444; }
+.colonna-prezzo { flex: 1; font-size: 1.1rem; color: #444; text-align: center; }
 .colonna-info { flex: 2; }
+
+.colonna-azione {
+  flex: 1; /* Aiuta a distribuire il pulsante correttamente a destra */
+  display: flex;
+  justify-content: flex-end;
+}
 
 .btn-soldout {
   background-color: transparent;
@@ -175,5 +186,6 @@ const cambiaMese = (nuovoMese) => {
   padding: 60px;
   color: #bbb;
   font-style: italic;
+  width: 100%;
 }
 </style>

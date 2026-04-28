@@ -5,18 +5,18 @@ const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Lugl
 const meseSelezionato = ref('Gennaio');
 
 const viaggi = ref([
- { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '09-17 ', destinazione: 'ESTORIA', prezzo: '1700€', stato: 'sold out', posti: 0},
- { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '13-21 ', destinazione: 'PUERTO RICO', prezzo: '3300€', stato: 'sold out', posti: 0},
- { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-11 ', destinazione: 'GIAMAICA', prezzo: '3500€', stato: 'sold out', posti: 0},
- { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-26 ', destinazione: 'VIETNAM', prezzo: '3300€', stato: 'sold out', posti: 0},
- { id: 5, mese: 'Maggio', periodo: 'OTTOBRE-NOVEMBRE: ', data: '25-04 ', destinazione: 'KENYA', prezzo: '2800€', stato: 'sold out', posti: 0},
- { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-27 ', destinazione: 'TURCHIA', prezzo: '1800€', stato: 'sold out', posti: 0},
- { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-05 ', destinazione: 'INDONESIA', prezzo: '4200€', stato: 'sold out', posti: 0},
- { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-18 ', destinazione: 'TENERIFE', prezzo: '1900€', stato: 'sold out', posti: 0},
- { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-07 ', destinazione: 'GIORDANIA', prezzo: '3100€', stato: 'sold out', posti: 0},
- { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-07 ', destinazione: 'IRAQ', prezzo: '3800€', stato: 'sold out', posti: 0},
- { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: 'CINA', prezzo: '4400€', stato: 'sold out', posti: 0},
- { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-05 ', destinazione: 'GIAPPONE', prezzo: '5200€', stato: 'sold out', posti: 0},
+ { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '09-17 ', destinazione: ' ESTORIA', prezzo: '1700€', stato: 'sold out', posti: 0},
+ { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '13-21 ', destinazione: ' PUERTO RICO', prezzo: '3300€', stato: 'sold out', posti: 0},
+ { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-11 ', destinazione: ' GIAMAICA', prezzo: '3500€', stato: 'sold out', posti: 0},
+ { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-26 ', destinazione: ' VIETNAM', prezzo: '3300€', stato: 'sold out', posti: 0},
+ { id: 5, mese: 'Maggio', periodo: 'OTTOBRE-NOVEMBRE: ', data: '25-04 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'sold out', posti: 0},
+ { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-27 ', destinazione: ' TURCHIA', prezzo: '1800€', stato: 'sold out', posti: 0},
+ { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-05 ', destinazione: ' INDONESIA', prezzo: '4200€', stato: 'sold out', posti: 0},
+ { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-18 ', destinazione: ' TENERIFE', prezzo: '1900€', stato: 'sold out', posti: 0},
+ { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-07 ', destinazione: ' GIORDANIA', prezzo: '3100€', stato: 'sold out', posti: 0},
+ { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-07 ', destinazione: ' IRAQ', prezzo: '3800€', stato: 'sold out', posti: 0},
+ { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' CINA', prezzo: '4400€', stato: 'sold out', posti: 0},
+ { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-05 ', destinazione: ' GIAPPONE', prezzo: '5200€', stato: 'sold out', posti: 0},
 ]);
 
 const viaggiFiltrati = computed(() => {

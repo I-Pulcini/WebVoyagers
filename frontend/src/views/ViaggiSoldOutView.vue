@@ -5,47 +5,48 @@ const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Lugl
 const meseSelezionato = ref('Gennaio');
 
 const viaggi = ref([
- { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '09-17 ', destinazione: ' ESTORIA', prezzo: '1700€', stato: 'sold out', posti: 0},
- { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '13-21 ', destinazione: ' PUERTO RICO', prezzo: '3300€', stato: 'sold out', posti: 0},
- { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-11 ', destinazione: ' GIAMAICA', prezzo: '3500€', stato: 'sold out', posti: 0},
- { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-26 ', destinazione: ' VIETNAM', prezzo: '3300€', stato: 'sold out', posti: 0},
- { id: 5, mese: 'Maggio', periodo: 'OTTOBRE-NOVEMBRE: ', data: '25-04 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'sold out', posti: 0},
- { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-27 ', destinazione: ' TURCHIA', prezzo: '1800€', stato: 'sold out', posti: 0},
- { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-05 ', destinazione: ' INDONESIA', prezzo: '4200€', stato: 'sold out', posti: 0},
- { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-18 ', destinazione: ' TENERIFE', prezzo: '1900€', stato: 'sold out', posti: 0},
- { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-07 ', destinazione: ' GIORDANIA', prezzo: '3100€', stato: 'sold out', posti: 0},
- { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-07 ', destinazione: ' IRAQ', prezzo: '3800€', stato: 'sold out', posti: 0},
- { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' CINA', prezzo: '4400€', stato: 'sold out', posti: 0},
- { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-05 ', destinazione: ' GIAPPONE', prezzo: '5200€', stato: 'sold out', posti: 0},
+  { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '09-17 ', destinazione: ' ESTORIA', prezzo: '1700€', stato: 'sold out', posti: 0},
+  { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '13-21 ', destinazione: ' PUERTO RICO', prezzo: '3300€', stato: 'sold out', posti: 0},
+  { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-11 ', destinazione: ' GIAMAICA', prezzo: '3500€', stato: 'sold out', posti: 0},
+  { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-26 ', destinazione: ' VIETNAM', prezzo: '3300€', stato: 'sold out', posti: 0},
+  { id: 5, mese: 'Maggio', periodo: 'MAGGIO: ', data: '25-04 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'sold out', posti: 0},
+  { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-27 ', destinazione: ' TURCHIA', prezzo: '1800€', stato: 'sold out', posti: 0},
+  { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-05 ', destinazione: ' INDONESIA', prezzo: '4200€', stato: 'sold out', posti: 0},
+  { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-18 ', destinazione: ' TENERIFE', prezzo: '1900€', stato: 'sold out', posti: 0},
+  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-07 ', destinazione: ' GIORDANIA', prezzo: '3100€', stato: 'sold out', posti: 0},
+  { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-07 ', destinazione: ' IRAQ', prezzo: '3800€', stato: 'sold out', posti: 0},
+  { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' CINA', prezzo: '4400€', stato: 'sold out', posti: 0},
+  { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-05 ', destinazione: ' GIAPPONE', prezzo: '5200€', stato: 'sold out', posti: 0},
 ]);
 
 const viaggiFiltrati = computed(() => {
- return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);
+  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);
 });
 
 const cambiaMese = (nuovoMese) => {
- meseSelezionato.value = nuovoMese;
+  meseSelezionato.value = nuovoMese;
 };
 </script>
 
 <template>
   <div class="ViaggiSoldOut-wrapper">
-    
+
     <header class="fascia-foto">
-     <div class= "overlay-testo">
-      <h1 class="fascia-titolo">Viaggi Sold Out</h1>
-      <p class="sottotesto-header">
-        Queste mete non sono più disponibili, torneranno al più presto!!!<br>
-        Ricerca la meta perfetta per te tra i viaggi a disposizione.
-      </p>
+      <div class="overlay-testo">
+        <h1 class="fascia-titolo">VIAGGI SOLD OUT</h1>
+        <p class="sottotitolo-header">
+          Queste mete non sono più disponibili, torneranno al più presto!
+          Nel frattempo, scopri la meta perfetta per te tra i viaggi a disposizione.
+        </p>
       </div>
     </header>
 
     <main class="contenuto-principale">
+
       <section class="mesi-container">
         <button
-          v-for="mese in mesi" 
-          :key="mese" 
+          v-for="mese in mesi"
+          :key="mese"
           @click="cambiaMese(mese)"
           :class="['btn-mese', { 'selezionato': mese === meseSelezionato }]"
         >
@@ -72,8 +73,7 @@ const cambiaMese = (nuovoMese) => {
             <strong>{{ viaggio.prezzo }}</strong>
           </div>
 
-          <div class="colonna-info">
-              </div>
+          <div class="colonna-info"></div>
 
           <div class="colonna-azione">
             <button class="btn-soldout">SOLD OUT</button>
@@ -85,28 +85,24 @@ const cambiaMese = (nuovoMese) => {
 </template>
 
 <style scoped>
-/* Applica il box-sizing a tutto dentro questo componente per evitare che i padding sfalsino le larghezze */
 .ViaggiSoldOut-wrapper,
 .ViaggiSoldOut-wrapper * {
-  background-color: #f9f9f9; 
-  min-height: 100vh;
-  width: 100%;
+  box-sizing: border-box;
 }
 
-/* SFONDO BIANCO TOTALE */
 .ViaggiSoldOut-wrapper {
-  background-color: white;
+  background-color: #f9f9f9;
   min-height: 100vh;
   width: 100%;
-  max-width: 100vw;
   font-family: sans-serif;
-  overflow-x: hidden; /* Evita qualsiasi scroll orizzontale imprevisto della pagina */
+  overflow-x: hidden;
 }
 
+/* Fascia foto a tutta larghezza */
 .fascia-foto {
   width: 100%;
-  height: 60vh; 
-  background-image: url('/Sfondo2.jpg'); 
+  height: 70vh;
+  background-image: url('/Sfondo2.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -116,59 +112,72 @@ const cambiaMese = (nuovoMese) => {
   text-align: center;
 }
 
-.overlay-testo {
-  background-color: rgba(0, 0, 0, 0);   
-  padding: 40px;
-  width: 100%;
-  color: white;
+/* Sfumatura scura in alto, per far risaltare il menu hamburger */
+.fascia-foto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Abbiamo forzato il titolo su una riga sola */
+.overlay-testo {
+  padding: 40px 20px;
+  width: 100%;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
 .fascia-titolo {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: bold;
   letter-spacing: 5px;
   margin-bottom: 20px;
   text-transform: uppercase;
-  white-space: nowrap; 
+  white-space: nowrap;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }
 
 .sottotitolo-header {
- font-size: 1.2rem;
-  max-width: 1100px; 
-  margin: 0 auto; 
+  font-size: clamp(0.9rem, 1.3vw, 1.2rem);
+  max-width: 1100px;
+  margin: 0 auto;
   line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
 .contenuto-principale {
- max-width: 1400px; 
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 40px 5%;
 }
 
-/* MESI IN UNA SOLA RIGA */
 .mesi-container {
   display: flex;
-  flex-wrap: nowrap; /* FORZA i bottoni a restare su una riga */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 15px;
   justify-content: space-between;
-  width: 100%;
-  margin-bottom: 80px;
-  overflow-x: auto; /* Se su schermi piccolissimi non entrano, si scrolleranno senza andare a capo */
-  padding-bottom: 10px; /* Spazio per l'eventuale barra di scorrimento */
+  margin-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .btn-mese {
   background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 30px;
-  padding: 15px 25px; /* Bottoni più grandi */
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 10px 20px;
   cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  min-width: 100px;
   transition: 0.3s;
-  font-size: 1.2rem; /* Testo più grande */
-  white-space: nowrap; /* Il testo del mese non va mai a capo */
-  flex-grow: 1; /* Permette ai bottoni di estendersi uniformemente */
-  text-align: center;
 }
 
 .btn-mese.selezionato {
@@ -178,14 +187,13 @@ const cambiaMese = (nuovoMese) => {
   font-weight: bold;
 }
 
-/* LISTA VIAGGI */
 .riga-viaggio {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 35px 0; /* Riga più alta e ariosa */
-  border-bottom: 1px solid #f0f0f0;
-  width: 100%;
+  padding: 25px 0;
+  border-bottom: 1px solid #eee;
+  gap: 15px;
 }
 
 .colonna-date {
@@ -194,24 +202,34 @@ const cambiaMese = (nuovoMese) => {
   flex: 1;
 }
 
-.periodo { font-size: 1rem; color: #999; text-transform: uppercase; } /* Ingrandito */
-.data-esatta { font-size: 2rem; color: #333; font-weight: bold; } /* Ingrandito e marcato */
-
-.colonna-destinazione { 
-  flex: 2; 
-  padding-left: 20px; 
-  font-size: 1.8rem; /* Destinazione più grande */
+.periodo {
+  font-size: 0.85rem;
+  color: #999;
+  text-transform: uppercase;
 }
 
-.colonna-prezzo { 
-  flex: 1; 
-  font-size: 1.6rem; /* Prezzo più grande */
-  color: #444; 
-  text-align: center; 
+.data-esatta {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
 }
 
-.colonna-info { 
-  flex: 1; 
+.colonna-destinazione {
+  flex: 2;
+  font-size: 1.2rem;
+  padding-left: 20px;
+}
+
+.colonna-prezzo {
+  flex: 1;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #444;
+}
+
+.colonna-info {
+  flex: 2;
+  text-align: center;
 }
 
 .colonna-azione {
@@ -224,19 +242,32 @@ const cambiaMese = (nuovoMese) => {
   background-color: transparent;
   color: #d81b60;
   border: 2px solid #d81b60;
-  padding: 15px 30px; /* Tasto più grande */
-  border-radius: 8px; /* Leggermente più squadrato per dargli stabilità */
-  font-size: 1.2rem; /* Font del tasto più grande */
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 0.95rem;
   font-weight: bold;
   letter-spacing: 2px;
+  cursor: default;
 }
 
 .nessun-viaggio {
   text-align: center;
-  padding: 80px;
-  font-size: 1.5rem;
+  padding: 60px;
+  font-size: 1.1rem;
   color: #bbb;
   font-style: italic;
-  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .fascia-foto {
+    height: 50vh;
+  }
+  .fascia-titolo {
+    letter-spacing: 2px;
+    white-space: normal;
+  }
+  .riga-viaggio {
+    flex-wrap: wrap;
+  }
 }
 </style>

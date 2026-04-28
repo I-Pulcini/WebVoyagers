@@ -5,18 +5,18 @@ const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Lugl
 const meseSelezionato = ref('Gennaio');
 
 const viaggi = ref([
-  { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '11-16 ', destinazione: ' >TROMSO', prezzo: '2700€', stato: 'in arrivo', posti: 12},
-  { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '13-21 ', destinazione: ' PUERTO RICO', prezzo: '3300€', stato: 'in arrivo ', posti: 10},
-  { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-11 ', destinazione: ' GIAMAICA', prezzo: '3500€', stato: 'in arrivo', posti: 0},
-  { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-26 ', destinazione: ' VIETNAM', prezzo: '3300€', stato: 'in arrivo', posti: 0},
-  { id: 5, mese: 'Maggio', periodo: 'MAGGIO: ', data: '25-04 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'in arrivo', posti: 0},
-  { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-27 ', destinazione: ' TURCHIA', prezzo: '1800€', stato: 'in arrivo', posti: 0},
-  { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-05 ', destinazione: ' INDONESIA', prezzo: '4200€', stato: 'in arrivo', posti: 0},
-  { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-18 ', destinazione: ' TENERIFE', prezzo: '1900€', stato: 'in arrivo', posti: 0},
-  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-07 ', destinazione: ' GIORDANIA', prezzo: '3100€', stato: 'in arrivo', posti: 0},
-  { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-07 ', destinazione: ' IRAQ', prezzo: '3800€', stato: 'in arrivo', posti: 0},
-  { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' CINA', prezzo: '4400€', stato: 'in arrivo', posti: 0},
-  { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-05 ', destinazione: ' GIAPPONE', prezzo: '5200€', stato: 'in arrivo', posti: 0},
+  { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '11-16 ', destinazione: ' >TROMSO', prezzo: '2700€', stato: 'in arrivo', posti totali: 12},
+  { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '09-21 ', destinazione: ' MESSICO', prezzo: '4300€', stato: 'in arrivo ', posti totali: 10},
+  { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '01-10 ', destinazione: ' UGANDA', prezzo: '4500€', stato: 'in arrivo', posti totali: 7},
+  { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '18-28 ', destinazione: 'REPUBBLICA DOMENICA ', prezzo: '3300€', stato: 'in arrivo', posti totali: 5},
+  { id: 5, mese: 'Maggio', periodo: 'MAGGIO: ', data: '03-20', destinazione: ' AUSTRALIA', prezzo: '7200€', stato: 'in arrivo', posti totali: 15},
+  { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '19-30 ', destinazione: ' CAMBOGIA', prezzo: '2300€', stato: 'in arrivo', posti totali: 11},
+  { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '21-07 ', destinazione: ' FILIPPINE', prezzo: '4200€', stato: 'in arrivo', posti totali: 8},
+  { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-17 ', destinazione: ' PALMA DI MALLORCA', prezzo: '1500€', stato: 'in arrivo', posti totali: 10},
+  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '29-11 ', destinazione: ' KAZAKISTAN', prezzo: '3100€', stato: 'in arrivo', posti totali: 17},
+  { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '30-09 ', destinazione: ' KENYA', prezzo: '2800€', stato: 'in arrivo', posti totali: 12},
+  { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '03-13 ', destinazione: ' ZANZIBAR', prezzo: '3200€', stato: 'in arrivo', posti totali: 11},
+  { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '22-03 ', destinazione: ' YEMEN', prezzo: '5100€', stato: 'in arrivo', posti totali: 4},
 ]);
 
 const viaggiFiltrati = computed(() => {
@@ -29,14 +29,14 @@ const cambiaMese = (nuovoMese) => {
 </script>
 
 <template>
-  <div class="ViaggiSoldOut-wrapper">
+  <div class="ViaggiInArrivo-wrapper">
 
     <header class="fascia-foto">
       <div class="overlay-testo">
-        <h1 class="fascia-titolo">VIAGGI SOLD OUT</h1>
+        <h1 class="fascia-titolo">VIAGGI IN ARRIVO</h1>
         <p class="sottotitolo-header">
-          Queste mete non sono più disponibili, torneranno al più presto!
-          Nel frattempo, scopri la meta perfetta per te tra i viaggi a disposizione.
+          Abbiamo pensato ai viaggi di gruppo più indimenticabili del mondo: preparate lo zaino e il cuore, si parte!!
+          In questa pagina trovate le novità che usciranno a breve; pronti partenza e si parte!!!
         </p>
       </div>
     </header>
@@ -85,12 +85,12 @@ const cambiaMese = (nuovoMese) => {
 </template>
 
 <style scoped>
-.ViaggiSoldOut-wrapper,
-.ViaggiSoldOut-wrapper * {
+.ViaggiInArrivo-wrapper,
+.ViaggiInArrivo-wrapper * {
   box-sizing: border-box;
 }
 
-.ViaggiSoldOut-wrapper {
+.ViaggiInArrivo-wrapper {
   background-color: #f9f9f9;
   min-height: 100vh;
   width: 100%;
@@ -102,7 +102,7 @@ const cambiaMese = (nuovoMese) => {
 .fascia-foto {
   width: 100%;
   height: 70vh;
-  background-image: url('/Sfondo2.jpg');
+  background-image: url('/Sfondo3.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -113,7 +113,7 @@ const cambiaMese = (nuovoMese) => {
 }
 
 /* Sfumatura scura in alto, per far risaltare il menu hamburger */
-.fascia-foto::before {
+.fascia-foto:before {
   content: '';
   position: absolute;
   top: 0;

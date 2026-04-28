@@ -5,7 +5,7 @@ import ErrorView from '../views/ErrorView.vue'
 import LoginView from '../views/LoginView.vue'
 import ViaggiDisponibiliView from '../views/ViaggiDisponibiliView.vue'
 import ViaggiSoldOutView from '../views/ViaggiSoldOutView.vue'
-
+import ViaggiInArrivoView from '../views/ViaggiInArrivoView.vue'
 
 /* --- VUE ROUTER (Rif: Parte 2.pdf) --- */
 /* Configuro il Router per gestire la navigazione SPA (Single Page Application).
@@ -41,6 +41,11 @@ const router = createRouter({
       path: '/viaggi-disponibili',
       name: 'viaggi-disponibili',
       component: ViaggiDisponibiliView
+    },
+    {
+      path: '/viaggi-inarrivo',
+      name: 'viaggi-inarrivo',
+      component: ViaggiInArrivoView
     },
     {
       /* Rotta CATCH-ALL: Se l'utente cerca una combinazione non ancora esistente

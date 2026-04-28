@@ -31,12 +31,14 @@ const cambiaMese = (nuovoMese) => {
 <template>
   <div class="ViaggiSoldOut-wrapper">
     
-    <header class="header-pulito">
-      <h1 class="titolo-orizzontale">Viaggi Sold Out</h1>
-      <p class="testo-descrizione">
+    <header class="fascia-foto">
+     <div class= "overlay-testo">
+      <h1 class="fascia-titolo">Viaggi Sold Out</h1>
+      <p class="sottotesto-header">
         Queste mete non sono più disponibili, torneranno al più presto!!!<br>
         Ricerca la meta perfetta per te tra i viaggi a disposizione.
       </p>
+      </div>
     </header>
 
     <main class="contenuto-principale">
@@ -86,7 +88,9 @@ const cambiaMese = (nuovoMese) => {
 /* Applica il box-sizing a tutto dentro questo componente per evitare che i padding sfalsino le larghezze */
 .ViaggiSoldOut-wrapper,
 .ViaggiSoldOut-wrapper * {
-  box-sizing: border-box;
+  background-color: #f9f9f9; 
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* SFONDO BIANCO TOTALE */
@@ -99,31 +103,47 @@ const cambiaMese = (nuovoMese) => {
   overflow-x: hidden; /* Evita qualsiasi scroll orizzontale imprevisto della pagina */
 }
 
-.header-pulito {
-  padding: 80px 20px 40px 20px;
+.fascia-foto {
   width: 100%;
+  height: 60vh; 
+  background-image: url('/Sfondo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra perfettamente il contenuto */
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.titolo-orizzontale {
-  font-size: 4.5rem; /* Reso molto più grande */
-  color: #333;
-  margin-bottom: 25px;
+.overlay-testo {
+  background-color: rgba(0, 0, 0, 0);   
+  padding: 40px;
+  width: 100%;
+  color: white;
 }
 
-.testo-descrizione {
-  font-size: 1.5rem; /* Reso più grande e leggibile */
-  color: #666;
-  max-width: 1200px; /* Esteso orizzontalmente per essere più lungo */
+/* Abbiamo forzato il titolo su una riga sola */
+.fascia-titolo {
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  white-space: nowrap; 
+}
+
+.sottotitolo-header {
+ font-size: 1.2rem;
+  max-width: 1100px; 
+  margin: 0 auto; 
   line-height: 1.6;
 }
 
 .contenuto-principale {
-  width: 100%;
-  padding: 20px 5%; /* I margini laterali ora funzionano perfettamente grazie al box-sizing */
+ max-width: 1400px; 
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 /* MESI IN UNA SOLA RIGA */

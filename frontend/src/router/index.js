@@ -4,6 +4,7 @@ import AlgeriaView from '../views/AlgeriaView.vue'
 import ErrorView from '../views/ErrorView.vue'
 import LoginView from '../views/LoginView.vue'
 import ViaggiDisponibiliView from '../views/ViaggiDisponibiliView.vue'
+import ViaggiSoldOutView from '../views/ViaggiSoldOutView.vue'
 
 /* --- VUE ROUTER (Rif: Parte 2.pdf) --- */
 /* Configuro il Router per gestire la navigazione SPA (Single Page Application).

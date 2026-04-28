@@ -5,18 +5,18 @@ const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Lugl
 const meseSelezionato = ref('Gennaio');
 
 const viaggi = ref([
- { id: 1, mese: 'Gennaio', periodo: 'GENNAIO', data: '03-07', destinazione: 'NORVEGIA', prezzo: '3100€', stato: 'Vedi Viaggio>', posti: 4},
- { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO', data: '10-15', destinazione: 'LAPPONIA SVEDESE', prezzo: '3700€', stato: 'Vedi Viaggio>', posti: 2 },
- { id: 3, mese: 'Marzo', periodo: 'MARZO', data: '15-19', destinazione: 'LONDRA', prezzo: '1500€', stato: 'Vedi Viaggio>', posti: 1},
- { id: 4, mese: 'Aprile', periodo: 'APRILE', data: '22-27', destinazione: 'TUNISIA', prezzo: '1200€', stato: 'Vedi viaggio >', posti: 4 },
- { id: 5, mese: 'Maggio', periodo: 'OTTOBRE-NOVEMBRE', data: '28-06', destinazione: 'MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
- { id: 6, mese: 'Giugno', periodo: 'GIUGNO', data: '18-28', destinazione: 'PERU', prezzo: '5900€', stato: 'Vedi Viaggio >', posti: 6 },
- { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO', data: '24-05', destinazione: 'THAILANDIA', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 9},
- { id: 8, mese: 'Agosto', periodo: 'AGOSTO', data: '08-20', destinazione: 'ALGERIA', prezzo: '3300€', stato: 'Vedi Viaggio>', posti: 7},
- { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE', data: '27-07', destinazione: 'OMAN', prezzo: '2800€', stato: 'Vedi Viaggio>', posti: 3 },
- { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE', data: '28-06', destinazione: 'MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
- { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE', data: '21-29', destinazione: 'COREA DEL SUD', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 1 },
- { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO', data: '21-02', destinazione: 'CAPO VERDE', prezzo: '3600€', stato: 'Vedi Viaggio >', posti: 2},
+ { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '03-07 ', destinazione: 'NORVEGIA', prezzo: '3100€', stato: 'Vedi Viaggio>', posti: 4},
+ { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '10-15 ', destinazione: 'LAPPONIA SVEDESE', prezzo: '3700€', stato: 'Vedi Viaggio>', posti: 2 },
+ { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '15-19 ', destinazione: 'LONDRA', prezzo: '1500€', stato: 'Vedi Viaggio>', posti: 1},
+ { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '22-27 ', destinazione: 'TUNISIA', prezzo: '1200€', stato: 'Vedi viaggio >', posti: 4 },
+ { id: 5, mese: 'Maggio', periodo: 'OTTOBRE-NOVEMBRE: ', data: '28-06 ', destinazione: 'MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
+ { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '18-28 ', destinazione: 'PERU', prezzo: '5900€', stato: 'Vedi Viaggio >', posti: 6 },
+ { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '24-05 ', destinazione: 'THAILANDIA', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 9},
+ { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-20 ', destinazione: 'ALGERIA', prezzo: '3300€', stato: 'Vedi Viaggio>', posti: 7},
+ { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '27-07 ', destinazione: 'OMAN', prezzo: '2800€', stato: 'Vedi Viaggio>', posti: 3 },
+ { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '28-06 ', destinazione: 'MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
+ { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '21-29 ', destinazione: 'COREA DEL SUD', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 1 },
+ { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '21-02 ', destinazione: 'CAPO VERDE', prezzo: '3600€', stato: 'Vedi Viaggio >', posti: 2},
 ]);
 
 const viaggiFiltrati = computed(() => {

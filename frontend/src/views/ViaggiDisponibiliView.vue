@@ -1,22 +1,25 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
 const meseSelezionato = ref('Gennaio');
 
 const viaggi = ref([
-  { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '03-07 ', destinazione: ' NORVEGIA', prezzo: '3100€', stato: 'Vedi Viaggio>', posti: 4},
-  { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '10-15 ', destinazione: ' LAPPONIA SVEDESE', prezzo: '3700€', stato: 'Vedi Viaggio>', posti: 2 },
-  { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '15-19 ', destinazione: ' LONDRA', prezzo: '1500€', stato: 'Vedi Viaggio>', posti: 1},
-  { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '22-27 ', destinazione: ' TUNISIA', prezzo: '1200€', stato: 'Vedi viaggio >', posti: 4 },
-  { id: 5, mese: 'Maggio', periodo: 'MAGGIO: ', data: '28-06 ', destinazione: ' MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
-  { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '18-28 ', destinazione: ' PERU', prezzo: '5900€', stato: 'Vedi Viaggio >', posti: 6 },
-  { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '24-05 ', destinazione: ' THAILANDIA', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 9},
-  { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-20 ', destinazione: ' ALGERIA', prezzo: '3300€', stato: 'Vedi Viaggio>', posti: 7},
-  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '27-07 ', destinazione: ' OMAN', prezzo: '2800€', stato: 'Vedi Viaggio>', posti: 3 },
-  { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '28-06 ', destinazione: ' MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8 },
-  { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '21-29 ', destinazione: ' COREA DEL SUD', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 1 },
-  { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '21-02 ', destinazione: ' CAPO VERDE', prezzo: '3600€', stato: 'Vedi Viaggio >', posti: 2},
+  { id: 1, mese: 'Gennaio', periodo: 'GENNAIO: ', data: '03-07 ', destinazione: ' NORVEGIA', prezzo: '3100€', stato: 'Vedi Viaggio>', posti: 4, rotta: null},
+  { id: 2, mese: 'Febbraio', periodo: 'FEBBRAIO: ', data: '10-15 ', destinazione: ' LAPPONIA SVEDESE', prezzo: '3700€', stato: 'Vedi Viaggio>', posti: 2, rotta: null },
+  { id: 3, mese: 'Marzo', periodo: 'MARZO: ', data: '15-19 ', destinazione: ' LONDRA', prezzo: '1500€', stato: 'Vedi Viaggio>', posti: 1, rotta: null},
+  { id: 4, mese: 'Aprile', periodo: 'APRILE: ', data: '22-27 ', destinazione: ' TUNISIA', prezzo: '1200€', stato: 'Vedi viaggio >', posti: 4, rotta: null },
+  { id: 5, mese: 'Maggio', periodo: 'MAGGIO: ', data: '28-06 ', destinazione: ' MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8, rotta: null },
+  { id: 6, mese: 'Giugno', periodo: 'GIUGNO: ', data: '18-28 ', destinazione: ' PERU', prezzo: '5900€', stato: 'Vedi Viaggio >', posti: 6, rotta: null },
+  { id: 7, mese: 'Luglio', periodo: 'LUGLIO-AGOSTO: ', data: '24-05 ', destinazione: ' THAILANDIA', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 9, rotta: null},
+  { id: 8, mese: 'Agosto', periodo: 'AGOSTO: ', data: '08-20 ', destinazione: ' ALGERIA', prezzo: '3300€', stato: 'Vedi Viaggio>', posti: 7, rotta: '/agosto_algeria'},
+  { id: 9, mese: 'Settembre', periodo: 'SETTEMBRE-OTTOBRE: ', data: '27-07 ', destinazione: ' OMAN', prezzo: '2800€', stato: 'Vedi Viaggio>', posti: 3, rotta: null },
+  { id: 10, mese: 'Ottobre', periodo: 'OTTOBRE-NOVEMBRE: ', data: '28-06 ', destinazione: ' MAROCCO', prezzo: '2400€', stato: 'Vedi Viaggio >', posti: 8, rotta: null },
+  { id: 11, mese: 'Novembre', periodo: 'NOVEMBRE: ', data: '21-29 ', destinazione: ' COREA DEL SUD', prezzo: '4200€', stato: 'Vedi Viaggio >', posti: 1, rotta: null },
+  { id: 12, mese: 'Dicembre', periodo: 'DICEMBRE-GENNAIO: ', data: '21-02 ', destinazione: ' CAPO VERDE', prezzo: '3600€', stato: 'Vedi Viaggio >', posti: 2, rotta: null},
 ]);
 
 const viaggiFiltrati = computed(() => {
@@ -25,6 +28,12 @@ const viaggiFiltrati = computed(() => {
 
 const cambiaMese = (nuovoMese) => {
   meseSelezionato.value = nuovoMese;
+};
+
+const apriViaggio = (viaggio) => {
+  if (viaggio.rotta) {
+    router.push(viaggio.rotta);
+  }
 };
 </script>
 
@@ -80,7 +89,14 @@ const cambiaMese = (nuovoMese) => {
           <div class="colonna-azione">
             <button v-if="viaggio.stato === 'sold out'" class="btn-soldout">sold out</button>
             <span v-else-if="viaggio.stato === 'no sito'" class="testo-nosito">no sito</span>
-            <button v-else class="btn-vediviaggio">{{ viaggio.stato }}</button>
+            <button
+                    v-else
+                    class="btn-vediviaggio"
+                    :disabled="!viaggio.rotta"
+                    @click="apriViaggio(viaggio)"
+                  >
+                    {{ viaggio.stato }}
+                  </button>
           </div>
         </div>
       </section>
@@ -93,7 +109,11 @@ const cambiaMese = (nuovoMese) => {
 .ViaggiDisponibili-wrapper * {
   box-sizing: border-box;
 }
-
+.btn-vediviaggio:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 .ViaggiDisponibili-wrapper {
   background-color: #f9f9f9;
   min-height: 100vh;

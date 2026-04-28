@@ -1,24 +1,25 @@
 // Abbiamo importato il modulo 'express' per creare l'architettura del nostro server web
-const express = require('express'); 
+const express = require('express');
 // Abbiamo importato 'express-session' per gestire le sessioni e i cookie degli utenti
-const session = require('express-session'); 
+const session = require('express-session');
 // Abbiamo collegato il gestore delle sessioni al database per salvarle in modo permanente
-const pgSession = require('connect-pg-simple')(session); 
+const pgSession = require('connect-pg-simple')(session);
 // Abbiamo importato 'Pool' per gestire una coda di connessioni verso il database PostgreSQL
-const { Pool } = require('pg'); 
+const { Pool } = require('pg');
 // Abbiamo importato 'bcrypt' per gestire la crittografia delle password in modo sicuro
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt');
 
 // Abbiamo inizializzato la nostra applicazione chiamandola 'app'
-const app = express(); 
+const app = express();
 // Abbiamo definito la porta 3000 come punto di ascolto per il nostro Back-end
-const port = 3000; 
+const port = 3000;
 
 // Abbiamo configurato il server per interpretare automaticamente i dati in formato JSON
-app.use(express.json()); 
+app.use(express.json());
 
 // --- 1. CONNESSIONE AL DATABASE SUPABASE ---
 // Abbiamo memorizzato l'URL di connessione fornito da Supabase per accedere al nostro database in cloud
+// (Nota: in questa stringa va sostituito [YOUR-PASSWORD] con la password reale del database)
 const LINK_DATABASE = "postgresql://postgres:Nkobjivhu26_@db.ctmkhhntdffknbgkvgsk.supabase.co:5432/postgres";
 
 // Abbiamo creato un nuovo oggetto Pool passando la nostra stringa di connessione
@@ -26,7 +27,7 @@ const pool = new Pool({
     connectionString: LINK_DATABASE, // Abbiamo indicato al pool dove deve collegarsi fisicamente
 });
 
-// --- 2. CONFIGURAZIONE DELLE SESSIONI ---
+// --- 2. CONFIGURAZIONE DELLE SESSIONI (Rif: Parte 1.pdf) ---
 // Abbiamo attivato il sistema delle sessioni per permettere al sito di riconoscere gli utenti
 app.use(session({
     // Abbiamo scelto di salvare le sessioni sul database invece che nella memoria RAM del server
@@ -35,16 +36,13 @@ app.use(session({
         tableName: 'session' // Abbiamo indicato il nome esatto della tabella SQL che abbiamo preparato su Supabase
     }),
     // Abbiamo scelto una frase segreta per criptare i dati contenuti nei nostri cookie
-    secret: 'chiave_segreta_webvoyagers_2026', 
+    secret: 'chiave_segreta_webvoyagers_2026',
     // Abbiamo impostato 'resave' su false per evitare di risalvare la sessione se non ci sono state modifiche
     resave: false,
     // Abbiamo impostato 'saveUninitialized' su false per non creare sessioni vuote per gli utenti non loggati
     saveUninitialized: false,
-    // Abbiamo configurato le proprietà del cookie che verrà inviato al browser dell'utente
-    cookie: { 
-        // Abbiamo stabilito che il login rimanga valido per 30 giorni consecutivi (espressi in millisecondi)
-        maxAge: 30 * 24 * 60 * 60 * 1000 
-    } 
+    // Abbiamo stabilito che il login rimanga valido per 30 giorni consecutivi (espressi in millisecondi)
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
 }));
 
 // --- 3. API: REGISTRAZIONE ---
@@ -54,7 +52,7 @@ app.post('/api/register', async (req, res) => {
     const { username, email, password } = req.body;
     // Abbiamo iniziato un blocco try-catch per gestire eventuali errori durante l'operazione
     try {
-        // Abbiamo criptato la password usando bcrypt con un fattore di costo pari a 10 per renderla sicura
+        // Abbiamo criptato la password usando bcrypt con un fattore di costo pari a 10 per renderla sicura (Rif: Parte 1.pdf)
         const hashedPassword = await bcrypt.hash(password, 10);
         
         // Abbiamo eseguito la query SQL per inserire i dati del nuovo utente nel database

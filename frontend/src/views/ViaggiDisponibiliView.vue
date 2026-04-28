@@ -111,7 +111,7 @@ const cambiaMese = (nuovoMese) => {
 }
 
 .overlay-testo {
-  background-color: rgba(0, 0, 0, 0.4); 
+  background-color: rgba(0, 0, 0, 0);   
   padding: 40px;
   width: 100%;
   color: white;

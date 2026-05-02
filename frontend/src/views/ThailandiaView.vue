@@ -148,43 +148,83 @@ onMounted(() => {
 	</div>
         </div>
 
-        <button class="accordion">Day 3: </button>
-        <div class="panel" style="background-image: url('/BigBen.jpg');">
+        <button class="accordion">Day 3: Bangkok</button>
+        <div class="panel" style="background-image: url('/Bangkok2.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b>             
+                <b>Mattina:</b>Giro in battello sul fiume Chao Praya, arteria di comunicazione fondamentale per la capitale. Visita del  Wat Pho, tempio del Buddha dormiente, noto per la sua gigantesca statua d’oro raffigurante Buddha in posizione sdraiata. Visita del Wat Arun, il tempio dell’alba <br><br>
+                <b>Pomeriggio:</b> pranzo street food e prosecuzione della visita di Bangkok. Ingresso al Wat Phra Kaew, il più sacro e importante tra i templi della capitale, e visita del Palazzo Reale <br><br>
+                <b>Sera:</b> aperitivo al Lebua at State Tower, il più bel rooftop di Bangkok per godere di una vista spettacolaresulla citta. Cena e serata a Sukhumvit            
 	</div>
         </div>
 
-        <button class="accordion">Day 3: </button>
-        <div class="panel" style="background-image: url('/Longyearbyen.jpg');">
+        <button class="accordion">Day 4: Ayatthaya</button>
+        <div class="panel" style="background-image: url('/Ayatthaya.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b>    
+                   <b>Mattina:</b>olazione e partenza in treno per Ayutthaya. Visita in bici dei principali templi della città, tra cui il Wat Mahathat, tempio della grande reliquia, noto per la testa del Buddha e il Wat Phra Sri Sanphet, il più sacro tra i templi del complesso dell’antico palazzo reale di Ayutthaya <br><br>
+                <b>Pomeriggio:</b>pranzo e prosecuzione della visita libera in bici dell’isola di Ayutthaya. Rientro a Bangkok nel tardo pomeriggio <br><br>
+                <b>Sera:</b> cena e serata a Bangkok, possibile visita del famoso quartiere a luci rosse di Pat-Pong    
             </div>
         </div>
 
-        <button class="accordion">Day 4: </button>
-        <div class="panel" style="background-image: url('/Paul.jpg');">
+        <button class="accordion">Day 5: Mercati di Mae Khlong e Amphawa </button>
+        <div class="panel" style="background-image: url('/Amphawa.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b>    
+                   <b>Mattina:</b> partenza in treno verso Amphawa e visita alla famosa ferrovia di Mae Khlong, nota per il fotogenico mercato che si svolge proprio sui binari, che viene prontamente smantellato ad ogni passaggio del treno. Prosecuzione in treno e tuk-tuk per Amphawa<br><br>
+                <b>Pomeriggio:</b> arrivo a Amphawa, sede di uno dei più famosi, ma allo stesso tempo autentici, mercati galleggianti della Thailandia. Pranzo a base di street food e possibilità di noleggiare una barca per spostarsi lungo i canali del mercato, e contrattare con i venditori. Rientro a Bangkok nel tardo pomeriggio<br><br>
+                <b>Sera:</b> cena libera e serata nei locali della City of Angels   
             </div>
         </div>
 
-        <button class="accordion">Day 5: </button>
-        <div class="panel" style="background-image: url('/Oxford.jpg');">
+        <button class="accordion">Day 6: Doi Tung e Chiang Rai </button>
+        <div class="panel" style="background-image: url('/ChiangRai.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b>   
+ 		 <b>Mattina:</b> partenza prestissimo per l’aeroporto. Volo interno per Chiang Rai, arrivo e incontro con il nostro driver. Trasferimento verso il confine con il Myanmar e visita di Doi Tung, stupefacente residenza estiva della madre del sovrano thailandese, costruita in stile thai-svizzero e circondata da meravigliosi giardini. Rientro a Chiang Rai<br><br>
+                <b>Pomeriggio:</b> visita del Wat Rong Khun, il celebre «tempio bianco» di Chiang Rai, di recente costruzione e tra i più eccentrici (e fotografati) di tutta la Thailandia. Foto all’esterno del tempio e visita dei bizzarri, coloratissimi interni<br><br>
+                <b>Sera:</b>  cena nei mercati serali di Chiang Rai, serata nei bar 
              </div>
         </div>
 
+		  	 <button class="accordion">Day 7: Chang Mai  </button>
+        <div class="panel" style="background-image: url('/ChangMai.jpg');">
+            <div class="testo-giorno">
+               
+ 		 		<b>Mattina:</b>possibilità di assistere alla questua mattutina dei monaci buddhisti a Chiang Dao, e partenza al mattino in direzione di Chiang Mai. Breve sosta per la visita del tempo Wat Ban Den e arrivo a Chiang Mai. Check-in in hotel e pranzo in città  <br><br>
+                <b>Pomeriggio:</b>  possibilità di assistere alla questua mattutina dei monaci buddhisti a Chiang Dao, e partenza al mattino in direzione di Chiang Mai. Breve sosta per la visita del tempo Wat Ban Den e arrivo a Chiang Mai. Check-in in hotel e pranzo in città<br><br>
+                <b>Sera:</b> cena nei mercati serali di Chiang Mai, serata nei bar
+             </div>
+        </div>
+
+		   <button class="accordion">Day 8-9-10: Koh Phangan </button>
+        <div class="panel" style="background-image: url('/KohPhangan.jpg');">
+            <div class="testo-giorno">
+ 		 		<b>Day 8:</b> sveglia presto e volo da Chiang Mai a Surat Thani (scalo a Bangkok). Transfer in shuttle bus+traghetto, arrivo nel tardo pomeriggio a Koh Phangan, sistemazione in hotel <br><br>
+                <b>Day 9-10:</b>relax nelle spiagge di Koh Phangan e esplorazione dell’isola, serate nei bar e party sulla spiaggia<br><br>
+             </div>
+        </div>
+
+		   <button class="accordion">Day 11-12: Koh Tao  </button>
+        <div class="panel" style="background-image: url('/ KohTao.jpg');">
+            <div class="testo-giorno">
+               
+ 		 		<b>Day 13:</b> transfer in traghetto a Koh Tao, sistemazione e relax <br><br>
+                <b>Day14:</b>snorkeling trip a largo di Koh Tao, presso la barriera corallina più bella, viva e ricca di fauna di tutta la Thailandia<br><br>
+                
+             </div>
+        </div>
+
+		   <button class="accordion">Day 13: Rientro in Italia </button>
+        <div class="panel" style="background-image: url('/Thailandia.jpg');">
+            <div class="testo-giorno">
+               
+ 		 		<b>Mattina:</b> rientro con traghetto+shuttle a Surat Thani, volo per Bangkok. Compatibilmente con gli orari dei voli, ultima serata a Bangkok e volo per l’Italia. Arrivo in Italia il day 16… e alla prossima avventura! <br><br>
+               
+             </div>
+        </div>
+
+		  
+
+		 
       </section>
 
       <h2 class="titolo-sezione">Galleria Fotografica</h2>

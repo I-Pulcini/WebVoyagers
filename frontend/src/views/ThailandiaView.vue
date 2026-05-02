@@ -271,7 +271,7 @@ onMounted(() => {
         <!-- FORM DI PRENOTAZIONE -->
         <div v-else>
           <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
-          <h2 class="modale-titolo">🎒 Prenota: </h2>
+          <h2 class="modale-titolo">🎒 Prenota: THAILANDIA </h2>
           <p class="modale-sottotitolo">Compila i dati per confermare la tua prenotazione.</p>
 
           <div v-if="errore" class="messaggio-errore">⚠️ {{ errore }}</div>

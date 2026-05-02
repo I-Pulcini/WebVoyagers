@@ -3,15 +3,15 @@ import { ref, onMounted } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-/* --- VIAGGIO ALGERIA --- */
+/* --- VIAGGIO NORVEGIA --- */
 /* Abbiamo creato la pagina di dettaglio del viaggio Algeria, completa di itinerario,
    galleria fotografica e modale di prenotazione che si apre cliccando il bottone in alto. */
 
 const router = useRouter()
 
 // L'id del viaggio nella tabella viaggi (Algeria è il viaggio numero 8 tra i disponibili)
-// Abbiamo dichiarato l'id del viaggio Algeria nel database
-const ID_VIAGGIO_ALGERIA = 8
+// Abbiamo dichiarato l'id del viaggio NORVEGIA nel database
+const ID_VIAGGIO_NORVEGIA = 1
 
 // Abbiamo creato le variabili reattive per il modale di prenotazione
 const modaleAperto = ref(false)
@@ -61,7 +61,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_ALGERIA,
+        idViaggio: ID_VIAGGIO_NORVEGIA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -114,16 +114,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="algeria-wrapper">
+  <div class="norvegia-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo">ALGERIA</h1>
+      <h1 class="fascia-titolo">NORVEGIA</h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
-        <span class="prenota-prezzo">3.300€</span>
-        <span class="prenota-durata">12 giorni · Agosto</span>
+        <span class="prenota-prezzo">3.100€</span>
+        <span class="prenota-durata">5 giorni · Gennaio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -133,7 +133,7 @@ onMounted(() => {
     <main>
       <section class="fascia-testo">
         <p style="margin-top: 0;">
-          L'Algeria è un paese immenso. A nord, si affaccia sull'Europa con la costa mediterranea, a latitudini maggiori di quelle della Sicilia; a sud, si protende tra Mali e Niger, incuneandosi nel profondo dell'Africa nera. Nel mezzo, la vastità del deserto del Sahara domina la scena. Partendo dalla capitale Algeri e dalla sua bianca Casbah che si tuffa nel Mediterraneo, ci lanceremo, a bordo di 4×4 guidati da driver locali, in un on the road leggendario lungo la N1, la mitica Transahariana, da Ghardaïa a Tamanrasset. Qui, nel profondo sud, andremo alla scoperta dell'Assekrem, la «Fine del Mondo» dei touareg, tra gli incredibili scenari del massiccio dell'Hoggar: trascorreremo una notte in rifugio a 2600 metri, e ammireremo il tramonto e l'alba più belli di tutto il Sahara.
+        Svalbard on the road… O meglio, on the snow! Un itinerario mozzafiato in motoslitta self-drive, accompagnati da guide qualificate, alla scoperta delle terre più settentrionali del nostro pianeta. Una spedizione in piena regola, da veri pionieri, verso gli angoli più remoti e selvaggi dell’arcipelago: da Longyearbyen, «capitale» da poco più di 2000 abitanti, guideremo sotto il sole di mezzanotte attraverso sperdute valli spazzate dal vento artico e mastodontici ghiacciai, e dormiremo a Pyramiden, antico avamposti sovietici dove l’orologio si è fermato.
         </p>
       </section>
 
@@ -141,11 +141,11 @@ onMounted(() => {
 
       <section class="itinerario-container">
         
-        <button class="accordion">Day 1: Arrivo ad Algeri</button>
-        <div class="panel" style="background-image: url('/algeri.jpg');">
+        <button class="accordion">Day 1: Arrivo ad Olso</button>
+        <div class="panel" style="background-image: url('/Oslo.jpg');">
             <div class="testo-giorno">
-                <b>Mattina/Pomeriggio:</b> volo dall'Italia, arrivo ad Algeri, capitale dell'Algeria, spostamento in centro e check-in in hotel<br><br>
-                <b>Sera:</b> cena in ristorante tradizionale del centro di Algeri.
+                <b>Mattina/Pomeriggio:</b>partenza in volo per Oslo dalle principali città Italiane,arrivo all’aeroporto di Oslo <br><br>
+                <b>Sera:</b> cena e serata nella capitale norvegese.
             </div>
         </div>
 

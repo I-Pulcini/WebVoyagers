@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
+   
 /* --- VIAGGIO ALGERIA --- */
 /* Abbiamo creato la pagina di dettaglio del viaggio Algeria, completa di itinerario,
    galleria fotografica e modale di prenotazione che si apre cliccando il bottone in alto. */

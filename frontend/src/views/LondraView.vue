@@ -112,7 +112,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="norvegia-wrapper">
+  <div class="londra-wrapper">
     <header class="fascia-foto">
       <h1 class="fascia-titolo">LONDRA</h1>
     </header>

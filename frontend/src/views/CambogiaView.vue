@@ -185,13 +185,57 @@ onMounted(() => {
              </div>
         </div>
 
+		   <button class="accordion">Day 6: Villagi galleggiati </button>
+        <div class="panel" style="background-image: url('/.jpg');">
+            <div class="testo-giorno">
+               
+ 		 <b>Mattina:</b>Escursione al Lago Tonle Sap <br><br>
+                <b>Pomeriggio:</b>Visita ai villaggi galleggianti<br><br>
+                <b>Sera:</b>Cena tranquilla  
+             </div>
+        </div>
+		    <button class="accordion">Day 7: Verso il mare </button>
+        <div class="panel" style="background-image: url('/Sihanoukville.jpg');">
+            <div class="testo-giorno">
+               
+ 		 <b>Mattina:</b>Trasferimento a Sihanoukville <br><br>
+                <b>Pomeriggio:</b><br>Relax in spiaggia<br>
+                <b>Sera:</b> Cena vista mare 
+             </div>
+        </div>
+		    <button class="accordion">Day 8-9-10: Isola tropicale </button>
+        <div class="panel" style="background-image: url('/KohRong.jpg');">
+            <div class="testo-giorno">
+               
+ 		 <b>Day 8:</b>Traghetto per Koh Rong <br><br>
+                <b>Day 9-10:</b>Bagni e relax<br><br>
+             </div>
+        </div>
+		    <button class="accordion">Day 11: Rientro a Phnom Penh  </button>
+        <div class="panel" style="background-image: url('/Cambogia3.jpg');">
+            <div class="testo-giorno">
+               
+ 		 <b>Mattina:</b> Trasferimento a Phnom Penh<br><br>
+                <b>Pomeriggio:</b>Shopping nei mercati come il Central Market<br><br>
+                <b>Sera:</b>Cena d’addio  
+             </div>
+        </div>
+		   <button class="accordion">Day 10: Rientro in Italia </button>
+        <div class="panel" style="background-image: url('/Cambogia.jpg');">
+            <div class="testo-giorno">
+               
+ 		 <b>Mattina:</b>Trasferimento in aereporto <br><br>
+             </div>
+        </div>
+		  
+		   
       </section>
 
       <h2 class="titolo-sezione">Galleria Fotografica</h2>
       <section class="galleria-grid">
-          <div class="foto-grid" style="background-image: url('/.jpg');"></div>
-          <div class="foto-grid" style="background-image: url('/.jpg');"></div>
-          <div class="foto-grid" style="background-image: url('/.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/Cambogia.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/Cambogia2.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/Cambogia3.jpg');"></div>
       </section>
 
       <!-- Bottone Prenota in fondo pagina -->
@@ -231,7 +275,7 @@ onMounted(() => {
         <!-- FORM DI PRENOTAZIONE -->
         <div v-else>
           <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
-          <h2 class="modale-titolo">🎒 Prenota: </h2>
+          <h2 class="modale-titolo">🎒 Prenota:Cambogia </h2>
           <p class="modale-sottotitolo">Compila i dati per confermare la tua prenotazione.</p>
 
           <div v-if="errore" class="messaggio-errore">⚠️ {{ errore }}</div>

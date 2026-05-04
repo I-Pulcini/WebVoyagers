@@ -141,45 +141,58 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
       <section class="itinerario-container">
         
          <button class="accordion">Day 1-2: Partenzza dall'italia </button>
-        <div class="panel" style="background-image: url('/.jpg');">
+        <div class="panel" style="background-image: url('/Santodomingo.jpg');">
             <div class="testo-giorno">
                  <b>Day1:</b>Volo dai pirnicipali aereoporti italiani versosanto Domingo  <br><br>
                 <b>Day 2:</b> Arrivati a destinazione,check-in e relax nella piscina dell'hotel <br><br>
             </div>
         </div>
 
-        <button class="accordion">Day 3: </button>
-        <div class="panel" style="background-image: url('/.jpg');">
+        <button class="accordion">Day 3: Alla scoperta della capitale </button>
+        <div class="panel" style="background-image: url('/Santodomingo2.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b> 
+                 <b>Mattina:</b> Visita guidata della Zona Colonial (Patrimonio UNESCO). Scoprirete la prima Cattedrale delle Americhe, il Pantheon Nazionale e l'antica Fortezza Ozama.<br><br>
+                <b>Pomeriggio:</b>Tempo libero per fare acquisti nelle caratteristiche botteghe di ambra e larimar (la pietra azzurra locale), o per perdervi tra i colori esotici e i profumi del Mercado Modelo. <br><br>
+                <b>Sera:</b>Cena in un ristorante tipico del centro per assaggiare la Bandera Dominicana (il piatto nazionale), seguita da musica dal vivo e qualche passo di merengue. 
+            </div>
+        </div>
+<button class="accordion">Day 4-5: Relax a Punta Cana </button>
+        <div class="panel" style="background-image: url('/PuntaCana.jpg');">
+            <div class="testo-giorno">
+                 <b>Day 3 mattina:</b> Spostamento in macchina verso Punta Cana <br><br>
+                <b> Day 3 pomeriggio/ Day 4:</b> relax nel mare cristallino dei Caraibi <br><br>
             </div>
         </div>
 
-        <button class="accordion">Day 3:Longyearbyen </button>
-        <div class="panel" style="background-image: url('/Longyearbyen.jpg');">
+        <button class="accordion">Day 6: Il paradiso terreste - Escursione a Isla Saona </button>
+        <div class="panel" style="background-image: url('/IslaSaona.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina/Pomeriggio:</b> giornata a disposizione per la visita di Longyearbyen e dei suoi dintorni, con varie attività disponibili: visita della città con i suoi musei e il birrificio più settentrionale del mondo, tour delle spettacolari grotte di ghiaccio realizzato con slitte trainate dagli husky, uscita in kayak tra gli iceberg, boat safari e tante altre!<br><br>
-                <b>Sera:</b> cena e serata nei locali di Longyearbyen, la capitale ai confini del mondo
+                 <b>Mattina:</b> Partenza in catamarano o lancia rapida. Sosta imperdibile alle "Piscine Naturali", un immenso banco di sabbia in mare aperto con acqua alla vita, abitato da bellissime stelle marine giganti.<br>
+                <b>Pomeriggio:</b> barco a Isla Saona, perla del Parco Nazionale Cotubanamá. Pranzo a buffet sotto le palme e tempo infinito per bagni da cartolina e relax all'ombra delle palme da cocco.<br><br>
+                <b>Sera:</b>Rientro a Punta Cana a ritmo di bachata. Serata libera per riposarsi o passeggiare nel piccolo centro del villaggio.
+            </div>
+        </div>
+        
+<button class="accordion">Day 7-8-9: Direzione Bayahibe </button>
+        <div class="panel" style="background-image: url('/Bayahibe.jpg');">
+            <div class="testo-giorno">
+                 <b>Day 7:</b> Spostamento in macchina verso Bayahibe e relax in hotel <br><br>
+                <b> Day 8-9:</b>Arrivo nel pittoresco e tranquillo villaggio di pescatori di Bayahibe. Sistemazione in resort e primi tuffi rilassanti nelle acque calme di Playa Dominicus. <br><br>
             </div>
         </div>
 
-        <button class="accordion">Day 4:Pyramiden </button>
-        <div class="panel" style="background-image: url('/Pyramiden.jpg');">
+      <button class="accordion">Day 10: Reolax Assoluto e Tramonto d'Addio </button>
+        <div class="panel" style="background-image: url('/Santodomingo.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>tour in motoslitta nelle remote lande a nord di Pyramiden, lungo il letto ghiacciato del Mimirelva e lo sfondo dei Monti Tor e Odino. Arrivo a Cima Comunismo, con vista panoramica sulle valli innevate <br><br>
-                <b>Pomeriggio:</b>pomeriggio dedicato alla visita di Pyramiden, l’insediamento umano più settentrionale al mondo: villaggio sovietico abbandonato, su cui troneggia ancora oggi una statua di Lenin,  è rimasto perfettamente conservato tra i ghiacci artici, e qui il tempo si è fermato agli anni del comunismo e della guerra fredda<br><br>
-                <b>Sera:</b> cena e serata in hotel a Pyramiden
+                 <b>Day 10 mattina/pomeriggo:</b>Giornata libera a completa disposizione. Godetevi i comfort della struttura, fate una lunga passeggiata sul bagnasciuga o perdetevi nella lettura di un libro. <br><br>
+                 <b>Day 10 sera:</b> Direzione Santo Domingo e notte lì
             </div>
         </div>
-
-        <button class="accordion">Day 5: Rientro ad Olso</button>
-        <div class="panel" style="background-image: url('/Svalbard2.jpg');">
+button class="accordion">Day 11: Rientro in Italia </button>
+        <div class="panel" style="background-image: url('/Santodomingo2.jpg');">
             <div class="testo-giorno">
-               <b>Mattina:</b> passeggiata guidata per il centro di Longyearbien, visita dello Svalbard Museum e la Galleri Svalbard, che ospita più di 40 opere di Kåre Tveter, uno dei più importanti pittori norvegesi del ‘900<br><br>
-                <b>Pomeriggio:</b> Trasferimento all’aeroporto di Longyearbyen e volo per Oslo. Trasferimento e sistemazione in hotel<br><br>
-                <b>Sera:</b>  cena e serata nel centro della capitale della Norvegia
+                 <b>Mattina/pomeriggo:</b> Trasferimento in aereoporto, alla prossima !!<br><br>
+              
             </div>
         </div>
 
@@ -187,9 +200,9 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
 
       <h2 class="titolo-sezione">Galleria Fotografica</h2>
       <section class="galleria-grid">
-          <div class="foto-grid" style="background-image: url('/Olso.jpg');"></div>
-          <div class="foto-grid" style="background-image: url('/Svalbard.jpg');"></div>
-          <div class="foto-grid" style="background-image: url('/Longyearbyen.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/Santodomingo.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/Bayahibe.jpg');"></div>
+          <div class="foto-grid" style="background-image: url('/islaSaona.jpg');"></div>
       </section>
 
       <!-- Bottone Prenota in fondo pagina -->
@@ -229,7 +242,7 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
         <!-- FORM DI PRENOTAZIONE -->
         <div v-else>
           <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
-          <h2 class="modale-titolo">🎒 Prenota: NORVEGIA</h2>
+          <h2 class="modale-titolo">🎒 Prenota: REPUBBLICA DOMENICANA</h2>
           <p class="modale-sottotitolo">Compila i dati per confermare la tua prenotazione.</p>
 
           <div v-if="errore" class="messaggio-errore">⚠️ {{ errore }}</div>

@@ -155,14 +155,14 @@ Un viaggio di 18 giorni in Australia è un’esperienza epica, pensata per chi v
             <div class="testo-giorno">
                 <b>Day 3:</b> Visita al Sydney Harbour Bridge e tutte le spaccettature della città<br><br>
                 <b>Day 4:</b> Relax a Bondi Beach <br><br>
-                <b> Day 5:</b>  Escursione alle Blue Mountains e rientro a Sydney           
+                <b> Day 5:</b> Escursione alle Blue Mountains e rientro a Sydney           
 	</div>
         </div>
 
-        <button class="accordion">Day 6-7-8: Verso Melbourne  e alla scoperta del Great Ocean Road</button>
+        <button class="accordion">Day 6-7-8: Verso Melbourne  e alla scoperta del Great Ocean Road </button>
         <div class="panel" style="background-image: url('/Melbourne.jpg');">
             <div class="testo-giorno">
-                   <b>Day 6:</b>Volo per Melbourne.Street art e laneways  <br><br>
+                   <b>Day 6:</b> Volo per Melbourne.Street art e laneways  <br><br>
                 <b>Day 7:</b> Partenza per la Great Ocean Road,visita ai Dodici Apostoli e rientro a Melbourne<br><br>
                 <b>Day 8:</b>  Cultura e relax per la città di Melbourne. 
             </div>
@@ -171,8 +171,8 @@ Un viaggio di 18 giorni in Australia è un’esperienza epica, pensata per chi v
         <button class="accordion">Day 9-10-11: Verso Uluru </button>
         <div class="panel" style="background-image: url('/Uluru.jpg');">
             <div class="testo-giorno">
-                   <b>Day 9:</b> trasferimento a Uluru <br><br>
-                <b>Day 10-11:</b> passeggiata intorno al monolite e due giorni di relax nella fantastica Uluru. <br><br>
+                   <b>Day 9:</b> Trasferimento a Uluru <br><br>
+                <b>Day 10-11:</b> Passeggiata intorno al monolite e due giorni di relax nella fantastica Uluru. <br><br>
                 
             </div>
         </div>
@@ -181,7 +181,7 @@ Un viaggio di 18 giorni in Australia è un’esperienza epica, pensata per chi v
         <div class="panel" style="background-image: url('/Queensland.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Day 12:</b>Volo per Cairns e relax sul lungomare e cena tropicale <br><br>
+ 		 <b>Day 12:</b> Volo per Cairns e relax sul lungomare e cena tropicale <br><br>
                 <b>Day 13-14:</b> Escursione alla Grande Barriera Corallina, snorkeling e rientro a Cairns<br><br>
                
              </div>
@@ -190,17 +190,15 @@ Un viaggio di 18 giorni in Australia è un’esperienza epica, pensata per chi v
         <div class="panel" style="background-image: url('/GoldCoast.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Day 15-16:</b>Volo per Brisbane ed escursione alla Gold Coast, relax in spiagga con tanto di surf <br><br>
+ 		 <b>Day 15-16:</b> Volo per Brisbane ed escursione alla Gold Coast, relax in spiagga con tanto di surf <br><br>
                 <b>Day 15:</b> Musei e cultura, shopping <br><br>
              </div>
         </div>
           <button class="accordion">Day 18: Rientro in Italia </button>
         <div class="panel" style="background-image: url('/Sydney.jpg');">
             <div class="testo-giorno">
-               
- 	
-                <b>Mattina :</b> volo per Sydney<br><br>
-               <b>Pomeriggio :</b> volo per l'Italia <br><br>
+                <b>Mattina :</b> Volo per Sydney<br><br>
+               <b>Pomeriggio :</b> Volo per l'Italia <br><br>
              </div>
         </div>
 

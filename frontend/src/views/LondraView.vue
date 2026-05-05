@@ -139,25 +139,25 @@ onMounted(() => {
 
       <section class="itinerario-container">
         
-        <button class="accordion">Day 1: Arrivo a Londra</button>
+        <button class="accordion">Day 1: Arrivo a Londra </button>
         <div class="panel" style="background-image: url('/Londra.jpg');">
             <div class="testo-giorno">
                   <b>Mattina:</b> Arrivo a Londra e trasferimento in hotel. Tempo libero per rilassarsi o per una prima passeggiata nei dintorni.<br><br>
-                <b>Pomeriggio:</b>Inizio soft alla scoperta della città con una passeggiata lungo il Tamigi. Ammira il Tower Bridge e la Tower of London dall’esterno. <br><br>
+                <b>Pomeriggio:</b> Inizio soft alla scoperta della città con una passeggiata lungo il Tamigi. Ammira il Tower Bridge e la Tower of London dall’esterno. <br><br>
                 <b>Sera:</b> Cena in un pub tipico inglese e passeggiata serale per assaporare la prima atmosfera londinese.
             </div>
         </div>
 
-        <button class="accordion">Day 2: Il cuore storico di Londra</button>
+        <button class="accordion">Day 2: Il cuore storico di Londra </button>
         <div class="panel" style="background-image: url('/BigBen.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina:</b>Visita al Buckingham Palace (possibilità di assistere al cambio della guardia) e passeggiata a St James's Park. <br><br>
+                 <b>Mattina:</b> Visita al Buckingham Palace (possibilità di assistere al cambio della guardia) e passeggiata a St James's Park. <br><br>
                 <b>Pomeriggio:</b> Proseguimento verso il Big Ben e il Palace of Westminster. Visita all’Westminster Abbey.<br><br>
                 <b>Sera:</b> Cena nella zona di Covent Garden con artisti di strada e atmosfera vivace.
             </div>
         </div>
 
-        <button class="accordion">Day 3: Cultura e musei</button>
+        <button class="accordion">Day 3: Cultura e musei </button>
         <div class="panel" style="background-image: url('/Longyearbyen.jpg');">
             <div class="testo-giorno">
                   <b>Mattina:</b> Visita al British Museum, uno dei musei più importanti al mondo.<br><br>
@@ -166,20 +166,20 @@ onMounted(() => {
             </div>
         </div>
 
-        <button class="accordion">Day 4: Londra moderna e panorami</button>
+        <button class="accordion">Day 4: Londra moderna e panorami </button>
         <div class="panel" style="background-image: url('/Paul.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b>Salita sul London Eye per una vista panoramica mozzafiato. <br><br>
-                <b>Pomeriggio:</b>Visita al Borough Market per un pranzo street food, poi passeggiata verso la St Paul's Cathedral. <br><br>
+                  <b>Mattina:</b> Salita sul London Eye per una vista panoramica mozzafiato. <br><br>
+                <b>Pomeriggio:</b> Visita al Borough Market per un pranzo street food, poi passeggiata verso la St Paul's Cathedral. <br><br>
                 <b>Sera:</b> Cena lungo il Tamigi con vista sulla città illuminata.
             </div>
         </div>
 
-        <button class="accordion">Day 5: Shopping e partenza</button>
+        <button class="accordion">Day 5: Shopping e partenza </button>
         <div class="panel" style="background-image: url('/Oxford.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>Shopping tra Oxford Street e Regent Street. <br><br>
-                <b>Pomeriggio:</b>Tempo libero per ultimi acquisti o visita a Hyde Park per una pausa rilassante. <br><br>
+                <b>Mattina:</b> Shopping tra Oxford Street e Regent Street. <br><br>
+                <b>Pomeriggio:</b> Tempo libero per ultimi acquisti o visita a Hyde Park per una pausa rilassante. <br><br>
                 <b>Sera:</b> Trasferimento in aeroporto e partenza.
             </div>
         </div>

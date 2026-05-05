@@ -61,7 +61,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_,
+        idViaggio: ID_VIAGGIO_PALMADEMALLORCA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -154,23 +154,23 @@ Dimenticate i luoghi comuni: questo viaggio di 10 giorni vi svelerà l'essenza p
         <div class="panel" style="background-image: url('/Palma2.jpg');">
             <div class="testo-giorno">
                  <b>Mattina:</b> Visita guidata dell'imponente Cattedrale (La Seu) e dell'adiacente Palazzo Reale dell'Almudaina.<br><br>
-                <b>Pomeriggio:</b>Spostamento al Castello di Bellver, unico per la sua pianta circolare, per godere di una vista panoramica mozzafiato sulla baia di Palma. <br><br>
+                <b>Pomeriggio:</b> Spostamento al Castello di Bellver, unico per la sua pianta circolare, per godere di una vista panoramica mozzafiato sulla baia di Palma. <br><br>
                 <b>Sera:</b> Esplorate il quartiere bohémien di Santa Catalina, cuore della movida gastronomica. Cena in una tipica marisquería per gustare pesce fresco.           
         </div>
         </div>
- <button class="accordion">Day 3 :L'Incanto della Sierra de Tramuntana – Valldemossa e Deià </button>
+ <button class="accordion">Day 3: L'Incanto della Sierra de Tramuntana – Valldemossa e Deià </button>
         <div class="panel" style="background-image: url('/Palma3.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina/Pomeriggio:</b> itiro dell'auto e partenza verso la Sierra de Tramuntana. Sosta a Valldemossa, borgo di vicoli acciottolati celebre per la Real Cartuja.Proseguimento verso Deià.  <br><br>
-                  <b>Sera:</b>Cena romantica in una finca (tenuta rurale) nei dintorni, assaporando il tipico maialino da latte arrosto (porcella). 
+                 <b>Mattina/Pomeriggio:</b> Ritiro dell'auto e partenza verso la Sierra de Tramuntana. Sosta a Valldemossa, borgo di vicoli acciottolati celebre per la Real Cartuja.Proseguimento verso Deià.  <br><br>
+                  <b>Sera:</b> Cena romantica in una finca (tenuta rurale) nei dintorni, assaporando il tipico maialino da latte arrosto (porcella). 
             </div>
         </div>
 
-         <button class="accordion">Day 4-5: Viaggio nel Tempo, il Nord Selvaggio e Cap de Formentor</button>
+         <button class="accordion">Day 4-5: Viaggio nel Tempo, il Nord Selvaggio e Cap de Formentor </button>
         <div class="panel" style="background-image: url('/Palma4.jpg');">
             <div class="testo-giorno">
                  <b>Day 4:</b> Arrivo a Sóller e spostamento in tram aperto fino al porto. Pomeriggio di relax sulla spiaggia a ferro di cavallo. <br><br>
-                  <b> Day 5:</b>Guida panoramica verso le falesie di Cap de Formentor. Sosta al Faro e tuffo rinfrescante nella favolosa Playa de Formentor.
+                  <b> Day 5:</b> Guida panoramica verso le falesie di Cap de Formentor. Sosta al Faro e tuffo rinfrescante nella favolosa Playa de Formentor.
             </div>
         </div>
 

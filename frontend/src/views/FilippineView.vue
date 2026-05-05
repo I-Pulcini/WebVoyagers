@@ -153,16 +153,16 @@ onMounted(() => {
         <button class="accordion">Day 3: Alla scoperta della capitale - Manila</button>
         <div class="panel" style="background-image: url('/Manila2.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina/Pomeriggio:</b> alla scoperta della bellissima e caotica capitale <br><br>
-                <b>Sera:</b> cena e serata nella movida di Manila           
+                 <b>Mattina/Pomeriggio:</b> Alla scoperta della bellissima e caotica capitale <br><br>
+                <b>Sera:</b> Cena e serata nella movida di Manila           
         </div>
         </div>
 
       <button class="accordion">Day 4-5: Partenza per Bohol </button>
         <div class="panel" style="background-image: url('/Bohol.jpg');">
             <div class="testo-giorno">
-                 <b>Day 4:</b> sveglia presto e trasferimento all’aeroporto di Manila per il volo con destinazione Bohol. Arrivo sull’isola e trasferimento in hotel.prima giornata di mare! Ci rilasseremo infatti sulle spiagge da cartolina dell’isola di Panglao, collegata a Bohol da un ponte, e famosa per i suoi fondali ricchi di corallo e fauna tropicale. <br><br>
-                <b>Day 5:</b> sveglia presto e breve trasferimento verso l’interno dell’isola per ammirare lo spettacolo del viewpoint delle Chocolate Hills prima dell’arrivo dei bus turistici. Trasferimento presso il centro di conservazione dei tarsi, i primati più piccoli al mondo, famosi per i loro occhi giganti <br><br>
+                 <b>Day 4:</b> Sveglia presto e trasferimento all’aeroporto di Manila per il volo con destinazione Bohol. Arrivo sull’isola e trasferimento in hotel.prima giornata di mare! Ci rilasseremo infatti sulle spiagge da cartolina dell’isola di Panglao, collegata a Bohol da un ponte, e famosa per i suoi fondali ricchi di corallo e fauna tropicale. <br><br>
+                <b>Day 5:</b> Sveglia presto e breve trasferimento verso l’interno dell’isola per ammirare lo spettacolo del viewpoint delle Chocolate Hills prima dell’arrivo dei bus turistici. Trasferimento presso il centro di conservazione dei tarsi, i primati più piccoli al mondo, famosi per i loro occhi giganti <br><br>
             </div>
         </div>
 
@@ -170,37 +170,37 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/PuertoPrincesa.jpg');">
             <div class="testo-giorno">
                  <b>Day 6:</b> Trasferimento al porto di Bohol, imbarco sul traghetto veloce per l’isola di Cebu. volo da Cebu a Puerto Princesa, il capoluogo dell’isola di Palawan. Arrivo, trasferimento e check-in in hotel  <br><br>
-                <b>Day 7:</b>giornata dedicata all’esplorazione del Puerto Princesa Underground River. Situato a circa 50km a nord del capoluogo, si tratta il fiume sotterraneo col tratto navigabile più lungo del mondo, ed è patrimonio dell’umanità UNESCO. Partenza alle 7 da Puerto Princesa, esplorazione in barca del fiume sotterraneo, immerso in uno scenario lussureggiante, dominato da alte rocce e folta vegetazione all’esterno, e da grandi stalattiti e altre particolari formazioni rocciose all’interno  <br><br>
+                <b>Day 7:</b> Giornata dedicata all’esplorazione del Puerto Princesa Underground River. Situato a circa 50km a nord del capoluogo, si tratta il fiume sotterraneo col tratto navigabile più lungo del mondo, ed è patrimonio dell’umanità UNESCO. Partenza alle 7 da Puerto Princesa, esplorazione in barca del fiume sotterraneo, immerso in uno scenario lussureggiante, dominato da alte rocce e folta vegetazione all’esterno, e da grandi stalattiti e altre particolari formazioni rocciose all’interno  <br><br>
             </div>
         </div>
 
       <button class="accordion">Day 8-9-10: Destinazione  paradiso - El Nido</button>
         <div class="panel" style="background-image: url('/ElNido.jpg');">
             <div class="testo-giorno">
-                 <b>Day 8:</b> partenza in mattinata da Puerto Princesa in direzione di El Nido, vero e proprio paradiso incontaminato situato nel nord di Palawan. Check-in in hotel e free time <br><br>
-                <b>Day 9-10:</b> free time nelle spiagge adiacenti il villaggio di El Nido. Tra le più belle, merita sicuramente una citazione quella di Nacpan, che occupa una lunghissima baia semicircolare di sabbia bianca. Rientro a El Nido in serata <br><br>
+                 <b>Day 8:</b> Partenza in mattinata da Puerto Princesa in direzione di El Nido, vero e proprio paradiso incontaminato situato nel nord di Palawan. Check-in in hotel e free time <br><br>
+                <b>Day 9-10:</b> Free time nelle spiagge adiacenti il villaggio di El Nido. Tra le più belle, merita sicuramente una citazione quella di Nacpan, che occupa una lunghissima baia semicircolare di sabbia bianca. Rientro a El Nido in serata <br><br>
             </div>
         </div>
         <button class="accordion">Day 11-12-13: Coron </button>
         <div class="panel" style="background-image: url('/Coron.jpg');">
             <div class="testo-giorno">
-                 <b>Day 11 :</b> partenza in mattinata da El Nido in direzione Coron.  <br><br>
-                <b>Day 12-13:</b> in relazione all’orario di arrivo possibilità di snorkeling al reef di Siete Pecados o trekking sul monte Tapyas per una splendida vista al tramonto della baia di Coron. Relax tra il mare cristallino ed i servizi offerti del hotel <br><br>
+                 <b>Day 11 :</b> Partenza in mattinata da El Nido in direzione Coron.  <br><br>
+                <b>Day 12-13:</b> In relazione all’orario di arrivo possibilità di snorkeling al reef di Siete Pecados o trekking sul monte Tapyas per una splendida vista al tramonto della baia di Coron. Relax tra il mare cristallino ed i servizi offerti del hotel <br><br>
             </div>
         </div>
 
            <button class="accordion">Day 14-15-16: Lago Kayangan e Twin Lagoon </button>
         <div class="panel" style="background-image: url('/TwinLagoon.jpg');">
             <div class="testo-giorno">
-                 <b>Day 14 :</b> partenza in mattinata da Coron in direzione Lago Kayangan.  <br><br>
-                <b>Day 15-16:</b> ultima, spettacolare giornata di mare alle Filippine. La destinazione odierna è l’isola di Coron vera e propria, a circa un’ora di barca da Coron City: il lago di Kayangan è uno spettacolo che non riusciremo a dimenticare facilmente, e da li ci sposteremo nelle meravigliose spiagge e lagune dei dintorni, come Smith Beach, il vicino coral reef perfetto per lo snorkeling, la Twin Lagoon e il Barracuda Lake. Rientro a Coron nel tardo pomeriggio, relax e free time <br><br>
+                 <b>Day 14 :</b> Partenza in mattinata da Coron in direzione Lago Kayangan.  <br><br>
+                <b>Day 15-16:</b> Ultima, spettacolare giornata di mare alle Filippine. La destinazione odierna è l’isola di Coron vera e propria, a circa un’ora di barca da Coron City: il lago di Kayangan è uno spettacolo che non riusciremo a dimenticare facilmente, e da li ci sposteremo nelle meravigliose spiagge e lagune dei dintorni, come Smith Beach, il vicino coral reef perfetto per lo snorkeling, la Twin Lagoon e il Barracuda Lake. Rientro a Coron nel tardo pomeriggio, relax e free time <br><br>
             </div>
         </div>
 
           <button class="accordion">Day 17 : Ritorno a Manila prima del rientro verso casa </button>
         <div class="panel" style="background-image: url('/Manila.jpg');">
             <div class="testo-giorno">
-                 <b>Day 17 :</b> partenza in mattinata in direzione Manila. Ultima cena e serata a Manila. <br><br>
+                 <b>Day 17 :</b> Partenza in mattinata in direzione Manila. Ultima cena e serata a Manila. <br><br>
            
             </div>
         </div>

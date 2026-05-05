@@ -157,7 +157,7 @@ onMounted(() => {
 	</div>
         </div>
 
-        <button class="accordion">Day 3: Ait Ben Haddou</button>
+        <button class="accordion">Day 3: Ait Ben Haddou </button>
         <div class="panel" style="background-image: url('/Haddou.jpg');">
             <div class="testo-giorno">
                    <b>Mattina:</b> Partenza per Ouarzazate. Rapida e tortuosa salita verso il passo Tichka, uno dei più alti della catena dell’Atlante (2260 m), immersi in un magnifico scenario lunare. Trasferimento a Telouet e pranzo a base di tajine gourmet<br><br>

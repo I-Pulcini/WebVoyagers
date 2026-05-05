@@ -121,7 +121,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">3700€</span>
-        <span class="prenota-durata"> 6 giorni ·Febbraio </span>
+        <span class="prenota-durata"> 6 giorni ·Febbraio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -157,7 +157,7 @@ onMounted(() => {
 	      </div>
         </div>
 
-        <button class="accordion">Day 3-4: Benveuti in Lapponia</button>
+        <button class="accordion">Day 3-4: Benveuti in Lapponia </button>
         <div class="panel" style="background-image: url('/Lapponia.jpg');">
             <div class="testo-giorno">
                    <b> Day 3 mattina/pomeriggio:</b> Arrivo alla stazione di Kiruna in tarda mattinata. Ritiro delle auto a noleggio e visita della cittadina, punto di partenza per eccellenza per le escursioni nella Lapponia svedese, nota per le sue temperature polari durante i mesi invernali <br><br>
@@ -167,7 +167,7 @@ onMounted(() => {
         </div>
 
        
-        <button class="accordion">Day 5: Tra foreste lapponi e l'iconico Ice Hotel</button>
+        <button class="accordion">Day 5: Tra foreste lapponi e l'iconico Ice Hotel </button>
         <div class="panel" style="background-image: url('/Ice.jpg');">
             <div class="testo-giorno">
                 <b>Mattina:</b> Possibilità di partecipare agli eccitanti tour in slitta trainata dagli husky: rappresentano il metodo tradizionale per l’esplorazione del deserto subartico e delle foreste lapponi, oppure non mancheranno escursioni con le ciaspole o a piedi <br><br>
@@ -176,7 +176,7 @@ onMounted(() => {
              </div>
         </div>
       
-        <button class="accordion">Day 6: Kiruna e rientro in Italia</button>
+        <button class="accordion">Day 6: Kiruna e rientro in Italia </button>
         <div class="panel" style="background-image: url('/Kiruna2.jpg');">
             <div class="testo-giorno">
                 <b>Mattina:</b> Rientro a Kiruna e consegna delle auto a noleggio <br><br>

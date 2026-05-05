@@ -59,7 +59,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_LONDRA,
+        idViaggio: ID_VIAGGIO_CAPOVERDE,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -121,7 +121,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">3600€</span>
-        <span class="prenota-durata"> giorni · </span>
+        <span class="prenota-durata"> 13 giorni ·Dicembre</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -140,7 +140,7 @@ onMounted(() => {
       <section class="itinerario-container">
         
         <button class="accordion">Day 1: Arrivo a Capo Verde </button>
-        <div class="panel" style="background-image: url('/Santa Maria.jpg');">
+        <div class="panel" style="background-image: url('/SantaMaria.jpg');">
             <div class="testo-giorno">
                   <b>Mattina:</b> Partenza dall’Italia e arrivo sull’isola di Sal. Trasferimento in hotel e sistemazione<br><br>
                 <b>Pomeriggio:</b>Relax in spiaggia a Santa Maria, con le sue acque turchesi e sabbia finissima. <br><br>

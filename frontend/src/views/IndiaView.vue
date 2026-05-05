@@ -154,29 +154,29 @@ onMounted(() => {
          <button class="accordion">Day 2-3: Visita di Delhi  </button>
         <div class="panel" style="background-image: url('/Delhi2.jpg');">
             <div class="testo-giorno">
-                 <b> Day 2:</b> compatibilmente con l’operativo voli arrivo in nottata a Delhi, disbrigo delle pratiche d’ingresso nel paese e trasferimento in città.  Check-in e ultime ore della notte in hotel. Con i suoi quasi trenta milioni di abitanti questa enigmatica città del nord, è la più popolosa dell’India e tra le più popolose al mondo. Colazione in hotel e intera giornata dedicata all’esplorazione della caotica ed affascinante parte vecchia di Delhi, quella che tra le metà del Diciassettesimo e del Diciannovesimo secolo è stata la capitale del potente Impero Moghul. Visita in mattinata del maestoso Forte Rosso <br><br>
-                <b> Day 3 mattina/pomeriggio:</b> immersione completa nel frenetico andirivieni della moltitudine di persone che affollano il mercato tradizionale di Chandni Chowk e successiva visita della Jama Masjid, la moschea più importante di Delhi e più grande dell’India<br><br>
-                <b> day 3 sera:</b> partenza del treno notturno per Jodhpur. Notte in treno        
+                 <b> Day 2:</b> Compatibilmente con l’operativo voli arrivo in nottata a Delhi, disbrigo delle pratiche d’ingresso nel paese e trasferimento in città.  Check-in e ultime ore della notte in hotel. Con i suoi quasi trenta milioni di abitanti questa enigmatica città del nord, è la più popolosa dell’India e tra le più popolose al mondo. Colazione in hotel e intera giornata dedicata all’esplorazione della caotica ed affascinante parte vecchia di Delhi, quella che tra le metà del Diciassettesimo e del Diciannovesimo secolo è stata la capitale del potente Impero Moghul. Visita in mattinata del maestoso Forte Rosso <br><br>
+                <b> Day 3 mattina/pomeriggio:</b> Immersione completa nel frenetico andirivieni della moltitudine di persone che affollano il mercato tradizionale di Chandni Chowk e successiva visita della Jama Masjid, la moschea più importante di Delhi e più grande dell’India<br><br>
+                <b> day 3 sera:</b> Partenza del treno notturno per Jodhpur. Notte in treno        
         </div>
         </div>
             
         <button class="accordion">Day 4-5-6: Jodhpur ed il tempio di Giainistra di Ranakpur </button>
         <div class="panel" style="background-image: url('/Jodhpur.jpg');">
             <div class="testo-giorno">
-                 <b> Day 4:</b> arrivo alla stazione di Jodhpur, seconda città per popolazione dello stato nord-occidentale del Rajasthan. Colazione e intera giornata dedicata alla scoperta del dedalo di vicoli della coloratissima città blu dell’India, sormontata dall’imponente Forte di Mehrangarh.cena, serata e notte in hotel a Jodhpur  <br><br>
-                <b> Day 5 mattina:</b>colazione e partenza al mattino con minivan privato in direzione Udaipur<br><br>  
-               <b> Day 5 pomeriggio/sera :</b> pranzo lungo il tragitto e sosta nel pomeriggio per ammirare il maestoso tempio di Ranakpur, appartenente all’antica religione del Giainismo, sostenuto da oltre mille colonne di marmo, scolpite nei più minimi dettagli. Arrivo nel pomeriggio a Udaipur, check-in in hotel e free-time.cena e notte in hotel a Udaipur <br><br>
-              <b> Day 6:</b> dopo la città blu di Jodhpur, giunge il momento di conoscere Udaipur, la città dei laghi, o la città bianca. Intera giornata alla scoperta di questo luogo fiabesco nato su due laghi, il Pichola e il Fateh Sargar. La bellezza dei suoi magnificenti palazzi nobiliari dell’Era Rajput, tra cui spicca il City Palace, e dei suoi templi hinduisti si riflette con vanità negli specchi d’acqua dei due laghi cittadini, creando immagini di austera ed esotica eleganza.cena e serata a Udaipur. <br><br>  
+                 <b> Day 4:</b> Arrivo alla stazione di Jodhpur, seconda città per popolazione dello stato nord-occidentale del Rajasthan. Colazione e intera giornata dedicata alla scoperta del dedalo di vicoli della coloratissima città blu dell’India, sormontata dall’imponente Forte di Mehrangarh.cena, serata e notte in hotel a Jodhpur  <br><br>
+                <b> Day 5 mattina:</b> Colazione e partenza al mattino con minivan privato in direzione Udaipur<br><br>  
+               <b> Day 5 pomeriggio/sera :</b> Pranzo lungo il tragitto e sosta nel pomeriggio per ammirare il maestoso tempio di Ranakpur, appartenente all’antica religione del Giainismo, sostenuto da oltre mille colonne di marmo, scolpite nei più minimi dettagli. Arrivo nel pomeriggio a Udaipur, check-in in hotel e free-time.cena e notte in hotel a Udaipur <br><br>
+              <b> Day 6:</b> Dopo la città blu di Jodhpur, giunge il momento di conoscere Udaipur, la città dei laghi, o la città bianca. Intera giornata alla scoperta di questo luogo fiabesco nato su due laghi, il Pichola e il Fateh Sargar. La bellezza dei suoi magnificenti palazzi nobiliari dell’Era Rajput, tra cui spicca il City Palace, e dei suoi templi hinduisti si riflette con vanità negli specchi d’acqua dei due laghi cittadini, creando immagini di austera ed esotica eleganza.cena e serata a Udaipur. <br><br>  
         </div>
         </div>
 
       <button class="accordion">Day 7-8-9: verso Jaipur e l'Amber Fort di Jaipur </button>
         <div class="panel" style="background-image: url('/Jaipur.jpg');">
             <div class="testo-giorno">
-                 <b> Day 7 mattina: </b>colazione e partenza in minivan in direzione Jaipur   <br><br>
-                   <b> Day 7 pomeriggio/sera: </b> arrivo in tarda mattinata a Jaipur, la città rosa, la capitale dello stato del Rajasthan. Check-in in hotel e pranzo. Visita dell’antico osservatorio astronomico Jantar Mantar e dell’iconico Hava Mahal, chiamato Il Palazzo dei Venti.cena e serata a Jaipur.  <br><br>
-                <b> Day 8: </b>spostamento ad Amer e visita del maestoso Amber Fort, una delle principali fortezze storiche del Rajasthan, nota per il suo complesso tentacolare di cortili e sale in stile tradizionale <br><br>  
-               <b> Day 9: </b> <br><br>ientro a Jaipur, breve giro a piedi, recupero dei bagagli in hotel e trasferimento in minivan in direzione Agra.
+                 <b> Day 7 mattina: </b> Colazione e partenza in minivan in direzione Jaipur   <br><br>
+                   <b> Day 7 pomeriggio/sera: </b> Arrivo in tarda mattinata a Jaipur, la città rosa, la capitale dello stato del Rajasthan. Check-in in hotel e pranzo. Visita dell’antico osservatorio astronomico Jantar Mantar e dell’iconico Hava Mahal, chiamato Il Palazzo dei Venti.cena e serata a Jaipur.  <br><br>
+                <b> Day 8: </b> Spostamento ad Amer e visita del maestoso Amber Fort, una delle principali fortezze storiche del Rajasthan, nota per il suo complesso tentacolare di cortili e sale in stile tradizionale <br><br>  
+               <b> Day 9: </b> <br><br> Rientro a Jaipur, breve giro a piedi, recupero dei bagagli in hotel e trasferimento in minivan in direzione Agra.
               
         </div>
         </div>
@@ -184,9 +184,9 @@ onMounted(() => {
        <button class="accordion">Day 10: Alla scoperta di una delle sette meravilgie del mondo - Taj Mahal </button>
         <div class="panel" style="background-image: url('/TajMahal.jpg');">
             <div class="testo-giorno">
-              <b>Mattina:</b> sveglia molto presto per ammirare il sorgere del sole sulle pietre incastonate nel marmo bianco del Taj Mahal. Tempo a disposizione per ammirare una delle 7 meraviglie del mondo, costruita da 20.000 uomini in 22 anni per volere dell’imperatore Shah Jahan, in memoria della sua amata moglie Mumtaz Mahal <br><br>
-                <b>Pomeriggio:</b> visita del Forte Rosso di Agra, immensa fortezza in arenaria rossa costruita nel 16° secolo e fiorita sotto il regno di Shah Jahan. Recupero bagagli e trasferimento presso la stazione ferroviari <br><br>
-                  <b>Sera:</b> partenza del treno notturno per Dehli e notte in treno   
+              <b>Mattina:</b> Sveglia molto presto per ammirare il sorgere del sole sulle pietre incastonate nel marmo bianco del Taj Mahal. Tempo a disposizione per ammirare una delle 7 meraviglie del mondo, costruita da 20.000 uomini in 22 anni per volere dell’imperatore Shah Jahan, in memoria della sua amata moglie Mumtaz Mahal <br><br>
+                <b>Pomeriggio:</b> Visita del Forte Rosso di Agra, immensa fortezza in arenaria rossa costruita nel 16° secolo e fiorita sotto il regno di Shah Jahan. Recupero bagagli e trasferimento presso la stazione ferroviari <br><br>
+                  <b>Sera:</b> Partenza del treno notturno per Dehli e notte in treno   
             </div>
         </div>
 

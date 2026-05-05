@@ -139,21 +139,21 @@ onMounted(() => {
 
       <section class="itinerario-container">
         
-        <button class="accordion">Day 1: Arrivo a Phnom Penh</button>
+        <button class="accordion">Day 1: Arrivo a Phnom Penh </button>
         <div class="panel" style="background-image: url('/PhnomPenh.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b>Arrivo a Phnom Penh e trasferimento in hotel <br><br>
+                  <b>Mattina:</b> Arrivo a Phnom Penh e trasferimento in hotel <br><br>
                 <b>Pomeriggio:</b> Visita al Palazzo Reale di Phnom Penh e alla Pagoda d’Argento<br><br>
-                <b>Sera:</b>Passeggiata lungo il fiume Mekong e cena tipica             
+                <b>Sera:</b> Passeggiata lungo il fiume Mekong e cena tipica             
 	</div>
         </div>
 
         <button class="accordion">Day 2: Storia e memoria </button>
         <div class="panel" style="background-image: url('/Cambogia.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>Visita al Museo del Genocidio Tuol Sleng <br><br>
+                <b>Mattina:</b> Visita al Museo del Genocidio Tuol Sleng <br><br>
                 <b>Pomeriggio:</b> Escursione ai Killing Fields di Choeung Ek<br><br>
-                <b>Sera:</b>    Rientro e cena rilassante         
+                <b>Sera:</b> Rientro e cena rilassante         
 	</div>
         </div>
 
@@ -161,8 +161,8 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/SiemReap.jpg');">
             <div class="testo-giorno">
                    <b>Mattina:</b> Trasferimento a Siem Reap (volo o bus)<br><br>
-                <b>Pomeriggio:</b>Esplorazione del centro e dei mercati locali <br><br>
-                <b>Sera:</b>  Spettacolo di danza Apsara  
+                <b>Pomeriggio:</b> Esplorazione del centro e dei mercati locali <br><br>
+                <b>Sera:</b> Spettacolo di danza Apsara  
             </div>
         </div>
 
@@ -170,17 +170,17 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/AngkorWat.jpg');">
             <div class="testo-giorno">
                    <b>Mattina:</b> Alba a Angkor Wat<br><br>
-                <b>Pomeriggio:</b>Visita ad Angkor Thom e al tempio Bayon <br><br>
+                <b>Pomeriggio:</b> Visita ad Angkor Thom e al tempio Bayon <br><br>
                 <b>Sera:</b> Cena nel centro di Siem Reap   
             </div>
         </div>
 
-        <button class="accordion">Day 5: Templi nella giungla</button>
+        <button class="accordion">Day 5: Templi nella giungla </button>
         <div class="panel" style="background-image: url('/Cambogia2.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b>Visita a Ta Prohm <br><br>
-                <b>Pomeriggio:</b>Altri templi minori e relax <br><br>
+ 		 <b>Mattina:</b> Visita a Ta Prohm <br><br>
+                <b>Pomeriggio:</b> Altri templi minori e relax <br><br>
                 <b>Sera:</b> Pub Street e vita notturna  
              </div>
         </div>
@@ -190,16 +190,16 @@ onMounted(() => {
             <div class="testo-giorno">
                
  		 <b>Mattina:</b>Escursione al Lago Tonle Sap <br><br>
-                <b>Pomeriggio:</b>Visita ai villaggi galleggianti<br><br>
-                <b>Sera:</b>Cena tranquilla  
+                <b>Pomeriggio:</b> Visita ai villaggi galleggianti<br><br>
+                <b>Sera:</b> Cena tranquilla  
              </div>
         </div>
 		    <button class="accordion">Day 7: Verso il mare </button>
         <div class="panel" style="background-image: url('/Sihanoukville.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b>Trasferimento a Sihanoukville <br><br>
-                <b>Pomeriggio:</b><br>Relax in spiaggia<br>
+ 		 <b>Mattina:</b> Trasferimento a Sihanoukville <br><br>
+                <b>Pomeriggio:</b><br> Relax in spiaggia <br>
                 <b>Sera:</b> Cena vista mare 
              </div>
         </div>
@@ -207,24 +207,24 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/KohRong.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Day 8:</b>Traghetto per Koh Rong <br><br>
-                <b>Day 9-10:</b>Bagni e relax<br><br>
+ 		 <b>Day 8:</b> Traghetto per Koh Rong <br><br>
+                <b>Day 9-10:</b> Bagni e relax <br><br>
              </div>
         </div>
-		    <button class="accordion">Day 11: Rientro a Phnom Penh  </button>
+		    <button class="accordion">Day 11: Rientro a Phnom Penh </button>
         <div class="panel" style="background-image: url('/Cambogia3.jpg');">
             <div class="testo-giorno">
                
  		 <b>Mattina:</b> Trasferimento a Phnom Penh<br><br>
-                <b>Pomeriggio:</b>Shopping nei mercati come il Central Market<br><br>
-                <b>Sera:</b>Cena d’addio  
+                <b>Pomeriggio:</b> Shopping nei mercati come il Central Market<br><br>
+                <b>Sera:</b> Cena d’addio  
              </div>
         </div>
 		   <button class="accordion">Day 10: Rientro in Italia </button>
         <div class="panel" style="background-image: url('/Cambogia.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b>Trasferimento in aereporto <br><br>
+ 		 <b>Mattina:</b> Trasferimento in aereporto <br><br>
              </div>
         </div>
 		  

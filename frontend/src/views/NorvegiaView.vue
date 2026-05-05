@@ -122,7 +122,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">3.100€</span>
-        <span class="prenota-durata">5 giorni · Gennaio</span>
+        <span class="prenota-durata">5 giorni ·Gennaio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -140,46 +140,46 @@ onMounted(() => {
 
       <section class="itinerario-container">
         
-        <button class="accordion">Day 1: Arrivo ad Olso</button>
+        <button class="accordion">Day 1: Arrivo ad Olso </button>
         <div class="panel" style="background-image: url('/Oslo.jpg');">
             <div class="testo-giorno">
-                <b>Mattina/Pomeriggio:</b>partenza in volo per Oslo dalle principali città Italiane,arrivo all’aeroporto di Oslo <br><br>
-                <b>Sera:</b> cena e serata nella capitale norvegese.
+                <b>Mattina/Pomeriggio:</b> Partenza in volo per Oslo dalle principali città Italiane,arrivo all’aeroporto di Oslo <br><br>
+                <b>Sera:</b> Cena e serata nella capitale norvegese.
             </div>
         </div>
 
-        <button class="accordion">Day 2:Arrivo alle Svalbard </button>
+        <button class="accordion">Day 2: Arrivo alle Svalbard </button>
         <div class="panel" style="background-image: url('/Svalbard.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina:</b> a seconda dell’operativo voli, visita a piedi del centro di Oslo<br><br>
-                <b>Pomeriggio:</b> trasferimento verso l’aeroporto e volo per Longyearbyen. Arrivo alle Svalbard e sistemazione in hotel<br><br>
-                <b>Sera:</b> cena e serata nei locali di Longyearbyen, la capitale ai confini del mondo
+                 <b>Mattina:</b> A seconda dell’operativo voli, visita a piedi del centro di Oslo<br><br>
+                <b>Pomeriggio:</b> Trasferimento verso l’aeroporto e volo per Longyearbyen. Arrivo alle Svalbard e sistemazione in hotel<br><br>
+                <b>Sera:</b> Cena e serata nei locali di Longyearbyen, la capitale ai confini del mondo
             </div>
         </div>
 
-        <button class="accordion">Day 3:Longyearbyen </button>
+        <button class="accordion">Day 3: Longyearbyen </button>
         <div class="panel" style="background-image: url('/Longyearbyen.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina/Pomeriggio:</b> giornata a disposizione per la visita di Longyearbyen e dei suoi dintorni, con varie attività disponibili: visita della città con i suoi musei e il birrificio più settentrionale del mondo, tour delle spettacolari grotte di ghiaccio realizzato con slitte trainate dagli husky, uscita in kayak tra gli iceberg, boat safari e tante altre!<br><br>
-                <b>Sera:</b> cena e serata nei locali di Longyearbyen, la capitale ai confini del mondo
+                 <b>Mattina/Pomeriggio:</b> Giornata a disposizione per la visita di Longyearbyen e dei suoi dintorni, con varie attività disponibili: visita della città con i suoi musei e il birrificio più settentrionale del mondo, tour delle spettacolari grotte di ghiaccio realizzato con slitte trainate dagli husky, uscita in kayak tra gli iceberg, boat safari e tante altre!<br><br>
+                <b>Sera:</b> Cena e serata nei locali di Longyearbyen, la capitale ai confini del mondo
             </div>
         </div>
 
-        <button class="accordion">Day 4:Pyramiden </button>
+        <button class="accordion">Day 4: Pyramiden </button>
         <div class="panel" style="background-image: url('/Pyramiden.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>tour in motoslitta nelle remote lande a nord di Pyramiden, lungo il letto ghiacciato del Mimirelva e lo sfondo dei Monti Tor e Odino. Arrivo a Cima Comunismo, con vista panoramica sulle valli innevate <br><br>
-                <b>Pomeriggio:</b>pomeriggio dedicato alla visita di Pyramiden, l’insediamento umano più settentrionale al mondo: villaggio sovietico abbandonato, su cui troneggia ancora oggi una statua di Lenin,  è rimasto perfettamente conservato tra i ghiacci artici, e qui il tempo si è fermato agli anni del comunismo e della guerra fredda<br><br>
-                <b>Sera:</b> cena e serata in hotel a Pyramiden
+                <b>Mattina:</b> Tour in motoslitta nelle remote lande a nord di Pyramiden, lungo il letto ghiacciato del Mimirelva e lo sfondo dei Monti Tor e Odino. Arrivo a Cima Comunismo, con vista panoramica sulle valli innevate <br><br>
+                <b>Pomeriggio:</b> Pomeriggio dedicato alla visita di Pyramiden, l’insediamento umano più settentrionale al mondo: villaggio sovietico abbandonato, su cui troneggia ancora oggi una statua di Lenin,  è rimasto perfettamente conservato tra i ghiacci artici, e qui il tempo si è fermato agli anni del comunismo e della guerra fredda<br><br>
+                <b>Sera:</b> Cena e serata in hotel a Pyramiden
             </div>
         </div>
 
-        <button class="accordion">Day 5: Rientro ad Olso</button>
+        <button class="accordion">Day 5: Rientro ad Olso </button>
         <div class="panel" style="background-image: url('/Svalbard2.jpg');">
             <div class="testo-giorno">
-               <b>Mattina:</b> passeggiata guidata per il centro di Longyearbien, visita dello Svalbard Museum e la Galleri Svalbard, che ospita più di 40 opere di Kåre Tveter, uno dei più importanti pittori norvegesi del ‘900<br><br>
+               <b>Mattina:</b> Passeggiata guidata per il centro di Longyearbien, visita dello Svalbard Museum e la Galleri Svalbard, che ospita più di 40 opere di Kåre Tveter, uno dei più importanti pittori norvegesi del ‘900<br><br>
                 <b>Pomeriggio:</b> Trasferimento all’aeroporto di Longyearbyen e volo per Oslo. Trasferimento e sistemazione in hotel<br><br>
-                <b>Sera:</b>  cena e serata nel centro della capitale della Norvegia
+                <b>Sera:</b> Cena e serata nel centro della capitale della Norvegia
             </div>
         </div>
 

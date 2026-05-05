@@ -60,7 +60,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_NORVEGIA,
+        idViaggio: ID_VIAGGIO_REPUBBLICADOMENICANA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -115,7 +115,7 @@ onMounted(() => {
 <template>
   <div class="repubblicadomenicana-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo">NORVEGIA</h1>
+      <h1 class="fascia-titolo"> REPUBBLICA DOMENICANA </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
@@ -143,7 +143,7 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
          <button class="accordion">Day 1-2: Partenzza dall'italia </button>
         <div class="panel" style="background-image: url('/Santodomingo.jpg');">
             <div class="testo-giorno">
-                 <b>Day1:</b>Volo dai pirnicipali aereoporti italiani versosanto Domingo  <br><br>
+                 <b>Day1:</b> Volo dai pirnicipali aereoporti italiani versosanto Domingo  <br><br>
                 <b>Day 2:</b> Arrivati a destinazione,check-in e relax nella piscina dell'hotel <br><br>
             </div>
         </div>
@@ -152,15 +152,15 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
         <div class="panel" style="background-image: url('/Santodomingo2.jpg');">
             <div class="testo-giorno">
                  <b>Mattina:</b> Visita guidata della Zona Colonial (Patrimonio UNESCO). Scoprirete la prima Cattedrale delle Americhe, il Pantheon Nazionale e l'antica Fortezza Ozama.<br><br>
-                <b>Pomeriggio:</b>Tempo libero per fare acquisti nelle caratteristiche botteghe di ambra e larimar (la pietra azzurra locale), o per perdervi tra i colori esotici e i profumi del Mercado Modelo. <br><br>
-                <b>Sera:</b>Cena in un ristorante tipico del centro per assaggiare la Bandera Dominicana (il piatto nazionale), seguita da musica dal vivo e qualche passo di merengue. 
+                <b>Pomeriggio:</b> Tempo libero per fare acquisti nelle caratteristiche botteghe di ambra e larimar (la pietra azzurra locale), o per perdervi tra i colori esotici e i profumi del Mercado Modelo. <br><br>
+                <b>Sera:</b> Cena in un ristorante tipico del centro per assaggiare la Bandera Dominicana (il piatto nazionale), seguita da musica dal vivo e qualche passo di merengue. 
             </div>
         </div>
 <button class="accordion">Day 4-5: Relax a Punta Cana </button>
         <div class="panel" style="background-image: url('/PuntaCana.jpg');">
             <div class="testo-giorno">
                  <b>Day 3 mattina:</b> Spostamento in macchina verso Punta Cana <br><br>
-                <b> Day 3 pomeriggio/ Day 4:</b> relax nel mare cristallino dei Caraibi <br><br>
+                <b> Day 3 pomeriggio/ Day 4:</b> Relax nel mare cristallino dei Caraibi <br><br>
             </div>
         </div>
 
@@ -168,8 +168,8 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
         <div class="panel" style="background-image: url('/IslaSaona.jpg');">
             <div class="testo-giorno">
                  <b>Mattina:</b> Partenza in catamarano o lancia rapida. Sosta imperdibile alle "Piscine Naturali", un immenso banco di sabbia in mare aperto con acqua alla vita, abitato da bellissime stelle marine giganti.<br>
-                <b>Pomeriggio:</b> barco a Isla Saona, perla del Parco Nazionale Cotubanamá. Pranzo a buffet sotto le palme e tempo infinito per bagni da cartolina e relax all'ombra delle palme da cocco.<br><br>
-                <b>Sera:</b>Rientro a Punta Cana a ritmo di bachata. Serata libera per riposarsi o passeggiare nel piccolo centro del villaggio.
+                <b>Pomeriggio:</b> Barco a Isla Saona, perla del Parco Nazionale Cotubanamá. Pranzo a buffet sotto le palme e tempo infinito per bagni da cartolina e relax all'ombra delle palme da cocco.<br><br>
+                <b>Sera:</b> Rientro a Punta Cana a ritmo di bachata. Serata libera per riposarsi o passeggiare nel piccolo centro del villaggio.
             </div>
         </div>
         
@@ -177,14 +177,14 @@ Dimenticate la solita vacanza: questo viaggio di 11 giorni è un'immersione tota
         <div class="panel" style="background-image: url('/Bayahibe.jpg');">
             <div class="testo-giorno">
                  <b>Day 7:</b> Spostamento in macchina verso Bayahibe e relax in hotel <br><br>
-                <b> Day 8-9:</b>Arrivo nel pittoresco e tranquillo villaggio di pescatori di Bayahibe. Sistemazione in resort e primi tuffi rilassanti nelle acque calme di Playa Dominicus. <br><br>
+                <b> Day 8-9:</b> Arrivo nel pittoresco e tranquillo villaggio di pescatori di Bayahibe. Sistemazione in resort e primi tuffi rilassanti nelle acque calme di Playa Dominicus. <br><br>
             </div>
         </div>
 
       <button class="accordion">Day 10: Reolax Assoluto e Tramonto d'Addio </button>
         <div class="panel" style="background-image: url('/Santodomingo.jpg');">
             <div class="testo-giorno">
-                 <b>Day 10 mattina/pomeriggo:</b>Giornata libera a completa disposizione. Godetevi i comfort della struttura, fate una lunga passeggiata sul bagnasciuga o perdetevi nella lettura di un libro. <br><br>
+                 <b>Day 10 mattina/pomeriggo:</b> Giornata libera a completa disposizione. Godetevi i comfort della struttura, fate una lunga passeggiata sul bagnasciuga o perdetevi nella lettura di un libro. <br><br>
                  <b>Day 10 sera:</b> Direzione Santo Domingo e notte lì
             </div>
         </div>

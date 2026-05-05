@@ -61,7 +61,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_,
+        idViaggio: ID_VIAGGIO_ZANZIBAR,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -116,7 +116,7 @@ onMounted(() => {
 <template>
   <div class="zanzibar-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo">ZANZIBAR</h1>
+      <h1 class="fascia-titolo"> ZANZIBAR </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
@@ -146,7 +146,7 @@ Un viaggio di 11 giorni alla scoperta di Zanzibar, l'Isola delle Spezie, dove l'
         <div class="panel" style="background-image: url('/Zanzibar.jpg');">
             <div class="testo-giorno">
                  <b>Day1:</b> Partenza dai principali aereporti italiani<br><br>
-                <b>Day 2:</b>Arrivo a Stone Town e relax in hotel, per recuperare dal viaggio <br><br>
+                <b>Day 2:</b> Arrivo a Stone Town e relax in hotel, per recuperare dal viaggio <br><br>
             </div>
         </div>
 
@@ -154,7 +154,7 @@ Un viaggio di 11 giorni alla scoperta di Zanzibar, l'Isola delle Spezie, dove l'
         <div class="panel" style="background-image: url('/StoneTown.jpg');">
             <div class="testo-giorno">
                  <b>Mattina:</b> Trasferimento privato verso il cuore di Stone Town.<br><br>
-                <b>Pomeriggio:</b>Prima passeggiata esplorativa in autonomia tra il labirinto di vicoli, ammirando le celebri porte in legno finemente intagliate e i balconi arabeggianti.  <br><br>
+                <b>Pomeriggio:</b> Prima passeggiata esplorativa in autonomia tra il labirinto di vicoli, ammirando le celebri porte in legno finemente intagliate e i balconi arabeggianti.  <br><br>
                 <b>Sera:</b> Tramonto sul lungomare e cena ai giardini di Forodhani: un'esperienza imperdibile dove la piazza si trasforma in un vivace mercato di street food locale a base di pesce fresco e pane chapati.           
         </div>
         </div>
@@ -172,7 +172,7 @@ Un viaggio di 11 giorni alla scoperta di Zanzibar, l'Isola delle Spezie, dove l'
             <div class="testo-giorno">
                    <b>Mattina:</b> Check-out e partenza per il famoso "Spice Tour". Visita a una lussureggiante fattoria locale per scoprire, annusare e gustare le spezie allo stato naturale: chiodi di garofano, vaniglia, noce moscata, cannella e pepe. <br><br>
                 <b>Pomeriggio:</b> Trasferimento verso la costa Nord (Nungwi o Kendwa), famosa per le sue spiagge immacolate e per essere l'area meno influenzata dal fenomeno delle maree. Check-in in resort.<br><br>
-                <b>Sera:</b>Prima cena a piedi nudi sulla sabbia, accarezzati dal rumore dolce dell'Oceano Indiano.
+                <b>Sera:</b> Prima cena a piedi nudi sulla sabbia, accarezzati dal rumore dolce dell'Oceano Indiano.
             </div>
         </div>
 
@@ -194,8 +194,8 @@ Un viaggio di 11 giorni alla scoperta di Zanzibar, l'Isola delle Spezie, dove l'
         <div class="panel" style="background-image: url('/Menaibay.jpg');">
             <div class="testo-giorno">
                  <b>Mattina:</b> Partenza per la rinomata escursione "Safari Blue". Navigazione su un tradizionale dhow a vela nella splendida Baia di Menai. Sosta su meravigliosi banchi di sabbia bianca che affiorano solo con la bassa marea. <br><br>
-                <b>Pomeriggio:</b>Snorkeling guidato in acque limpide e una spettacolare grigliata di pesce, cicale di mare e aragosta servita direttamente sull'isola di Kwale. Nel tardo pomeriggio, navigazione di ritorno accompagnata da canti locali.<br><br>
-                <b>Sera:</b>Rientro in hotel appagati e felici. Cena leggera e meritato riposo.
+                <b>Pomeriggio:</b> Snorkeling guidato in acque limpide e una spettacolare grigliata di pesce, cicale di mare e aragosta servita direttamente sull'isola di Kwale. Nel tardo pomeriggio, navigazione di ritorno accompagnata da canti locali.<br><br>
+                <b>Sera:</b> Rientro in hotel appagati e felici. Cena leggera e meritato riposo.
             </div>
         </div>
 

@@ -59,7 +59,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_LONDRA,
+        idViaggio: ID_VIAGGIO_CAMBOGIA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -121,7 +121,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">2300€</span>
-        <span class="prenota-durata">12 giorni ·Giugno </span>
+        <span class="prenota-durata">12 giorni ·Giugno</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -186,7 +186,7 @@ onMounted(() => {
         </div>
 
 		   <button class="accordion">Day 6: Villagi galleggiati </button>
-        <div class="panel" style="background-image: url('/.jpg');">
+        <div class="panel" style="background-image: url('/Cambogia.jpg');">
             <div class="testo-giorno">
                
  		 <b>Mattina:</b>Escursione al Lago Tonle Sap <br><br>
@@ -275,7 +275,7 @@ onMounted(() => {
         <!-- FORM DI PRENOTAZIONE -->
         <div v-else>
           <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
-          <h2 class="modale-titolo">🎒 Prenota:Cambogia </h2>
+          <h2 class="modale-titolo">🎒 Prenota: Cambogia </h2>
           <p class="modale-sottotitolo">Compila i dati per confermare la tua prenotazione.</p>
 
           <div v-if="errore" class="messaggio-errore">⚠️ {{ errore }}</div>

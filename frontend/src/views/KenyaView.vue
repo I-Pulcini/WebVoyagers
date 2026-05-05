@@ -62,7 +62,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_,
+        idViaggio: ID_VIAGGIO_KENYA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -124,7 +124,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo"> 2800€</span>
-        <span class="prenota-durata"> 11 giorni ·Otobre</span>
+        <span class="prenota-durata"> 11 giorni ·Ottobre</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -147,7 +147,7 @@ Lungo le piste poco battute del Kenya, incontrando gruppi etnici dalle tradizion
         <div class="panel" style="background-image: url('/Nairobi.jpg');">
             <div class="testo-giorno">
                  <b>Day1:</b> Partenza dai principali aereporti italiani <br><br>
-                <b>Day 2:</b>Arrivo a Nairobi, check-in e relax in hotel <br><br>
+                <b>Day 2:</b> Arrivo a Nairobi, check-in e relax in hotel <br><br>
             </div>
         </div>
 
@@ -156,7 +156,7 @@ Lungo le piste poco battute del Kenya, incontrando gruppi etnici dalle tradizion
             <div class="testo-giorno">
                  <b>Mattina:</b> Partenza verso nord, attraversando la caotica capitale del Kenya <br><br>
                 <b>Pomeriggio:</b> Lungo il tragitto ci fermeremo a Nanyuki per vedere il punto esatto dove passa la linea dell’equatore, e tempo permettendo anche delle bianche vette del Monte Kenya, con i suoi 5.199 metri, prima di proseguire verso la riserva del Samburu con arrivo per pranzo in hotel. Nel primo pomeriggio fotosafari in una delle aree protette più impressionanti del paese, sia per la quantità e diversità di fauna selvaggia, che per gli splendidi paesaggi. Oltre ai grandi felini, sempre molto schivi, e la giraffa Masai, la vera attrattiva del parco sono gli ‘’special 5’’, animali che si trovano solamente in questo parco: la zebra di Grevy, la giraffa reticolata, lo struzzo somalo, la gazzella-giraffa e l’orice dalle orecchie frangiate.  <br><br>
-                <b>Sera:</b>Cena e pernottamento            
+                <b>Sera:</b> Cena e pernottamento            
         </div>
         </div>
    <button class="accordion">Day 4-5-6-7: Marsabit/ Kalacha /Loiyangalani </button>

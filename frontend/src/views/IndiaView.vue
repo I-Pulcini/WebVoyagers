@@ -116,7 +116,7 @@ onMounted(() => {
 <template>
   <div class="india-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo">NORVEGIA</h1>
+      <h1 class="fascia-titolo"> INDIA</h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->

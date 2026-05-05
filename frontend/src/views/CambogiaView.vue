@@ -189,7 +189,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Cambogia.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b>Escursione al Lago Tonle Sap <br><br>
+ 		 <b>Mattina:</b> Escursione al Lago Tonle Sap <br><br>
                 <b>Pomeriggio:</b> Visita ai villaggi galleggianti<br><br>
                 <b>Sera:</b> Cena tranquilla  
              </div>

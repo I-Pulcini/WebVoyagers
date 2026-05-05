@@ -181,6 +181,7 @@ onMounted(() => {
                 <b>Pomeriggio:</b> Trasferimento all’aeroporto di Longyearbyen e volo per Oslo. Trasferimento e sistemazione in hotel<br><br>
                 <b>Sera:</b> Cena e serata nel centro della capitale della Norvegia
             </div>
+          
         </div>
 
       </section>

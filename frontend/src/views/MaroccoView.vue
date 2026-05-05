@@ -114,14 +114,14 @@ onMounted(() => {
 <template>
   <div class="marocco-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> MAROCCO </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">2400€</span>
-        <span class="prenota-durata"> 10 giorni ·Maggio </span>
+        <span class="prenota-durata"> 10 giorni ·Maggio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -142,54 +142,54 @@ onMounted(() => {
         <button class="accordion">Day 1:Arrivo a Marrakech </button>
         <div class="panel" style="background-image: url('/Marrakech.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b>partenza dall’Italia e arrivo a Marrakech, trasferimento in riad nel centro della medina <br><br>
+                  <b>Mattina:</b> Partenza dall’Italia e arrivo a Marrakech, trasferimento in riad nel centro della medina <br><br>
                 <b>Pomeriggio:</b> Prima esplorazione dei souq della medina di Marrakech, dei giardini della Koutoubia e della piazza Jemaa el Fna, patrimonio dell’umanità UNESCO, in un festante caos di cartomanti, giocolieri, incantatori di serpenti, venditori di lumache, cantastorie. Tè al tramonto in uno dei rooftop sovrastanti la piazza <br><br>
-                <b>Sera:</b>   cena a base di street food negli stand di piazza Jemaa el Fna           
+                <b>Sera:</b> Cena a base di street food negli stand di piazza Jemaa el Fna           
 	</div>
         </div>
 
         <button class="accordion">Day 2:Marrakech </button>
         <div class="panel" style="background-image: url('/Marrakech2.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>  visita della “città rossa” di Marrakech con guida parlante italiano: visita dell’antico quartiere ebraico della Mellah, il Palazzo Bahia, capolavoro dell’architettura arabo-andalusa, e visita dei labirintici souq degli artigiani del ferro e del cuoio<br><br>
-                <b>Pomeriggio:</b>  pranzo in caratteristico ristorante rooftop con affaccio sul souq delle spezie nella medina, e visita dei giardini Majorelle<br><br>
-                <b>Sera:</b> cena in ristorante tipico per gustare le specialità marocchine. Serata nei locali di Marrakech.            
+                <b>Mattina:</b> Visita della “città rossa” di Marrakech con guida parlante italiano: visita dell’antico quartiere ebraico della Mellah, il Palazzo Bahia, capolavoro dell’architettura arabo-andalusa, e visita dei labirintici souq degli artigiani del ferro e del cuoio<br><br>
+                <b>Pomeriggio:</b> Pranzo in caratteristico ristorante rooftop con affaccio sul souq delle spezie nella medina, e visita dei giardini Majorelle<br><br>
+                <b>Sera:</b> Cena in ristorante tipico per gustare le specialità marocchine. Serata nei locali di Marrakech.            
 	</div>
         </div>
 
         <button class="accordion">Day 3: Ait Ben Haddou</button>
         <div class="panel" style="background-image: url('/Haddou.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> partenza per Ouarzazate. Rapida e tortuosa salita verso il passo Tichka, uno dei più alti della catena dell’Atlante (2260 m), immersi in un magnifico scenario lunare. Trasferimento a Telouet e pranzo a base di tajine gourmet<br><br>
-                <b>Pomeriggio:</b> scenic drive lungo la spettacolare valle di Ounila, dove il verdissimo fondovalle crea un fantastico contrasto cromatico con il rosso delle montagne, visita al tramonto del sito UNESCO dello ksar di Ait Ben Haddou,  Tramonto e trasferimento in riad<br><br>
-                <b>Sera:</b> cena e pernottamento in riad
+                   <b>Mattina:</b> Partenza per Ouarzazate. Rapida e tortuosa salita verso il passo Tichka, uno dei più alti della catena dell’Atlante (2260 m), immersi in un magnifico scenario lunare. Trasferimento a Telouet e pranzo a base di tajine gourmet<br><br>
+                <b>Pomeriggio:</b> Scenic drive lungo la spettacolare valle di Ounila, dove il verdissimo fondovalle crea un fantastico contrasto cromatico con il rosso delle montagne, visita al tramonto del sito UNESCO dello ksar di Ait Ben Haddou,  Tramonto e trasferimento in riad<br><br>
+                <b>Sera:</b> Cena e pernottamento in riad
             </div>
         </div>
 
         <button class="accordion">Day 4:Valle del Dades e Merzouga </button>
         <div class="panel" style="background-image: url('/Merzouga.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> partenza per la Valle delle Rose e il villaggio di Skoura, attraverso la strada delle Mille Kasbah, puntellata di oasi brulicanti di vita. Sosta con pranzo al sacco panoramico presso il famoso viewpoint della valle del Dadès<br><br>
-                <b>Pomeriggio:</b>  arrivo a Merzouga e tour nel deserto dell’Erg Chebbi, famoso per le sue dune di sabbia che si stagliano altissime al confine con l’Algeria<br><br>
-                <b>Sera:</b> notte indimenticabile in tenda nomade nel mezzo delle dune, serata al ritmo della musica, canti e danze del folclore berbero sotto a milioni di stelle   
+                   <b>Mattina:</b> Partenza per la Valle delle Rose e il villaggio di Skoura, attraverso la strada delle Mille Kasbah, puntellata di oasi brulicanti di vita. Sosta con pranzo al sacco panoramico presso il famoso viewpoint della valle del Dadès<br><br>
+                <b>Pomeriggio:</b> Arrivo a Merzouga e tour nel deserto dell’Erg Chebbi, famoso per le sue dune di sabbia che si stagliano altissime al confine con l’Algeria<br><br>
+                <b>Sera:</b> Notte indimenticabile in tenda nomade nel mezzo delle dune, serata al ritmo della musica, canti e danze del folclore berbero sotto a milioni di stelle   
             </div>
         </div>
 
         <button class="accordion">Day 5:Valle del Ziz, Azrou e Ifrane </button>
         <div class="panel" style="background-image: url('/Azrou.jpg');">
             <div class="testo-giorno">
- 		         <b>Mattina:</b> sveglia presto per vedere il magnifico spettacolo dell’alba nel deserto, rientro a Merzouga e partenza per Fes attraverso il “serpentone verde” della Valle dello Ziz <br><br>
-                <b>Pomeriggio:</b>immersi in un surreale scenario alpino, visita  della foresta incantata di Azrou, dove le bertucce vivono in libertà tra i boschi di cedro. Attraversamento della cittadina universitaria di Ifrane, conosciuta come la Svizzera marocchina. Cena e arrivo in serata a Fes <br><br>
-                <b>Sera:</b>sistemazione in riad a Fes
+ 		         <b>Mattina:</b> Sveglia presto per vedere il magnifico spettacolo dell’alba nel deserto, rientro a Merzouga e partenza per Fes attraverso il “serpentone verde” della Valle dello Ziz <br><br>
+                <b>Pomeriggio:</b> Immersi in un surreale scenario alpino, visita  della foresta incantata di Azrou, dove le bertucce vivono in libertà tra i boschi di cedro. Attraversamento della cittadina universitaria di Ifrane, conosciuta come la Svizzera marocchina. Cena e arrivo in serata a Fes <br><br>
+                <b>Sera:</b> Sistemazione in riad a Fes
              </div>
         </div>
       
         <button class="accordion">Day 6:Fes </button>
         <div class="panel" style="background-image: url('/Fes.jpg');">
             <div class="testo-giorno">
- 		         <b>Mattina:</b>visita guidata in italiano della capitale religiosa, intellettuale e artistica del Marocco, tra i tortuosi labirinti dei souq, antichi caravanserrai e scuole coraniche  <br><br>
-                <b>Pomeriggio:</b>visita all’affascinante quartiere dei tintori e alle famose concerie della medina, con possibilità di acquistare articoli in pura pelle a prezzi vantaggiosi. Free time e possibilità di relax in un hammam tipico (opzionale, non incluso)  <br><br>
-                <b>Sera:</b>cena in ristorante marocchino e pernottamento in riad
+ 		         <b>Mattina:</b> Visita guidata in italiano della capitale religiosa, intellettuale e artistica del Marocco, tra i tortuosi labirinti dei souq, antichi caravanserrai e scuole coraniche  <br><br>
+                <b>Pomeriggio:</b> Visita all’affascinante quartiere dei tintori e alle famose concerie della medina, con possibilità di acquistare articoli in pura pelle a prezzi vantaggiosi. Free time e possibilità di relax in un hammam tipico (opzionale, non incluso)  <br><br>
+                <b>Sera:</b> Cena in ristorante marocchino e pernottamento in riad
              </div>
         </div>
 
@@ -197,9 +197,9 @@ onMounted(() => {
         <button class="accordion">Day 7:Chefchaouen </button>
         <div class="panel" style="background-image: url('/Chefchaouen.jpg');">
             <div class="testo-giorno">
- 		         <b>Mattina:</b>  prosecuzione verso nord, attraverso paesaggi di montagna simil-alpini, alla volta di Chefchaouen, la splendida città blu marocchina <br><br>
-                <b>Pomeriggio:</b>arrivo a Chefchaouen, autentico gioiellino a lungo tenuto protetto dagli sguardi stranieri. Free time immersi negli stretti vicoli della medina,  tra le tipiche case di un abbagliante colore azzurro, adornate di massicce porte chiodate  <br><br>
-                <b>Sera:</b>cena e pernottamento a Chefchaouen
+ 		         <b>Mattina:</b> Prosecuzione verso nord, attraverso paesaggi di montagna simil-alpini, alla volta di Chefchaouen, la splendida città blu marocchina <br><br>
+                <b>Pomeriggio:</b> Arrivo a Chefchaouen, autentico gioiellino a lungo tenuto protetto dagli sguardi stranieri. Free time immersi negli stretti vicoli della medina,  tra le tipiche case di un abbagliante colore azzurro, adornate di massicce porte chiodate  <br><br>
+                <b>Sera:</b> Cena e pernottamento a Chefchaouen
              </div>
         </div>
 
@@ -207,9 +207,9 @@ onMounted(() => {
         <button class="accordion">Day 8:Rabat </button>
         <div class="panel" style="background-image: url('/Rabat.jpg');">
             <div class="testo-giorno">
- 		         <b>Mattina:</b> artenza per Rabat, la capitale amministrativa e centro politico del Marocco. Spostamento in hotel e check in <br><br>
-                <b>Pomeriggio:</b>Arrivo a Rabat, passeggiata nella medina e visita dei vicoli dipinti di azzurro della Kasbah degli Oudaya, terminando nella bellissima terrazza affacciata sull’Oceano Atlantico  <br><br>
-                <b>Sera:</b>cena e serata a Rabat
+ 		         <b>Mattina:</b> Partenza per Rabat, la capitale amministrativa e centro politico del Marocco. Spostamento in hotel e check in <br><br>
+                <b>Pomeriggio:</b> Arrivo a Rabat, passeggiata nella medina e visita dei vicoli dipinti di azzurro della Kasbah degli Oudaya, terminando nella bellissima terrazza affacciata sull’Oceano Atlantico  <br><br>
+                <b>Sera:</b> Cena e serata a Rabat
              </div>
         </div>
 
@@ -217,9 +217,9 @@ onMounted(() => {
         <button class="accordion">Day 9:Tanger </button>
         <div class="panel" style="background-image: url('/Tanger.jpg');">
             <div class="testo-giorno">
- 		        <b>Mattina:</b> partenza per Tanger, si prende un treno da Rabat e si arriva a dedstinazione.Spostamento in hotel e check in <br><br>
+ 		        <b>Mattina:</b> Partenza per Tanger, si prende un treno da Rabat e si arriva a dedstinazione.Spostamento in hotel e check in <br><br>
                 <b>Pomeriggio:</b> Dopo pranzo, giro alla medina e al porto di Tanger <br><br>
-                <b>Sera:</b>cena e serata a Tanger
+                <b>Sera:</b> Cena e serata a Tanger
              </div>
         </div>
 
@@ -227,7 +227,7 @@ onMounted(() => {
         <button class="accordion">Day 10: Rientro in Italia</button>
         <div class="panel" style="background-image: url('/Casablanca.jpg');">
             <div class="testo-giorno">
- 		         <b>Mattina/Pomeriggio:</b>a seconda dell’operativo voli, spostamento verso Marrakech o Casablanca per il volo di rientro. Trasferimento in aeroporto per il volo di rientro in Italia… e alla prossima avventura!  <br><br>
+ 		         <b>Mattina/Pomeriggio:</b> A seconda dell’operativo voli, spostamento verso Marrakech o Casablanca per il volo di rientro. Trasferimento in aeroporto per il volo di rientro in Italia… e alla prossima avventura!  <br><br>
                 <b>Sera:</b> Arrivo in Italia
              </div>
         </div>

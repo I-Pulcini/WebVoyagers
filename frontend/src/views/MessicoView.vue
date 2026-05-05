@@ -115,14 +115,14 @@ onMounted(() => {
 <template>
   <div class="messico-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> MESSICO </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">4300€</span>
-        <span class="prenota-durata"> 13 giorni ·Febbraio </span>
+        <span class="prenota-durata"> 13 giorni ·Febbraio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -143,17 +143,17 @@ onMounted(() => {
         <button class="accordion">Day 1:Arrivo a Città del Messico </button>
         <div class="panel" style="background-image: url('/Messico.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b> partenza dai principali aeroporti Italiani<br><br>
-                <b>Pomeriggio:</b>arrivo all’aeroporto di Città del Messico, ritiro auto a noleggio e trasferimento in hotel in zona Zócalo, la meravigliosa e immensa piazza centrale della città <br><br>
-                <b>Sera:</b>  cena e serata a Città del Messico          
+                  <b>Mattina:</b> Partenza dai principali aeroporti Italiani<br><br>
+                <b>Pomeriggio:</b> Arrivo all’aeroporto di Città del Messico, ritiro auto a noleggio e trasferimento in hotel in zona Zócalo, la meravigliosa e immensa piazza centrale della città <br><br>
+                <b>Sera:</b> Cena e serata a Città del Messico          
 	</div>
         </div>
 
         <button class="accordion">Day 2-3: Citta del Messico</button>
         <div class="panel" style="background-image: url('/Messico2.jpg');">
             <div class="testo-giorno">
-                <b> Day 2:</b>Giornata dedicata alla visita della capitale. Visita del centro storico: Palacio Nacional, la cattedrale, che sorge accanto alle rovine del Templo Mayor, risalente all’antica capitale azteca Tenochtitlán, e prosecuzione fino a Torre Mayor per una vista su tutta la città. Spostamento a Polanco per pranzo e per il pomeriggio <br><br>
-                <b>Day 3 :</b>visita del Castello di  Chapultepec, arrivo a Coyoacán per la visita del museo di Frida Kahlo e tramonto da Nostra Signora di Guadalupe. Rientro in centro per una cerveza dal Tio Pepe <br><br>
+                <b> Day 2:</b> Giornata dedicata alla visita della capitale. Visita del centro storico: Palacio Nacional, la cattedrale, che sorge accanto alle rovine del Templo Mayor, risalente all’antica capitale azteca Tenochtitlán, e prosecuzione fino a Torre Mayor per una vista su tutta la città. Spostamento a Polanco per pranzo e per il pomeriggio <br><br>
+                <b>Day 3 :</b> Visita del Castello di  Chapultepec, arrivo a Coyoacán per la visita del museo di Frida Kahlo e tramonto da Nostra Signora di Guadalupe. Rientro in centro per una cerveza dal Tio Pepe <br><br>
                            
       	</div>
         </div>
@@ -161,24 +161,24 @@ onMounted(() => {
         <button class="accordion">Day 4-5-6: Chichen Itza,Ik Kil e Coba</button>
         <div class="panel" style="background-image: url('/ChichenItza.jpg');">
             <div class="testo-giorno">
-                   <b> Day 4-5:</b>  partenza per Chichen Itzá e visita del sito all’alba. Considerata una tra le sette meraviglie del mondo, è senza dubbio il sito Maya più noto dello Yucatán e di tutto il Messico. La visita all’alba consentirà di anticipare l’arrivo dei pullman di turisti dalla vicina riviera Maya. Bagno nel vicino Ik Kil, meraviglioso  cenote fiocamente illuminato dalla luce che filtra dall’alto. Arrivo a Valladolid, piccolo e grazioso centro abitato in stile coloniale, visita e pranzo<br><br>
-                <b> Day<b>Sera:</b>  6 pomeriggio:</b>  prosecuzione per Coba e visita della splendida piramide Maya, una delle poche su cui è concesso salire. Ultimo tratto del viaggio odierno, arrivo in serata a Tulum, check-in in hotel, passeggiata e aperitivo sul mare<br><br>
-               <b> Day 6 sera:</b> cena in riva al mare a Tulum
+                   <b> Day 4-5:</b> Partenza per Chichen Itzá e visita del sito all’alba. Considerata una tra le sette meraviglie del mondo, è senza dubbio il sito Maya più noto dello Yucatán e di tutto il Messico. La visita all’alba consentirà di anticipare l’arrivo dei pullman di turisti dalla vicina riviera Maya. Bagno nel vicino Ik Kil, meraviglioso  cenote fiocamente illuminato dalla luce che filtra dall’alto. Arrivo a Valladolid, piccolo e grazioso centro abitato in stile coloniale, visita e pranzo<br><br>
+                <b> Day 6 pomeriggio:</b> Prosecuzione per Coba e visita della splendida piramide Maya, una delle poche su cui è concesso salire. Ultimo tratto del viaggio odierno, arrivo in serata a Tulum, check-in in hotel, passeggiata e aperitivo sul mare<br><br>
+               <b> Day 6 sera:</b> Cena in riva al mare a Tulum
             </div>
         </div>
 
         <button class="accordion">Day 7-8-9: Tulum </button>
         <div class="panel" style="background-image: url('/Tulum.jpg');">
             <div class="testo-giorno">
-                   <b> Day 7-8:</b> intera giornata a disposizione: sarà possibile passare una giornata di totale relax a Tulum o in alternativa compiere escursioni tra i meravigliosi luoghi di interesse naturalistici e culturali dello Yucatán, quali il cenote Dos Ojos, Akumal, cenote Cristal, e molti altri<br><br>
-                <b>Day 9:</b> <br><br>partenza presto per Chiquilá, rilascio auto a noleggio e traghetto per Isla Holbox. Check-in in guesthouse, bagno e relax
+                   <b> Day 7-8:</b> Intera giornata a disposizione: sarà possibile passare una giornata di totale relax a Tulum o in alternativa compiere escursioni tra i meravigliosi luoghi di interesse naturalistici e culturali dello Yucatán, quali il cenote Dos Ojos, Akumal, cenote Cristal, e molti altri<br><br>
+                <b>Day 9:</b> <br><br> Partenza presto per Chiquilá, rilascio auto a noleggio e traghetto per Isla Holbox. Check-in in guesthouse, bagno e relax
               
             </div>
         </div>
         <button class="accordion">Day 10-11: </button>
         <div class="panel" style="background-image: url('/Holbox.jpg');">
             <div class="testo-giorno">     
- 		     <b> Day 10-11:</b> relax a Isla Holbox, la meraviglia caraibica del Messico. Lontana anni luce dal trambusto della riviera Maya e di Playa del Carmen, è il posto migliore per staccare la spina dopo il lungo e eccitante on the road in terra messicana.  La vita sull’isola scorre lenta, non ci sono auto e ci si muove a piedi o in bicicletta tra le tranquille vie sabbiose. Possibilità di organizzare escursioni in barca alla scoperta delle meraviglie sottomarine dell’isola e , nei mesi estivi, per avvistare gli squali balena. La sera, tranquille cene sul mare e una bevuta nei localini sulla spiaggia<br><br>
+ 		     <b> Day 10-11:</b> Relax a Isla Holbox, la meraviglia caraibica del Messico. Lontana anni luce dal trambusto della riviera Maya e di Playa del Carmen, è il posto migliore per staccare la spina dopo il lungo e eccitante on the road in terra messicana.  La vita sull’isola scorre lenta, non ci sono auto e ci si muove a piedi o in bicicletta tra le tranquille vie sabbiose. Possibilità di organizzare escursioni in barca alla scoperta delle meraviglie sottomarine dell’isola e , nei mesi estivi, per avvistare gli squali balena. La sera, tranquille cene sul mare e una bevuta nei localini sulla spiaggia<br><br>
              </div>
         </div>
 
@@ -186,9 +186,9 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Cancun.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b> ultime ore di relax a Isla Holbox<br><br>
-                <b>Pomeriggio:</b> traghetto per Chiquilá e trasferimento in bus verso Cancún, elettrizzante metropoli situata all’estremità della penisola dello Yucatán con splendido affaccio sul mar dei Caraibi, nonché uno degli epicentri della nightlife messicana. Check-in in hotel e aperitivo sul mare<br><br>
-                <b>Sera:</b>  tutti a far festa per l’ultima notte messicana 
+ 		 <b>Mattina:</b> Ultime ore di relax a Isla Holbox<br><br>
+                <b>Pomeriggio:</b> Traghetto per Chiquilá e trasferimento in bus verso Cancún, elettrizzante metropoli situata all’estremità della penisola dello Yucatán con splendido affaccio sul mar dei Caraibi, nonché uno degli epicentri della nightlife messicana. Check-in in hotel e aperitivo sul mare<br><br>
+                <b>Sera:</b> Tutti a far festa per l’ultima notte messicana 
              </div>
         </div>
 
@@ -196,7 +196,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Messico.jpg');">
             <div class="testo-giorno">
                
- 		 <b>Mattina:</b> rientro in Italia con volo internazionale. Arrivo in Italia...E alla prossima avventura!<br><br>
+ 		 <b>Mattina:</b> Rientro in Italia con volo internazionale. Arrivo in Italia...E alla prossima avventura!<br><br>
               
              </div>
         </div>

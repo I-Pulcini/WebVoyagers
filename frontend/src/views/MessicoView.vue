@@ -149,7 +149,7 @@ onMounted(() => {
 	</div>
         </div>
 
-        <button class="accordion">Day 2-3: Citta del Messico</button>
+        <button class="accordion">Day 2-3: Citta del Messico </button>
         <div class="panel" style="background-image: url('/Messico2.jpg');">
             <div class="testo-giorno">
                 <b> Day 2:</b> Giornata dedicata alla visita della capitale. Visita del centro storico: Palacio Nacional, la cattedrale, che sorge accanto alle rovine del Templo Mayor, risalente all’antica capitale azteca Tenochtitlán, e prosecuzione fino a Torre Mayor per una vista su tutta la città. Spostamento a Polanco per pranzo e per il pomeriggio <br><br>
@@ -158,7 +158,7 @@ onMounted(() => {
       	</div>
         </div>
 
-        <button class="accordion">Day 4-5-6: Chichen Itza,Ik Kil e Coba</button>
+        <button class="accordion">Day 4-5-6: Chichen Itza,Ik Kil e Coba </button>
         <div class="panel" style="background-image: url('/ChichenItza.jpg');">
             <div class="testo-giorno">
                    <b> Day 4-5:</b> Partenza per Chichen Itzá e visita del sito all’alba. Considerata una tra le sette meraviglie del mondo, è senza dubbio il sito Maya più noto dello Yucatán e di tutto il Messico. La visita all’alba consentirà di anticipare l’arrivo dei pullman di turisti dalla vicina riviera Maya. Bagno nel vicino Ik Kil, meraviglioso  cenote fiocamente illuminato dalla luce che filtra dall’alto. Arrivo a Valladolid, piccolo e grazioso centro abitato in stile coloniale, visita e pranzo<br><br>
@@ -192,7 +192,7 @@ onMounted(() => {
              </div>
         </div>
 
-          <button class="accordion">Day 13: Reintro in Italia</button>
+          <button class="accordion">Day 13: Reintro in Italia </button>
         <div class="panel" style="background-image: url('/Messico.jpg');">
             <div class="testo-giorno">
                

@@ -184,6 +184,7 @@ onMounted(() => {
             </div>
         </div>
 
+        
       </section>
 
       <h2 class="titolo-sezione">Galleria Fotografica</h2>

@@ -131,7 +131,15 @@ onMounted(() => {
     <main>
       <section class="fascia-testo">
         <p style="margin-top: 0;">
-       
+       copri il fascino senza tempo di Oman, una terra dove tradizione e modernità si fondono armoniosamente, regalando esperienze autentiche e paesaggi sorprendenti.
+
+Dalle infinite distese dorate del deserto alle acque turchesi dell’Oceano Indiano, l’Oman è una destinazione che incanta ad ogni passo. Esplora antichi forti, villaggi arroccati tra le montagne e mercati profumati di spezie, oppure lasciati avvolgere dal silenzio magico delle dune sotto un cielo stellato.
+
+La capitale Muscat ti accoglie con la sua eleganza discreta, tra moschee imponenti e lungomari suggestivi, mentre le oasi nascoste (wadi) offrono scenari naturali perfetti per momenti di puro relax e avventura.
+
+Lasciati conquistare dall’ospitalità omanita, dalla cucina ricca di sapori e da un’atmosfera autentica e raffinata che rende ogni viaggio unico. Che tu sia in cerca di relax, cultura o avventura, l’Oman saprà sorprenderti.
+
+Prenota con noi e vivi un’esperienza su misura, curata nei minimi dettagli, per trasformare il tuo viaggio in qualcosa di davvero indimenticabile.
         </p>
       </section>
 

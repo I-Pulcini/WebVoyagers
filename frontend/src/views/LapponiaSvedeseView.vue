@@ -114,7 +114,7 @@ onMounted(() => {
 <template>
   <div class="lapponiasvedese-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> LAPPONIA SVEDESE</h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
@@ -142,53 +142,45 @@ onMounted(() => {
         <button class="accordion">Day 1: Arrivo a Stoccolma </button>
         <div class="panel" style="background-image: url('/Stoccolma.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b>partenza dall’Italia con voli con scalo per Stoccolma <br><br>
-                <b>Pomeriggio:</b> arrivo a Stoccolma in serata, transfer verso il centro e check-in in hotel <br><br>
-                <b>Sera:</b> cena in centro e serata nei locali trendy di Sodermalm, quartiere degli artisti e della nightlife di Stoccolma           
+                  <b>Mattina:</b> Partenza dall’Italia con voli con scalo per Stoccolma <br><br>
+                <b>Pomeriggio:</b> Arrivo a Stoccolma in serata, transfer verso il centro e check-in in hotel <br><br>
+                <b>Sera:</b> Cena in centro e serata nei locali trendy di Sodermalm, quartiere degli artisti e della nightlife di Stoccolma           
 	      </div>
         </div>
 
         <button class="accordion">Day 2: Stoccola e treno per Kiruna</button>
         <div class="panel" style="background-image: url('/Kiruna.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b>visita del Gamla Stan, incantevole centro storico di Stoccolma, che occupa la piccola isola di Stadsholmen. Passeggiata tra i vicoli e le eleganti case pastello risalenti 1700 che si affacciano sullo Stortorget, la pittoresca piazza centrale del Gamla Stan <br><br>
-                <b>Pomeriggio:</b>visita opzionale del Palazzo Reale di Stoccolma e della Cattedrale, rientro in hotel per il ritiro bagagli, spesa e partenza con treno notturno alla volta di Kiruna, nel cuore della Lapponia svedese <br><br>
-                <b>Sera:</b> cena «al sacco» e libero sfogo alla fantasia per una serata conviviale in treno. Notte in cuccetta            
+                <b>Mattina:</b> Visita del Gamla Stan, incantevole centro storico di Stoccolma, che occupa la piccola isola di Stadsholmen. Passeggiata tra i vicoli e le eleganti case pastello risalenti 1700 che si affacciano sullo Stortorget, la pittoresca piazza centrale del Gamla Stan <br><br>
+                <b>Pomeriggio:</b> Visita opzionale del Palazzo Reale di Stoccolma e della Cattedrale, rientro in hotel per il ritiro bagagli, spesa e partenza con treno notturno alla volta di Kiruna, nel cuore della Lapponia svedese <br><br>
+                <b>Sera:</b> Cena «al sacco» e libero sfogo alla fantasia per una serata conviviale in treno. Notte in cuccetta            
 	      </div>
         </div>
 
-        <button class="accordion">Day 3: Benveuti in Lapponia</button>
+        <button class="accordion">Day 3-4: Benveuti in Lapponia</button>
         <div class="panel" style="background-image: url('/Lapponia.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>arrivo alla stazione di Kiruna in tarda mattinata. Ritiro delle auto a noleggio e visita della cittadina, punto di partenza per eccellenza per le escursioni nella Lapponia svedese, nota per le sue temperature polari durante i mesi invernali <br><br>
-                <b>Pomeriggio:</b>pranzo a Kiruna e tempo a disposizione per esplorare la città e i suoi dintorni, tra paesaggi artici e scorci unici del nord estremo della Svezia. Check-in in camp, dotato di bungalow e cottage in legno riscaldati, tipici della tradizione lappone <br><br>
-                <b>Sera:</b> uscita libera per l’avvistamento dell’Aurora Boreale, lontano dalle luci del centro, per vivere l’emozione di una ricerca autentica e selvaggia del fenomeno naturale più affascinante del cielo lappone. Cena e serata in camp    
+                   <b> Day 3 mattina/pomeriggio:</b> Arrivo alla stazione di Kiruna in tarda mattinata. Ritiro delle auto a noleggio e visita della cittadina, punto di partenza per eccellenza per le escursioni nella Lapponia svedese, nota per le sue temperature polari durante i mesi invernali <br><br>
+                <b> Day 4 pomeriggio:</b> Pranzo a Kiruna e tempo a disposizione per esplorare la città e i suoi dintorni, tra paesaggi artici e scorci unici del nord estremo della Svezia. Check-in in camp, dotato di bungalow e cottage in legno riscaldati, tipici della tradizione lappone <br><br>
+                <b> Day 4 sera:</b> Uscita libera per l’avvistamento dell’Aurora Boreale, lontano dalle luci del centro, per vivere l’emozione di una ricerca autentica e selvaggia del fenomeno naturale più affascinante del cielo lappone. Cena e serata in camp    
             </div>
         </div>
 
-        <button class="accordion">Day 4: </button>
-        <div class="panel" style="background-image: url('/.jpg');">
-            <div class="testo-giorno">
-                   <b>Mattina:</b> <br><br>
-                <b>Pomeriggio:</b> <br><br>
-                <b>Sera:</b>    
-            </div>
-        </div>
-
+       
         <button class="accordion">Day 5: Tra foreste lapponi e l'iconico Ice Hotel</button>
         <div class="panel" style="background-image: url('/Ice.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> possibilità di partecipare agli eccitanti tour in slitta trainata dagli husky: rappresentano il metodo tradizionale per l’esplorazione del deserto subartico e delle foreste lapponi, oppure non mancheranno escursioni con le ciaspole o a piedi <br><br>
-                <b>Pomeriggio:</b>pranzo a Kiruna, trasferimento e visita delll’Ice Hotel: il primo e più famoso hotel di ghiaccio al mondo: tutto, dai bar alle sale comuni, è scolpito nel ghiaccio, e gli ambienti sono arricchiti da splendide sculture e opere d’arte, anch’esse, ovviamente, fatte di ghiaccio! Come se non bastasse, è presente anche una sala delle cerimonie in ghiaccio dove si celebrano feste e matrimoni <br><br>
-                <b>Sera:</b> seconda uscita serale a caccia dell’Aurora Boreale e serata in camp a Kiruna  
+                <b>Mattina:</b> Possibilità di partecipare agli eccitanti tour in slitta trainata dagli husky: rappresentano il metodo tradizionale per l’esplorazione del deserto subartico e delle foreste lapponi, oppure non mancheranno escursioni con le ciaspole o a piedi <br><br>
+                <b>Pomeriggio:</b> Pranzo a Kiruna, trasferimento e visita delll’Ice Hotel: il primo e più famoso hotel di ghiaccio al mondo: tutto, dai bar alle sale comuni, è scolpito nel ghiaccio, e gli ambienti sono arricchiti da splendide sculture e opere d’arte, anch’esse, ovviamente, fatte di ghiaccio! Come se non bastasse, è presente anche una sala delle cerimonie in ghiaccio dove si celebrano feste e matrimoni <br><br>
+                <b>Sera:</b> Seconda uscita serale a caccia dell’Aurora Boreale e serata in camp a Kiruna  
              </div>
         </div>
       
         <button class="accordion">Day 6: Kiruna e rientro in Italia</button>
         <div class="panel" style="background-image: url('/Kiruna2.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> rientro a Kiruna e consegna delle auto a noleggio <br><br>
-                <b>Pomeriggio:</b> volo con scalo a Stoccolma e rientro in Italia… alla prossima avventura! <br><br>
+                <b>Mattina:</b> Rientro a Kiruna e consegna delle auto a noleggio <br><br>
+                <b>Pomeriggio:</b> Volo con scalo a Stoccolma e rientro in Italia… alla prossima avventura! <br><br>
              </div>
         </div>
       </section>

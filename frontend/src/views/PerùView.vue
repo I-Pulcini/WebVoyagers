@@ -114,14 +114,14 @@ onMounted(() => {
 <template>
   <div class="perù-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> Perù </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">5900€</span>
-        <span class="prenota-durata"> 10giorni ·Giugno </span>
+        <span class="prenota-durata"> 10giorni ·Giugno</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -139,86 +139,86 @@ onMounted(() => {
 
       <section class="itinerario-container">
         
-        <button class="accordion">Day 1: Arrivo a Lima</button>
+        <button class="accordion">Day 1: Arrivo a Lima </button>
         <div class="panel" style="background-image: url('/Lima.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina:</b>partenza dall’Italia con volo internazionale verso Lima, capitale del Perù. Giornata interamente dedicata al viaggio. Arrivo in serata e trasferimento in hotel e prima notte per recuperare dopo il volo intercontinentale.*A seconda degli operativi voli, l’arrivo potrebbe essere spostato alla mattina del day 2 <br><br>       
+                  <b>Mattina:</b> Partenza dall’Italia con volo internazionale verso Lima, capitale del Perù. Giornata interamente dedicata al viaggio. Arrivo in serata e trasferimento in hotel e prima notte per recuperare dopo il volo intercontinentale.*A seconda degli operativi voli, l’arrivo potrebbe essere spostato alla mattina del day 2 <br><br>       
 	    </div>
         </div>
 
         <button class="accordion">Day 2:Lima-Paracas </button>
         <div class="panel" style="background-image: url('/Paracas.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> dopo la colazione, visita del centro storico di Lima, patrimonio UNESCO. Passeggiata nella Plaza de Armas, cuore politico e religioso della città, e osservazione degli edifici coloniali che testimoniano il periodo del Vicereame del Perù<br><br>
-                <b>Pomeriggio:</b>trasferimento lungo la Panamericana Sud verso Paracas, attraversando i paesaggi desertici della costa pacifica peruviana <br><br>
-                <b>Sera:</b> arrivo a Paracas, sistemazione in hotel e cena sul mare           
+                <b>Mattina:</b> Dopo la colazione, visita del centro storico di Lima, patrimonio UNESCO. Passeggiata nella Plaza de Armas, cuore politico e religioso della città, e osservazione degli edifici coloniali che testimoniano il periodo del Vicereame del Perù<br><br>
+                <b>Pomeriggio:</b> Trasferimento lungo la Panamericana Sud verso Paracas, attraversando i paesaggi desertici della costa pacifica peruviana <br><br>
+                <b>Sera:</b> Arrivo a Paracas, sistemazione in hotel e cena sul mare           
     	</div>
         </div>
 
         <button class="accordion">Day 3:Paracas-Huacachina </button>
         <div class="panel" style="background-image: url('/Huacachina.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>escursione in barca alle Isole Ballestas, importante riserva naturale marina. Durante la navigazione è possibile osservare colonie di leoni marini, pinguini di Humboldt e numerose specie di uccelli marini che popolano le scogliere <br><br>
-                <b>Pomeriggio:</b>trasferimento verso l’oasi di Huacachina, circondata da alte dune di sabbia. Attività nel deserto con dune buggy (EXTRA) e sandboarding, attraversando uno degli ambienti più suggestivi della costa peruviana <br><br>
-                <b>Sera:</b> tramonto sulle dune, cena e pernottamento a Huacachina   
+                   <b>Mattina:</b> Escursione in barca alle Isole Ballestas, importante riserva naturale marina. Durante la navigazione è possibile osservare colonie di leoni marini, pinguini di Humboldt e numerose specie di uccelli marini che popolano le scogliere <br><br>
+                <b>Pomeriggio:</b> Trasferimento verso l’oasi di Huacachina, circondata da alte dune di sabbia. Attività nel deserto con dune buggy (EXTRA) e sandboarding, attraversando uno degli ambienti più suggestivi della costa peruviana <br><br>
+                <b>Sera:</b> Tramonto sulle dune, cena e pernottamento a Huacachina   
             </div>
         </div>
 
         <button class="accordion">Day 4:Huacachina-Nazca-Arequipa </button>
         <div class="panel" style="background-image: url('/Arequipa.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> partenza in direzione Nazca, attraversando una delle aree più aride del Paese <br><br>
-                <b>Pomeriggio:</b> arrivo a Nazca e osservazione delle Linee di Nazca dai miradores panoramici lungo la Panamericana. Possibilità di effettuare un volo panoramico facoltativo (EXTRA) per ammirare dall’alto i celebri geoglifi<br><br>
-                <b>Sera:</b>  cena a Nazca e partenza con bus notturno verso Arequipa  
+                   <b>Mattina:</b> Partenza in direzione Nazca, attraversando una delle aree più aride del Paese <br><br>
+                <b>Pomeriggio:</b> Arrivo a Nazca e osservazione delle Linee di Nazca dai miradores panoramici lungo la Panamericana. Possibilità di effettuare un volo panoramico facoltativo (EXTRA) per ammirare dall’alto i celebri geoglifi<br><br>
+                <b>Sera:</b> Cena a Nazca e partenza con bus notturno verso Arequipa  
             </div>
         </div>
 
         <button class="accordion">Day 5:Arequipa </button>
         <div class="panel" style="background-image: url('/Arequipa.jpg');">
             <div class="testo-giorno">
- 	          	 <b>Mattina/Pomeriggio:</b> rrivo ad Arequipa, conosciuta come la “Ciudad Blanca”, e sistemazione in hotel. Tempo libero per riposo. Visita del centro storico: Plaza de Armas, Iglesia de la Compañía, Monastero di Santa Catalina, uno dei complessi religiosi più importanti del Sud America, e passeggiata nel centro coloniale. Spostamento nel quartiere di Yanahuara, da cui si gode una vista panoramica sui vulcani che circondano la città<br><br>
-                <b>Sera:</b> cena e pernottamento ad Arequipa  
+ 	          	 <b>Mattina/Pomeriggio:</b> Arrivo ad Arequipa, conosciuta come la “Ciudad Blanca”, e sistemazione in hotel. Tempo libero per riposo. Visita del centro storico: Plaza de Armas, Iglesia de la Compañía, Monastero di Santa Catalina, uno dei complessi religiosi più importanti del Sud America, e passeggiata nel centro coloniale. Spostamento nel quartiere di Yanahuara, da cui si gode una vista panoramica sui vulcani che circondano la città<br><br>
+                <b>Sera:</b> Cena e pernottamento ad Arequipa  
              </div>
         </div>
 
-        <button class="accordion">Day 6: Arequipa-Canyon del Colca</button>
+        <button class="accordion">Day 6: Arequipa-Canyon del Colca </button>
         <div class="panel" style="background-image: url('/Colca.jpg');">
             <div class="testo-giorno">
- 	          	 <b>Mattina/Pomeriggio:</b>partenza e spostamento verso il Canyon del Colca, attraversando l’altopiano andino e il Mirador de los Andes, che supera i 4.800 metri di altitudine. Lungo il percorso è frequente l’avvistamento di lama, alpaca e vigogne. Arrivo nell’area del canyon e visita dei villaggi tradizionali affacciati sulle profonde gole del Colca, tra terrazzamenti agricoli pre-incaici e paesaggi andini <br><br>
-                <b>Sera:</b> arrivo a Cabanaconde, sistemazione e cena. Pernottamento nel canyon 
+ 	          	 <b>Mattina/Pomeriggio:</b> Partenza e spostamento verso il Canyon del Colca, attraversando l’altopiano andino e il Mirador de los Andes, che supera i 4.800 metri di altitudine. Lungo il percorso è frequente l’avvistamento di lama, alpaca e vigogne. Arrivo nell’area del canyon e visita dei villaggi tradizionali affacciati sulle profonde gole del Colca, tra terrazzamenti agricoli pre-incaici e paesaggi andini <br><br>
+                <b>Sera:</b> Arrivo a Cabanaconde, sistemazione e cena. Pernottamento nel canyon 
              </div>
         </div>
 
        <button class="accordion">Day 7:Colca-Puno </button>
         <div class="panel" style="background-image: url('/Puno.jpg');">
             <div class="testo-giorno">
- 	          	 <b>Mattina/Pomeriggio:</b> sveglia presto e visita del Mirador Cruz del Condor alle prime luci dell’alba, con vista impareggiabile sul canyon illuminato e solcato dal volo dei condor. Arrivo a Cabanaconde, colazione nel pueblo e partenza con bus turistico per Puno<br><br>
-                <b>Sera:</b>  arrivo a Puno, sulle rive del Lago Titicaca, sistemazione in hotel e pernottamento
+ 	          	 <b>Mattina/Pomeriggio:</b> Sveglia presto e visita del Mirador Cruz del Condor alle prime luci dell’alba, con vista impareggiabile sul canyon illuminato e solcato dal volo dei condor. Arrivo a Cabanaconde, colazione nel pueblo e partenza con bus turistico per Puno<br><br>
+                <b>Sera:</b> Arrivo a Puno, sulle rive del Lago Titicaca, sistemazione in hotel e pernottamento
              </div>
         </div>
 
        <button class="accordion">Day 8:Cusco </button>
         <div class="panel" style="background-image: url('/Cusco.jpg');">
             <div class="testo-giorno">
- 	          	 <b>Mattina:</b>  arrivo a Cusco nelle prime ore del mattino e sistemazione in hotel. Tempo dedicato all’acclimatamento all’altitudine<br><br>
-              <b>Pomeriggio:</b> visita di Cusco, tra resti archeologici inca e architettura coloniale, in un contesto urbano che testimonia la sovrapposizione di due grandi civiltà <br><br>
-                <b>Sera:</b>  cena e pernottamento a Cusco
+ 	          	 <b>Mattina:</b> Arrivo a Cusco nelle prime ore del mattino e sistemazione in hotel. Tempo dedicato all’acclimatamento all’altitudine<br><br>
+              <b>Pomeriggio:</b> Visita di Cusco, tra resti archeologici inca e architettura coloniale, in un contesto urbano che testimonia la sovrapposizione di due grandi civiltà <br><br>
+                <b>Sera:</b> Cena e pernottamento a Cusco
              </div>
         </div>
 
      <button class="accordion">Day 9:Machu Picchu </button>
         <div class="panel" style="background-image: url('/MachuPicchu.jpg');">
             <div class="testo-giorno">
- 	           <b>Mattina:</b>trasferimento al sito archeologico di Machu Picchu e visita guidata completa della cittadella inca, tra templi, terrazze agricole e quartieri cerimoniali immersi nella foresta montana <br><br>
-              <b>Pomeriggio:</b>rientro ad Aguas Calientes e proseguimento in treno verso Cusco  <br><br>
-                <b>Sera:</b> arrivo a Cusco e pernottamento
+ 	           <b>Mattina:</b> Trasferimento al sito archeologico di Machu Picchu e visita guidata completa della cittadella inca, tra templi, terrazze agricole e quartieri cerimoniali immersi nella foresta montana <br><br>
+              <b>Pomeriggio:</b> Rientro ad Aguas Calientes e proseguimento in treno verso Cusco  <br><br>
+                <b>Sera:</b> Arrivo a Cusco e pernottamento
              </div>
         </div>
 
        <button class="accordion">Day 10:Cusco-Lima-Italia </button>
         <div class="panel" style="background-image: url('/Lima.jpg');">
             <div class="testo-giorno">
- 	          	 <b>Mattina:</b>trasferimento in aeroporto e volo interno da Cusco a Lima. Volo internazionale e arrivo in Italia il Day 11…E alla prossima avventura!  <br><br>
+ 	          	 <b>Mattina:</b> Trasferimento in aeroporto e volo interno da Cusco a Lima. Volo internazionale e arrivo in Italia il Day 11…E alla prossima avventura!  <br><br>
               
              </div>
         </div>

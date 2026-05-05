@@ -153,7 +153,7 @@ Preparatevi a vivere una fiaba invernale oltre il Circolo Polare Artico. Questo 
         <button class="accordion">Day 2:L'Emozione degli Husky e la Caccia all'Aurora  </button>
         <div class="panel" style="background-image: url('/Tromso2.jpg');">
             <div class="testo-giorno">
-                 <b>Mattina:</b>Trasferimento in un allevamento locale per un'esperienza indimenticabile: il dog sledding. Dopo un breve briefing, guiderete (o vi farete trasportare su) una slitta trainata da una muta di energici e affettuosi husky attraverso valli innevate e paesaggi fiabeschi. <br><br>
+                 <b>Mattina:</b> Trasferimento in un allevamento locale per un'esperienza indimenticabile: il dog sledding. Dopo un breve briefing, guiderete (o vi farete trasportare su) una slitta trainata da una muta di energici e affettuosi husky attraverso valli innevate e paesaggi fiabeschi. <br><br>
                 <b>Pomeriggio:</b> Rientro in città per scaldarsi con una bevanda calda. Salita mozzafiato con la funivia Fjellheisen fino alla cima del Monte Storsteinen (421 metri). Da qui godrete del panorama più bello su Tromsø, i fiordi e le montagne circostanti.<br><br>
                 <b>Sera:</b>  L'avventura entra nel vivo. Partenza in minibus con guide esperte per la vera "Caccia all'Aurora Boreale". Ci sposteremo dove i cieli sono più limpidi, riscaldandoci con tute termiche, cioccolata calda e falò sulla neve mentre attendiamo la danza delle Luci del Nord.          
         </div>
@@ -171,7 +171,7 @@ Preparatevi a vivere una fiaba invernale oltre il Circolo Polare Artico. Questo 
         <div class="panel" style="background-image: url('/Tromso3.jpg');">
             <div class="testo-giorno">
                  <b>Mattina/Pomeriggio:</b> Incontro con la cultura millenaria del popolo Sami. Visiteremo un accampamento tradizionale dove potrete nutrire le renne e fare un dolce e panoramico giro in slitta trainati da questi placidi animali, essenziali per la sopravvivenza nell'Artico. <br><br>
-                 <b>Sera:</b>Serata libera. Consigliamo di provare una delle moderne saune galleggianti situate nel porto: l'esperienza nordica per eccellenza prevede sauna caldissima e un rapido, coraggioso tuffo nelle acque gelide del fiordo!
+                 <b>Sera:</b> Serata libera. Consigliamo di provare una delle moderne saune galleggianti situate nel porto: l'esperienza nordica per eccellenza prevede sauna caldissima e un rapido, coraggioso tuffo nelle acque gelide del fiordo!
             </div>
         </div>
          
@@ -194,7 +194,7 @@ Preparatevi a vivere una fiaba invernale oltre il Circolo Polare Artico. Questo 
 
          
          <button class="accordion">Day 6: Arrivederci,Grande Nord !!!! </button>
-        <div class="panel" style="background-image: url('/Tromso5.jpg');">
+        <div class="panel" style="background-image: url('/Tromso6.jpg');">
             <div class="testo-giorno">
                  <b>Mattina/Pomeriggio:</b> Volo da Tromso verso Olso e poi da lì verso i principali aereoporti italiani <br><br>
                 

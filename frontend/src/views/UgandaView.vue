@@ -114,14 +114,14 @@ onMounted(() => {
 <template>
   <div class="uganda-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> UGANDA </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">4500€</span>
-        <span class="prenota-durata">11 giorni ·Marzo </span>
+        <span class="prenota-durata">11 giorni ·Marzo</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -142,8 +142,8 @@ onMounted(() => {
         <button class="accordion">Day 1-2:Kampala e Zhiwa RHina Sanctuary </button>
         <div class="panel" style="background-image: url('/Uganda.jpg');">
             <div class="testo-giorno">
-                  <b>Day 1:</b> partenza dalle principali città italiane e volo con scalo per Entebbe <br><br>
-                <b>Day 2:</b>arrivo ad Entebbe, in relazione all’orario di arrivo possibile check in in hotel e possibile visita di Kampala. Trasferimento verso nord, sosta a metà strada a Ziwa Rhino sanctuary. Unica riserva in Uganda dove è possibile osservare rinoceronti in libertà. Trekking-safari guidato nella riserva. Il santuario di Ziwa , che al momento ospita circa 25 esemplari di rinoceronte ” bianco” , ha lo scopo di consentire la loro futura reintroduzione nei parchi nazionali dell’Uganda: le due sottospecie autoctone, il rinoceronte bianco settentrionale e il rinoceronte nero orientale, sono entrambe estinte in natura dal 1982. Notte al santuario fuori dal parco di Murchison falls  <br><br>
+                  <b>Day 1:</b> Partenza dalle principali città italiane e volo con scalo per Entebbe <br><br>
+                <b>Day 2:</b> Arrivo ad Entebbe, in relazione all’orario di arrivo possibile check in in hotel e possibile visita di Kampala. Trasferimento verso nord, sosta a metà strada a Ziwa Rhino sanctuary. Unica riserva in Uganda dove è possibile osservare rinoceronti in libertà. Trekking-safari guidato nella riserva. Il santuario di Ziwa , che al momento ospita circa 25 esemplari di rinoceronte ” bianco” , ha lo scopo di consentire la loro futura reintroduzione nei parchi nazionali dell’Uganda: le due sottospecie autoctone, il rinoceronte bianco settentrionale e il rinoceronte nero orientale, sono entrambe estinte in natura dal 1982. Notte al santuario fuori dal parco di Murchison falls  <br><br>
                       
 	</div>
         </div>
@@ -151,17 +151,17 @@ onMounted(() => {
         <button class="accordion">Day 3-4: Murchison Falls National Park </button>
         <div class="panel" style="background-image: url('/Uganda2.jpg');">
             <div class="testo-giorno">
-                <b>Day 3:</b>safari fotografico nel settore a nord del Nilo dove si concentrano i “game drive” e i primi animali selvatici. Questo parco nazionale ospita una varietà e una quantità di fauna altissima ed essendo “tagliato” a metà dal Nilo e avendo il Lago Albert come confine naturale , offre un paesaggio estremamente verdeggiante e collinare che lo rendono unico e non comparabile ad altri parchi savana in Africa  <br><br>
-                <b> Day 4 mattina:</b> sveglia all’alba e safari fotografico nella parte a nord del Nilo. Nel parco troviamo all’incirca 76 specie di mammiferi: elefanti, bufali, giraffe, leoni, leopardi, antilopi, Uganda kobs e molti altri; inoltre troviamo circa 450 specie di uccelli, alcuni dei quali molto rari. Pranzo al sacco sulle sponde del Nilo<br><br>
-                <b> Day 4 pomeriggio:</b> crociera sul Nilo Vittoria fino ad arrivare a circa 500 metri dal punto in cui le cascate Murchison si immettono nel fiume, potendole ammirare in tutta la loro potenza e maestosità<br><br> 
+                <b>Day 3:</b> Safari fotografico nel settore a nord del Nilo dove si concentrano i “game drive” e i primi animali selvatici. Questo parco nazionale ospita una varietà e una quantità di fauna altissima ed essendo “tagliato” a metà dal Nilo e avendo il Lago Albert come confine naturale , offre un paesaggio estremamente verdeggiante e collinare che lo rendono unico e non comparabile ad altri parchi savana in Africa  <br><br>
+                <b> Day 4 mattina:</b> Sveglia all’alba e safari fotografico nella parte a nord del Nilo. Nel parco troviamo all’incirca 76 specie di mammiferi: elefanti, bufali, giraffe, leoni, leopardi, antilopi, Uganda kobs e molti altri; inoltre troviamo circa 450 specie di uccelli, alcuni dei quali molto rari. Pranzo al sacco sulle sponde del Nilo<br><br>
+                <b> Day 4 pomeriggio:</b> Crociera sul Nilo Vittoria fino ad arrivare a circa 500 metri dal punto in cui le cascate Murchison si immettono nel fiume, potendole ammirare in tutta la loro potenza e maestosità<br><br> 
 	</div>
         </div>
 
         <button class="accordion">Day 4-5:Queen Elizabeth National Park </button>
         <div class="panel" style="background-image: url('/Uganda3.jpg');">
             <div class="testo-giorno">
-                   <b>Day 4:</b>colazione e spostamento verso il Queen Elizabeth NP. Sono circa 95 le specie di mammiferi qui presenti tra cui: leoni, elefanti, leopardi, Uganda kobs (impala), iene maculate, bufali e diverse specie di primati come scimpanzè, colobi blu, rossi,bianchi, neri e babbuini. Nel settore sud del parco denominato “Ishasha” sono presenti i “climbing lions” che si arrampicano sugli alberi dove trascorrono le loro giornate tra una caccia e l’altra <br><br>
-                <b>Day 5:</b>trekking con gli scimpanzé nella foresta di Kyambura che offre una varietà di vegetazione incredibile ed ospita una folta comunità di Scimpanzè. Avvistamento non garantito al 100%.rociera sul Kazinga Channel, che unisce Edward Lake e George Lake, con possibilità di osservare ippopotami, bufali, elefanti che si abbeverano al fiume, antilopi e uccelli anche molto rari.  <br><br>
+                   <b>Day 4:</b> Colazione e spostamento verso il Queen Elizabeth NP. Sono circa 95 le specie di mammiferi qui presenti tra cui: leoni, elefanti, leopardi, Uganda kobs (impala), iene maculate, bufali e diverse specie di primati come scimpanzè, colobi blu, rossi,bianchi, neri e babbuini. Nel settore sud del parco denominato “Ishasha” sono presenti i “climbing lions” che si arrampicano sugli alberi dove trascorrono le loro giornate tra una caccia e l’altra <br><br>
+                <b>Day 5:</b> Trekking con gli scimpanzé nella foresta di Kyambura che offre una varietà di vegetazione incredibile ed ospita una folta comunità di Scimpanzè. Avvistamento non garantito al 100%.rociera sul Kazinga Channel, che unisce Edward Lake e George Lake, con possibilità di osservare ippopotami, bufali, elefanti che si abbeverano al fiume, antilopi e uccelli anche molto rari.  <br><br>
                
             </div>
         </div>
@@ -169,18 +169,18 @@ onMounted(() => {
         <button class="accordion">Day 6-7-8:Leoni Arrampicatori di Ishasha </button>
         <div class="panel" style="background-image: url('/Uganda4.jpg');">
             <div class="testo-giorno">
-                   <b>day 6:</b>rasferimento a sud del parco attraversando la foresta di Maramagambo. Arrivo nel settore di Ishasha in tarda mattinata per ammirare, con un pò di fortuna, i lion climbing, leoni che si arrampicano sui fig trees, alberi che si diramano a pochi metri di altezza e che i leoni usano come loro uffici personali nelle ore più calde della giornata. Pranzo al sacco o a un ristorante a Kihihi <br><br>
-                <b>Day 7:</b> spostamento verso il quartier generale di Bwindi impenetrabile forest per un briefing con i ranger del parco. Due ranger specializzati e i trackers (coloro che seguono e monitorano le famiglie di gorilla dall’alba al tramonto e che permettono questo straordinario processo di conservazione) ci accompagneranno e guideranno nella foresta impenetrabile alla ricerca di una delle famiglie di Gorilla di Montagna da osservare, seguire e contemplare per un’ ora dal momento del primo avvistamento. La durata del Gorilla trekking varia da giorno a giorno e da famiglia di gorilla ad un’altra e non è prevedibile in anticipo.<br><br>
-                <b>Day 8:</b> veglia all’alba per il trasferimento al Mghainga National Park dove avrà luogo il trekking golden monkey della durata di 3/4 ore. Durante il trekking, con una vista meravigliosa sulle vette del Parco Nazionale dei vulcani, possibilità di vedere anche specie di uccelli come il Ruwenzori Turaco e il colobi<br><br>
+                   <b>day 6:</b> Trasferimento a sud del parco attraversando la foresta di Maramagambo. Arrivo nel settore di Ishasha in tarda mattinata per ammirare, con un pò di fortuna, i lion climbing, leoni che si arrampicano sui fig trees, alberi che si diramano a pochi metri di altezza e che i leoni usano come loro uffici personali nelle ore più calde della giornata. Pranzo al sacco o a un ristorante a Kihihi <br><br>
+                <b>Day 7:</b> Spostamento verso il quartier generale di Bwindi impenetrabile forest per un briefing con i ranger del parco. Due ranger specializzati e i trackers (coloro che seguono e monitorano le famiglie di gorilla dall’alba al tramonto e che permettono questo straordinario processo di conservazione) ci accompagneranno e guideranno nella foresta impenetrabile alla ricerca di una delle famiglie di Gorilla di Montagna da osservare, seguire e contemplare per un’ ora dal momento del primo avvistamento. La durata del Gorilla trekking varia da giorno a giorno e da famiglia di gorilla ad un’altra e non è prevedibile in anticipo.<br><br>
+                <b>Day 8:</b> Sveglia all’alba per il trasferimento al Mghainga National Park dove avrà luogo il trekking golden monkey della durata di 3/4 ore. Durante il trekking, con una vista meravigliosa sulle vette del Parco Nazionale dei vulcani, possibilità di vedere anche specie di uccelli come il Ruwenzori Turaco e il colobi<br><br>
             </div>
         </div>
 
-        <button class="accordion">Day 9-10: La linea dell'Equatore</button>
+        <button class="accordion">Day 9-10: La linea dell'Equatore </button>
         <div class="panel" style="background-image: url('/Uganda5.jpg');">
             <div class="testo-giorno">
                
- 		       <b>Day 9:</b>colazione e ripartenza verso Kampala con sosta sulla linea dell’Equatore <br><br>
-                <b>Day 10:</b>arrivo ad Entebbe e relax, dipendentemente dal piano voli, transfer per l’aeroporto <br><br>
+ 		       <b>Day 9:</b> Colazione e ripartenza verso Kampala con sosta sulla linea dell’Equatore <br><br>
+                <b>Day 10:</b> Arrivo ad Entebbe e relax, dipendentemente dal piano voli, transfer per l’aeroporto <br><br>
               
              </div>
         </div>
@@ -189,7 +189,7 @@ onMounted(() => {
         <button class="accordion">Day 11: Rientro in Italia </button>
         <div class="panel" style="background-image: url('/Uganda6.jpg');">
             <div class="testo-giorno">
-               <b> Mattina:</b>: giornata in volo, arrivo in Italia in serata… E alla prossima avventura!  <br><br>
+               <b> Mattina:</b>: Giornata in volo, arrivo in Italia in serata… E alla prossima avventura!  <br><br>
  		  
               
              </div>

@@ -31,6 +31,7 @@ const apriModale = () => {
     router.push('/login')
     return
   }
+  
   modaleAperto.value = true
   errore.value = ''
   successo.value = null

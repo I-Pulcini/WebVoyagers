@@ -61,7 +61,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_,
+        idViaggio: ID_VIAGGIO_YEMEN,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -116,7 +116,7 @@ onMounted(() => {
 <template>
   <div class="yemen-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"> YEMEN</h1>
+      <h1 class="fascia-titolo"> YEMEN </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
@@ -163,7 +163,7 @@ Chiunque abbia avuto, ormai decenni fa, il privilegio di farlo, definisce lo Yem
         <div class="panel" style="background-image: url('/Mukalla.jpg');">
             <div class="testo-giorno">
                  <b>Day 4: </b> Spostamento verso Wadi Sah,tra le principali città dello Yemen nonchè uno dei porti più importanti del paese <br><br>
-                 <b> Day 5:</b>passeggiata tra le vie del porto, visita della fortezza della città Al-Ghawizi, e prosecuzione della visitare alla città vecchia di Mukhalla e al vecchio mercato  <br><br>
+                 <b> Day 5:</b> Passeggiata tra le vie del porto, visita della fortezza della città Al-Ghawizi, e prosecuzione della visitare alla città vecchia di Mukhalla e al vecchio mercato  <br><br>
                
                 <b> Day 5 sera:</b> cena in hotel con una bellissima vista sul Mar Arabico        
         </div>
@@ -174,7 +174,7 @@ Chiunque abbia avuto, ormai decenni fa, il privilegio di farlo, definisce lo Yem
             <div class="testo-giorno">
                  <b>Day 6: </b> Spostamento verso il Wadi Doa’n,  una valle sbalorditiva punteggiata da antichi villaggi tradizionali. Pranzo con vista su Haid Al-Jizil,  piccolo villaggio arroccato su di uno sperone di roccia nel mezzo della valle, ammirando il panorama più bello e iconico di tutto il Wadi Dawan<br><br>
                  <b> Day 7:</b> Un meraviglioso trekking fino al villaggio di Hawfah a Wadi Do’an. Questo bellissimo trekking fino al villaggio di Hawfah. Spostamento verso il villaggio di Buqshan, con i suoi incredibili palazzi colorati <br><br>
-               <b> Day 8:</b> partenza verso Ribad, visita della città della famiglia di Ben Laden e prosecuzione fino a Qarht Bahumaish, l’ultimo villaggio di Wadi Doa’n. Prosecuzione del viaggio verso Shibam con varie soste fotografiche nel percorso tra cui il villaggio di Musainah e la città di Al-Khuraiba. Pranzo con picnic sotto gli alberi di fronte alla bellezza del villaggio di Qarn Majed.visita della città di Sif, seconda per bellezza solo a Shibam,  con sosta fotografica su vari punti panoramici nella valle tra cui la città di Al-Hajjarain, ed il bellissimo tramonto con vista su Shibam.
+               <b> Day 8:</b> Partenza verso Ribad, visita della città della famiglia di Ben Laden e prosecuzione fino a Qarht Bahumaish, l’ultimo villaggio di Wadi Doa’n. Prosecuzione del viaggio verso Shibam con varie soste fotografiche nel percorso tra cui il villaggio di Musainah e la città di Al-Khuraiba. Pranzo con picnic sotto gli alberi di fronte alla bellezza del villaggio di Qarn Majed.visita della città di Sif, seconda per bellezza solo a Shibam,  con sosta fotografica su vari punti panoramici nella valle tra cui la città di Al-Hajjarain, ed il bellissimo tramonto con vista su Shibam.
         </div>
         </div>
 
@@ -182,7 +182,7 @@ Chiunque abbia avuto, ormai decenni fa, il privilegio di farlo, definisce lo Yem
       <button class="accordion">Day 9-10-11: Aynat e Tarim </button>
         <div class="panel" style="background-image: url('/Mukalla.jpg');">
             <div class="testo-giorno">
-                 <b>Day 9-10: </b> spostamento verso Shibam. Storica capitale dell’Hadramawt, patrimonio Unesco, è definita «la Manhattan del deserto». La città è costruita interamente di fango con 500 palazzi che raggiungono l’altezza di 5-9 piani, risalenti fino al XVI secolo: si tratta quindi di veri e propri grattacieli dell’antichità, che creano uno degli skyline più incredibili al mondo. Apostamento verso Seiyun e visita delle seguenti attrazioni: old town, mercato del miele,  mercato tradizionale Al-Handhal, mercato di frutta e verdura e Palazzo Al-Fals.<br><br>
+                 <b>Day 9-10: </b> Spostamento verso Shibam. Storica capitale dell’Hadramawt, patrimonio Unesco, è definita «la Manhattan del deserto». La città è costruita interamente di fango con 500 palazzi che raggiungono l’altezza di 5-9 piani, risalenti fino al XVI secolo: si tratta quindi di veri e propri grattacieli dell’antichità, che creano uno degli skyline più incredibili al mondo. Apostamento verso Seiyun e visita delle seguenti attrazioni: old town, mercato del miele,  mercato tradizionale Al-Handhal, mercato di frutta e verdura e Palazzo Al-Fals.<br><br>
                  <b> Day 11 :</b> Prosecuzione verso Tarim,  città storica Sufi,  costruita nel fango,passeggiata tra le vie del porto, visita la fortezza della città <br><br>
                
                    
@@ -195,7 +195,7 @@ Chiunque abbia avuto, ormai decenni fa, il privilegio di farlo, definisce lo Yem
                  <b>Day 12: </b> Spostamento verso Seiyum e l'utimo giro tra le vie caotiche della città, relax in hotel <br><br>
                  <b> Day 13 :</b> Volo verso il Cairo e successviamente volo verso i principali aereoporti italiani. Pronti, partenza e si parte !!!! Alla prossima.  <br><br>
                
-                <b>Sera:</b> cena in hotel con una bellissima vista sul Mar Arabico        
+                <b>Sera:</b> Cena in hotel con una bellissima vista sul Mar Arabico        
         </div>
         </div>
                 

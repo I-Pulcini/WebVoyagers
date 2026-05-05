@@ -114,14 +114,14 @@ onMounted(() => {
 <template>
   <div class="tunisia-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo">Tunisia</h1>
+      <h1 class="fascia-titolo"> TUNISIA </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">1200€</span>
-        <span class="prenota-durata"> 6giorni ·Aprile </span>
+        <span class="prenota-durata"> 6 giorni ·Aprile </span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio
@@ -142,51 +142,51 @@ onMounted(() => {
         <button class="accordion">Day 1:Arrivo a Tunisi </button>
         <div class="panel" style="background-image: url('/Tunisi.jpg');">
             <div class="testo-giorno">
-                  <b>Mattina/Pomeriggio:</b> partenza dall’Italia con volo per Tunisi. Arrivo all’aeroporto di Tunisi, ritiro auto a noleggio e trasferimento in città. Check-in in hotel<br><br>
-                <b>Sera:</b>cena e serata nei locali della città vecchia di Tunisi     
+                  <b>Mattina/Pomeriggio:</b> Partenza dall’Italia con volo per Tunisi. Arrivo all’aeroporto di Tunisi, ritiro auto a noleggio e trasferimento in città. Check-in in hotel<br><br>
+                <b>Sera:</b> Cena e serata nei locali della città vecchia di Tunisi     
 	</div>
         </div>
 
-        <button class="accordion">Day 2:Tunisi: medina e museo del Bardo</button>
+        <button class="accordion">Day 2:Tunisi: medina e museo del Bardo </button>
         <div class="panel" style="background-image: url('/medina.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> giornata dedicata a Tunisi, l’affascinante capitale della Tunisia. Visita della grande Moschea Jamaa ez-Zitouna, esplorazione della medina, tra gli stretti souq, gli hammam e le terrazze delle residenze storiche, per uno spaccato di autentica tradizione e cultura araba a pochi km dall’Italia<br><br>
-                <b>Pomeriggio:</b> pranzo nella medina e visita del Museo nazionale del Bardo che custodisce le collezioni archeologiche più importanti del Magreb e gli inestimabili mosaici romani, tra i meglio conservati al mondo<br><br>
-                <b>Sera:</b> cena e serata a Tunisi          
+                <b>Mattina:</b> Giornata dedicata a Tunisi, l’affascinante capitale della Tunisia. Visita della grande Moschea Jamaa ez-Zitouna, esplorazione della medina, tra gli stretti souq, gli hammam e le terrazze delle residenze storiche, per uno spaccato di autentica tradizione e cultura araba a pochi km dall’Italia<br><br>
+                <b>Pomeriggio:</b> Pranzo nella medina e visita del Museo nazionale del Bardo che custodisce le collezioni archeologiche più importanti del Magreb e gli inestimabili mosaici romani, tra i meglio conservati al mondo<br><br>
+                <b>Sera:</b> Cena e serata a Tunisi          
 	</div>
         </div>
 
-        <button class="accordion">Day 3: El Jem</button>
+        <button class="accordion">Day 3: El Jem </button>
         <div class="panel" style="background-image: url('/ELJEM.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b> spostamento verso sud da Tunisi con una lunga giornata di trasferimento verso i deserti del sud del paese, non lontani dal confine con la Libia. Lungo il tragitto, sosta per la visita del maestoso anfiteatro di El Jem, il terzo più grande mai costruito dai Romani dopo il Colosseo e Capua, forse le più spettacolari tra le tante rovine romane e cartaginesi della Tunisia<br><br>
-                <b>Pomeriggio:</b>prosecuzione dell’on the road verso sud in direzione Matmata, principale villaggio di un’affascinante regione ai margini del Sahara, ricca di insediamenti storici puntellati di abitazioni scavate nella roccia, utilizzate negli anni ‘70 come set cinematografico per l’iconica saga di Star Wars. Visita dei villaggi trogloditi e check-in nella guesthouse scavata nella roccia <br><br>
-                <b>Sera:</b>cena e serata a Matmata
+                   <b>Mattina:</b> Spostamento verso sud da Tunisi con una lunga giornata di trasferimento verso i deserti del sud del paese, non lontani dal confine con la Libia. Lungo il tragitto, sosta per la visita del maestoso anfiteatro di El Jem, il terzo più grande mai costruito dai Romani dopo il Colosseo e Capua, forse le più spettacolari tra le tante rovine romane e cartaginesi della Tunisia<br><br>
+                <b>Pomeriggio:</b> Prosecuzione dell’on the road verso sud in direzione Matmata, principale villaggio di un’affascinante regione ai margini del Sahara, ricca di insediamenti storici puntellati di abitazioni scavate nella roccia, utilizzate negli anni ‘70 come set cinematografico per l’iconica saga di Star Wars. Visita dei villaggi trogloditi e check-in nella guesthouse scavata nella roccia <br><br>
+                <b>Sera:</b> Cena e serata a Matmata
             </div>
         </div>
 
-        <button class="accordion">Day 4:Oasi di Tozeur e Nefta</button>
+        <button class="accordion">Day 4:Oasi di Tozeur e Nefta </button>
         <div class="panel" style="background-image: url('/Nefta.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>sveglia presto e trasferimento in pieno deserto tra Ksar Ghilane e Tozeur, la più famosa oasi tunisina al confine con l’Algeria. Durante il tragitto, si attraverserà lo chott el-Jerid, splendido deserto di sabbia, sale e rari specchi d’acqua, che creano grandi contrasti cromatici e affascinanti miraggi. Arrivo a Tozeur e pranzo tra le viuzze della caratteristica medina con edifici color ocra <br><br>
-                <b>Pomeriggio:</b>visita dell’oasi di Tozeur in quad tra gli oltre 1.000 ettari di palmeto e le 200 sorgenti, fino ad arrivare sulla collina di Tozeur dove si può ammirare un panorama che abbraccia i palmeti, lo chott el-Jerid, ed infine le dune del Sahara, indimenticabili alla luce del tramonto, raggiungibili dalla vicina oasi di Nefta. Visita del set cinematografico Star Wars di Mos Espa, a circa 20km da Tozeur, costruito letteralmente in mezzo al deserto<br><br>
-                <b>Sera:</b> cena e serata nell’oasi di Tozeur
+                   <b>Mattina:</b> Sveglia presto e trasferimento in pieno deserto tra Ksar Ghilane e Tozeur, la più famosa oasi tunisina al confine con l’Algeria. Durante il tragitto, si attraverserà lo chott el-Jerid, splendido deserto di sabbia, sale e rari specchi d’acqua, che creano grandi contrasti cromatici e affascinanti miraggi. Arrivo a Tozeur e pranzo tra le viuzze della caratteristica medina con edifici color ocra <br><br>
+                <b>Pomeriggio:</b> Visita dell’oasi di Tozeur in quad tra gli oltre 1.000 ettari di palmeto e le 200 sorgenti, fino ad arrivare sulla collina di Tozeur dove si può ammirare un panorama che abbraccia i palmeti, lo chott el-Jerid, ed infine le dune del Sahara, indimenticabili alla luce del tramonto, raggiungibili dalla vicina oasi di Nefta. Visita del set cinematografico Star Wars di Mos Espa, a circa 20km da Tozeur, costruito letteralmente in mezzo al deserto<br><br>
+                <b>Sera:</b> Cena e serata nell’oasi di Tozeur
             </div>
         </div>
 
-        <button class="accordion">Day 5: Cartagine e Sidi Bou Said</button>
+        <button class="accordion">Day 5: Cartagine e Sidi Bou Said </button>
         <div class="panel" style="background-image: url('/Cartagine.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina/Pomeriggio:</b> visita della medina patrimonio Unesco di Sousse, sovrastata dalla kasbah e dalle fortificazioni del ribat, e trasferimento verso Tunisi. Pranzo durante il percorso (possibile sosta a Hammamet per pranzo lungo spiaggia)<br><br>
-                <b>Pomeriggio:</b> arrivo nei quartieri settentrionali di Tunisi e visita di Cartagine, antica capitale punica: visita della collina di Byrsa, città bassa, e quartieri nord-occidentali,  dove le rovine dell’anfiteatro, delle ville romane, del Teatro Romano e delle Terme di Antonino si fondono con le nuove ville di lusso dei ricchi abitanti di Tunisi. Breve trasferimento a Sidi Bou Said, perla tunisina a picco sul mare. Check-in in hotel e tè al tramonto sulle caratteristiche case bianche con infissi e tetti blu<br><br>
-                <b>Sera:</b> cena e serata a Sidi Bou Said
+                   <b>Mattina/Pomeriggio:</b> Visita della medina patrimonio Unesco di Sousse, sovrastata dalla kasbah e dalle fortificazioni del ribat, e trasferimento verso Tunisi. Pranzo durante il percorso (possibile sosta a Hammamet per pranzo lungo spiaggia)<br><br>
+                <b>Pomeriggio:</b> Arrivo nei quartieri settentrionali di Tunisi e visita di Cartagine, antica capitale punica: visita della collina di Byrsa, città bassa, e quartieri nord-occidentali,  dove le rovine dell’anfiteatro, delle ville romane, del Teatro Romano e delle Terme di Antonino si fondono con le nuove ville di lusso dei ricchi abitanti di Tunisi. Breve trasferimento a Sidi Bou Said, perla tunisina a picco sul mare. Check-in in hotel e tè al tramonto sulle caratteristiche case bianche con infissi e tetti blu<br><br>
+                <b>Sera:</b> Cena e serata a Sidi Bou Said
             </div>
         </div>
 
-         <button class="accordion">Day 6: Rientro in Italia</button>
+         <button class="accordion">Day 6: Rientro in Italia </button>
         <div class="panel" style="background-image: url('/Tunisi2.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina/Pomeriggio:</b> a seconda dell’orario dei voli, free time a Sidi Bou Said e spostamento verso l’aeroporto di Tunisi per il volo di rientro per l’Italia… E alla prossima avventura!<br><b>
+                   <b>Mattina/Pomeriggio:</b> A seconda dell’orario dei voli, free time a Sidi Bou Said e spostamento verso l’aeroporto di Tunisi per il volo di rientro per l’Italia… E alla prossima avventura!<br><b>
                 <b>Sera:</b> Arrivo in Italia
             </div>
         </div>

@@ -114,7 +114,7 @@ onMounted(() => {
 <template>
   <div class="capoverde-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> CAPO VERDE </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->

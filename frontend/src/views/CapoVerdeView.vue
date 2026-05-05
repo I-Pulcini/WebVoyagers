@@ -59,7 +59,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_CAPOVERDE,
+        idViaggio: ID_VIAGGIO_CAPO_VERDE,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -131,7 +131,11 @@ onMounted(() => {
     <main>
       <section class="fascia-testo">
         <p style="margin-top: 0;">
-       
+       Scopri la magia di Capo Verde, un arcipelago incastonato nell’oceano Atlantico dove natura incontaminata, clima perfetto tutto l’anno e cultura vibrante si incontrano per creare un’esperienza indimenticabile.
+
+Spiagge dorate lambite da acque cristalline, paesaggi vulcanici spettacolari e tramonti che sembrano dipinti ti aspettano in un paradiso ancora autentico. Che tu voglia rilassarti al sole, esplorare sentieri mozzafiato o immergerti nei ritmi coinvolgenti della musica locale, Capo Verde ha qualcosa di unico da offrirti.
+
+Lasciati conquistare dall’accoglienza calorosa della sua gente, dai sapori intensi della cucina creola e da un’atmosfera rilassata che ti farà dimenticare lo stress quotidiano. Ogni isola è un mondo a sé: dall’energia vivace di Sal e Boa Vista, alle montagne verdi di Santo Antão, fino al fascino culturale di São Vicente.
         </p>
       </section>
 
@@ -143,7 +147,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/SantaMaria.jpg');">
             <div class="testo-giorno">
                   <b>Mattina:</b> Partenza dall’Italia e arrivo sull’isola di Sal. Trasferimento in hotel e sistemazione<br><br>
-                <b>Pomeriggio:</b>Relax in spiaggia a Santa Maria, con le sue acque turchesi e sabbia finissima. <br><br>
+                <b>Pomeriggio:</b> Relax in spiaggia a Santa Maria, con le sue acque turchesi e sabbia finissima. <br><br>
                 <b>Sera:</b> Cena in hotel o in ristorante locale con cucina tipica capoverdiana.        
 	</div>
         </div>
@@ -152,7 +156,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Capo.jpg');">
             <div class="testo-giorno">
                 <b>Mattina:</b> Giornata dedicata al relax in spiaggia o attività balneari (snorkeling, kite surf).<br><br>
-                <b>Pomeriggio:</b>Passeggiata sul pontile di Santa Maria Pier per osservare i pescatori locali. <br><br>
+                <b>Pomeriggio:</b> Passeggiata sul pontile di Santa Maria Pier per osservare i pescatori locali. <br><br>
                 <b>Sera:</b> Cena in ristorante sul mare con musica dal vivo.           
 	</div>
         </div>
@@ -160,7 +164,7 @@ onMounted(() => {
         <button class="accordion">Day 3:Escursione nell'isola di Sal </button>
         <div class="panel" style="background-image: url('/Sal.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>Tour dell’isola: visita alle saline di Pedra de Lume, dove è possibile galleggiare come nel Mar Morto. <br><br>
+                   <b>Mattina:</b> Tour dell’isola: visita alle saline di Pedra de Lume, dove è possibile galleggiare come nel Mar Morto. <br><br>
                 <b>Pomeriggio:</b> Sosta alla Buracona per vedere la “Blue Eye” e continuazione del tour tra paesaggi vulcanici.<br><br>
                 <b>Sera:</b> Rientro e cena in hotel. 
             </div>
@@ -170,7 +174,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Sal2.jpg');">
             <div class="testo-giorno">
                    <b>Mattina:</b> Escursione in quad o jeep tra dune e spiagge selvagge.<br><br>
-                <b>Pomeriggio:</b>Relax presso la spiaggia di Ponta Preta, famosa per le sue onde <br><br>
+                <b>Pomeriggio:</b> Relax presso la spiaggia di Ponta Preta, famosa per le sue onde <br><br>
                 <b>Sera:</b> Serata libera a Santa Maria con locali e musica.
             </div>
         </div>
@@ -179,7 +183,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/BaoVista.jpg');">
             <div class="testo-giorno">
                
- 		           <b> Day 5:</b> visita le spiagge dell'isola di Boa Vista.<br><br>
+ 		           <b> Day 5:</b> Visita le spiagge dell'isola di Boa Vista.<br><br>
                 <b>Day 6:</b> Visita al Deserto de Viana e alle spiagge incontaminate. <br><br>
                 <b>Day 7:</b> Rientro a Sal e cena.
              </div>
@@ -189,7 +193,7 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/SantoAntao.jpg');">
             <div class="testo-giorno">
                
- 		           <b> Day 8:</b>Volo interno o trasferimento via São Vicente e traghetto per Santo Antão.<br><br>
+ 		           <b> Day 8:</b> Volo interno o trasferimento via São Vicente e traghetto per Santo Antão.<br><br>
                 <b>Day 9:</b> Arrivo e sistemazione in struttura immersa nella natura. Prime passeggiate tra montagne e vallate. <br><br>
                 <b>Day 10:</b> Escursione nella valle di Paul Valley, tra piantagioni di canna da zucchero e villaggi tradizionali.Continuazione del trekking con viste spettacolari su montagne e oceano.Relax e cena in guesthouse.
              </div>
@@ -199,18 +203,18 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Mare.jpg');">
             <div class="testo-giorno">
                
- 		           <b> Day 11:</b>Trasferimento verso la costa e relax presso Ponta do Sol.<br><br>
+ 		           <b> Day 11:</b> Trasferimento verso la costa e relax presso Ponta do Sol.<br><br>
                 <b>Day 12:</b> Passeggiata leggera o escursione facoltativa tra i sentieri panoramici.Tempo libero per relax e foto nei punti più suggestivi. Cena di arriverci sull'isola <br><br>
               
              </div>
         </div>
 
-          <button class="accordion">Day 13: Rientro e partenza</button>
+          <button class="accordion">Day 13: Rientro e partenza </button>
         <div class="panel" style="background-image: url('/Sal.jpg');">
             <div class="testo-giorno">
                
- 		           <b> Mattina:</b>Rientro verso São Vicente e trasferimento in aeroporto<br><br>
-                <b> Pomeriggio/Sera:</b>Volo di ritorno per l’Italia <br><br>
+ 		           <b> Mattina:</b> Rientro verso São Vicente e trasferimento in aeroporto<br><br>
+                <b> Pomeriggio/Sera:</b> Volo di ritorno per l’Italia <br><br>
                
               
              </div>

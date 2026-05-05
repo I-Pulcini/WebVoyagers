@@ -59,7 +59,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_LONDRA,
+        idViaggio: ID_VIAGGIO_OMAN,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -114,7 +114,7 @@ onMounted(() => {
 <template>
   <div class="oman-wrapper">
     <header class="fascia-foto">
-      <h1 class="fascia-titolo"></h1>
+      <h1 class="fascia-titolo"> OMAN </h1>
     </header>
 
     <!-- Bottone Prenota in posizione fissa -->
@@ -142,35 +142,35 @@ onMounted(() => {
         <button class="accordion">Day 1:Arrivo a Mascate </button>
         <div class="panel" style="background-image: url('/Mascate.jpg');">
             <div class="testo-giorno">
-                <b>Pomeriggio:</b>partenza dall’Italia con voli con scalo per Mascate <br><br>
-                <b>Sera:</b>arrivo a Mascate, noleggio auto 4×4 e check in in hotel e pernottamento         
+                <b>Pomeriggio:</b> Partenza dall’Italia con voli con scalo per Mascate <br><br>
+                <b>Sera:</b> Arrivo a Mascate, noleggio auto 4×4 e check in in hotel e pernottamento         
 	</div>
         </div>
 
         <button class="accordion">Day 2:Mascate </button>
         <div class="panel" style="background-image: url('/Mascate2.jpg');">
             <div class="testo-giorno">
-                <b>Mattina:</b> visita della moschea del Sultano Qaboos, la terza più grande del mondo e uno dei più impressionanti esempi di architettura islamica moderna. Noleggio dell’attrezzatura necessaria per il camping<br><br>
-                <b>Pomeriggio:</b> visita del souq Mutrah, uno dei più colorati della penisola arabica. Prosecuzione della visita nel quartiere della Corniche, affacciato sull’oceano Indiano<br><br>
-                <b>Sera:</b> cena e serata nei locali di Mascate          
+                <b>Mattina:</b> Visita della moschea del Sultano Qaboos, la terza più grande del mondo e uno dei più impressionanti esempi di architettura islamica moderna. Noleggio dell’attrezzatura necessaria per il camping<br><br>
+                <b>Pomeriggio:</b> Visita del souq Mutrah, uno dei più colorati della penisola arabica. Prosecuzione della visita nel quartiere della Corniche, affacciato sull’oceano Indiano<br><br>
+                <b>Sera:</b> Cena e serata nei locali di Mascate          
 	</div>
         </div>
 
         <button class="accordion">Day 3: Bimmah Sinkhole e Wadi Shab </button>
         <div class="panel" style="background-image: url('/Wadi.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>partenza presto lungo la strada costiera a sud di Mascat, visita e bagno rinfrescante nelle acque turchesi del Bimmah Sinkhole. Prosecuzione dell’itinerario e arrivo a Wadi Shab, relax e, per i più temerari, possibilità di nuotare controcorrente nel fiume per arrivare alla misteriosa «cascata segreta» <br><br>
-                <b>Pomeriggio:</b> pranzo nei pressi di Wadi Shab, prosecuzione dell’itinerario e arrivo a Ras Al Hadd. Allestimento del wild camp in una spiaggia deserta tra Ras Al Hadd e Ras Al Jinz<br><br>
-                <b>Sera:</b> opzionale, visita notturna guidata della Turtle Reserve di Ras Al Jinz, per assistere all’emozionante fenomeno della schiusa delle uova delle taratughe
+                   <b>Mattina:</b> Partenza presto lungo la strada costiera a sud di Mascat, visita e bagno rinfrescante nelle acque turchesi del Bimmah Sinkhole. Prosecuzione dell’itinerario e arrivo a Wadi Shab, relax e, per i più temerari, possibilità di nuotare controcorrente nel fiume per arrivare alla misteriosa «cascata segreta» <br><br>
+                <b>Pomeriggio:</b> Pranzo nei pressi di Wadi Shab, prosecuzione dell’itinerario e arrivo a Ras Al Hadd. Allestimento del wild camp in una spiaggia deserta tra Ras Al Hadd e Ras Al Jinz<br><br>
+                <b>Sera:</b> Opzionale, visita notturna guidata della Turtle Reserve di Ras Al Jinz, per assistere all’emozionante fenomeno della schiusa delle uova delle taratughe
             </div>
         </div>
 
         <button class="accordion">Day 4:Sugar Dunes </button>
         <div class="panel" style="background-image: url('/SugarDunes.jpg');">
             <div class="testo-giorno">
-                   <b>Mattina:</b>sveglia presto, e nuova visita alla Turtle Reserve illuminata dalla splendida luce dell’alba, per vedere le tartarughe fare ritorno all’oceano. Partenza e prosecuzione dell’itinerario verso sud <br><br>
-                <b>Pomeriggio:</b>arrivo nei pressi delle Sugar Dunes, scenic drive tra le immense dune bianche per l’off road più eccitante del viaggio! Preparazione del wild camp <br><br>
-                <b>Sera:</b> cena in tenda e serata sotto le stelle sull’immensa spiaggia affacciata sull’Oceano Indiano   
+                   <b>Mattina:</b> Sveglia presto, e nuova visita alla Turtle Reserve illuminata dalla splendida luce dell’alba, per vedere le tartarughe fare ritorno all’oceano. Partenza e prosecuzione dell’itinerario verso sud <br><br>
+                <b>Pomeriggio:</b> Arrivo nei pressi delle Sugar Dunes, scenic drive tra le immense dune bianche per l’off road più eccitante del viaggio! Preparazione del wild camp <br><br>
+                <b>Sera:</b> Cena in tenda e serata sotto le stelle sull’immensa spiaggia affacciata sull’Oceano Indiano   
             </div>
         </div>
 
@@ -179,8 +179,8 @@ onMounted(() => {
             <div class="testo-giorno">
                
  		       <b>Mattina:</b> <br> Arrivo a Barr Al Hikman, partendo dalle Sugar Dunes, ci aspettano 3 ore di macchina nel deserto on the road !!<br>
-                <b>Pomeriggio:</b>Check-in nel whales campe che ci ospiderà per le prossime due notti. Domiremo in un campeggio circondati da mare cristallino e sabbia bianca senza il troppo turismo di massa!! <br><br>
-                <b>Sera:</b> cena e serata in tenda
+                <b>Pomeriggio:</b> Check-in nel whales campe che ci ospiderà per le prossime due notti. Domiremo in un campeggio circondati da mare cristallino e sabbia bianca senza il troppo turismo di massa!! <br><br>
+                <b>Sera:</b> Cena e serata in tenda
              </div>
         </div>
 
@@ -188,30 +188,30 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Wadi2.jpg');">
             <div class="testo-giorno">
                
- 		       <b>Mattina:</b> mattinata a disposizione nei pressi delle Sugar Dunes, tra un bagno nell’oceano e una derapata sulle dune <br><br>
-                <b>Pomeriggio:</b> prosecuzione dell’itinerario verso il deserto rosso di Wahiba Sands, self drive su pista fino al camp nel deserto (con tende preallestite e servizi). Tè di benvenuto e tramonto da Mille e una notte dall’alto delle dune del Wahiba Sands  <br><br>
-                <b>Sera:</b> cena e serata sotto milioni di stelle nel deserto dell’Oman
+ 		       <b>Mattina:</b> Mattinata a disposizione nei pressi delle Sugar Dunes, tra un bagno nell’oceano e una derapata sulle dune <br><br>
+                <b>Pomeriggio:</b> Prosecuzione dell’itinerario verso il deserto rosso di Wahiba Sands, self drive su pista fino al camp nel deserto (con tende preallestite e servizi). Tè di benvenuto e tramonto da Mille e una notte dall’alto delle dune del Wahiba Sands  <br><br>
+                <b>Sera:</b> Cena e serata sotto milioni di stelle nel deserto dell’Oman
              </div>
         </div>
 
          <button class="accordion">Day 8:Wadi Bani Kalid, arrivo a Nizwa </button>
-      v class="panel" style="background-image: url('/Nizwa.jpg');">
+      <div class="panel" style="background-image: url('/Nizwa.jpg');">
             <div class="testo-giorno">
                
- 		       <b>Mattina:</b> sveglia presto e camminata nel deserto all’alba tra le dune che si tingono di rosa. Colazione e partenza per Wadi Bani Khalid, bagno nelle piscine naturali dell’oasi e, per i più temerari, possibilità di cimentarsi nel cliff diving <br><br>
-                <b>Pomeriggio:</b> prosecuzione per Nizwa, dopo una breve visita alla polverosa cittadina di Ibra e ai palazzi abbandonati della città vecchia. Arrivo nel pomeriggio a Nizwa e visita del souq serale <br><br>
-                <b>Sera:</b> sistemazione in hotel, cena e serata a Nizwa
+ 		       <b>Mattina:</b> Sveglia presto e camminata nel deserto all’alba tra le dune che si tingono di rosa. Colazione e partenza per Wadi Bani Khalid, bagno nelle piscine naturali dell’oasi e, per i più temerari, possibilità di cimentarsi nel cliff diving <br><br>
+                <b>Pomeriggio:</b> Prosecuzione per Nizwa, dopo una breve visita alla polverosa cittadina di Ibra e ai palazzi abbandonati della città vecchia. Arrivo nel pomeriggio a Nizwa e visita del souq serale <br><br>
+                <b>Sera:</b> Sistemazione in hotel, cena e serata a Nizwa
              </div>
         </div>
 
 
-       <button class="accordion">Day 9: Jebel Shams</button>
+       <button class="accordion">Day 9: Jebel Shams </button>
         <div class="panel" style="background-image: url('/Jebel.jpg');">
             <div class="testo-giorno">
                
- 		       <b>Mattina:</b> visita del pittoresco mercato del venerdì di Nizwa, dedicato al commercio del bestiame: un autentico spaccato di vita rurale omanita, e un’incredibile opportunità per gli amanti della fotografia. Visita del forte di Nizwa, il monumento più visitato dell’Oman, e prosecuzione sulla panoramica strada che sale verso il Jebel Shams <br><br>
-                <b>Pomeriggio:</b>prosecuzione verso Jebel Shams, la montagna più alta dell’Oman, lungo una strada che si snoda in cima allo spettacolare Wadi Gul, il «grand canyon d’oriente». Arrivo al villaggio di Al Khitaym e allestimento del camp su un altopiano a strapiombo sul canyon  <br><br>
-                <b>Sera:</b>wild camping sull’orlo del Wadi Gul 
+ 		       <b>Mattina:</b> Visita del pittoresco mercato del venerdì di Nizwa, dedicato al commercio del bestiame: un autentico spaccato di vita rurale omanita, e un’incredibile opportunità per gli amanti della fotografia. Visita del forte di Nizwa, il monumento più visitato dell’Oman, e prosecuzione sulla panoramica strada che sale verso il Jebel Shams <br><br>
+                <b>Pomeriggio:</b> Prosecuzione verso Jebel Shams, la montagna più alta dell’Oman, lungo una strada che si snoda in cima allo spettacolare Wadi Gul, il «grand canyon d’oriente». Arrivo al villaggio di Al Khitaym e allestimento del camp su un altopiano a strapiombo sul canyon  <br><br>
+                <b>Sera:</b> Wild camping sull’orlo del Wadi Gul 
              </div>
         </div>
 
@@ -219,17 +219,17 @@ onMounted(() => {
         <div class="panel" style="background-image: url('/Jebel2.jpg');">
             <div class="testo-giorno">
                
- 		       <b>Mattina:</b>  sveglia presto e trekking lungo la cosiddetta «Balcony Walk», sentiero in cengia che taglia la parete a strapiombo del Wadi Gul, offrendo viste mozzafiato sull’interno del Canyon. Arrivo al villaggio abbandonato di Sab, caratteristico per le sue antiche abitazioni abbarbicate sulla parete del Wadi. Rientro alle macchine e partenza verso Balad Sayt<br><br>
-                <b>Pomeriggio:</b>percorso lungo strade panoramiche di montagna e visita del pittoresco villaggio di Balad Sayt, tra i più belli dell’Oman. Rientro verso Mascate con possibilità di fare un ultimo bagno nell’oceano Indiano  <br><br>
-                <b>Sera:</b> cena e ultima serata nei locali di Mascate compatibilmente con l’operativo voli
+ 		       <b>Mattina:</b> Sveglia presto e trekking lungo la cosiddetta «Balcony Walk», sentiero in cengia che taglia la parete a strapiombo del Wadi Gul, offrendo viste mozzafiato sull’interno del Canyon. Arrivo al villaggio abbandonato di Sab, caratteristico per le sue antiche abitazioni abbarbicate sulla parete del Wadi. Rientro alle macchine e partenza verso Balad Sayt<br><br>
+                <b>Pomeriggio:</b> Percorso lungo strade panoramiche di montagna e visita del pittoresco villaggio di Balad Sayt, tra i più belli dell’Oman. Rientro verso Mascate con possibilità di fare un ultimo bagno nell’oceano Indiano  <br><br>
+                <b>Sera:</b> Cena e ultima serata nei locali di Mascate compatibilmente con l’operativo voli
              </div>
         </div>
 
-        <button class="accordion">Day 11: Arrivo in Itali</button>
+        <button class="accordion">Day 11: Arrivo in Italia </button>
         <div class="panel" style="background-image: url('/Oman.jpg');">
             <div class="testo-giorno">
                 <b>Mattina/Pomeriggio:</b> Arrivo in Aereporto  <br><br>
-                <b>Sera:</b> volo notturno e arrivo in Italia il Day 9.. e alla prossima avventura!
+                <b>Sera:</b> Volo notturno e arrivo in Italia il Day 9.. e alla prossima avventura!
              </div>
         </div>
       </section>

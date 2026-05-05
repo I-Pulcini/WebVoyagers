@@ -59,7 +59,7 @@ const inviaPrenotazione = async () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
-        idViaggio: ID_VIAGGIO_LONDRA,
+        idViaggio: ID_VIAGGIO_AUSTRALIA,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
         emailContatto: emailContatto.value,
@@ -121,7 +121,7 @@ onMounted(() => {
     <div class="prenota-bar">
       <div class="prenota-info">
         <span class="prenota-prezzo">7200€</span>
-        <span class="prenota-durata"> 18 giorni ·Maggio </span>
+        <span class="prenota-durata"> 18 giorni ·Maggio</span>
       </div>
       <button @click="apriModale" class="btn-prenota-grande">
         🎒 Prenota questo viaggio

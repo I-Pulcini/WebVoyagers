@@ -1,62 +1,75 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { userStore } from '../stores/userStore'
 
+/* --- VUE ROUTER --- */
+// Abbiamo importato il router per poter spostare l'utente da una pagina all'altra dopo il login
 const router = useRouter()
 
-// Variabili di stato (Reattive)
-const isLoginMode = ref(true) // true = mostra Login, false = mostra Registrazione
+/* --- VARIABILI REATTIVE --- */
+// Abbiamo creato la variabile che decide se mostrare il form di Login o quello di Registrazione
+const isLoginMode = ref(true)
+// Abbiamo creato le variabili reattive che si legano ai campi del form tramite v-model
 const username = ref('')
 const email = ref('')
 const password = ref('')
-const messaggio = ref('') // Per mostrare messaggi di errore o successo
+// Abbiamo creato la variabile che mostra messaggi di errore o successo all'utente
+const messaggio = ref('')
 
-// Funzione per passare da Login a Registrazione e viceversa
+/* --- FUNZIONI --- */
+// Abbiamo creato la funzione che cambia tra modalità Login e Registrazione
 const toggleMode = () => {
   isLoginMode.value = !isLoginMode.value
   messaggio.value = ''
   password.value = ''
 }
 
-// Funzione chiamata al click del pulsante Submit
+// Abbiamo creato la funzione asincrona chiamata quando l'utente preme Submit
 const gestisciSubmit = async () => {
-  // Decidiamo quale URL chiamare in base alla modalità
+  // Abbiamo deciso quale URL chiamare in base alla modalità (login o registrazione)
   const url = isLoginMode.value ? '/api/login' : '/api/register'
   
-  // Prepariamo i dati da inviare al server
+  // Abbiamo preparato i dati da inviare al server in base alla modalità
   const payload = isLoginMode.value 
     ? { email: email.value, password: password.value }
     : { username: username.value, email: email.value, password: password.value }
 
   try {
-    // Effettuiamo la chiamata POST al server (grazie al Proxy, andrà sulla porta 3000)
+    // Abbiamo effettuato la chiamata POST al server includendo i cookie di sessione
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',  // Abbiamo aggiunto questa opzione per inviare e ricevere i cookie di sessione
       body: JSON.stringify(payload)
     })
 
+    // Abbiamo trasformato la risposta JSON ricevuta dal server in oggetto JavaScript
     const data = await response.json()
 
     if (response.ok) {
-      // Se va tutto bene, mostriamo il messaggio di successo del server
+      // Abbiamo mostrato il messaggio di successo restituito dal backend
       messaggio.value = data.message
       
       if (isLoginMode.value) {
-        // Se era un login, aspettiamo 1 secondo e lo mandiamo alla Home
+        // Abbiamo salvato i dati dell'utente nello store globale così tutta l'app sa che è loggato
+        userStore.setUser(data.userId, data.username)
+        
+        // Abbiamo aspettato 1 secondo per far leggere il messaggio, poi reindirizzato alla home
         setTimeout(() => router.push('/'), 1000)
       } else {
-        // Se era una registrazione, lo passiamo alla schermata di login
+        // Abbiamo gestito il caso registrazione: passiamo automaticamente alla schermata di login
         setTimeout(() => {
           isLoginMode.value = true
           messaggio.value = 'Ora puoi effettuare il login!'
         }, 1500)
       }
     } else {
-      // Se c'è un errore (es. password errata), mostriamo l'errore del server
+      // Abbiamo mostrato il messaggio di errore restituito dal backend (es. password sbagliata)
       messaggio.value = data.error
     }
   } catch (err) {
+    // Abbiamo gestito gli errori di rete che impediscono la comunicazione col server
     messaggio.value = "Errore di connessione al server."
   }
 }

@@ -1,4 +1,61 @@
 /* =========================================================
+   VARIABILI CSS GLOBALI 
+   =========================================================
+   Abbiamo definito le variabili CSS principali del brand WebVoyagers
+   per centralizzare i colori, evitare duplicazioni e rendere piu facile
+   un eventuale cambio di tema in futuro. Vengono usate con var(--nome).
+   :root rappresenta l'elemento radice del documento (l'elemento <html>),
+   quindi le variabili definite qui sono accessibili globalmente.
+   ========================================================= */
+
+:root {
+    /* Colori principali del brand */
+    --color-primary: #00c4b4;          /* turchese WebVoyagers */
+    --color-primary-dark: #00897b;     /* turchese scuro */
+    --color-secondary: #d81b60;        /* magenta accent */
+    --color-secondary-dark: #b01650;   /* magenta scuro */
+    --color-accent: #6a1b9a;           /* viola accent */
+    --color-blue: #007bff;             /* blu CTA */
+    --color-blue-dark: #0056b3;        /* blu CTA hover */
+
+    /* Colori funzionali */
+    --color-success: #2e7d32;
+    --color-warning: #f57c00;
+    --color-error: #ff4d4d;
+    --color-info: #1976d2;
+
+    /* Sfondi */
+    --bg-page: #fafafa;
+    --bg-light: #f4f4f9;
+    --bg-card: #ffffff;
+    --bg-overlay: rgba(100, 100, 100, 0.4);
+    --bg-text-day: rgba(255, 255, 255, 0.6);
+
+    /* Testi */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --text-light: #ffffff;
+    --text-accordion: #20b2aa;
+
+    /* Bordi e ombre */
+    --border-light: #eeeeee;
+    --border-medium: #cccccc;
+    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+    /* Border radius */
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Transizioni */
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+}
+
+/* =========================================================
    STILI GLOBALI
    ========================================================= */
 
@@ -8,7 +65,8 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #fafafa;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
 }
 
 /* =========================================================
@@ -24,7 +82,7 @@ body {
 
 .main-title { 
     text-align: center;
-    color: white;
+    color: var(--text-light);
     font-size: 3.5em; 
     margin-top: 20px; 
     margin-bottom: 0px; 
@@ -35,7 +93,7 @@ body {
 
 /* --- MENU DI NAVIGAZIONE --- */
 .menu-container {
-    position: absolute; 
+    position: fixed;
     top: 15px;
     right: 20px;
     display: inline-block;
@@ -46,7 +104,7 @@ body {
     font-size: 35px;
     cursor: pointer; 
     user-select: none;
-    color: #ffffff; 
+    color: var(--text-light); 
     text-shadow: 1px 1px 4px rgba(0,0,0,0.8); 
 }
 
@@ -54,10 +112,10 @@ body {
     display: none; 
     position: absolute;
     right: 0;
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); 
-    border-radius: 8px;
+    box-shadow: var(--shadow-medium); 
+    border-radius: var(--radius-md);
     overflow: hidden;
     border: 1px solid #ddd;
 }
@@ -65,17 +123,17 @@ body {
 .menu-dropdown.show { display: block; }
 
 .menu-dropdown a { 
-    color: #333;
+    color: var(--text-primary);
     padding: 14px 20px;
     text-decoration: none;
     display: block;
     font-size: 16px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .menu-dropdown a:hover {
     background-color: #f1f1f1;
-    color: #007bff;
+    color: var(--color-blue);
 }
 
 .submenu-content { 
@@ -96,10 +154,10 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    background: rgba(100, 100, 100, 0.4); 
+    background: var(--bg-overlay); 
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-strong);
 }
 
 .form-group { margin-bottom: 20px; }
@@ -108,14 +166,14 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
-    color: #ffffff; 
+    color: var(--text-light); 
 }
 
 .form-group select, .form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-sm);
     font-size: 16px;
     box-sizing: border-box; 
 }
@@ -124,61 +182,67 @@ body {
     width: 100%; 
     padding: 12px; 
     margin-top: 15px; 
-    background-color: #007bff; 
-    color: white; 
+    background-color: var(--color-blue); 
+    color: var(--text-light); 
     border: none; 
-    border-radius: 5px; 
+    border-radius: var(--radius-sm); 
     font-size: 18px; 
     font-weight: bold; 
     cursor: pointer;
+    transition: background-color var(--transition-normal);
+}
+
+#bottoneCerca:hover {
+    background-color: var(--color-blue-dark);
 }
 
 /* =========================================================
    COMPONENTI DELLA PAGINA DI ERRORE (non_disponibile.html)
    ========================================================= */
 
-/* Ho centralizzato nel foglio di stile globale anche le regole della pagina di cortesia, 
+/* Abbiamo centralizzato nel foglio di stile globale anche le regole della pagina di cortesia, 
    organizzandole in classi semantiche specifiche per evitare conflitti. */
 .error-body {
-    background-color: #f4f4f9;
+    background-color: var(--bg-light);
     text-align: center;
 }
 
 .error-container {
     max-width: 600px;
     margin: 50px auto;
-    background: white;
+    background: var(--bg-card);
     padding: 40px;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .error-title {
-    color: #ff4d4d;
+    color: var(--color-error);
 }
 
 .back-link {
     display: inline-block;
     margin-top: 25px;
     padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--color-blue);
+    color: var(--text-light);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     font-weight: bold;
+    transition: background-color var(--transition-normal);
 }
 
 .back-link:hover {
-    background-color: #0056b3;
+    background-color: var(--color-blue-dark);
 }
 
 /* =========================================================
    COMPONENTI DELLA PAGINA DESTINAZIONE
    ========================================================= */
 
-/* --- APPLICAZIONE FLEXBOX (Rif: 03-responsive-design.pdf) --- */
-/* Ho implementato Flexbox sull'header definendo 'display: flex'. 
-   Attraverso 'justify-content: center' e 'align-items: center' ho gestito 
+/* --- APPLICAZIONE FLEXBOX  --- */
+/* Abbiamo implementato Flexbox sull'header definendo 'display: flex'. 
+   Attraverso 'justify-content: center' e 'align-items: center' abbiamo gestito 
    perfettamente l'allineamento bidirezionale del titolo rispetto alla foto di sfondo. */
 .fascia-foto {
     background-image: url('algeria.jpg');
@@ -194,7 +258,7 @@ body {
 
 .fascia-titolo {  
     text-align: center;
-    color: white;
+    color: var(--text-light);
     font-size: 5em; 
     margin: 0; 
     font-weight: 900; 
@@ -209,13 +273,13 @@ body {
     line-height: 1.8; 
     font-size: 1.2em; 
     text-align: justify; 
-    color: #333; 
+    color: var(--text-primary); 
 }
 
 .titolo-sezione {
     text-align: center;
     font-size: 2em;
-    color: #333;
+    color: var(--text-primary);
     margin-top: 40px;
     margin-bottom: 30px;
     font-weight: bold;
@@ -226,30 +290,30 @@ body {
 .itinerario-container {
     max-width: 1000px;
     margin: 0 auto 80px auto; 
-    background-color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-card); 
 }
 
 .accordion {
-    background-color: white;
-    color: #20b2aa; 
+    background-color: var(--bg-card);
+    color: var(--text-accordion); 
     cursor: pointer;
     padding: 20px;
     width: 100%;
     text-align: left;
     border: none;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid var(--border-light); 
     outline: none;
     font-size: 1.2em;
     font-weight: bold;
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    transition: 0.3s;
+    transition: var(--transition-normal);
 }
 
 .accordion:hover { background-color: #f9f9f9; }
-.accordion:after { content: '\002B'; font-size: 1.5em; font-weight: normal; color: #20b2aa; }
+.accordion:after { content: '\002B'; font-size: 1.5em; font-weight: normal; color: var(--text-accordion); }
 .active:after { content: "\2212"; }
 
 .panel {
@@ -257,23 +321,23 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed; 
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .testo-giorno {
-    background-color: rgba(255, 255, 255, 0.6); 
+    background-color: var(--bg-text-day); 
     margin: 30px; 
     padding: 25px;
-    border-radius: 8px;
-    color: #333;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
     line-height: 1.6;
     font-size: 1.1em;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
 }
 .testo-giorno b { color: #000; }
 
-/* --- APPLICAZIONE CSS GRID (Rif: 03-responsive-design.pdf) --- */
-/* Ho scelto CSS Grid anziché Flexbox per la galleria fotografica perché 
+/* --- APPLICAZIONE CSS GRID  --- */
+/* Abbiamo scelto CSS Grid anziche' Flexbox per la galleria fotografica perche' 
    gestisce nativamente i layout bidimensionali. Il comando 'repeat(3, 1fr)' 
    forza la creazione di tre frazioni uguali per una struttura pulita. */
 .galleria-grid {
@@ -289,15 +353,15 @@ body {
     height: 250px;
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
 }
 
 /* =========================================================
-   MEDIA QUERIES E RESPONSIVE DESIGN (Rif: 03-responsive-design.pdf)
+   MEDIA QUERIES E RESPONSIVE DESIGN 
    ========================================================= */
-/* Ho inserito un breakpoint CSS a 768px. Al di sotto di questa risoluzione 
-   (tipica degli smartphone), sovrascrivo le grandezze per mantenere leggibilità. 
-   Modifico la Grid passando da 3 colonne a una singola ('1fr') impilando le immagini verticalmente. */
+/* Abbiamo inserito un breakpoint CSS a 768px. Al di sotto di questa risoluzione 
+   (tipica degli smartphone), sovrascriviamo le grandezze per mantenere leggibilita'. 
+   Modifichiamo la Grid passando da 3 colonne a una singola ('1fr') impilando le immagini verticalmente. */
 @media screen and (max-width: 768px) {
     .main-title, .fascia-titolo { font-size: 2.5em; }
     

@@ -19,6 +19,8 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000', // Inserire qui la porta del vostro server effettivo [cite: 248]
         changeOrigin: true,
+        secure: false,                    // Disattiva la verifica HTTPS (in locale lavoriamo in HTTP)
+        cookieDomainRewrite: 'localhost'  // Riscrive il dominio del cookie così il browser lo accetta correttamente
       }
     }
   }

@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    VARIABILI CSS GLOBALI 
    =========================================================
    Abbiamo definito le variabili CSS principali del brand WebVoyagers
@@ -74,7 +74,7 @@ body {
    ========================================================= */
 
 .home-body {
-    background-image: url('web.jpg');
+    background-image: url('/web.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -245,7 +245,7 @@ body {
    Attraverso 'justify-content: center' e 'align-items: center' abbiamo gestito 
    perfettamente l'allineamento bidirezionale del titolo rispetto alla foto di sfondo. */
 .fascia-foto {
-    background-image: url('algeria.jpg');
+    background-image: url('/algeria.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; 

@@ -1,4 +1,4 @@
-// Abbiamo caricato le variabili d'ambiente dal file .env in modo che siano disponibili tramite process.env
+﻿// Abbiamo caricato le variabili d'ambiente dal file .env in modo che siano disponibili tramite process.env
 require('dotenv').config();
 const path = require('path');
 // Abbiamo importato il modulo 'express' per creare l'architettura del nostro server web
@@ -14,6 +14,8 @@ const bcrypt = require('bcrypt');
 
 // Abbiamo inizializzato la nostra applicazione chiamandola 'app'
 const app = express();
+// Abbiamo detto a Express di fidarsi del proxy che useremo in produzione (es. Render)
+app.set('trust proxy', 1);
 // Abbiamo letto la porta dalla variabile d'ambiente, con valore di fallback 3000 se non definita
 const port = process.env.PORT || 3000;
 // Abbiamo definito la cartella dove stanno i file statici buildati del frontend
@@ -47,14 +49,14 @@ app.use(session({
     resave: false,
     // Abbiamo impostato 'saveUninitialized' su false per non creare sessioni vuote per gli utenti non loggati
     saveUninitialized: false,
-    // Abbiamo configurato le proprietà del cookie di sessione che il browser conserverà
+    // Abbiamo configurato le proprietÃ  del cookie di sessione che il browser conserverÃ 
     cookie: { 
         // Abbiamo stabilito che il login rimanga valido per 30 giorni consecutivi (espressi in millisecondi)
         maxAge: 30 * 24 * 60 * 60 * 1000,
         // Abbiamo reso il cookie accessibile solo dal server, mai dal codice JavaScript del browser (sicurezza)
         httpOnly: true,
-        // Abbiamo impostato secure su false perché in locale lavoriamo in HTTP e non HTTPS
-        secure: false,
+        // Abbiamo impostato secure in base all'ambiente: 'auto' usa HTTPS in produzione e HTTP in locale
+        secure: process.env.NODE_ENV === 'production',
         // Abbiamo permesso al cookie di essere inviato in richieste cross-origin moderate (necessario per il proxy di Vite)
         sameSite: 'lax'
     }
@@ -77,13 +79,13 @@ app.post('/api/register', async (req, res) => {
             // Abbiamo passato i valori reali in un array che andranno a sostituire i segnaposto sopra
             [username, email, hashedPassword]
         );
-        // Abbiamo inviato una risposta di successo con codice 201 indicando che l'utente è stato creato
+        // Abbiamo inviato una risposta di successo con codice 201 indicando che l'utente Ã¨ stato creato
         res.status(201).json({ message: "Utente registrato con successo!" });
     } catch (err) {
         // Abbiamo stampato l'errore in console per poter fare debug in caso di problemi
         console.error(err);
-        // Abbiamo risposto con un codice 500 informando l'utente che qualcosa è andato storto
-        res.status(500).json({ error: "Errore: Forse questa email è già registrata?" });
+        // Abbiamo risposto con un codice 500 informando l'utente che qualcosa Ã¨ andato storto
+        res.status(500).json({ error: "Errore: Forse questa email Ã¨ giÃ  registrata?" });
     }
 });
 
@@ -99,7 +101,7 @@ app.post('/api/login', async (req, res) => {
         
         // Abbiamo controllato se il database ha restituito zero risultati (utente non esistente)
         if (result.rows.length === 0) {
-            // Abbiamo risposto con errore 401 se l'email non è presente nei nostri archivi
+            // Abbiamo risposto con errore 401 se l'email non Ã¨ presente nei nostri archivi
             return res.status(401).json({ error: "Utente non trovato." });
         }
 
@@ -115,7 +117,7 @@ app.post('/api/login', async (req, res) => {
             req.session.userId = user.id;
             // Abbiamo salvato anche lo username nella sessione per poterlo mostrare nel menu di Vue
             req.session.username = user.username;
-            // Abbiamo salvato anche il flag admin nella sessione, così possiamo verificare i permessi
+            // Abbiamo salvato anche il flag admin nella sessione, cosÃ¬ possiamo verificare i permessi
             req.session.isAdmin = user.is_admin;
             // Abbiamo risposto inviando un messaggio di conferma, lo username e il flag admin al Front-end
             res.json({ 
@@ -136,7 +138,7 @@ app.post('/api/login', async (req, res) => {
     }
 });
 // --- 5. API: VERIFICA SESSIONE ATTIVA ---
-// Abbiamo creato una rotta GET che il frontend chiamerà per sapere se c'è un utente loggato
+// Abbiamo creato una rotta GET che il frontend chiamerÃ  per sapere se c'Ã¨ un utente loggato
 app.get('/api/me', (req, res) => {
     if (req.session.userId) {
         res.json({
@@ -237,11 +239,11 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             });
         }
         
-        // Abbiamo scelto una destinazione casuale tra quelle compatibili (è il viaggio "vero" assegnato all'utente)
+        // Abbiamo scelto una destinazione casuale tra quelle compatibili (Ã¨ il viaggio "vero" assegnato all'utente)
         const destinazioneScelta = risultato.rows[Math.floor(Math.random() * risultato.rows.length)];
         
         // Abbiamo cercato 2 destinazioni "distrattori": viaggi diversi da quello vero,
-        // così l'utente vedrà 3 opzioni nella pagina di conferma e dovrà indovinare quale è la sua
+        // cosÃ¬ l'utente vedrÃ  3 opzioni nella pagina di conferma e dovrÃ  indovinare quale Ã¨ la sua
         const distrattoriQuery = await pool.query(
             `SELECT * FROM destinazioni_misteriose 
              WHERE attivo = TRUE 
@@ -301,7 +303,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         
         // Abbiamo risposto al frontend con il codice di prenotazione,
         // il viaggio scelto (anonimo) e i 2 viaggi simili: tutti senza il nome esatto della destinazione,
-        // così l'utente vede 3 indizi senza sapere quale dei tre è il proprio
+        // cosÃ¬ l'utente vede 3 indizi senza sapere quale dei tre Ã¨ il proprio
         res.status(201).json({ 
             message: "Prenotazione confermata!",
             codice: codice,
@@ -313,7 +315,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         // Abbiamo stampato l'errore nel terminale del server per il debug
         console.error("Errore nella prenotazione del viaggio misterioso:", err);
         // Abbiamo restituito un messaggio generico al client per non esporre dettagli interni
-        res.status(500).json({ error: "Errore durante la prenotazione. Riprova più tardi." });
+        res.status(500).json({ error: "Errore durante la prenotazione. Riprova piÃ¹ tardi." });
     }
 });
 
@@ -427,7 +429,7 @@ app.get('/api/scopri-viaggio/:codice', async (req, res) => {
     } catch (err) {
         // Abbiamo registrato l'errore nel terminale del server
         console.error("Errore nella ricerca della prenotazione:", err);
-        res.status(500).json({ error: "Errore durante la ricerca. Riprova più tardi." });
+        res.status(500).json({ error: "Errore durante la ricerca. Riprova piÃ¹ tardi." });
     }
 });
 // --- 10. API: ELENCO VIAGGI PER STATO ---
@@ -592,10 +594,10 @@ app.post('/api/prenota-viaggio', async (req, res) => {
         
         const viaggio = viaggioCheck.rows[0];
         
-        // Abbiamo verificato che il viaggio sia prenotabile (solo se è 'disponibile')
+        // Abbiamo verificato che il viaggio sia prenotabile (solo se Ã¨ 'disponibile')
         if (viaggio.stato !== 'disponibile') {
             return res.status(400).json({ 
-                error: "Questo viaggio non è prenotabile al momento (sold out o non ancora aperto)." 
+                error: "Questo viaggio non Ã¨ prenotabile al momento (sold out o non ancora aperto)." 
             });
         }
         
@@ -640,7 +642,7 @@ app.post('/api/prenota-viaggio', async (req, res) => {
             [numeroViaggiatori, idViaggio]
         );
         
-        // Abbiamo verificato se il viaggio è esaurito dopo questa prenotazione: in tal caso lo segniamo sold out
+        // Abbiamo verificato se il viaggio Ã¨ esaurito dopo questa prenotazione: in tal caso lo segniamo sold out
         const checkSoldOut = await pool.query(
             `SELECT posti_disponibili FROM viaggi WHERE id = $1`,
             [idViaggio]
@@ -662,7 +664,7 @@ app.post('/api/prenota-viaggio', async (req, res) => {
     } catch (err) {
         // Abbiamo registrato l'errore nel terminale del server per il debug
         console.error("Errore nella prenotazione del viaggio:", err);
-        res.status(500).json({ error: "Errore durante la prenotazione. Riprova più tardi." });
+        res.status(500).json({ error: "Errore durante la prenotazione. Riprova piÃ¹ tardi." });
     }
 });
 
@@ -961,7 +963,7 @@ app.post('/api/cambia-password', async (req, res) => {
         // Abbiamo verificato che la password attuale inserita combaci con quella salvata
         const match = await bcrypt.compare(passwordAttuale, hashAttuale);
         if (!match) {
-            return res.status(401).json({ error: "La password attuale non è corretta." });
+            return res.status(401).json({ error: "La password attuale non Ã¨ corretta." });
         }
         
         // Abbiamo criptato la nuova password con bcrypt (cost 10, come per la registrazione)
@@ -982,7 +984,7 @@ app.post('/api/cambia-password', async (req, res) => {
     }
 });
 // --- 15. MIDDLEWARE: VERIFICA ADMIN ---
-// Abbiamo creato un middleware che verifica se l'utente è admin prima di permettere l'accesso
+// Abbiamo creato un middleware che verifica se l'utente Ã¨ admin prima di permettere l'accesso
 // agli endpoint protetti. Lo riutilizziamo in tutte le rotte admin per non duplicare il codice
 const verificaAdmin = async (req, res, next) => {
     // Abbiamo verificato prima che l'utente sia loggato
@@ -1002,7 +1004,7 @@ const verificaAdmin = async (req, res, next) => {
             return res.status(403).json({ error: "Accesso negato. Permessi insufficienti." });
         }
         
-        // Abbiamo passato il controllo, l'utente è admin: proseguiamo con la rotta
+        // Abbiamo passato il controllo, l'utente Ã¨ admin: proseguiamo con la rotta
         next();
     } catch (err) {
         console.error("Errore nella verifica admin:", err);
@@ -1014,7 +1016,7 @@ const verificaAdmin = async (req, res, next) => {
 // Abbiamo creato una rotta GET che restituisce le statistiche del sito (solo per admin)
 app.get('/api/admin/stats', verificaAdmin, async (req, res) => {
     try {
-        // Abbiamo eseguito le query in parallelo per essere più veloci
+        // Abbiamo eseguito le query in parallelo per essere piÃ¹ veloci
         const [utentiTot, prenViaggi, prenMisteriose, viaggiAttivi, incassoViaggi] = await Promise.all([
             pool.query(`SELECT COUNT(*) AS totale FROM utenti`),
             pool.query(`SELECT COUNT(*) AS totale FROM prenotazioni_viaggi`),
@@ -1145,7 +1147,7 @@ app.post('/api/admin/cambia-stato', verificaAdmin, async (req, res) => {
 // --- 20. API: INVIO MESSAGGIO CONTATTACI ---
 // Abbiamo creato una rotta POST che riceve i dati dal form Contattaci e li salva nel database.
 // Non richiede autenticazione: anche i visitatori non loggati possono scrivere.
-// Se l'utente è loggato, salviamo anche l'id_utente per collegare il messaggio al profilo
+// Se l'utente Ã¨ loggato, salviamo anche l'id_utente per collegare il messaggio al profilo
 app.post('/api/contattaci', async (req, res) => {
     // Abbiamo estratto i dati dal corpo della richiesta
     const { nome, email, telefono, motivo, messaggio } = req.body;
@@ -1163,11 +1165,11 @@ app.post('/api/contattaci', async (req, res) => {
     
     // Abbiamo limitato la lunghezza del messaggio per evitare abusi
     if (messaggio.length > 5000) {
-        return res.status(400).json({ error: "Il messaggio è troppo lungo (max 5000 caratteri)." });
+        return res.status(400).json({ error: "Il messaggio Ã¨ troppo lungo (max 5000 caratteri)." });
     }
     
     try {
-        // Abbiamo salvato il messaggio nel database, includendo id_utente solo se l'utente è loggato
+        // Abbiamo salvato il messaggio nel database, includendo id_utente solo se l'utente Ã¨ loggato
         await pool.query(
             `INSERT INTO messaggi_contatto 
                 (nome, email, telefono, motivo, messaggio, id_utente, stato) 
@@ -1184,12 +1186,12 @@ app.post('/api/contattaci', async (req, res) => {
         
         // Abbiamo risposto con conferma di ricezione
         res.status(201).json({ 
-            message: "Messaggio inviato con successo! Ti risponderemo al più presto." 
+            message: "Messaggio inviato con successo! Ti risponderemo al piÃ¹ presto." 
         });
         
     } catch (err) {
         console.error("Errore nell'invio del messaggio:", err);
-        res.status(500).json({ error: "Errore durante l'invio. Riprova più tardi." });
+        res.status(500).json({ error: "Errore durante l'invio. Riprova piÃ¹ tardi." });
     }
 });
 
@@ -1296,11 +1298,11 @@ app.post('/api/recensioni', async (req, res) => {
     }
     
     if (titolo.length > 150) {
-        return res.status(400).json({ error: "Il titolo è troppo lungo (max 150 caratteri)." });
+        return res.status(400).json({ error: "Il titolo Ã¨ troppo lungo (max 150 caratteri)." });
     }
     
     if (testo.length > 2000) {
-        return res.status(400).json({ error: "Il testo è troppo lungo (max 2000 caratteri)." });
+        return res.status(400).json({ error: "Il testo Ã¨ troppo lungo (max 2000 caratteri)." });
     }
     
     try {
@@ -1317,7 +1319,7 @@ app.post('/api/recensioni', async (req, res) => {
             });
         }
         
-        // Abbiamo inserito la nuova recensione con stato 'in_attesa' (l'admin la approverà poi)
+        // Abbiamo inserito la nuova recensione con stato 'in_attesa' (l'admin la approverÃ  poi)
         await pool.query(
             `INSERT INTO recensioni (id_utente, stelle, titolo, testo, stato) 
              VALUES ($1, $2, $3, $4, 'in_attesa')`,
@@ -1326,12 +1328,12 @@ app.post('/api/recensioni', async (req, res) => {
         
         // Abbiamo risposto con conferma
         res.status(201).json({ 
-            message: "Recensione inviata! Sarà visibile dopo l'approvazione dello staff." 
+            message: "Recensione inviata! SarÃ  visibile dopo l'approvazione dello staff." 
         });
         
     } catch (err) {
         console.error("Errore nell'invio della recensione:", err);
-        res.status(500).json({ error: "Errore durante l'invio. Riprova più tardi." });
+        res.status(500).json({ error: "Errore durante l'invio. Riprova piÃ¹ tardi." });
     }
 });
 
@@ -1388,12 +1390,12 @@ app.post('/api/admin/recensioni/cambia-stato', verificaAdmin, async (req, res) =
     }
 });
 // Per ogni richiesta GET non gestita dagli endpoint sopra, restituiamo index.html
-// così Vue Router può gestire le rotte client-side
+// cosÃ¬ Vue Router puÃ² gestire le rotte client-side
 app.use((req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
 });
 
-// Abbiamo impostato il server in modalità ascolto per iniziare a ricevere il traffico web
+// Abbiamo impostato il server in modalitÃ  ascolto per iniziare a ricevere il traffico web
 app.listen(port, () => {
     // Abbiamo stampato un messaggio di conferma che indica su quale indirizzo il server sta girando
     console.log(`Server Back-end in esecuzione su http://localhost:${port}`);

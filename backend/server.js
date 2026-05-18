@@ -30,16 +30,9 @@ app.use(express.json());
 // Abbiamo memorizzato l'URL di connessione fornito da Supabase per accedere al nostro database in cloud
 // Abbiamo letto la stringa di connessione dal file .env per non esporre la password nel codice sorgente
 // Abbiamo creato un nuovo oggetto Pool passando la nostra stringa di connessione
-// Parsifichiamo la connection string manualmente per forzare l'hostname
-const connectionString = process.env.DATABASE_URL;
-const url = new URL(connectionString);
-
+// Connessione al database Supabase tramite connection pooler
 const pool = new Pool({
-  user: url.username,
-  password: url.password,
-  host: url.hostname, // Questo forza l'uso dell'hostname come stringa
-  port: url.port || 5432,
-  database: url.pathname.split('/')[1],
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   },
@@ -47,7 +40,109 @@ const pool = new Pool({
 });
 
 
-// --- 2. CONFIGURAZIONE DELLE SESSIONI (Rif: Parte 1.pdf) ---
+// --- 2. VALIDAZIONE JSON SCHEMA (Rif: 18-json-schema.pdf) ---
+// Abbiamo definito gli schemi JSON Schema per validare i dati in ingresso alle API principali.
+// JSON Schema e uno standard che descrive la struttura e i vincoli dei dati JSON (ECMA 404).
+
+const schemaRegistrazione = {
+    type: "object",
+    required: ["username", "email", "password"],
+    properties: {
+        username: { type: "string", minLength: 3, maxLength: 50 },
+        email:    { type: "string", pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
+        password: { type: "string", minLength: 6, maxLength: 100 }
+    },
+    additionalProperties: false
+};
+
+const schemaLogin = {
+    type: "object",
+    required: ["email", "password"],
+    properties: {
+        email:    { type: "string", pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
+        password: { type: "string", minLength: 1 }
+    },
+    additionalProperties: false
+};
+
+const schemaPrenota = {
+    type: "object",
+    required: ["idViaggio", "numeroViaggiatori", "nomeCompleto", "emailContatto"],
+    properties: {
+        idViaggio:         { type: "integer", minimum: 1 },
+        numeroViaggiatori: { type: "integer", minimum: 1, maximum: 50 },
+        nomeCompleto:      { type: "string",  minLength: 2, maxLength: 150 },
+        emailContatto:     { type: "string",  pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
+        telefono:          { type: "string",  maxLength: 50 },
+        note:              { type: "string",  maxLength: 1000 }
+    }
+};
+
+const schemaPrenota_Misterioso = {
+    type: "object",
+    required: ["dataPartenza", "durata", "budget", "tipoEsperienza", "numeroViaggiatori"],
+    properties: {
+        continente:        { type: "string", enum: ["europa","asia","africa","americhe","oceania","qualsiasi",""] },
+        dataPartenza:      { type: "string", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
+        durata:            { type: "string", enum: ["3-5","6-10","11-15","16+"] },
+        budget:            { type: "string", enum: ["800-2000","2000-4000","4000-7000","7000+"] },
+        tipoEsperienza:    { type: "string", enum: ["cultura","avventura","mare","metropoli","cibo","qualsiasi"] },
+        numeroViaggiatori: { type: "integer", minimum: 1, maximum: 50 },
+        note:              { type: "string",  maxLength: 1000 }
+    }
+};
+
+// Funzione di validazione: verifica che i dati ricevuti rispettino lo schema JSON Schema dichiarato.
+// Controlla: tipo del valore, campi required, minLength/maxLength, pattern regex, enum, min/max numerici.
+function validaSchema(dati, schema) {
+    const errori = [];
+    if (schema.type === "object" && (typeof dati !== "object" || dati === null || Array.isArray(dati))) {
+        return ["Il corpo della richiesta deve essere un oggetto JSON valido."];
+    }
+    if (schema.required) {
+        for (const campo of schema.required) {
+            if (dati[campo] === undefined || dati[campo] === null || dati[campo] === "") {
+                errori.push("Il campo " + campo + " e obbligatorio.");
+            }
+        }
+    }
+    if (schema.properties) {
+        for (const [campo, regole] of Object.entries(schema.properties)) {
+            const valore = dati[campo];
+            if (valore === undefined || valore === null) continue;
+            if (regole.type === "string" && typeof valore !== "string") {
+                errori.push("Il campo " + campo + " deve essere una stringa."); continue;
+            }
+            if (regole.type === "integer" && !Number.isInteger(valore)) {
+                errori.push("Il campo " + campo + " deve essere un numero intero."); continue;
+            }
+            if (typeof valore === "string") {
+                if (regole.minLength !== undefined && valore.length < regole.minLength)
+                    errori.push("Il campo " + campo + " deve avere almeno " + regole.minLength + " caratteri.");
+                if (regole.maxLength !== undefined && valore.length > regole.maxLength)
+                    errori.push("Il campo " + campo + " non puo superare " + regole.maxLength + " caratteri.");
+                if (regole.pattern && !new RegExp(regole.pattern).test(valore))
+                    errori.push("Il campo " + campo + " non rispetta il formato richiesto.");
+            }
+            if (typeof valore === "number") {
+                if (regole.minimum !== undefined && valore < regole.minimum)
+                    errori.push("Il campo " + campo + " deve essere almeno " + regole.minimum + ".");
+                if (regole.maximum !== undefined && valore > regole.maximum)
+                    errori.push("Il campo " + campo + " non puo superare " + regole.maximum + ".");
+            }
+            if (regole.enum && !regole.enum.includes(valore))
+                errori.push("Il campo " + campo + " contiene un valore non ammesso.");
+        }
+    }
+    if (schema.additionalProperties === false && schema.properties) {
+        for (const campo of Object.keys(dati)) {
+            if (!schema.properties[campo]) errori.push("Il campo " + campo + " non e ammesso.");
+        }
+    }
+    return errori;
+}
+
+// --- 3. CONFIGURAZIONE DELLE SESSIONI (Rif: Parte 1.pdf) ---
 // Abbiamo attivato il sistema delle sessioni per permettere al sito di riconoscere gli utenti
 app.use(session({
     // Abbiamo scelto di salvare le sessioni sul database invece che nella memoria RAM del server
@@ -77,6 +172,11 @@ app.use(session({
 // --- 3. API: REGISTRAZIONE ---
 // Abbiamo creato una rotta POST per permettere agli utenti di registrarsi al nostro portale
 app.post('/api/register', async (req, res) => {
+    // Abbiamo validato i dati in ingresso usando il nostro schema JSON Schema (Rif: 18-json-schema.pdf)
+    const erroriValidazione = validaSchema(req.body, schemaRegistrazione);
+    if (erroriValidazione.length > 0) {
+        return res.status(400).json({ error: "Dati non validi.", dettagli: erroriValidazione });
+    }
     // Abbiamo estratto i dati username, email e password dal corpo della richiesta inviata da Vue
     const { username, email, password } = req.body;
     // Abbiamo iniziato un blocco try-catch per gestire eventuali errori durante l'operazione
@@ -104,6 +204,11 @@ app.post('/api/register', async (req, res) => {
 // --- 4. API: LOGIN ---
 // Abbiamo creato una rotta POST dedicata alla verifica delle credenziali d'accesso
 app.post('/api/login', async (req, res) => {
+    // Abbiamo validato i dati in ingresso usando il nostro schema JSON Schema (Rif: 18-json-schema.pdf)
+    const erroriLogin = validaSchema(req.body, schemaLogin);
+    if (erroriLogin.length > 0) {
+        return res.status(400).json({ error: "Dati non validi.", dettagli: erroriLogin });
+    }
     // Abbiamo recuperato l'email e la password inserite dall'utente nel form di login
     const { email, password } = req.body;
     // Abbiamo aperto un blocco try per gestire la ricerca dell'utente
@@ -187,6 +292,12 @@ app.post('/api/prenota-misterioso', async (req, res) => {
     // Abbiamo verificato subito che l'utente sia loggato controllando la sessione
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per prenotare un viaggio misterioso." });
+    }
+    
+    // Abbiamo validato i dati in ingresso usando JSON Schema (Rif: 18-json-schema.pdf)
+    const erroriMisterioso = validaSchema(req.body, schemaPrenota_Misterioso);
+    if (erroriMisterioso.length > 0) {
+        return res.status(400).json({ error: "Dati non validi.", dettagli: erroriMisterioso });
     }
     
     // Abbiamo estratto i criteri di ricerca inviati dal form di Vue
@@ -574,6 +685,12 @@ app.post('/api/prenota-viaggio', async (req, res) => {
     // Abbiamo verificato subito che l'utente sia loggato
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per prenotare un viaggio." });
+    }
+    
+    // Abbiamo validato i dati in ingresso usando JSON Schema (Rif: 18-json-schema.pdf)
+    const erroriPrenota = validaSchema(req.body, schemaPrenota);
+    if (erroriPrenota.length > 0) {
+        return res.status(400).json({ error: "Dati non validi.", dettagli: erroriPrenota });
     }
     
     // Abbiamo estratto i dati dal corpo della richiesta

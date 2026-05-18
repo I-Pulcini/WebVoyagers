@@ -1,76 +1,72 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { userStore } from '../stores/userStore'
+import { ref } from 'vue'  //importo ref da Vue, ci serve per creare variabili reattive, che cambiano il lavoro
+import { useRouter } from 'vue-router'  //importiamo lo strumento di Router Vue di far viaggere l'utente tra le diverse pagine del sito usando il codice JavaScript
+import { userStore } from '../stores/userStore'  // importiamo lo store globale dell'utente 
 
-/* --- VUE ROUTER --- */
-// Abbiamo importato il router per poter spostare l'utente da una pagina all'altra dopo il login
-const router = useRouter()
 
-/* --- VARIABILI REATTIVE --- */
-// Abbiamo creato la variabile che decide se mostrare il form di Login o quello di Registrazione
-const isLoginMode = ref(true)
-// Abbiamo creato le variabili reattive che si legano ai campi del form tramite v-model
+const router = useRouter()  //abbiamo salvato il router in una variabile reattiva cosi da poterlo usare
+
+
+const isLoginMode = ref(true)  //una variabile reattiva di tipo booleano, se è true  HTML mostrerà il modulo di login. se è false mostrerà il modulo di registrazione
+
 const username = ref('')
 const email = ref('')
 const password = ref('')
-// Abbiamo creato la variabile che mostra messaggi di errore o successo all'utente
-const messaggio = ref('')
+//abbiamo scritto 3 variabili vuote che quando l'utente le scriverà nelle caselle di testo di riempiranno
+const messaggio = ref('')   //serve per stampare a schermo eventuali errori
 
-/* --- FUNZIONI --- */
-// Abbiamo creato la funzione che cambia tra modalità Login e Registrazione
-const toggleMode = () => {
-  isLoginMode.value = !isLoginMode.value
-  messaggio.value = ''
-  password.value = ''
+
+
+const toggleMode = () => {   // Abbiamo creato la funzione che cambia tra modalità Login e Registrazione
+  isLoginMode.value = !isLoginMode.value  //se è true diventa false e viceversa 
+  messaggio.value = ''  //svuotiamo i vecchi messaggi
+  password.value = ''   // Svuotiamo il campo della password
 }
 
-// Abbiamo creato la funzione asincrona chiamata quando l'utente preme Submit
-const gestisciSubmit = async () => {
-  // Abbiamo deciso quale URL chiamare in base alla modalità (login o registrazione)
-  const url = isLoginMode.value ? '/api/login' : '/api/register'
+const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona chiamata quando l'utente preme Accedi o Registrati
   
-  // Abbiamo preparato i dati da inviare al server in base alla modalità
+  const url = isLoginMode.value ? '/api/login' : '/api/register'  //se isLoginMode è vero,l'url da chiamare è /login altrimenti è /register
+  
+  
   const payload = isLoginMode.value 
     ? { email: email.value, password: password.value }
     : { username: username.value, email: email.value, password: password.value }
-
+  //creiamo il payload, il pacco dei dati da spedire al sever, se stiamo facendo il login spediamo solo email e password. se stiamo registrando, aggiungiamo anche l'username
   try {
-    // Abbiamo effettuato la chiamata POST al server includendo i cookie di sessione
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+   
+    const response = await fetch(url, {   //usiamo AJAX con la chiamata fetch per andare all'URL calcolato prima. Await dice al codice di fermarsi e aspettare la risposta del server
+      method: 'POST',   // è una chiamata di tipo post perche stimao inviando dati sicuri, non li stiamo solo leggendo
+      headers: { 'Content-Type': 'application/json' },  //stiamo avvisando il server Node.js che il pacco in formato JSON sta arrivando
       credentials: 'include',  // Abbiamo aggiunto questa opzione per inviare e ricevere i cookie di sessione
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload)  //trasformaimo in una stringa il testo JSON pronta per viaggiare su internet
     })
 
-    // Abbiamo trasformato la risposta JSON ricevuta dal server in oggetto JavaScript
-    const data = await response.json()
+  
+    const data = await response.json()    // Abbiamo trasformato la risposta JSON ricevuta dal server in oggetto JavaScript
 
-    if (response.ok) {
-      // Abbiamo mostrato il messaggio di successo restituito dal backend
-      messaggio.value = data.message
+    if (response.ok) {   //se la chiamata è andata a buon fine 
+      messaggio.value = data.message   //mostriamo a schermo il messaggio di successo mandato dal tuo file server.js
       
-      if (isLoginMode.value) {
-        // Abbiamo salvato i dati dell'utente nello store globale così tutta l'app sa che è loggato
-        userStore.setUser(data.userId, data.username)
+      if (isLoginMode.value) {  //se abbiamo fatto il Login
+       
+        userStore.setUser(data.userId, data.username)  //aggiorniamo il payload salvandoci ID e l'username dell'utente
         
         // Abbiamo aspettato 1 secondo per far leggere il messaggio, poi reindirizzato alla home
         setTimeout(() => router.push('/'), 1000)
-      } else {
-        // Abbiamo gestito il caso registrazione: passiamo automaticamente alla schermata di login
-        setTimeout(() => {
+      } else {  //altrimenti abbiamo fatto la registrazione
+       
+        setTimeout(() => {  //dopo 1,5 secondi cambiamo la visualizzazione passando al forma di login
           isLoginMode.value = true
           messaggio.value = 'Ora puoi effettuare il login!'
         }, 1500)
       }
-    } else {
-      // Abbiamo mostrato il messaggio di errore restituito dal backend (es. password sbagliata)
-      messaggio.value = data.error
+    } else {  //se respond.ok è false allora ci sta un errore tipo che l'email è gia stata usata
+   
+      messaggio.value = data.error   
     }
   } catch (err) {
-    // Abbiamo gestito gli errori di rete che impediscono la comunicazione col server
-    messaggio.value = "Errore di connessione al server."
+
+    messaggio.value = "Errore di connessione al server."   //salviamo un errore generico
   }
 }
 </script>

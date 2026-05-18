@@ -1,29 +1,33 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+// imoprtiamo da Vue tre strumenti essenziali: 1) ref variabili reattive, che HTML aggiorna da solo 2) computed: serve per creare variabili che is calcola e aggironano in automatico  in base ad altre variabili
+// 3) onMOunted, per eseguire una funzione appena la pagina web è stata caricata
+import { useRouter } from 'vue-router';  //importimao lo strumento di Vuew Router che ci permette di far cambiare pagina all'utente
 
-const router = useRouter();
+const router = useRouter();  //ci salviamo la costante router
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-const meseSelezionato = ref('Gennaio');
+const meseSelezionato = ref('Gennaio');  //ci creiamo un array statico con tutti i nomi dei mesi che ci serviranno per i bottini e di default impostimao a gennaio 
 
-// Variabile reattiva che conterrà i viaggi caricati dal backend
+// è unan variabili reattiva che conterrà i viaggi caricati dal backend
 const viaggi = ref([]);
-// Variabile per gestire lo stato di caricamento
-const caricamento = ref(true);
-// Variabile per gestire eventuali errori
-const errore = ref('');
+
+const caricamento = ref(true); // è una variabile reattiva che parte da true e sever per mostrare un messaggio finchè no non ci arrivano i dati 
+
+const errore = ref(''); //variabile reattiva vuota che serve per ospitare un testo di errore da mostrare all'untente in caso di errore
 
 // Funzione asincrona che chiama il backend per scaricare i viaggi disponibili
 const caricaViaggi = async () => {
-  try {
-    // Chiamata all'endpoint che restituisce i viaggi con stato 'disponibile'
-    const response = await fetch('/api/viaggi/disponibile');
-    const data = await response.json();
+  try {  //viene chiamato un try-catch per la gestione degli errori
+   
+    const response = await fetch('/api/viaggi/disponibile'); // Chiamata all'endpoint che restituisce i viaggi con stato 'disponibile'
+    //usiamo la chiamata fetch() per fare una richiesta AJAX al nostro backend Node.js
+    const data = await response.json(); //await serve per mettere in pausa l'esecuzione finchè il server non risponde. Aspettiamo ce la risposta sia trasformata dal formato JSON ad un ogetto JavaScirpt
     
-    if (response.ok) {
-      // Trasformiamo i dati del backend nel formato richiesto dal template
-      viaggi.value = data.viaggi.map(v => ({
+    
+    if (response.ok) {  //controlliamo se la risposta HTTP del server è un successo
+     
+      viaggi.value = data.viaggi.map(v => ({     // Trasformiamo i dati del backend nel formato richiesto dal template
         id: v.id,
         mese: v.mese,
         periodo: v.periodo,
@@ -50,17 +54,17 @@ onMounted(() => {
   caricaViaggi();
 });
 
-const viaggiFiltrati = computed(() => {
-  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);
+const viaggiFiltrati = computed(() => {   //ci creiamo una varaibil computed che is ricalcola in automatica ongi volta che i dati al suo intenro cambiano
+  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);   //prendiamo tutta la lista dei viaggi, 'viaggi.vue' e la filtrimao tenendo e restituendo solo  i viaggi in cui il mese corrisponde al meseselezazionato dall'utente
 });
 
-const cambiaMese = (nuovoMese) => {
-  meseSelezionato.value = nuovoMese;
+const cambiaMese = (nuovoMese) => {   //una variabile  che scatterà quando l'utente clicca su un bottone dei mesi 
+  meseSelezionato.value = nuovoMese;   //sostiuiamo il mese attuale con qello nuovo poichè è una variabile reattiva
 };
 
-const apriViaggio = (viaggio) => {
-  if (viaggio.rotta) {
-    router.push(viaggio.rotta);
+const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quadno si clicca il bottone 'vedi Viaggio >'
+  if (viaggio.rotta) {  //ci assicurimao che il viaggio cliccato abbiamo una rotta valida 
+    router.push(viaggio.rotta);  //Diciamo al router di Vue di cambiare pagina e portare l'utente all'indirizzo url specifico nella rotta di quel viaggio.
   }
 };
 </script>

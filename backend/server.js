@@ -85,8 +85,8 @@ const schemaPrenota_Misterioso = {
         continente:        { type: "string", enum: ["europa","asia","africa","americhe","oceania","qualsiasi",""] },
         dataPartenza:      { type: "string", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
         durata:            { type: "string", enum: ["3-5","6-10","11-15","16+"] },
-        budget:            { type: "string", enum: ["800-2000","2000-4000","4000-7000","7000+"] },
-        tipoEsperienza:    { type: "string", enum: ["cultura","avventura","mare","metropoli","cibo","qualsiasi"] },
+        budget:            { type: "string", enum: ["economico","medio","premium","luxury","qualsiasi",""] },
+        tipoEsperienza:    { type: "string", enum: ["cultura","avventura","mare","metropoli","cibo","sorpresa","qualsiasi",""] },
         numeroViaggiatori: { type: "integer", minimum: 1, maximum: 50 },
         note:              { type: "string",  maxLength: 1000 }
     }

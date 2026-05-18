@@ -254,6 +254,16 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+}
+
+@media (hover: none) and (pointer: coarse) {
+    /* Su mobile (iOS/Android) background-attachment: fixed non funziona correttamente */
+    .fascia-foto {
+        background-attachment: scroll;
+    }
+    .panel {
+        background-attachment: scroll;
+    }
 }   
 
 .fascia-titolo {  
@@ -373,5 +383,18 @@ body {
     
     .galleria-grid {
         grid-template-columns: 1fr; 
+    }
+
+    .foto-grid {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll; /* fix iOS */
+        width: 100%;
+    }
+
+    .fascia-foto {
+        height: 50vh;
+        background-attachment: scroll; /* fix iOS parallax */
     }
 }

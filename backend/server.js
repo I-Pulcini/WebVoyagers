@@ -46,6 +46,7 @@ const pool = new Pool({
   connectionTimeoutMillis: 15000,
 });
 
+
 // --- 2. CONFIGURAZIONE DELLE SESSIONI (Rif: Parte 1.pdf) ---
 // Abbiamo attivato il sistema delle sessioni per permettere al sito di riconoscere gli utenti
 app.use(session({

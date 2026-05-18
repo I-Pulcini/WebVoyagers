@@ -115,7 +115,7 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url('/web.jpg');
+  background-image: url('/Socotra2.jpg');
   background-size: cover;
   background-position: center;
   padding-top: 60px;

@@ -112,7 +112,7 @@ const response = await fetch('/api/cerca-viaggio', {
 
 <style scoped>
 .home-wrapper {
-  background-image: url('/web.jpg');
+  background-image: url('/Socotra2.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

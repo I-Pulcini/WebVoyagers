@@ -70,10 +70,10 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
 </script>
 
 <template>
-  <div class="ViaggiDisponibili-wrapper">
+  <div class="ViaggiDisponibili-wrapper">   //wrapper si intende il blocco div più esterno di tutta la pagina
 
-    <header class="fascia-foto">
-      <div class="overlay-testo">
+    <header class="fascia-foto">  
+      <div class="overlay-testo">   //overlay: sopra la pagina sfondo
         <h1 class="fascia-titolo">PROSSIME PARTENZE</h1>
         <p class="sottotitolo-header">
           WebVoyagers ti offre viaggi organizzati verso destinazioni poco conosciute, creando insieme un itinerario personalizzato.
@@ -86,10 +86,10 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
 
       <section class="mesi-container">
         <button
-          v-for="mese in mesi"
-          :key="mese"
-          @click="cambiaMese(mese)"
-          :class="['btn-mese', { 'selezionato': mese === meseSelezionato }]"
+          v-for="mese in mesi"   //è una diretti Vue, crea e ripete questo bottone per ogni mese
+          :key="mese"  // Vue vuole una chiave univoca per gli elementi ripetuti --> mese
+          @click="cambiaMese(mese)"  //quando cliccchiamo questo bottone si esegue la funzione cambiaMese passandole il nome specifico del mese
+          :class="['btn-mese', { 'selezionato': mese === meseSelezionato }]"  // se il mese che abbiamo scelto == meseSelezionato si colorerà in maniera diversa
         >
           {{ mese }}
         </button>
@@ -339,16 +339,17 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {  //responsive design serve a cambiare gli stili in base allo schermo usato 
+ // se la larghezzo dello schermo è <= di 768px esegui queste cose
   .fascia-foto {
-    height: 50vh;
+    height: 50vh; //cambia l'altezza dell'immagine sfondo
   }
   .fascia-titolo {
-    letter-spacing: 2px;
+    letter-spacing: 2px;   //riduci lo spazio tra una lettere all'altra (da 5px a 2px)
     white-space: normal;
   }
   .riga-viaggio {
-    flex-wrap: wrap;
+    flex-wrap: wrap;  //tutti i bottini ecc staranno verticali e non orizzontali come nel PC
   }
 }
 </style>

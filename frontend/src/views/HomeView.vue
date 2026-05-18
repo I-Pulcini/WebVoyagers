@@ -1,41 +1,30 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'  //importiamo la libreria ref e onMounted, ref serve per creare delle variabili reattive mentre onMounted serve per costruire HTML
+import { useRouter } from 'vue-router'  //importiamo la funione che serve per spostare l'utente da una pagina all'altra programmaticamente
 
-/* VUE ROUTER: Importiamo il router di Vue per poter cambiare pagina 
-   senza ricaricare il browser (logica Single Page Application) */
-const router = useRouter()
 
-/* COMPOSITION API: Usiamo ref() per creare variabili reattive. 
-   Quando queste cambiano, l'HTML si aggiorna da solo! */
+const router = useRouter()  //variabile in cui salviamo il router
+
+
 const mesi = ref([])
-const paesi = ref([])
-// Lasciamo i due valori a stringa vuota così i menu mostrano sempre il placeholder all'apertura
-const selectedMese = ref("")
-const selectedPaese = ref("")
-// Abbiamo creato una variabile per mostrare un eventuale errore se la combinazione non esiste
-const erroreRicerca = ref('')
+const paesi = ref([])  //creiamo due array reattivi vuoti, che servono per mostrare i paesi ed i mesi a tendina del form
 
-/* LIFECYCLE HOOKS: onMounted scatta non appena la pagina viene caricata.
-   Qui facciamo la chiamata AJAX per prendere i dati dal JSON. */
-onMounted(() => {
-  // Abbiamo caricato il file destinazioni.json usando XMLHttpRequest puro (XHR).
-  // È l'API tradizionale per fare AJAX (Asynchronous JavaScript And XML),
-  // alternativa "classica" a fetch(). La usiamo qui in modo dimostrativo
-  // per mostrare il pattern XHR completo: open + handler + send.
-  // (Negli altri endpoint del progetto usiamo fetch per la sintassi più moderna basata su Promise.)
+const selectedMese = ref("")
+const selectedPaese = ref("")  //sono due stringhe reattivev vuote che verranno riempite quando l'utente selezionerà il mese ed il paese in tempo reale
+
+const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di errore
+
+
+onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare
+
+  const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
   
-  // Abbiamo creato un nuovo oggetto XMLHttpRequest
-  const xhr = new XMLHttpRequest()
-  
-  // Abbiamo registrato un handler che viene chiamato ad ogni cambio di stato (readyState).
-  // I valori possibili di readyState sono:
-  // 0 = UNSENT, 1 = OPENED, 2 = HEADERS_RECEIVED, 3 = LOADING, 4 = DONE.
-  // Procediamo a leggere i dati solo quando readyState === 4 (DONE) e status === 200 (OK).
-  xhr.onreadystatechange = function() {
+
+ 
+  xhr.onreadystatechange = function() {  //
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        // Abbiamo deserializzato la stringa JSON ricevuta in un oggetto JavaScript
+       
         const data = JSON.parse(xhr.responseText)
         mesi.value = data.mesi
         paesi.value = data.paesi
@@ -44,30 +33,21 @@ onMounted(() => {
       }
     }
   }
-  
-  // Abbiamo aperto la richiesta GET in modalità asincrona (terzo parametro = true)
+
   xhr.open('GET', '/destinazioni.json', true)
   
-  // Abbiamo inviato la richiesta. Per le GET, send() viene chiamato senza argomenti.
   xhr.send()
 })
 
-/* GESTIONE EVENTI: Funzione chiamata al submit del form */
-// Abbiamo cambiato la logica: invece di costruire un URL "vecchio stile" tipo /agosto_algeria,
-// chiediamo al backend di trovare l'id del viaggio corrispondente nel DB e poi navighiamo
-// alla pagina dinamica /viaggio/:id che è l'unica che esiste ora nel router.
 const cercaDestinazione = async () => {
   if (!selectedMese.value || !selectedPaese.value) return
   
   erroreRicerca.value = ''
-  
-  // Salviamo nel LocalStorage l'ultima ricerca (utile per altre statistiche)
+
   localStorage.setItem("ultimaMeta", selectedPaese.value)
   
   try {
-    // Abbiamo costruito le opzioni della richiesta in due passi:
-// prima un oggetto base, poi lo arricchiamo con lo spread operator (...).
-// Questo dimostra come spread permetta di estendere oggetti esistenti.
+  
 const opzioniBase = {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' }
@@ -75,8 +55,7 @@ const opzioniBase = {
 const response = await fetch('/api/cerca-viaggio', {
   ...opzioniBase,
   body: JSON.stringify({
-    // Abbiamo usato l'operatore nullish coalescing (??) per fornire stringhe vuote
-    // di fallback se le ref dovessero per qualche motivo essere null o undefined.
+   
     mese: selectedMese.value ?? '',
     destinazione: selectedPaese.value ?? ''
   })
@@ -85,10 +64,10 @@ const response = await fetch('/api/cerca-viaggio', {
     const data = await response.json()
     
     if (response.ok) {
-      // Abbiamo trovato il viaggio: navighiamo alla pagina dinamica
+     
       router.push(`/viaggio/${data.id}`)
     } else {
-      // Nessun viaggio trovato per questa combinazione: andiamo alla pagina di errore
+     
       router.push('/non-disponibile')
     }
   } catch (err) {

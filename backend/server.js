@@ -30,12 +30,20 @@ app.use(express.json());
 // Abbiamo memorizzato l'URL di connessione fornito da Supabase per accedere al nostro database in cloud
 // Abbiamo letto la stringa di connessione dal file .env per non esporre la password nel codice sorgente
 // Abbiamo creato un nuovo oggetto Pool passando la nostra stringa di connessione
+// Parsifichiamo la connection string manualmente per forzare l'hostname
+const connectionString = process.env.DATABASE_URL;
+const url = new URL(connectionString);
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  user: url.username,
+  password: url.password,
+  host: url.hostname, // Questo forza l'uso dell'hostname come stringa
+  port: url.port || 5432,
+  database: url.pathname.split('/')[1],
   ssl: {
     rejectUnauthorized: false
   },
-  connectionTimeoutMillis: 10000,
+  connectionTimeoutMillis: 15000,
 });
 
 // --- 2. CONFIGURAZIONE DELLE SESSIONI (Rif: Parte 1.pdf) ---

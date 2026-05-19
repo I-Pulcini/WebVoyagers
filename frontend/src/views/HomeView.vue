@@ -79,7 +79,7 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
         <div class="form-group">
           <label for="parla">Quando? :</label>
-          <select id="parla" v-model="selectedMese" required>
+          <select id="parla" v-model="selectedMese" >
             <option value="" disabled>Scegli un periodo</option>
             <option v-for="mese in mesi" :key="mese" :value="mese">{{ mese }}</option>
           </select>
@@ -87,7 +87,7 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
         <div class="form-group">
           <label for="paese">Scegli un paese:</label>
-          <select id="paese" v-model="selectedPaese" required>
+          <select id="paese" v-model="selectedPaese" >
             <option value="" disabled>Scegli una destinazione...</option>
             <option v-for="paese in paesi" :key="paese" :value="paese">{{ paese }}</option>
           </select>

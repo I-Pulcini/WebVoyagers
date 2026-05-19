@@ -17,13 +17,13 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
   const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
 
   xhr.onreadystatechange = function() {  //handler chiamato ad ogni cambio di stato: procediamo solo quando readyState === 4 (DONE) e status === 200 (OK)
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
+    if (xhr.readyState === 4) {   // significa se la richiesta completata il server ha finito di rispondere e si chiude la connessione
+      if (xhr.status === 200) {   //status 200 è il coice HTTP che significa che tutto è andato a buon fine
         const data = JSON.parse(xhr.responseText)  //deserializziamo la stringa JSON ricevuta in un oggetto JavaScript
         mesi.value = data.mesi
         paesi.value = data.paesi
-      } else {
-        console.error("Errore XHR:", xhr.status, xhr.statusText)
+      } else {   //se il server risponde con errore
+        console.error("Errore XHR:", xhr.status, xhr.statusText)   //stiamo l'errore
       }
     }
   }
@@ -33,12 +33,12 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
   xhr.send()  //inviamo la richiesta; per le GET, send() viene chiamato senza argomenti
 })
 
-const cercaDestinazione = async () => {
-  if (!selectedMese.value || !selectedPaese.value) return
+const cercaDestinazione = async () => {    //una funzione asincrona che scatterà quando l'utente clicca il bottone Cerca
+  if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore
 
   erroreRicerca.value = ''
 
-  localStorage.setItem("ultimaMeta", selectedPaese.value)  //salviamo nel LocalStorage l'ultima ricerca
+  localStorage.setItem("ultimaMeta", selectedPaese.value)  //salviamo il paese cercato nel LocalStorage 
 
   try {
     //costruiamo le opzioni della richiesta in due passi: prima un oggetto base, poi lo arricchiamo con lo spread operator
@@ -46,7 +46,7 @@ const cercaDestinazione = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     }
-    const response = await fetch('/api/cerca-viaggio', {
+    const response = await fetch('/api/cerca-viaggio', {   //API 10.c
       ...opzioniBase,
       body: JSON.stringify({
         mese: selectedMese.value ?? '',       //usiamo l'operatore nullish coalescing (??) per fornire stringhe vuote di fallback

@@ -48,7 +48,6 @@ const schemaRegistrazione = {
     type: "object",
     required: ["username", "email", "password"],
     properties: {
-        telefono: {type:"string", pattern: "^[0-9+\\s\\-]+$"},
         username: { type: "string", minLength: 3, maxLength: 50 },
         email:    { type: "string", pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
         password: { type: "string", minLength: 6, maxLength: 100 }
@@ -68,13 +67,13 @@ const schemaLogin = {
 
 const schemaPrenota = {
     type: "object",
-    required: ["idViaggio", "numeroViaggiatori", "nomeCompleto", "emailContatto"],
+    required: ["idViaggio", "numeroViaggiatori", "nomeCompleto", "emailContatto","telefono"],
     properties: {
         idViaggio:         { type: "integer", minimum: 1 },
         numeroViaggiatori: { type: "integer", minimum: 1, maximum: 50 },
         nomeCompleto:      { type: "string",  minLength: 2, maxLength: 150 },
         emailContatto:     { type: "string",  pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
-        telefono:          { type: "string",  maxLength: 50 },
+        telefono:          { type: "string", pattern: "^[0-9+\\s\\-]+$"},
         note:              { type: "string",  maxLength: 1000 }
     }
 };

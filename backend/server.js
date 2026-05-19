@@ -48,6 +48,7 @@ const schemaRegistrazione = {
     type: "object",
     required: ["username", "email", "password"],
     properties: {
+        telefono: {type:"string", pattern: "^[0-9+\\s\\-]+$"},
         username: { type: "string", minLength: 3, maxLength: 50 },
         email:    { type: "string", pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$" },
         password: { type: "string", minLength: 6, maxLength: 100 }

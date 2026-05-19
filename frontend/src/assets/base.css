@@ -248,7 +248,8 @@ body {
     background-image: url('/algeria.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     width: 100%;
     height: 75vh; 
     display: flex; 
@@ -330,7 +331,8 @@ body {
     display: none; 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    min-height: 320px;
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -360,10 +362,11 @@ body {
 }
 
 .foto-grid {
-    height: 250px;
+    aspect-ratio: 4 / 3;
     background-size: cover;
     background-position: center;
     border-radius: var(--radius-lg);
+    width: 100%;
 }
 
 /* =========================================================
@@ -386,7 +389,7 @@ body {
     }
 
     .foto-grid {
-        height: 200px;
+        aspect-ratio: 4 / 3;
         background-size: cover;
         background-position: center;
         background-attachment: scroll; /* fix iOS */
@@ -396,5 +399,10 @@ body {
     .fascia-foto {
         height: 50vh;
         background-attachment: scroll; /* fix iOS parallax */
+    }
+
+    .panel {
+        min-height: 220px;
+        background-attachment: scroll; /* fix iOS */
     }
 }

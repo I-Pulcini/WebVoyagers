@@ -14,6 +14,7 @@ const email = ref('')
 const password = ref('')
 //abbiamo scritto 3 variabili vuote che quando l'utente le scriverà nelle caselle di testo di riempiranno
 const messaggio = ref('')   //serve per stampare a schermo eventuali errori
+const mostraPassword = ref(false)  //variabile reattiva booleana: se true mostra la password in chiaro, se false la nasconde con i pallini
 
 
 
@@ -91,7 +92,27 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
 
         <div class="form-group">
           <label>Password</label>
-          <input type="password" v-model="password" required placeholder="Inserisci la password">
+          <div class="input-password-wrapper">
+            <input
+              :type="mostraPassword ? 'text' : 'password'"
+              v-model="password"
+              required
+              placeholder="Inserisci la password"
+            >
+            <span class="occhio" @click="mostraPassword = !mostraPassword" :title="mostraPassword ? 'Nascondi password' : 'Mostra password'">
+              <!-- occhio aperto -->
+              <svg v-if="mostraPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <!-- occhio chiuso (sbarrato) -->
+              <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </span>
+          </div>
         </div>
 
         <button type="submit" class="btn-submit">
@@ -189,5 +210,35 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
   border-radius: 5px;
   margin-bottom: 15px;
   font-weight: bold;
+}
+
+.input-password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-password-wrapper input {
+  width: 100%;
+  padding-right: 42px;  /* spazio per l'icona */
+}
+
+.occhio {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #999;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.occhio:hover {
+  color: #d35400;
+}
+
+.occhio svg {
+  width: 20px;
+  height: 20px;
 }
 </style>

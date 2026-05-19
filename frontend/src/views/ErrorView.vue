@@ -1,9 +1,8 @@
 ﻿<script setup>
 import { RouterLink } from "vue-router"
 
-/* --- PAGINA DI ERRORE 404 --- */
-// Abbiamo creato questa pagina per gestire sia gli URL inesistenti (rotta catch-all)
-// sia le ricerche che non trovano risultati (es. mese+destinazione non disponibile).
+//abbiamo creato questa pagine di errore per gestire sia gli URL inesistenti e sia le ricerche che non trovano i risutati
+
 </script>
 
 <template>

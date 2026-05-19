@@ -34,7 +34,7 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
 })
 
 const cercaDestinazione = async () => {    //una funzione asincrona che scatterà quando l'utente clicca il bottone Cerca
-  if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore
+//  if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore
 
   erroreRicerca.value = ''
 

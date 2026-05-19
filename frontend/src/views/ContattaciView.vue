@@ -1,9 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 
-/* COMPOSITION API: gestiamo il form con ref reattive.
-   Al submit chiamiamo il backend per salvare il messaggio nel database. */
-
 const nome = ref('')
 const email = ref('')
 const telefono = ref('')
@@ -12,7 +9,6 @@ const messaggio = ref('')
 const privacy = ref(false)
 const inviato = ref(false)
 const errore = ref('')
-// Abbiamo creato la variabile per gestire lo stato di invio in corso (per disabilitare il bottone)
 const inviando = ref(false)
 
 const motivi = [
@@ -23,37 +19,32 @@ const motivi = [
   'Altro'
 ]
 
-/* Galleria con tutte le foto già presenti nella cartella public/.
-   Ogni elemento ha un'immagine e una didascalia per dare contesto. */
 const galleria = [
-  { src: '/Sfondo.jpg', didascalia: 'Le nostre destinazioni' },
-  { src: '/algeri.jpg', didascalia: 'Algeri, Algeria' },
-  { src: '/elhamma.jpg', didascalia: 'El Hamma, Algeria' },
-  { src: '/martiri.jpg', didascalia: 'Memoriale dei Martiri, Algeri' },
-  { src: '/ghardaia.jpg', didascalia: 'Ghardaïa, valle del M\'zab' },
-  { src: '/menia.jpg', didascalia: 'El Menia, Sahara' },
-  { src: '/salah.jpg', didascalia: 'In Salah, Algeria' },
-  { src: '/tamanrasset.jpg', didascalia: 'Tamanrasset' },
-  { src: '/assekrem.jpg', didascalia: 'Assekrem, Hoggar' },
-  { src: '/hoggar.jpg', didascalia: 'Massiccio dell\'Hoggar' },
-  { src: '/tuareg.jpg', didascalia: 'Popolo Tuareg' },
-  { src: '/tipasa.jpg', didascalia: 'Tipasa, rovine romane' },
-  { src: '/Sfondo2.jpg', didascalia: 'Mete tropicali' },
-  { src: '/Sfondo3.jpg', didascalia: 'Avventure in arrivo' },
-  { src: '/Sfondo4.jpg', didascalia: 'I nostri viaggi' }
+  { src: '/Socotra2.jpg',      didascalia: 'Isola di Socotra, Yemen' },
+  { src: '/Chefchaouen.jpg',   didascalia: 'Chefchaouen, Marocco' },
+  { src: '/MachuPicchu.jpg',   didascalia: 'Machu Picchu, Perù' },
+  { src: '/Zanzibar.jpg',      didascalia: 'Zanzibar, Tanzania' },
+  { src: '/Tromso28.jpg',      didascalia: 'Tromsø, Norvegia' },
+  { src: '/Marrakech.jpg',     didascalia: 'Marrakech, Marocco' },
+  { src: '/Cambogia.jpg',      didascalia: 'Angkor Wat, Cambogia' },
+  { src: '/Cusco.jpg',         didascalia: 'Cusco, Perù' },
+  { src: '/StoneTown.jpg',     didascalia: 'Stone Town, Zanzibar' },
+  { src: '/Kiruna.jpg',        didascalia: 'Kiruna, Lapponia Svedese' },
+  { src: '/Cancun.jpg',        didascalia: 'Cancún, Messico' },
+  { src: '/Uganda27.jpg',      didascalia: 'Uganda' },
+  { src: '/Sfondo2.jpg',       didascalia: 'Mete tropicali' },
+  { src: '/Sfondo3.jpg',       didascalia: 'Avventure in arrivo' },
+  { src: '/Sfondo4.jpg',       didascalia: 'I nostri viaggi' }
 ]
 
-// Abbiamo creato la funzione asincrona che invia il messaggio al backend
 const inviaForm = async () => {
   errore.value = ''
   inviato.value = false
 
-  // Abbiamo verificato che i campi obbligatori siano compilati
   if (!nome.value || !email.value || !motivo.value || !messaggio.value) {
     errore.value = 'Compila tutti i campi obbligatori (*).'
     return
   }
-  // Abbiamo verificato che l'utente abbia accettato la privacy
   if (!privacy.value) {
     errore.value = 'Devi accettare la Privacy Policy per continuare.'
     return
@@ -62,8 +53,6 @@ const inviaForm = async () => {
   inviando.value = true
 
   try {
-    // Abbiamo chiamato l'endpoint del backend includendo i cookie di sessione
-    // (così se l'utente è loggato, possiamo collegare il messaggio al suo profilo)
     const response = await fetch('/api/contattaci', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -80,7 +69,6 @@ const inviaForm = async () => {
     const data = await response.json()
 
     if (response.ok) {
-      // Abbiamo svuotato i campi del form e mostrato il messaggio di conferma
       inviato.value = true
       nome.value = ''
       email.value = ''
@@ -89,8 +77,7 @@ const inviaForm = async () => {
       messaggio.value = ''
       privacy.value = false
     } else {
-      // Abbiamo mostrato l'errore restituito dal backend
-      errore.value = data.error || 'Errore durante l\'invio del messaggio.'
+      errore.value = data.error || "Errore durante l'invio del messaggio."
     }
   } catch (err) {
     console.error('Errore nella chiamata al backend:', err)
@@ -104,7 +91,6 @@ const inviaForm = async () => {
 <template>
   <div class="Contattaci-wrapper">
 
-    <!-- HEADER VERDE -->
     <header class="header-verde">
       <div class="header-content">
         <h1 class="titolo-pagina">WebVoyagers</h1>
@@ -112,7 +98,6 @@ const inviaForm = async () => {
       </div>
     </header>
 
-    <!-- FORM CONTATTI -->
     <main class="contenuto-principale">
       <section class="sezione-form">
         <h2>Contattaci</h2>
@@ -171,13 +156,12 @@ const inviaForm = async () => {
       </section>
     </main>
 
-    <!-- GALLERIA FOTO -->
     <section class="sezione-galleria">
       <h2 class="titolo-galleria">Lasciati ispirare</h2>
       <p class="sottotitolo-galleria">Alcuni momenti dei nostri viaggi</p>
       <div class="galleria-grid">
         <div v-for="(foto, index) in galleria" :key="index" class="galleria-item">
-          <img :src="foto.src" :alt="foto.didascalia" />
+          <img :src="foto.src" :alt="foto.didascalia" loading="lazy" />
           <div class="galleria-overlay">
             <span>{{ foto.didascalia }}</span>
           </div>
@@ -203,7 +187,7 @@ const inviaForm = async () => {
   color: #333;
 }
 
-/* ===== HEADER VERDE ===== */
+/* HEADER */
 .header-verde {
   background-color: #00c4b4;
   width: 100%;
@@ -212,10 +196,7 @@ const inviaForm = async () => {
   text-align: center;
 }
 
-.header-content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+.header-content { max-width: 1000px; margin: 0 auto; }
 
 .titolo-pagina {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -231,7 +212,7 @@ const inviaForm = async () => {
   opacity: 0.95;
 }
 
-/* ===== FORM ===== */
+/* FORM */
 .contenuto-principale {
   width: 100%;
   max-width: 800px;
@@ -272,16 +253,8 @@ const inviaForm = async () => {
   font-weight: bold;
 }
 
-.form-contatti {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
+.form-contatti { display: flex; flex-direction: column; gap: 25px; }
+.form-group { display: flex; flex-direction: column; }
 
 .form-group label {
   font-weight: bold;
@@ -290,9 +263,7 @@ const inviaForm = async () => {
   font-size: 0.95rem;
 }
 
-.obbligatorio {
-  color: #d81b60;
-}
+.obbligatorio { color: #d81b60; }
 
 .form-group input,
 .form-group select,
@@ -314,40 +285,14 @@ const inviaForm = async () => {
   box-shadow: 0 0 0 3px rgba(0,196,180,0.15);
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
+.form-group textarea { resize: vertical; min-height: 120px; }
 
-.form-checkbox {
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
+.form-checkbox { flex-direction: row; align-items: center; gap: 10px; }
+.form-checkbox input { width: 18px; height: 18px; cursor: pointer; accent-color: #00c4b4; }
+.form-checkbox label { margin-bottom: 0; font-weight: normal; color: #555; }
+.form-checkbox label a { color: #00c4b4; text-decoration: underline; }
 
-.form-checkbox input {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: #00c4b4;
-}
-
-.form-checkbox label {
-  margin-bottom: 0;
-  font-weight: normal;
-  color: #555;
-}
-
-.form-checkbox label a {
-  color: #00c4b4;
-  text-decoration: underline;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
+.form-actions { display: flex; justify-content: flex-end; margin-top: 10px; }
 
 .btn-invia {
   background-color: #00c4b4;
@@ -361,17 +306,10 @@ const inviaForm = async () => {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.btn-invia:hover {
-  background-color: #00a89a;
-  transform: translateY(-2px);
-}
-.btn-invia:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  transform: none;
-}
+.btn-invia:hover { background-color: #00a89a; transform: translateY(-2px); }
+.btn-invia:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
-/* ===== GALLERIA ===== */
+/* GALLERIA */
 .sezione-galleria {
   background-color: #f9f9f9;
   padding: 80px 5%;
@@ -417,9 +355,7 @@ const inviaForm = async () => {
   transition: transform 0.5s ease;
 }
 
-.galleria-item:hover img {
-  transform: scale(1.1);
-}
+.galleria-item:hover img { transform: scale(1.1); }
 
 .galleria-overlay {
   position: absolute;
@@ -435,30 +371,17 @@ const inviaForm = async () => {
   transition: opacity 0.3s ease;
 }
 
-.galleria-item:hover .galleria-overlay {
-  opacity: 1;
-}
+.galleria-item:hover .galleria-overlay { opacity: 1; }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .galleria-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .galleria-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .header-verde {
-    padding: 100px 5% 60px 5%;
-  }
-  .galleria-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .form-actions {
-    justify-content: stretch;
-  }
-  .btn-invia {
-    width: 100%;
-  }
+  .header-verde { padding: 100px 5% 60px 5%; }
+  .galleria-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .form-actions { justify-content: stretch; }
+  .btn-invia { width: 100%; }
 }
 </style>

@@ -364,18 +364,42 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         
         // Abbiamo scelto una destinazione casuale tra quelle compatibili (è il viaggio "vero" assegnato all'utente)
         const destinazioneScelta = risultato.rows[Math.floor(Math.random() * risultato.rows.length)];
-        
-        // Abbiamo cercato 2 destinazioni "distrattori": viaggi diversi da quello vero,
-        // così l'utente vedrà 3 opzioni nella pagina di conferma e dovrà indovinare quale è la sua
-        const distrattoriQuery = await pool.query(
-            `SELECT * FROM destinazioni_misteriose 
-             WHERE attivo = TRUE 
-             AND id != $1
-             ORDER BY RANDOM() 
-             LIMIT 2`,
-            [destinazioneScelta.id]
-        );
-        
+
+        // Calcoliamo quanti giorni mancano alla partenza per decidere se mostrare i distrattori
+        const oggiData = new Date();
+        oggiData.setHours(0, 0, 0, 0);
+        const partenzaDate = new Date(dataPartenza);
+        const giorniAllaPartenza = Math.floor((partenzaDate - oggiData) / (1000 * 60 * 60 * 24));
+
+        // I distrattori vengono mostrati solo se la partenza è tra più di 7 giorni
+        // e rispettano gli stessi filtri scelti dall'utente (continente, budget, durata)
+        let distrattoriRows = [];
+        if (giorniAllaPartenza > 7) {
+            let distrattoriSQL = `
+                SELECT * FROM destinazioni_misteriose
+                WHERE attivo = TRUE
+                AND id != $1
+                AND budget_min <= $2
+                AND budget_max >= $3
+                AND durata_min <= $4
+                AND durata_max >= $5
+            `;
+            const distrattoriParams = [destinazioneScelta.id, budgetMax, budgetMin, durataMax, durataMin];
+
+            if (continente && continente !== 'qualsiasi') {
+                distrattoriSQL += ` AND continente = $${distrattoriParams.length + 1}`;
+                distrattoriParams.push(continente);
+            }
+            if (tipoEsperienza && tipoEsperienza !== 'sorpresa') {
+                distrattoriSQL += ` AND tipo_esperienza = $${distrattoriParams.length + 1}`;
+                distrattoriParams.push(tipoEsperienza);
+            }
+
+            distrattoriSQL += ` ORDER BY RANDOM() LIMIT 2`;
+            const distrattoriQuery = await pool.query(distrattoriSQL, distrattoriParams);
+            distrattoriRows = distrattoriQuery.rows;
+        }
+
         // Abbiamo costruito la versione "anonima" del viaggio scelto: solo indizi, niente nome
         const viaggioSceltoAnonimo = {
             continente: destinazioneScelta.continente,
@@ -386,7 +410,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         };
         
         // Abbiamo costruito la versione anonima dei 2 distrattori, sempre con i soli indizi
-        const viaggiSimiliAnonimi = distrattoriQuery.rows.map(dest => ({
+        const viaggiSimiliAnonimi = distrattoriRows.map(dest => ({
             continente: dest.continente,
             tipo_esperienza: dest.tipo_esperienza,
             indizio_1: dest.indizio_1,

@@ -1,30 +1,20 @@
 <script setup>
-import { ref, onMounted } from 'vue'  //importiamo la libreria ref e onMounted, ref serve per creare delle variabili reattive mentre onMounted serve per costruire HTML
-import { useRouter } from 'vue-router'  //importiamo la funione che serve per spostare l'utente da una pagina all'altra programmaticamente
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-
-const router = useRouter()  //variabile in cui salviamo il router
-
+const router = useRouter()
 
 const mesi = ref([])
-const paesi = ref([])  //creiamo due array reattivi vuoti, che servono per mostrare i paesi ed i mesi a tendina del form
-
+const paesi = ref([])
 const selectedMese = ref("")
-const selectedPaese = ref("")  //sono due stringhe reattivev vuote che verranno riempite quando l'utente selezionerà il mese ed il paese in tempo reale
+const selectedPaese = ref("")
+const erroreRicerca = ref('')
 
-const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di errore
-
-
-onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare
-
-  const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
-  
-
- 
-  xhr.onreadystatechange = function() {  //
+onMounted(() => {
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-       
         const data = JSON.parse(xhr.responseText)
         mesi.value = data.mesi
         paesi.value = data.paesi
@@ -33,41 +23,30 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
       }
     }
   }
-
   xhr.open('GET', '/destinazioni.json', true)
-  
   xhr.send()
 })
 
 const cercaDestinazione = async () => {
   if (!selectedMese.value || !selectedPaese.value) return
-  
   erroreRicerca.value = ''
-
   localStorage.setItem("ultimaMeta", selectedPaese.value)
-  
   try {
-  
-const opzioniBase = {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' }
-}
-const response = await fetch('/api/cerca-viaggio', {
-  ...opzioniBase,
-  body: JSON.stringify({
-   
-    mese: selectedMese.value ?? '',
-    destinazione: selectedPaese.value ?? ''
-  })
-})
-    
+    const opzioniBase = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    }
+    const response = await fetch('/api/cerca-viaggio', {
+      ...opzioniBase,
+      body: JSON.stringify({
+        mese: selectedMese.value ?? '',
+        destinazione: selectedPaese.value ?? ''
+      })
+    })
     const data = await response.json()
-    
     if (response.ok) {
-     
       router.push(`/viaggio/${data.id}`)
     } else {
-     
       router.push('/non-disponibile')
     }
   } catch (err) {
@@ -85,7 +64,7 @@ const response = await fetch('/api/cerca-viaggio', {
 
     <main class="main-content">
       <form @submit.prevent="cercaDestinazione">
-        
+
         <div class="form-group">
           <label for="parla">Quando? :</label>
           <select id="parla" v-model="selectedMese" required>
@@ -118,29 +97,31 @@ const response = await fetch('/api/cerca-viaggio', {
   background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
-  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .main-title {
   text-align: center;
   color: white;
-  font-size: 3.5em;
-  margin-top: 20px;
-  margin-bottom: 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: 40px;
   font-weight: 900;
   -webkit-text-stroke: 3px black;
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
 .main-content {
-  margin-top: 25vh;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  background: rgba(100, 100, 100, 0.4);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 560px;
+  background: rgba(80, 80, 80, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 35px 40px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
 
 .form-group { margin-bottom: 20px; }
@@ -152,33 +133,36 @@ const response = await fetch('/api/cerca-viaggio', {
   color: #ffffff;
 }
 
-.form-group select, .form-group input {
+.form-group select,
+.form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 11px 14px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 7px;
   font-size: 16px;
 }
 
 #bottoneCerca {
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  background-color: #007bff;
+  padding: 13px;
+  margin-top: 8px;
+  background-color: #00c4b4;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.25s, transform 0.2s;
 }
 
-@media (max-width: 768px) {
-  .main-title { font-size: 2.5em; }
-  .main-content {
-    width: 90%;
-    padding: 20px;
-    margin-top: 15vh;
-  }
+#bottoneCerca:hover {
+  background-color: #00a89a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .main-title { -webkit-text-stroke: 2px black; }
+  .main-content { padding: 25px 20px; }
 }
 </style>

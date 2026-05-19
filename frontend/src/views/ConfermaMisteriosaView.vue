@@ -10,28 +10,34 @@ import { prenotazioneStore } from '../stores/prenotazioneStore'
 // Abbiamo importato il router per poter reindirizzare l'utente se accede senza dati validi
 const router = useRouter()
 
-// Abbiamo creato la variabile reattiva che conterrà le 3 opzioni mescolate da mostrare
-const treOpzioni = ref([])
+// Variabile reattiva con le opzioni mescolate (1, 2 o 3 a seconda dei risultati disponibili)
+const opzioni = ref([])
+const soloUnViaggio = ref(false)
 
-// Al montaggio della pagina, controlliamo lo store e prepariamo le opzioni da visualizzare
 onMounted(() => {
-  // Se l'utente arriva qui direttamente senza aver prenotato, lo rimandiamo al form
   if (!prenotazioneStore.codice) {
     router.push('/viaggio-misterioso')
     return
   }
 
-  // Abbiamo unito il viaggio scelto e i due simili in un unico array
-  const tutte = [prenotazioneStore.viaggioScelto, ...prenotazioneStore.viaggiSimili]
+  // Unisce il viaggio scelto con i distrattori (possono essere 0, 1 o 2)
+  const tutte = [prenotazioneStore.viaggioScelto, ...(prenotazioneStore.viaggiSimili || [])]
 
-  // Abbiamo mescolato l'ordine con l'algoritmo Fisher-Yates così l'utente non sa quale è quello vero
+  // Se c'è solo il viaggio scelto (partenza entro 7 giorni o nessun distrattore disponibile),
+  // non mescoliamo e mostriamo solo quello
+  if (tutte.length === 1) {
+    soloUnViaggio.value = true
+    opzioni.value = tutte
+    return
+  }
+
+  // Mescola con Fisher-Yates così l'utente non sa quale è quello vero
   for (let i = tutte.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[tutte[i], tutte[j]] = [tutte[j], tutte[i]]
   }
 
-  // Abbiamo salvato l'array mescolato nella variabile reattiva
-  treOpzioni.value = tutte
+  opzioni.value = tutte
 })
 </script>
 
@@ -70,8 +76,8 @@ onMounted(() => {
           La verità ti sarà rivelata <strong>7 giorni prima della partenza</strong>!
         </p>
 
-        <div class="opzioni-grid-mistero">
-          <div v-for="(opzione, index) in treOpzioni" :key="index" class="opzione-mistero">
+        <div class="opzioni-grid-mistero" :style="{ gridTemplateColumns: `repeat(${opzioni.length}, 1fr)` }">
+          <div v-for="(opzione, index) in opzioni" :key="index" class="opzione-mistero">
             <div class="opzione-numero">?</div>
             <div class="opzione-meta">
               <span class="opzione-continente">{{ opzione.continente }}</span>

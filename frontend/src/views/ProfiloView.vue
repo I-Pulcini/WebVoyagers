@@ -3,13 +3,13 @@ import { ref, onMounted } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-/* --- PAGINA PROFILO UTENTE --- */
+
 /* Abbiamo creato una pagina dove l'utente loggato può:
    - Vedere i propri dati (username, email, data registrazione)
    - Cambiare la password (richiedendo la verifica della vecchia)
    - Consultare le statistiche personali sulle prenotazioni */
 
-const router = useRouter()
+const router = useRouter()   //var. del router
 
 // Abbiamo creato le variabili reattive per gestire i dati del profilo
 const profilo = ref(null)
@@ -28,27 +28,27 @@ const formCambioPasswordAperto = ref(false)
 // Abbiamo creato la funzione asincrona che scarica i dati del profilo dal backend
 const caricaProfilo = async () => {
   try {
-    const response = await fetch('/api/profilo', {
+    const response = await fetch('/api/profilo', {    //grazie alla funzine fetch() ci colleghiamo ad uno delgi API scritti nel backend
       credentials: 'include'
     })
-    const data = await response.json()
+    const data = await response.json()  //alla risposta cambiamo il formato il JSON
     
     if (response.ok) {
-      profilo.value = data
-    } else {
+      profilo.value = data  //inserimao i dati nel profilo
+    } else {   //se il server ha un errore
       errore.value = data.error || 'Errore nel caricamento del profilo.'
     }
   } catch (err) {
     console.error('Errore nella chiamata al backend:', err)
     errore.value = 'Errore di connessione al server.'
   } finally {
-    caricamento.value = false
-  }
+    caricamento.value = false  //rimuovimao lo stato di caricamento generale della pagina
+  } 
 }
 
 // Abbiamo creato la funzione che formatta la data di registrazione in italiano
-const formattaData = (dataIso) => {
-  return new Date(dataIso).toLocaleDateString('it-IT', { 
+const formattaData = (dataIso) => {   //funzione che riceve dal database una stringa di data in formato ISO
+  return new Date(dataIso).toLocaleDateString('it-IT', { //creiamo un oggetto Date nativo di JAVASCRIPT e invochaimo il metodo di formattazione per la localizzazione italiana
     day: 'numeric', 
     month: 'long', 
     year: 'numeric' 
@@ -80,7 +80,7 @@ const cambiaPassword = async () => {
   // Abbiamo verificato che tutti i campi siano compilati
   if (!passwordAttuale.value || !passwordNuova.value || !passwordConferma.value) {
     erroreCambioPassword.value = 'Compila tutti i campi.'
-    return
+    return   //interropiamo la funione se non ci sono tutti i campi
   }
   
   // Abbiamo verificato che le due nuove password coincidano
@@ -98,17 +98,18 @@ const cambiaPassword = async () => {
   cambiandoPassword.value = true
   
   try {
-    const response = await fetch('/api/cambia-password', {
-      method: 'POST',
+    const response = await fetch('/api/cambia-password', {  //svolgiamo la chiamata HTTP verso l'endpoint dedicato 
+      method: 'POST',   //specifichaimo che stiamo inviando un payload per alterare in modo sicuro uno stato sul server
+      headers: { 'Content-Type': 'application/json' }, // Dichiariamo che il body della richiesta conterrà una stringa formattata JSON
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
+      credentials: 'include', // Invio obbligatorio del cookie di sessione
+      body: JSON.stringify({   // Serializziamo l'oggetto contenente le credenziali da far verificare al server
         passwordAttuale: passwordAttuale.value,
         passwordNuova: passwordNuova.value
       })
     })
     
-    const data = await response.json()
+    const data = await response.json() // Convertiamo la risposta in oggetto JS.
     
     if (response.ok) {
       successoCambioPassword.value = data.message
@@ -131,14 +132,14 @@ const cambiaPassword = async () => {
   }
 }
 
-/* --- LIFECYCLE HOOK --- */
+// LIFECYCLE HOOK, eseguiamo questa porzione di codice nel momento in cui il componente viene integrato nel DOM visibile dle browser
 onMounted(() => {
   // Se l'utente non è loggato, lo rimandiamo al login
   if (!userStore.loggato) {
-    router.push('/login')
+    router.push('/login')  //andiamo nella pagina login
     return
   }
-  caricaProfilo()
+  caricaProfilo()  //se l'utente è gia loggato, usimao la funzione asincrona che ci serve per scaricare i dati dal server
 })
 </script>
 

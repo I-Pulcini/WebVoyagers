@@ -98,7 +98,7 @@ const chiudiModale = () => {
 const inviaPrenotazione = async () => {
   errore.value = ''
   
-  if (!nomeCompleto.value || !emailContatto.value || !numeroViaggiatori.value) {
+  if (!nomeCompleto.value || !emailContatto.value || !numeroViaggiatori.value || !telefono.value || numeroViaggiatori== 0 ) {
     errore.value = 'Compila tutti i campi obbligatori.'
     return
   }

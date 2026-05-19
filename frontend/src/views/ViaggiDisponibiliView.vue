@@ -1,4 +1,5 @@
 <script setup>
+  
 import { ref, computed, onMounted } from 'vue';
 // imoprtiamo da Vue tre strumenti essenziali: 1) ref variabili reattive, che HTML aggiorna da solo 2) computed: serve per creare variabili che is calcola e aggironano in automatico  in base ad altre variabili
 // 3) onMOunted, per eseguire una funzione appena la pagina web è stata caricata

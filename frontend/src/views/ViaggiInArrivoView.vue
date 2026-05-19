@@ -1,10 +1,13 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-
+//importiamo ref per le var.reattive
+//importiamo computed per le var. che si ricalcolao
+//imoprtimao onMounted che serve per eseguire azioni all'avvio della pagina
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
 const meseSelezionato = ref('Gennaio');
+//creaiamo un array statico con tutti i mesi, impostimao di defaul Gennaio
 
 // Abbiamo creato la variabile reattiva che conterrà i viaggi caricati dal backend
 const viaggi = ref([]);
@@ -31,10 +34,10 @@ const caricaViaggi = async () => {
         prezzo: v.prezzo + '€',
         postiTotali: v.posti_totali
       }));
-    } else {
+    } else {  //se il server risponde con qualche errore
       errore.value = data.error || 'Errore nel caricamento dei viaggi.';
     }
-  } catch (err) {
+  } catch (err) {  //gestione errori
     console.error('Errore nella chiamata al backend:', err);
     errore.value = 'Errore di connessione al server.';
   } finally {
@@ -44,15 +47,15 @@ const caricaViaggi = async () => {
 
 // Abbiamo agganciato il caricamento dei viaggi al montaggio della pagina
 onMounted(() => {
-  caricaViaggi();
+  caricaViaggi();  //funzione che va a scaricare i dati dal database
 });
 
-const viaggiFiltrati = computed(() => {
-  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);
+const viaggiFiltrati = computed(() => {   //è una var che si ricalcola in automatico ogni volta che una var. al suo interno cambia
+  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);  //prende l'intera ista di viaggi scaricati dal sevrer e la filtra, restituendo solo i viaggi in cui il mese corrisponde al mese cliccato dall'utente
 });
 
-const cambiaMese = (nuovoMese) => {
-  meseSelezionato.value = nuovoMese;
+const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa click su uno dei bottini dei mesi
+  meseSelezionato.value = nuovoMese;  //cambia la var.reattiva con il nuovo mese cliccato
 };
 </script>
 

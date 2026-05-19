@@ -34,7 +34,7 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
 })
 
 const cercaDestinazione = async () => {    //una funzione asincrona che scatter√† quando l'utente clicca il bottone Cerca
-//  if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore
+  if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore
 
   erroreRicerca.value = ''
 
@@ -79,7 +79,7 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
         <div class="form-group">
           <label for="parla">Quando? :</label>
-          <select id="parla" v-model="selectedMese" >
+          <select id="parla" v-model="selectedMese" required>
             <option value="" disabled>Scegli un periodo</option>
             <option v-for="mese in mesi" :key="mese" :value="mese">{{ mese }}</option>
           </select>
@@ -87,7 +87,7 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
         <div class="form-group">
           <label for="paese">Scegli un paese:</label>
-          <select id="paese" v-model="selectedPaese" >
+          <select id="paese" v-model="selectedPaese" required >
             <option value="" disabled>Scegli una destinazione...</option>
             <option v-for="paese in paesi" :key="paese" :value="paese">{{ paese }}</option>
           </select>

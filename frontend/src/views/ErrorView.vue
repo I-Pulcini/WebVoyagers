@@ -1,5 +1,6 @@
 ﻿<script setup>
 import { RouterLink } from "vue-router"
+   
 
 //abbiamo creato questa pagine di errore per gestire sia gli URL inesistenti e sia le ricerche che non trovano i risutati
 

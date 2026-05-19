@@ -1,21 +1,25 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'  //importiamo la libreria ref e onMounted, ref serve per creare delle variabili reattive mentre onMounted serve per costruire HTML
+import { useRouter } from 'vue-router'  //importiamo la funzione che serve per spostare l'utente da una pagina all'altra programmaticamente
 
-const router = useRouter()
+const router = useRouter()  //variabile in cui salviamo il router
 
 const mesi = ref([])
-const paesi = ref([])
-const selectedMese = ref("")
-const selectedPaese = ref("")
-const erroreRicerca = ref('')
+const paesi = ref([])  //creiamo due array reattivi vuoti, che servono per mostrare i paesi ed i mesi a tendina del form
 
-onMounted(() => {
-  const xhr = new XMLHttpRequest()
-  xhr.onreadystatechange = function() {
+const selectedMese = ref("")
+const selectedPaese = ref("")  //sono due stringhe reattive vuote che verranno riempite quando l'utente selezionerà il mese ed il paese in tempo reale
+
+const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di errore
+
+onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare
+
+  const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
+
+  xhr.onreadystatechange = function() {  //handler chiamato ad ogni cambio di stato: procediamo solo quando readyState === 4 (DONE) e status === 200 (OK)
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        const data = JSON.parse(xhr.responseText)
+        const data = JSON.parse(xhr.responseText)  //deserializziamo la stringa JSON ricevuta in un oggetto JavaScript
         mesi.value = data.mesi
         paesi.value = data.paesi
       } else {
@@ -23,15 +27,21 @@ onMounted(() => {
       }
     }
   }
-  xhr.open('GET', '/destinazioni.json', true)
-  xhr.send()
+
+  xhr.open('GET', '/destinazioni.json', true)  //apriamo la richiesta GET in modalità asincrona (terzo parametro = true)
+
+  xhr.send()  //inviamo la richiesta; per le GET, send() viene chiamato senza argomenti
 })
 
 const cercaDestinazione = async () => {
   if (!selectedMese.value || !selectedPaese.value) return
+
   erroreRicerca.value = ''
-  localStorage.setItem("ultimaMeta", selectedPaese.value)
+
+  localStorage.setItem("ultimaMeta", selectedPaese.value)  //salviamo nel LocalStorage l'ultima ricerca
+
   try {
+    //costruiamo le opzioni della richiesta in due passi: prima un oggetto base, poi lo arricchiamo con lo spread operator
     const opzioniBase = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
@@ -39,15 +49,17 @@ const cercaDestinazione = async () => {
     const response = await fetch('/api/cerca-viaggio', {
       ...opzioniBase,
       body: JSON.stringify({
-        mese: selectedMese.value ?? '',
+        mese: selectedMese.value ?? '',       //usiamo l'operatore nullish coalescing (??) per fornire stringhe vuote di fallback
         destinazione: selectedPaese.value ?? ''
       })
     })
+
     const data = await response.json()
+
     if (response.ok) {
-      router.push(`/viaggio/${data.id}`)
+      router.push(`/viaggio/${data.id}`)  //viaggio trovato: navighiamo alla pagina dinamica
     } else {
-      router.push('/non-disponibile')
+      router.push('/non-disponibile')  //nessun viaggio trovato: andiamo alla pagina di errore
     }
   } catch (err) {
     console.error('Errore nella ricerca viaggio:', err)

@@ -97,12 +97,12 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
       </section>
 
       <section class="lista-viaggi">
-        <!-- Indicatore di caricamento -->
+     //indica il carimento
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>
-        
-        <!-- Messaggio di errore -->
+     
+        //errore
         <div v-else-if="errore" class="errore-info">
           ⚠️ {{ errore }}
         </div>
@@ -112,7 +112,7 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
           Nessun viaggio in programma per {{ meseSelezionato }}.
         </div>
 
-        <!-- Lista viaggi -->
+       //lista viaggi
         <div v-else v-for="viaggio in viaggiFiltrati" :key="viaggio.id" class="riga-viaggio">
           <div class="colonna-date">
             <span class="periodo">{{ viaggio.periodo }}</span>
@@ -162,7 +162,7 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
   overflow-x: hidden;
 }
 
-/* Fascia foto a tutta larghezza */
+
 .fascia-foto {
   width: 100%;
   height: 70vh;
@@ -176,7 +176,6 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
   text-align: center;
 }
 
-/* Sfumatura scura in alto, per far risaltare il menu hamburger */
 .fascia-foto::before {
   content: '';
   position: absolute;

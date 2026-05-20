@@ -31,8 +31,7 @@ const caricaViaggi = async () => {
         periodo: v.periodo,
         data: v.data_visualizzata,
         destinazione: ' ' + v.destinazione,
-        prezzo: v.prezzo + '€',
-        postiTotali: v.posti_totali
+        prezzo: v.prezzo + '€'
       }));
     } else {  //se il server risponde con qualche errore
       errore.value = data.error || 'Errore nel caricamento dei viaggi.';
@@ -86,22 +85,22 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
       </section>
 
       <section class="lista-viaggi">
-     
+        <!-- Indicatore di caricamento -->
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>
 
-     
+        <!-- Messaggio di errore -->
         <div v-else-if="errore" class="errore-info">
           ⚠️ {{ errore }}
         </div>
 
-       
+        <!-- Nessun viaggio per il mese selezionato -->
         <div v-else-if="viaggiFiltrati.length === 0" class="nessun-viaggio">
           Nessun viaggio in arrivo per {{ meseSelezionato }}.
         </div>
 
-       
+        <!-- Lista viaggi -->
         <div v-else v-for="viaggio in viaggiFiltrati" :key="viaggio.id" class="riga-viaggio">
           <div class="colonna-date">
             <span class="periodo">{{ viaggio.periodo }}</span>
@@ -109,19 +108,14 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
           </div>
 
           <div class="colonna-destinazione">
-            <strong>{{ viaggio.destinazione }}</strong>  //strong serve per mostrare il testo in grassetto
+            <strong>{{ viaggio.destinazione }}</strong>
           </div>
 
           <div class="colonna-prezzo">
             <strong>{{ viaggio.prezzo }}</strong>
           </div>
 
-          <div class="colonna-info">
-            <span class="testo-posti">
-               Posti totali: <strong>{{ viaggio.postiTotali }}</strong>
-            </span>
-           
-          </div>
+          <div class="colonna-info"></div>
 
           <div class="colonna-azione">
             <RouterLink :to="`/viaggio/${viaggio.id}`" class="btn-vedi-viaggio">
@@ -148,6 +142,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   overflow-x: hidden;
 }
 
+/* Fascia foto a tutta larghezza */
 .fascia-foto {
   width: 100%;
   height: 70vh;
@@ -161,7 +156,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   text-align: center;
 }
 
-
+/* Sfumatura scura in alto, per far risaltare il menu hamburger */
 .fascia-foto:before {
   content: '';
   position: absolute;
@@ -286,7 +281,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   display: flex;
   justify-content: flex-end;
 }
-
+/* Bottone "Vedi Viaggio" - stile uguale ai viaggi disponibili */
 .btn-vedi-viaggio {
   background: linear-gradient(135deg, #00c4b4 0%, #00897b 100%);
   color: white;

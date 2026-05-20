@@ -16,9 +16,9 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
 
 try {
     const response = await fetch('/destinazioni.json')  // invia una richiesta HTTP GET al file 'destinazioni.json' e si mette in attesa della risposta del server senza bloccar eil resto del browser
-    if (response.ok) {
-      const data = await response.json()
-      mesi.value = data.mesi
+    if (response.ok) {   //se la ripsta del server √® andata a buon fine 
+      const data = await response.json()  //convertiamo il testo da json ad un oggetto di JavaScript
+      mesi.value = data.mesi  //assegna l'array dei mesi ricevuto dal JSON alla varaibile reattiva mesi, aggiornato automaticamente l'interfaccia HTML
       paesi.value = data.paesi
     } else {
       console.error("Errore Fetch:", response.status)
@@ -57,15 +57,15 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
   localStorage.setItem("ultimaMeta", selectedPaese.value)  //salviamo il paese cercato nel LocalStorage 
 
   try {
-    //costruiamo le opzioni della richiesta in due passi: prima un oggetto base, poi lo arricchiamo con lo spread operator
+   
     const opzioniBase = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      method: 'POST',  //richiesat POST,  usata per inviare dati sul server
+      headers: { 'Content-Type': 'application/json' }  //informiamo il server che i dati che stiamo per mandare sono in formato JSON
     }
     const response = await fetch('/api/cerca-viaggio', {   //API 10.c
-      ...opzioniBase,
-      body: JSON.stringify({
-        mese: selectedMese.value ?? '',       //usiamo l'operatore nullish coalescing (??) per fornire stringhe vuote di fallback
+      ...opzioniBase,  //dentro ci sta la copia di tutte le opzioniBase (method e headers), ... = spread
+      body: JSON.stringify({     //convertiamo l'oggetto JavaScript in una stringa JSON
+        mese: selectedMese.value ?? '',       // prendiamo il valoe del mese selezioato, se √® null o undefined, l'operatore usa come fallback una " "
         destinazione: selectedPaese.value ?? ''
       })
     })
@@ -73,9 +73,9 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
     const data = await response.json()
 
     if (response.ok) {
-      router.push(`/viaggio/${data.id}`)  //viaggio trovato: navighiamo alla pagina dinamica
+      router.push(`/viaggio/${data.id}`)  //viaggio trovato: router.push() serve per cambiare pagina, 
     } else {
-      router.push('/non-disponibile')  //nessun viaggio trovato: andiamo alla pagina di errore
+      router.push('/non-disponibile')  //nessun viaggio trovato: router.push() serve per cambiare pagina 
     }
   } catch (err) {
     console.error('Errore nella ricerca viaggio:', err)
@@ -85,17 +85,17 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 </script>
 
 <template>
-  <div class="home-wrapper">
+  <div class="home-wrapper">  //sfondo pi√π esterno
     <header>
       <h1 class="main-title">WebVoyagers</h1>
     </header>
 
     <main class="main-content">
-      <form @submit.prevent="cercaDestinazione">
+      <form @submit.prevent="cercaDestinazione">  //quando l'utente prende il bottone cercadestinazione deve eseguire la funzione
 
-        <div class="form-group">
+        <div class="form-group">  //definisce un contenitore a tendina
           <label for="parla">Quando? :</label>
-          <select id="parla" v-model="selectedMese" required>
+          <select id="parla" v-model="selectedMese" required>  //v-model= "selectedMese" collega la tendina alla variabile JavaScript selectedmese
             <option value="" disabled>Scegli un periodo</option>
             <option v-for="mese in mesi" :key="mese" :value="mese">{{ mese }}</option>
           </select>
@@ -125,8 +125,8 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
   background-attachment: fixed;
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: flex;   //attiva flexbox, un sistema che serve per allineare gli elementi
+  flex-direction: column;  //dispome gli  elementi in verticale
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -142,7 +142,7 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
   text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
-.main-content {
+.main-content {    //riguardro trasparente  che contiene tutto il modulo
   width: 100%;
   max-width: 560px;
   background: rgba(80, 80, 80, 0.5);
@@ -163,11 +163,11 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
 .form-group select,
 .form-group input {
-  width: 100%;
-  padding: 11px 14px;
+  width: 100%;  
+  padding: 11px 14px;  
   border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 16px;
+  border-radius: 7px;  
+  font-size: 16px; 
 }
 
 #bottoneCerca {
@@ -184,13 +184,19 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
   transition: background-color 0.25s, transform 0.2s;
 }
 
-#bottoneCerca:hover {
-  background-color: #00a89a;
-  transform: translateY(-2px);
+#bottoneCerca:hover {  
+  background-color: #00a89a; 
+  transform: translateY(-2px); 
 }
 
 @media (max-width: 600px) {
-  .main-title { -webkit-text-stroke: 2px black; }
+  .home-wrapper{
+   background-size: contain;
+   background-position: top center;
+   background-repeat: no-repeat;
+   background-color: #222;
+  }
+  .main-title { -webkit-text-stroke: 2px black; }  
   .main-content { padding: 25px 20px; }
 }
 </style>

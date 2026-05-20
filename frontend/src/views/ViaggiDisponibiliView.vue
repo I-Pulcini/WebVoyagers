@@ -22,13 +22,13 @@ const caricaViaggi = async () => {
   try {  //viene chiamato un try-catch per la gestione degli errori
    
     const response = await fetch('/api/viaggi/disponibile'); // Chiamata all'endpoint che restituisce i viaggi con stato 'disponibile'
-    //usiamo la chiamata fetch() per fare una richiesta AJAX al nostro backend Node.js
+  
     const data = await response.json(); //await serve per mettere in pausa l'esecuzione finchè il server non risponde. Aspettiamo ce la risposta sia trasformata dal formato JSON ad un ogetto JavaScirpt
     
     
     if (response.ok) {  //controlliamo se la risposta HTTP del server è un successo
      
-      viaggi.value = data.viaggi.map(v => ({     // Trasformiamo i dati del backend nel formato richiesto dal template
+      viaggi.value = data.viaggi.map(v => ({    //usiamo la funzione map per eseguire un ciclo su ogni viaggio v del database per mapparlo e creare un nuvo array con i nomi dei campi fondamentali
         id: v.id,
         mese: v.mese,
         periodo: v.periodo,

@@ -14,14 +14,14 @@ const bcrypt = require('bcrypt');
 
 // Abbiamo inizializzato la nostra applicazione chiamandola 'app'
 const app = express();
-// Abbiamo detto a Express di fidarsi del proxy di Render (necessario per HTTPS e cookie sicuri)
+// Abbiamo detto a Express di fidarsi del proxy di Render 
 app.set('trust proxy', 1);
 // Abbiamo letto la porta dalla variabile d'ambiente, con valore di fallback 3000 se non definita
 const port = process.env.PORT || 3000;
 // Abbiamo definito la cartella dove stanno i file statici buildati del frontend
 const ROOT = path.join(__dirname, 'dist');
 
-// Abbiamo servito i file statici del frontend (CSS, JS, immagini ecc.)
+// Abbiamo servito i file statici del frontend 
 app.use(express.static(ROOT));
 // Abbiamo configurato il server per interpretare automaticamente i dati in formato JSON
 app.use(express.json());
@@ -156,7 +156,7 @@ app.use(session({  //app.use questo è il middleware globale
        
         maxAge: 30 * 24 * 60 * 60 * 1000, // massima del coockie, 30 giorni
      
-        httpOnly: true,  //è un opzione di sicurezza eccezionale, dice al browser che il cookie può essere letto solo dal server tramite la rete internet.
+        httpOnly: true,  //è un'opzione di sicurezza eccezionale, dice al browser che il cookie può essere letto solo dal server tramite la rete internet.
       
         secure: process.env.NODE_ENV === 'production',  //impostazione dinamica di sicurezza
     

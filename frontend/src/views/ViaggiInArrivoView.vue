@@ -117,7 +117,10 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
           </div>
 
           <div class="colonna-info">
-            <span CIAO ^^^^^^^^ </span>
+            <span class="testo-posti">
+               Posti totali vettura: <strong>{{ viaggio.postiTotali }}</strong>
+            </span>
+           
           </div>
 
           <div class="colonna-azione">

@@ -200,6 +200,9 @@ watch(viaggio, async (nuovoViaggio) => {
         <div class="prenota-info">
           <span class="prenota-prezzo">{{ viaggio.prezzo }}€</span>
           <span class="prenota-durata">{{ viaggio.periodo }} · {{ viaggio.mese }}</span>
+          <span class="prenota-posti">
+      🎒 Posti rimasti: {{ viaggio.posti_disponibili }} su {{ viaggio.posti_totali }} totali
+    </span>
         </div>
         <button @click="apriModale" class="btn-prenota-grande">
           🎒 Prenota questo viaggio
@@ -375,6 +378,7 @@ watch(viaggio, async (nuovoViaggio) => {
   flex-direction: column;
   color: white;
   text-align: right;
+  gap: 5px;
 }
 
 .prenota-prezzo {

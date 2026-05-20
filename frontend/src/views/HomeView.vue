@@ -14,7 +14,22 @@ const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di err
 
 onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare
 
-  const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
+try {
+    const response = await fetch('/destinazioni.json')
+    if (response.ok) {
+      const data = await response.json()
+      mesi.value = data.mesi
+      paesi.value = data.paesi
+    } else {
+      console.error("Errore Fetch:", response.status)
+    }
+  } catch (err) {
+    console.error("Errore di connessione:", err)
+  }
+
+
+)}
+/* const xhr = new XMLHttpRequest()  // Creiamo una nuova istanza di XMLHttpRequest, il metodo vecchio rispetto ad AJAX
 
   xhr.onreadystatechange = function() {  //handler chiamato ad ogni cambio di stato: procediamo solo quando readyState === 4 (DONE) e status === 200 (OK)
     if (xhr.readyState === 4) {   // significa se la richiesta completata il server ha finito di rispondere e si chiude la connessione
@@ -31,7 +46,8 @@ onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena 
   xhr.open('GET', '/destinazioni.json', true)  //apriamo la richiesta GET in modalità asincrona (terzo parametro = true)
 
   xhr.send()  //inviamo la richiesta; per le GET, send() viene chiamato senza argomenti
-})
+  */
+
 
 const cercaDestinazione = async () => {    //una funzione asincrona che scatterà quando l'utente clicca il bottone Cerca
   if (!selectedMese.value || !selectedPaese.value) return   //se l'utente non ha seleszionato il mese o il paese ci sta errore

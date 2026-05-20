@@ -654,7 +654,7 @@ app.get('/api/viaggi/dettaglio/:id', async (req, res) => {
 // Cerchiamo nel DB un viaggio nel mese scelto la cui destinazione contenga (o sia contenuta in) 
 // la parola scelta dall'utente. Per esempio "Svezia" matcha "LAPPONIA SVEDESE", e
 // "Regno Unito" matcha "LONDRA" se aggiunto come parola chiave.
-app.post('/api/cerca-viaggio', async (req, res) => {
+app.post('/api/cerca-viaggio', async (req, res) => {  //req,la richiesta che arriva mentre res è la risposta che parte
   try {
     const { mese, destinazione } = req.body
     

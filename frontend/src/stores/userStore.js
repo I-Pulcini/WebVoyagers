@@ -1,9 +1,8 @@
 import { reactive } from 'vue'
 
-/* --- STORE GLOBALE UTENTE --- */
-/* Abbiamo creato un oggetto reattivo condiviso tra tutti i componenti dell'app.
-   Quando un componente modifica userStore.username, TUTTI i componenti che lo usano
-   si aggiornano automaticamente. È un'alternativa semplice a Pinia/Vuex per piccoli progetti. */
+// STORE GLOBALE UTENTE 
+// Abbiamo creato un oggetto reattivo condiviso tra tutti i componenti dell'app.
+ 
 
 export const userStore = reactive({
     // Abbiamo definito la variabile che dice se l'utente è loggato o meno
@@ -31,7 +30,7 @@ export const userStore = reactive({
         this.isAdmin = false;
     },
 
-    // Abbiamo creato una funzione asincrona che esegue il logout completo (backend + frontend)
+    // Abbiamo creato una funzione asincrona che esegue il logout completo 
     async logout() {
         try {
             // Abbiamo chiamato l'endpoint di logout del backend includendo i cookie di sessione
@@ -40,10 +39,10 @@ export const userStore = reactive({
                 credentials: 'include'
             });
         } catch (err) {
-            // Abbiamo registrato eventuali errori in console ma proseguiamo comunque con la pulizia locale
+            // Abbiamo registrato eventuali errori in console 
             console.error('Errore durante il logout:', err);
         }
-        // Abbiamo svuotato lo store locale per aggiornare immediatamente l'interfaccia
+        // Abbiamo svuotato lo store locale per aggiornare  l'interfaccia
         this.clearUser();
     }
 });

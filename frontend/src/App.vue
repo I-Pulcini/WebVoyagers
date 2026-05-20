@@ -96,10 +96,10 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
       //fill="none" = dice che l'intrno della casetta non deve essere colorato
       //stroke="currentColor" = il colore della casetta deve adattarsi al colore del testo circostante
       <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>  //traccia materialmente le linee del disegno
-    </svg>
+    </svg>  //svg viene usato per disegnare elementi grafici
   </RouterLink>
 
-  <nav class="menu-container">
+  <nav class="menu-container">  //narra di navigazione del sito
     <div class="hamburger" @click="toggleMenu">&#9776;</div>  //serve per aprire e chiudere 
 
     <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">  //si apre il menu ad hamburger
@@ -135,7 +135,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
         <RouterLink to="/le-mie-prenotazioni" @click="closeMenu" class="link-prenotazioni">
           📋 Le mie prenotazioni
         </RouterLink>
-        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a>
+        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a>  //href="#" = serve al link di non andare su una pagina specifica ma di rimanere nella stessa.@click.prevent="gestisciLogout"= se clicchiamo esci allora si fa la funzione di gestisci Logount e .prevent serve per far resyare il browser nella pagina in cui stiamo
       </template>
     </div>
   </nav>
@@ -144,7 +144,8 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 </template>
 
 <style>
-/* Bottone "Torna alla home": cerchio bianco con icona casa, sempre in alto a sinistra */
+//bottone della casetta, i colori
+//. è un selettore mentre il nome dietro è il nome di una classe HTML ed è una classe hidden nascosta all'utente
 .btn-home {
   position: fixed;
   top: 15px;
@@ -183,7 +184,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #f9f9f9;
 }
 
-/* Stile della voce "Le mie prenotazioni" nel menu hamburger */
+// le mie prenotazione, !important forza il browser ad usare questo colore verde scuro
 .link-prenotazioni {
   display: block;
   padding: 14px 20px;
@@ -200,7 +201,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #b2dfdb;
 }
 
-/* Stile della voce "Il mio profilo" nel menu hamburger */
+// il mio profilo, testo viola
 .link-profilo {
   display: block;
   padding: 14px 20px;
@@ -216,7 +217,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 .link-profilo:hover {
   background-color: #d1c4e9;
 }
-/* Stile della voce "Admin Panel" nel menu hamburger (visibile solo agli admin) */
+//amministrazione
 .link-admin {
   display: block;
   padding: 14px 20px;
@@ -236,7 +237,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   color: white !important;
 }
 
-/* Stile del bottone Logout dentro il menu hamburger */
+//logout
 .btn-logout {
   display: block;
   padding: 14px 20px;

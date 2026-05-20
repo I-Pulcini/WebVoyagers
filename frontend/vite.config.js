@@ -12,14 +12,14 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  // CONFIGURAZIONE PROXY (Rif: Parte 3.pdf) 
-  // Reindirizza tutte le chiamate che iniziano con '/api' verso il server effettivo [cite: 233, 247]
+  // CONFIGURAZIONE PROXY 
+  // Reindirizza tutte le chiamate che iniziano con '/api' verso il server effettivo 
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', // Inserire qui la porta del vostro server effettivo [cite: 248]
+        target: 'http://localhost:3000', // Inserire qui la porta del vostro server effettivo 
         changeOrigin: true,
-        secure: false,                    // Disattiva la verifica HTTPS (in locale lavoriamo in HTTP)
+        secure: false,                    // Disattiva la verifica HTTPS 
         cookieDomainRewrite: 'localhost'  // Riscrive il dominio del cookie così il browser lo accetta correttamente
       }
     }

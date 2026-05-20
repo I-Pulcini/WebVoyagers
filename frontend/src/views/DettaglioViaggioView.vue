@@ -14,8 +14,8 @@ import { userStore } from '../stores/userStore'
   
 import $ from 'jquery' //$ è una libreria esterna che viene usata per l'animazione grafica ad effetto cascata sulla libreria fotografica
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute()  //permette di accedere alle informazioni della rotta attiva
+const router = useRouter()  //ci permette di cambiare pagina
 
 // Abbiamo creato le variabili reattive per i dati del viaggio
 const viaggio = ref(null)
@@ -36,8 +36,8 @@ const errore = ref('')
 const inviando = ref(false)
 const successo = ref(null)
 
-// Abbiamo creato la funzione per caricare i dati del viaggio dal backend
-const caricaViaggio = async (id) => {
+
+const caricaViaggio = async (id) => {  //funzione asincrona che accetta come argomento ID del viaggio da recuperare
   caricamento.value = true
   erroreCaricamento.value = ''
   viaggio.value = null
@@ -51,7 +51,7 @@ const caricaViaggio = async (id) => {
     const data = await response.json()
     
     if (response.ok) {
-      viaggio.value = data
+      viaggio.value = data  
     } else {
       erroreCaricamento.value = data.error || 'Viaggio non trovato.'
     }
@@ -64,18 +64,17 @@ const caricaViaggio = async (id) => {
 }
 
 // Abbiamo creato la funzione che apre/chiude un singolo giorno dell'itinerario
-const toggleGiorno = (index) => {
-  const posizione = giorniAperti.value.indexOf(index)
-  if (posizione === -1) {
-    // Non era aperto: lo aggiungiamo agli aperti
-    giorniAperti.value.push(index)
+const toggleGiorno = (index) => {   //index sarebbe il numero del giorno
+  const posizione = giorniAperti.value.indexOf(index)  //cerchiamo l'indice del giorno selezionato dentro l'array giorniAperti
+  if (posizione === -1) {  //quel giorno era chiuso e non era presente nell'array
+  
+    giorniAperti.value.push(index)  //aggiungiamo l'indice del giorno 
   } else {
-    // Era aperto: lo togliamo dagli aperti
-    giorniAperti.value.splice(posizione, 1)
+    giorniAperti.value.splice(posizione, 1)  //se l'indice era già presente, quindi il giorno era già aperto e l'utente ha cliccato per richiuderlo, quini si fa splice per richiudere il pannelle
   }
 }
 
-// Abbiamo creato la funzione che apre il modale di prenotazione
+// Abbiamo creato la funzione che apre la prenotazione
 const apriModale = () => {
   if (!userStore.loggato) {
     errore.value = ''
@@ -107,9 +106,9 @@ const inviaPrenotazione = async () => {
   try {
     const response = await fetch('/api/prenota-viaggio', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },   //tutti i dati sono in formato JSON
       credentials: 'include',
-      body: JSON.stringify({
+      body: JSON.stringify({   //si converte l'oggett javascritp in una stringa json
         idViaggio: viaggio.value.id,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
@@ -143,23 +142,20 @@ const inviaPrenotazione = async () => {
 }
 
 
-const animaGalleria = () => {
-  // Abbiamo nascosto inizialmente tutte le foto della galleria
-  $('.foto-grid').hide()
-  // Le abbiamo mostrate una alla volta con fadeIn ed un ritardo crescente
-  // (effetto "stagger") usando il metodo each() di jQuery
-  $('.foto-grid').each(function(index) {
-    $(this).delay(index * 150).fadeIn(800)
+const animaGalleria = () => {  //definiamo l'animazione della galeria, inizialmente non si vedono le foto
+ 
+  $('.foto-grid').hide()  //serve per rascondere tutte le foto nella pagina
+  $('.foto-grid').each(function(index) {  //poi fai un ciclo su ogni singola foto trovata e della prima foto l'indice sarà 0 ecc
+    $(this).delay(index * 150).fadeIn(800)  //selezionato la singola foto specifica e si aprirà nel tempo di index*150 ms mentre .fadeIn(800) fa apparire la foto con una sfumatura 
   })
 }
 
-// Abbiamo caricato il viaggio quando il componente viene montato
+//appena la pagina è pronta scarica i dati del viaggio dal database
 onMounted(() => {
   caricaViaggio(route.params.id)
 })
 
-// Abbiamo creato un watch per ricaricare il viaggio se l'id cambia
-// (quando l'utente naviga da /viaggio/1 a /viaggio/2 senza ricaricare)
+//se l'utente clicca un altro viaggio, watch se ne accorge e intercetta il nuovoId e lancia di nuovo caricaViggaio per aggiornare i testi ecc
 watch(() => route.params.id, (nuovoId) => {
   if (nuovoId) {
     caricaViaggio(nuovoId)
@@ -170,8 +166,7 @@ watch(() => route.params.id, (nuovoId) => {
 watch(viaggio, async (nuovoViaggio) => {
   if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {
     // Aspettiamo che Vue abbia finito di renderizzare il DOM
-    await nextTick()
-    // Lanciamo l'animazione jQuery
+    await nextTick()  //
     animaGalleria()
   }
 })
@@ -179,19 +174,19 @@ watch(viaggio, async (nuovoViaggio) => {
 
 <template>
   <div class="viaggio-wrapper">
-    <!-- SCHERMATA DI CARICAMENTO -->
+   //schermata
     <div v-if="caricamento" class="loading-box">
       <p>⏳ Caricamento viaggio in corso...</p>
     </div>
 
-    <!-- ERRORE -->
+   //errori 
     <div v-else-if="erroreCaricamento" class="errore-box">
       <h2>⚠️ Ops!</h2>
       <p>{{ erroreCaricamento }}</p>
       <RouterLink to="/viaggi-disponibili" class="btn-torna">← Torna ai viaggi</RouterLink>
     </div>
 
-    <!-- VIAGGIO CARICATO -->
+   //viaggio caricato
     <template v-else-if="viaggio">
       <header 
         class="fascia-foto"
@@ -200,7 +195,7 @@ watch(viaggio, async (nuovoViaggio) => {
         <h1 class="fascia-titolo">{{ viaggio.destinazione }}</h1>
         </header>
 
-      <!-- Bottone Prenota in posizione fissa -->
+      //prenota viaggio
       <div class="prenota-bar">
         <div class="prenota-info">
           <span class="prenota-prezzo">{{ viaggio.prezzo }}€</span>
@@ -249,7 +244,7 @@ watch(viaggio, async (nuovoViaggio) => {
           ></div>
         </section>
 
-        <!-- Bottone Prenota in fondo pagina -->
+       //bottone prenota in fondo alla pagina
         <section class="cta-finale">
           <h2>Pronto a partire?</h2>
           <p>Posti limitati. Prenota ora e assicurati il tuo posto in questa avventura.</p>
@@ -259,11 +254,11 @@ watch(viaggio, async (nuovoViaggio) => {
         </section>
       </main>
 
-      <!-- MODALE PRENOTAZIONE -->
+   //modale aperto
       <div v-if="modaleAperto" class="modale-overlay" @click.self="chiudiModale">
         <div class="modale-content">
 
-          <!-- SCHERMATA SUCCESSO -->
+       // schermata successo
           <div v-if="successo" class="successo-box">
             <div class="successo-icona">🎉</div>
             <h2>Prenotazione confermata!</h2>
@@ -283,7 +278,7 @@ watch(viaggio, async (nuovoViaggio) => {
             </div>
           </div>
 
-          <!-- FORM DI PRENOTAZIONE -->
+       //form prenotazione
           <div v-else>
             <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
             <h2 class="modale-titolo">🎒 Prenota: {{ viaggio.destinazione }}</h2>

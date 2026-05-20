@@ -166,7 +166,6 @@ app.use(session({
 
 // API 3: Per la registrazione dell'utente
 app.post('/api/register', async (req, res) => {
-    // Abbiamo validato i dati in ingresso usando il nostro schema JSON Schema (Rif: 18-json-schema.pdf)
     const erroriValidazione = validaSchema(req.body, schemaRegistrazione);
     if (erroriValidazione.length > 0) {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriValidazione });
@@ -175,8 +174,7 @@ app.post('/api/register', async (req, res) => {
     const { username, email, password } = req.body;
     // Abbiamo iniziato un blocco try-catch per gestire eventuali errori durante l'operazione
     try {
-        // Abbiamo criptato la password usando bcrypt con un fattore di costo pari a 10 per renderla sicura (Rif: Parte 1.pdf)
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);  //cripta la password
         
         // Abbiamo eseguito la query SQL per inserire i dati del nuovo utente nel database
         await pool.query(

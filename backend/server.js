@@ -248,8 +248,8 @@ app.post('/api/login', async (req, res) => {
     }
 });
 // API 5 verfica sessione attiva
-app.get('/api/me', (req, res) => {
-    if (req.session.userId) {
+app.get('/api/me', (req, res) => {   //def. un endopoint con la funzione GET
+    if (req.session.userId) {  //controlliamo se dentro la sessione dell'utente  che Express recupera grazie al cookie inviato dal browser esiste una propruetà chiamata userID
         res.json({
             loggato: true,
             userId: req.session.userId,
@@ -257,9 +257,10 @@ app.get('/api/me', (req, res) => {
             isAdmin: req.session.isAdmin || false
         });
     } else {
-        res.json({ loggato: false });
+        res.json({ loggato: false });  //l'utente non ha mai effettuato l'accesso
     }
 });
+
 // API 6 logout 
 
 app.post('/api/logout', (req, res) => {

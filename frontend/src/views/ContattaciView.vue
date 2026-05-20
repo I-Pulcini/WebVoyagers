@@ -212,7 +212,7 @@ const inviaForm = async () => {
   opacity: 0.95;
 }
 
-/* FORM */
+
 .contenuto-principale {
   width: 100%;
   max-width: 800px;
@@ -309,7 +309,7 @@ const inviaForm = async () => {
 .btn-invia:hover { background-color: #00a89a; transform: translateY(-2px); }
 .btn-invia:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
-/* GALLERIA */
+
 .sezione-galleria {
   background-color: #f9f9f9;
   padding: 80px 5%;
@@ -373,7 +373,6 @@ const inviaForm = async () => {
 
 .galleria-item:hover .galleria-overlay { opacity: 1; }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .galleria-grid { grid-template-columns: repeat(3, 1fr); }
 }

@@ -15,7 +15,7 @@ const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di err
 onMounted(() => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare
 
 try {
-    const response = await fetch('/destinazioni.json')
+    const response = await fetch('/destinazioni.json')  // invia una richiesta HTTP GET al file 'destinazioni.json' e si mette in attesa della risposta del server senza bloccar eil resto del browser
     if (response.ok) {
       const data = await response.json()
       mesi.value = data.mesi

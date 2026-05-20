@@ -4,15 +4,12 @@ import { useRouter } from 'vue-router'
 import { userStore } from '../stores/userStore'
 import { prenotazioneStore } from '../stores/prenotazioneStore'
 
-/* --- VIAGGIO MISTERIOSO --- */
-/* Abbiamo creato una pagina che permette all'utente di prenotare un viaggio "a sorpresa".
-   L'utente sceglie un periodo, un budget e un tipo di esperienza, ma la destinazione
-   esatta verrà rivelata solo 7 giorni prima della partenza. */
+
 
 // Abbiamo importato il router per reindirizzare l'utente alla pagina di conferma dopo la prenotazione
 const router = useRouter()
 
-// Abbiamo creato le variabili reattive che si legano ai campi del form
+// Abbiamo creato le variabili reattive 
 const continente = ref('')
 const dataPartenza = ref('')
 const durata = ref('')
@@ -138,7 +135,7 @@ const inviaPrenotazione = async () => {
 <template>
   <div class="ViaggioMisterioso-wrapper">
 
-    <!-- HEADER -->
+   
     <header class="header-mistero">
       <div class="overlay-stelle"></div>
       <div class="header-content">
@@ -151,10 +148,10 @@ const inviaPrenotazione = async () => {
       </div>
     </header>
 
-    <!-- FORM PRENOTAZIONE -->
+   
     <main class="contenuto-principale">
 
-      <!-- Avviso se non loggato -->
+   
       <div v-if="!userStore.loggato" class="avviso-login">
         ⚠️ Per prenotare un viaggio misterioso devi prima
         <RouterLink to="/login">accedere o registrarti</RouterLink>.
@@ -169,7 +166,7 @@ const inviaPrenotazione = async () => {
 
       <form @submit.prevent="inviaPrenotazione" class="form-mistero">
 
-        <!-- Continente -->
+      
         <div class="form-group">
           <label>🌍 Continente preferito</label>
           <div class="opzioni-grid">
@@ -181,13 +178,13 @@ const inviaPrenotazione = async () => {
           </div>
         </div>
 
-        <!-- Data partenza -->
+     
         <div class="form-group">
           <label for="data">📅 Quando vuoi partire?</label>
           <input id="data" type="date" v-model="dataPartenza" />
         </div>
 
-        <!-- Durata -->
+
         <div class="form-group">
           <label for="durata">⏱️ Durata del viaggio</label>
           <select id="durata" v-model="durata">
@@ -196,7 +193,6 @@ const inviaPrenotazione = async () => {
           </select>
         </div>
 
-        <!-- Budget -->
         <div class="form-group">
           <label>💰 Qual è il tuo budget? (a persona)</label>
           <div class="opzioni-grid budget-grid">
@@ -209,7 +205,7 @@ const inviaPrenotazione = async () => {
           </div>
         </div>
 
-        <!-- Tipo esperienza -->
+  
         <div class="form-group">
           <label>✨ Che tipo di esperienza cerchi?</label>
           <div class="opzioni-grid esperienza-grid">
@@ -221,13 +217,13 @@ const inviaPrenotazione = async () => {
           </div>
         </div>
 
-        <!-- Numero viaggiatori -->
+        
         <div class="form-group">
           <label for="viaggiatori">👥 Quanti siete?</label>
           <input id="viaggiatori" type="number" v-model="numeroViaggiatori" min="1" max="20" />
         </div>
 
-        <!-- Note aggiuntive -->
+    
         <div class="form-group">
           <label for="note">📝 Vuoi aggiungere qualcosa? (opzionale)</label>
           <textarea id="note" rows="4" v-model="note" 
@@ -239,7 +235,7 @@ const inviaPrenotazione = async () => {
         </button>
       </form>
 
-      <!-- Sezione "Come funziona" -->
+ 
       <section class="come-funziona">
         <h3>Come funziona?</h3>
         <div class="steps-mistero">
@@ -281,7 +277,6 @@ const inviaPrenotazione = async () => {
   color: #333;
 }
 
-/* ===== HEADER ===== */
 .header-mistero {
   background: linear-gradient(135deg, #1a237e 0%, #4527a0 50%, #6a1b9a 100%);
   width: 100%;
@@ -343,7 +338,7 @@ const inviaPrenotazione = async () => {
   opacity: 0.95;
 }
 
-/* ===== FORM ===== */
+
 .contenuto-principale {
   width: 100%;
   max-width: 900px;
@@ -432,7 +427,7 @@ const inviaPrenotazione = async () => {
   resize: vertical;
 }
 
-/* Opzioni a card cliccabili (radio button stilizzati) */
+
 .opzioni-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -518,7 +513,7 @@ const inviaPrenotazione = async () => {
   box-shadow: none;
 }
 
-/* ===== COME FUNZIONA ===== */
+
 .come-funziona {
   margin-top: 80px;
   padding: 50px 30px;
@@ -565,7 +560,6 @@ const inviaPrenotazione = async () => {
   margin: 0;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .opzioni-grid,
   .esperienza-grid {

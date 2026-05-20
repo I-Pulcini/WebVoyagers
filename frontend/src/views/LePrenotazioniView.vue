@@ -3,13 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-/* --- PAGINA "LE MIE PRENOTAZIONI" --- */
-/* Abbiamo creato una pagina che mostra tutte le prenotazioni dell'utente loggato:
-   sia quelle dei viaggi misteriosi sia quelle dei viaggi normali.
-   L'utente può passare dall'una all'altra cliccando sui due tab in cima.
-   Per i viaggi normali può anche annullare una prenotazione dal bottone dedicato.
-   Per i viaggi misteriosi l'annullamento e possibile solo finche la destinazione 
-   non e stata rivelata (mancano piu di 7 giorni alla partenza). */
+
 
 const router = useRouter()
 
@@ -17,7 +11,7 @@ const router = useRouter()
 const prenotazioniMisteriose = ref([])
 const prenotazioniViaggi = ref([])
 
-// Abbiamo creato le variabili per gestire stato di caricamento ed errori
+// Abbiamo creato le variabili 
 const caricamentoMisteriose = ref(true)
 const caricamentoViaggi = ref(true)
 const erroreMisteriose = ref('')
@@ -103,8 +97,7 @@ const chiudiModaleAnnullamento = () => {
   erroreAnnullamento.value = ''
 }
 
-// Abbiamo creato la funzione che chiama il backend per annullare la prenotazione.
-// In base al tipo (viaggio o misteriosa) chiama l'endpoint giusto e ricarica la lista corretta
+
 const confermaAnnullamento = async () => {
   if (!prenotazioneDaAnnullare.value) return
   
@@ -194,7 +187,7 @@ const classeStato = (stato) => {
   return 'badge-stato-attiva'
 }
 
-/* --- LIFECYCLE HOOK --- */
+
 onMounted(() => {
   // Se l'utente non è loggato, lo rimandiamo al login
   if (!userStore.loggato) {
@@ -210,7 +203,7 @@ onMounted(() => {
 <template>
   <div class="LePrenotazioni-wrapper">
 
-    <!-- HEADER -->
+   
     <header class="header-prenotazioni">
       <div class="overlay-stelle"></div>
       <div class="header-content">
@@ -226,12 +219,12 @@ onMounted(() => {
 
     <main class="contenuto-principale">
 
-      <!-- Messaggio di successo dopo annullamento -->
+ 
       <div v-if="messaggioSuccesso" class="messaggio-successo">
         ✅ {{ messaggioSuccesso }}
       </div>
 
-      <!-- TAB DI NAVIGAZIONE -->
+
       <div class="tabs-container">
         <button 
           @click="tabAttivo = 'viaggi'"
@@ -249,9 +242,7 @@ onMounted(() => {
         </button>
       </div>
 
-      <!-- ============================== -->
-      <!-- TAB VIAGGI NORMALI             -->
-      <!-- ============================== -->
+    
       <div v-if="tabAttivo === 'viaggi'">
 
         <div v-if="caricamentoViaggi" class="stato-info">
@@ -341,9 +332,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- ============================== -->
-      <!-- TAB VIAGGI MISTERIOSI          -->
-      <!-- ============================== -->
+      
       <div v-else-if="tabAttivo === 'misteriose'">
 
         <div v-if="caricamentoMisteriose" class="stato-info">
@@ -430,7 +419,7 @@ onMounted(() => {
                 </button>
               </div>
 
-              <!-- Avvertimento se non si puo piu annullare -->
+             
               <div 
                 v-if="p.stato !== 'annullata' && p.giorni_alla_partenza <= 7 && p.giorni_alla_partenza >= 0" 
                 class="avviso-no-annullo"
@@ -450,9 +439,7 @@ onMounted(() => {
 
     </main>
 
-    <!-- ============================== -->
-    <!-- MODALE CONFERMA ANNULLAMENTO    -->
-    <!-- ============================== -->
+  
     <div v-if="modaleAnnullamentoAperto" class="modale-overlay" @click.self="chiudiModaleAnnullamento">
       <div class="modale-content-annulla">
         <button @click="chiudiModaleAnnullamento" class="btn-chiudi-x" aria-label="Chiudi">×</button>
@@ -522,7 +509,7 @@ onMounted(() => {
   color: #333;
 }
 
-/* ===== HEADER ===== */
+
 .header-prenotazioni {
   background: linear-gradient(135deg, #00897b 0%, #00c4b4 50%, #4527a0 100%);
   width: 100%;
@@ -572,7 +559,7 @@ onMounted(() => {
   opacity: 0.95;
 }
 
-/* ===== CONTENUTO ===== */
+
 .contenuto-principale {
   width: 100%;
   max-width: 1000px;
@@ -580,7 +567,7 @@ onMounted(() => {
   padding: 50px 5%;
 }
 
-/* ===== MESSAGGIO SUCCESSO ===== */
+
 .messaggio-successo {
   background-color: #d4f4e0;
   color: #00695c;
@@ -598,7 +585,7 @@ onMounted(() => {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== TABS ===== */
+
 .tabs-container {
   display: flex;
   gap: 12px;
@@ -651,7 +638,7 @@ onMounted(() => {
   color: white;
 }
 
-/* ===== STATI INFO ===== */
+
 .stato-info {
   text-align: center;
   padding: 80px 30px;
@@ -680,7 +667,7 @@ onMounted(() => {
   text-align: center;
 }
 
-/* ===== NESSUNA PRENOTAZIONE ===== */
+
 .nessuna-prenotazione {
   text-align: center;
   padding: 80px 30px;
@@ -724,7 +711,7 @@ onMounted(() => {
   box-shadow: 0 10px 25px rgba(216, 27, 96, 0.4);
 }
 
-/* ===== LISTA ===== */
+
 .lista-prenotazioni {
   display: flex;
   flex-direction: column;
@@ -748,7 +735,7 @@ onMounted(() => {
   box-shadow: 0 10px 25px rgba(106, 27, 154, 0.15);
 }
 
-/* Card annullata: aspetto sbiadito */
+
 .card-annullata {
   opacity: 0.65;
   filter: grayscale(0.4);
@@ -778,7 +765,6 @@ onMounted(() => {
   letter-spacing: 2px;
 }
 
-/* Container per i due badge (tipo + stato) */
 .badge-container {
   display: flex;
   gap: 8px;
@@ -797,7 +783,7 @@ onMounted(() => {
   color: #00897b;
 }
 
-/* Badge per lo stato della prenotazione */
+
 .badge-stato {
   padding: 6px 14px;
   border-radius: 15px;
@@ -851,7 +837,7 @@ onMounted(() => {
   padding: 25px;
 }
 
-/* Destinazione viaggio normale */
+
 .destinazione-viaggio {
   background: linear-gradient(135deg, rgba(0,196,180,0.08) 0%, rgba(216,27,96,0.05) 100%);
   border-radius: 10px;
@@ -873,7 +859,7 @@ onMounted(() => {
   font-size: 0.95rem;
 }
 
-/* Destinazione misteriosa rivelata */
+
 .destinazione-rivelata {
   background: linear-gradient(135deg, rgba(0,196,180,0.1) 0%, rgba(216,27,96,0.1) 100%);
   border-radius: 10px;
@@ -954,7 +940,7 @@ onMounted(() => {
   border-top: 1px dashed #eee;
 }
 
-/* Quando ci sono 2 bottoni, li mettiamo affiancati */
+
 .card-actions-doppio {
   display: flex;
   gap: 12px;
@@ -991,7 +977,7 @@ onMounted(() => {
   color: white;
 }
 
-/* Bottone annulla prenotazione */
+
 .btn-annulla-prenotazione {
   background: white;
   color: #c62828;
@@ -1010,7 +996,7 @@ onMounted(() => {
   color: white;
 }
 
-/* ===== CTA FONDO ===== */
+
 .cta-fondo {
   text-align: center;
   margin-top: 40px;
@@ -1035,7 +1021,7 @@ onMounted(() => {
   box-shadow: 0 10px 25px rgba(216, 27, 96, 0.4);
 }
 
-/* ===== MODALE ANNULLAMENTO ===== */
+
 .modale-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -1173,7 +1159,7 @@ onMounted(() => {
   opacity: 0.6;
   cursor: not-allowed;
 }
-/* Badge per gli stati aggiuntivi delle misteriose */
+
 .badge-stato-rivelata {
   background: #f3e5f5;
   color: #6a1b9a;
@@ -1184,7 +1170,7 @@ onMounted(() => {
   color: #f57c00;
 }
 
-/* Avviso quando non si puo piu annullare una misteriosa */
+
 .avviso-no-annullo {
   background: #fff3e0;
   color: #e65100;
@@ -1197,7 +1183,7 @@ onMounted(() => {
   font-style: italic;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   .dettagli-grid {
     grid-template-columns: repeat(2, 1fr);

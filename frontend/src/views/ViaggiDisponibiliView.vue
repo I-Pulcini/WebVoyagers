@@ -1,8 +1,9 @@
 <script setup>
   
 import { ref, computed, onMounted } from 'vue';
-// imoprtiamo da Vue tre strumenti essenziali: 1) ref variabili reattive, che HTML aggiorna da solo 2) computed: serve per creare variabili che is calcola e aggironano in automatico  in base ad altre variabili
-// 3) onMOunted, per eseguire una funzione appena la pagina web è stata caricata
+//  ref variabili reattive, che HTML aggiorna da solo 
+// computed: serve per creare variabili che is calcola e aggironano in automatico  in base ad altre variabili
+// onMOunted, per eseguire una funzione appena la pagina web è stata caricata
 import { useRouter } from 'vue-router';  //importimao lo strumento di Vuew Router che ci permette di far cambiare pagina all'utente
 
 const router = useRouter();  //ci salviamo la costante router
@@ -25,7 +26,11 @@ const caricaViaggi = async () => {
   
     const data = await response.json(); //await serve per mettere in pausa l'esecuzione finchè il server non risponde. Aspettiamo ce la risposta sia trasformata dal formato JSON ad un ogetto JavaScirpt
     
-    
+  //il client (Vue) effettua una chiamata fetch() inviando una richiesta HTTP verso il backend, indirizzata all'API dinamica /api/viaggi/:stato. Il server Express riceve la richiesta ed estrae automaticamente il valore dello stato dall'URL tramite l'oggetto req.params.
+ //Viene eseguito un controllo di sicurezza: se lo stato non è tra quelli ammessi (statiAmmessi), il server risponde con un errore 400. Se invece lo stato è valido, il server interroga il database su Supabase tramite una query SQL, selezionando l'ID, il mese, il periodo, la destinazione, il prezzo e i posti disponibili di tutti i viaggi corrispondenti a quel criterio.
+ //Il server raccoglie queste righe dal database e invoca il metodo res.json() per convertirle in formato JSON e spedirle indietro sulla rete internet. Quando il pacchetto arriva al client, JavaScript riceve l'oggetto di risposta HTTP chiamato response. Verifichiamo subito se la risposta è andata a buon fine tramite la proprietà response.ok.
+//Se il controllo ha successo, eseguiamo l'istruzione await response.json() per spacchettare il testo JSON e trasformarlo in un oggetto JavaScript dentro la variabile data. Infine, utilizziamo la funzione .map() per ciclare ogni viaggio ricevuto e formattare i campi in un nuovo array pronto per essere visualizzato a schermo.
+  
     if (response.ok) {  //controlliamo se la risposta HTTP del server è un successo
      
       viaggi.value = data.viaggi.map(v => ({    //usiamo la funzione map per eseguire un ciclo su ogni viaggio v del database per mapparlo e creare un nuvo array con i nomi dei campi fondamentali

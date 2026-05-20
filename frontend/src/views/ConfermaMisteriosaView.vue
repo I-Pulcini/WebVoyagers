@@ -70,7 +70,9 @@ onMounted(() => {
 
       <!-- 3 OPZIONI MISTERIOSE -->
       <section class="opzioni-section">
-        <h2 class="opzioni-titolo">🎲 Le tue destinazioni candidate</h2>
+        <h2 class="opzioni-titolo">
+          🎲 {{ opzioni.length === 1 ? 'La tua destinazione candidata' : 'Le tue destinazioni candidate' }}
+        </h2>
         <p class="opzioni-sottotitolo">
           La verità ti sarà rivelata <strong>7 giorni prima della partenza</strong>!
         </p>

@@ -320,12 +320,12 @@ const inviaPrenotazione = async () => {
 .icona-mistero {
   font-size: 5rem;
   margin-bottom: 20px;
-  animation: floating 3s ease-in-out infinite;  //applichiamo l'animazione che viene chiamata "floating"
+  animation: floating 3s ease-in-out infinite;
 }
 
 @keyframes floating {
-  0%, 100% { transform: translateY(0); }   //indica il punto di partenza e di ritorno
-  50% { transform: translateY(-15px); }  //a metà del tempo si sposta di 15px verso l'alto
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
 .titolo-pagina {

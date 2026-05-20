@@ -82,38 +82,38 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
 
 <template>
   <div class="login-wrapper">
-    <div class="login-box">
+    <div class="login-box">  //riguardo bianco che contiene tutti i campi
       <h2>{{ isLoginMode ? 'Bentornato!' : 'Crea un Account' }}</h2>
       
-      <p v-if="messaggio" class="messaggio-alert">{{ messaggio }}</p>
+      <p v-if="messaggio" class="messaggio-alert">{{ messaggio }}</p>  //Mostra gli avvisi
 
-      <form @submit.prevent="gestisciSubmit">
-        <div class="form-group" v-if="!isLoginMode">
+      <form @submit.prevent="gestisciSubmit">  //serve per modificare il modulo di inserimento dati 
+        <div class="form-group" v-if="!isLoginMode">  //se la funzione è falsa cioè solo se l'utente si sta registrando
           <label>Username</label>
           <input type="text" v-model="username" required placeholder="Scegli uno username">
         </div>
 
-        <div class="form-group">
+        <div class="form-group">  //gruppo email
           <label>Email</label>
           <input type="email" v-model="email" required placeholder="Inserisci la tua email">
         </div>
 
         <div class="form-group">
           <label>Password</label>
-          <div class="input-password-wrapper">
+          <div class="input-password-wrapper">  //creiamo un piccolo contenitore per posizionare l'icona dell'occhio sopra la casella di testo
             <input
-              :type="mostraPassword ? 'text' : 'password'"
+              :type="mostraPassword ? 'text' : 'password'"   //: type indica il Data Binding, se la var.reattiva mostraPassword è vera allora l'input diventa text ed è visibile se è falsa rimane password ed è coperta
               v-model="password"
               required
               placeholder="Inserisci la password"
             >
             <span class="occhio" @click="mostraPassword = !mostraPassword" :title="mostraPassword ? 'Nascondi password' : 'Mostra password'">
-              <!-- occhio aperto -->
+              //creo l'occhio aperto qui
               <svg v-if="mostraPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
-              <!-- occhio chiuso (sbarrato) -->
+             //occhio chiuso
               <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
                 <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
@@ -128,11 +128,11 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
         </button>
       </form>
 
-      <p class="toggle-text">
+      <p class="toggle-text">  //paragrafo dedicato al cambio schermate
         {{ isLoginMode ? 'Non hai un account?' : 'Hai già un account?' }}
-        <span @click="toggleMode" class="toggle-link">
+        <span @click="toggleMode" class="toggle-link">  // se si clicca si invertono le modalità della pagina e si svuota tutto
           {{ isLoginMode ? 'Registrati qui' : 'Accedi qui' }}
-        </span>
+        </span> //contenitore generico in-line, non va a capo
       </p>
     </div>
   </div>

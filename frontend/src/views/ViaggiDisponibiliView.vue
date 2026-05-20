@@ -102,10 +102,12 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
       </section>
 
       <section class="lista-viaggi">
+     //indica il carimento
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>
      
+        //errore
         <div v-else-if="errore" class="errore-info">
           ⚠️ {{ errore }}
         </div>
@@ -115,6 +117,7 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
           Nessun viaggio in programma per {{ meseSelezionato }}.
         </div>
 
+       //lista viaggi
         <div v-else v-for="viaggio in viaggiFiltrati" :key="viaggio.id" class="riga-viaggio">
           <div class="colonna-date">
             <span class="periodo">{{ viaggio.periodo }}</span>

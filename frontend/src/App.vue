@@ -2,78 +2,77 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { RouterView, RouterLink, useRoute, useRouter } from 'vue-router'
 import { userStore } from './stores/userStore'
+// abbiamo importato RouterView cioè il contenitore in cui verranno messe le pagine Home,Errore ecc
+//RouterLink il tag di Vue che serve per creare link sena far ricaricare il browser
+// useRoute server per sapere le info sulla pafina attuale 
+// useRouter, il comando per deviare l'utente su un'altra pagina via codice
+//userStore, è un contenitore in cui vengono salvati i dati dell'utente loggato cosi da leggerli in qualsiasi parte del sito senza perderli
 
 
-/* --- SINTASSI VUE 3 (Composition API) --- */
-/* Abbiamo organizzato tutta la logica nel blocco script setup.
-   Le variabili reattive (ref) si aggiornano automaticamente nell'HTML. */
 
-// Abbiamo creato due variabili reattive per gestire lo stato del menu hamburger
-const isMenuOpen = ref(false)
-const isSubmenuOpen = ref(false)
+const isMenuOpen = ref(false)  //var.reattiva che imposta il menù hambuger chiuso
+const isSubmenuOpen = ref(false)  //var.reattiva che imposta l'aperta del sottomenu
 
-// Abbiamo importato useRoute per sapere su quale pagina ci troviamo
-const route = useRoute()
-// Abbiamo importato il router per poter spostare l'utente programmaticamente (es. dopo il logout)
-const router = useRouter()
-// Abbiamo creato una proprietà calcolata che nasconde il bottone "casa" nella homepage
+
+const route = useRoute() 
+
+const router = useRouter()  //serve a prendere l'indirizzo in cui si trova l'utente in questo momento
+
 const mostraBottoneHome = computed(() => route.path !== '/')
 
-// Abbiamo creato la funzione che apre/chiude il menu hamburger
-const toggleMenu = () => {
+
+const toggleMenu = () => {   // Abbiamo creato la funzione che apre/chiude il menu hamburger
   isMenuOpen.value = !isMenuOpen.value
 }
 
-// Abbiamo creato la funzione che apre/chiude il sottomenu "Esplora"
-const toggleSubmenu = (event) => {
+
+const toggleSubmenu = (event) => {  // Abbiamo creato la funzione che apre/chiude il sottomenu "Esplora"
   event.preventDefault()
   isSubmenuOpen.value = !isSubmenuOpen.value
 }
 
-// Abbiamo creato la funzione che chiude completamente tutti i menu
-const closeMenu = () => {
+
+const closeMenu = () => {   // Abbiamo creato la funzione che chiude completamente tutti i menu
   isMenuOpen.value = false
   isSubmenuOpen.value = false
 }
 
-// Abbiamo creato la funzione che chiude il menu se si clicca fuori
-const closeMenuOnClickOutside = (event) => {
+
+const closeMenuOnClickOutside = (event) => {   // Abbiamo creato la funzione che chiude il menu se si clicca fuori
   if (!event.target.matches('.hamburger') && !event.target.closest('.menu-dropdown')) {
     isMenuOpen.value = false
     isSubmenuOpen.value = false
   }
 }
 
-/* --- VERIFICA SESSIONE ALL'AVVIO --- */
 // Abbiamo creato una funzione asincrona che chiama il backend per sapere se c'è una sessione attiva
 const verificaSessione = async () => {
   try {
-    // Abbiamo chiamato l'endpoint /api/me con credentials:'include' per inviare i cookie di sessione
+    //il client invia una richiesta di tipo GET all'endpoint del server 
     const response = await fetch('/api/me', {
-      credentials: 'include'
+      credentials: 'include'  //serve a ricordare a clinet di mandare il cookie
     })
-    // Abbiamo trasformato la risposta da JSON a oggetto JavaScript
-    const data = await response.json()
-    // Abbiamo controllato se il backend ha confermato che l'utente è loggato
+   
+    const data = await response.json()  
+ 
     if (data.loggato) {
-      // Abbiamo aggiornato lo store globale con i dati dell'utente recuperati dalla sessione
-      userStore.setUser(data.userId, data.username, data.isAdmin)
+    
+      userStore.setUser(data.userId, data.username, data.isAdmin)  //prende i dati inviate dal server, cosi tutto il sito sa chi è l'utente
     }
   } catch (err) {
-    // Abbiamo stampato l'eventuale errore in console per il debug
     console.error('Errore nella verifica sessione:', err)
   }
 }
 
-/* --- LOGOUT --- */
+   
 // Abbiamo creato la funzione che esegue il logout chiamando lo store e poi reindirizza alla home
 const gestisciLogout = async () => {
-  // Abbiamo prima chiuso il menu hamburger per dare un feedback visivo immediato
+  // Abbiamo prima chiuso il menu hamburger
   closeMenu()
   // Abbiamo eseguito il logout completo tramite la funzione dello store
-  await userStore.logout()
-  // Abbiamo reindirizzato l'utente alla homepage dopo aver effettuato il logout
-  router.push('/')
+  await userStore.logout()  // await è un'operazione asincrona che blocca l'esecuzione dentro questa funzone finchè non arriva la risposra del server, ma non blovva ilbrowser dell'utente
+ 
+  router.push('/') //se si fa logout si va nella pagina che ha la URL '/'
 }
 
 /* --- LIFECYCLE HOOKS --- */

@@ -3,9 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-/* COMPOSITION API: pagina "Chi Siamo" in stile SiVola, 
-   con header full-width, sezioni a blocchi colorati, statistica 
-   e recensioni reali caricate dal database. */
+
 
 // Abbiamo creato la variabile reattiva che conterrà le recensioni dal backend
 const recensioni = ref([])
@@ -37,7 +35,7 @@ const caricaRecensioni = async () => {
   }
 }
 
-// Abbiamo creato un computed che calcola il voto medio in stelle (per il sottotitolo)
+
 const votoMedio = computed(() => {
   if (recensioni.value.length === 0) return '5.0'
   const somma = recensioni.value.reduce((acc, r) => acc + r.stelle, 0)
@@ -115,7 +113,7 @@ const inviaRecensione = async () => {
   }
 }
 
-// Abbiamo creato una funzione che formatta il tempo in modo "umano" (es. "2 giorni fa")
+// Abbiamo creato una funzione che formatta il tempo in modo "umano"
 const tempoTrascorso = (dataIso) => {
   const data = new Date(dataIso)
   const ora = new Date()
@@ -162,7 +160,7 @@ const founders = [
 <template>
   <div class="ChiSiamo-wrapper">
 
-    <!-- HEADER FULL-WIDTH -->
+  
     <header class="fascia-foto">
       <div class="overlay-testo">
         <h1 class="fascia-titolo">CHI SIAMO</h1>
@@ -173,7 +171,7 @@ const founders = [
       </div>
     </header>
 
-    <!-- DESCRIZIONE AZIENDA -->
+ 
     <section class="sezione-descrizione">
       <h2 class="titolo-sezione">WebVoyagers: il Tour Operator per Viaggi di Gruppo Unici</h2>
       <p>
@@ -195,7 +193,7 @@ const founders = [
       </p>
     </section>
 
-    <!-- COME FUNZIONA: 4 STEP -->
+ 
     <section class="sezione-steps">
       <h2 class="titolo-sezione">Come viaggiare con WebVoyagers?</h2>
       <div class="steps-grid">
@@ -207,7 +205,7 @@ const founders = [
       </div>
     </section>
 
-    <!-- COSA INCLUDONO I VIAGGI -->
+ 
     <section class="sezione-inclusi">
       <h2 class="titolo-sezione">Cosa include un viaggio WebVoyagers?</h2>
       <p class="testo-intro">
@@ -222,7 +220,7 @@ const founders = [
       </div>
     </section>
 
-    <!-- STATISTICA GRANDE -->
+  
     <section class="sezione-statistica">
       <p class="stat-label">Con noi hanno già viaggiato</p>
       <h2 class="stat-numero">10.000</h2>
@@ -230,7 +228,7 @@ const founders = [
       <RouterLink to="/viaggi-disponibili" class="btn-cta">Unisciti anche tu!</RouterLink>
     </section>
 
-    <!-- RECENSIONI -->
+ 
     <section class="sezione-recensioni">
       <h2 class="titolo-sezione">Cosa dicono di noi</h2>
       <p class="testo-intro" v-if="recensioni.length > 0">
@@ -241,12 +239,12 @@ const founders = [
         Sii il primo a recensirci dopo il tuo viaggio!
       </p>
 
-      <!-- Caricamento -->
+    
       <div v-if="caricamentoRecensioni" class="caricamento-recensioni">
         ⏳ Caricamento recensioni...
       </div>
 
-      <!-- Lista recensioni -->
+    
       <div v-else-if="recensioni.length > 0" class="recensioni-grid">
         <div v-for="r in recensioni" :key="r.id" class="recensione-card">
           <div class="stelle">{{ renderStelle(r.stelle) }}</div>
@@ -259,7 +257,7 @@ const founders = [
         </div>
       </div>
 
-      <!-- Bottone scrivi recensione -->
+     
       <div class="cta-recensione" v-if="!formAperto">
         <button @click="apriForm" class="btn-scrivi-recensione">
           ✍️ Scrivi una recensione
@@ -269,7 +267,7 @@ const founders = [
         </p>
       </div>
 
-      <!-- Form scrivi recensione -->
+   
       <div v-else class="form-recensione-wrapper">
         <h3 class="form-recensione-titolo">✍️ Scrivi la tua recensione</h3>
 
@@ -277,7 +275,7 @@ const founders = [
         <div v-if="successoRecensione" class="form-successo">✓ {{ successoRecensione }}</div>
 
         <div class="form-recensione">
-          <!-- Stelle interattive -->
+         //stelle interattive
           <div class="form-row">
             <label>Quanto è stato bello il tuo viaggio?</label>
             <div class="stelle-input">
@@ -333,7 +331,7 @@ const founders = [
 
     </section>
 
-    <!-- FOUNDERS (sezione finale) -->
+   
     <section class="sezione-founders">
       <h2 class="titolo-sezione">Con chi WebVoyagers?</h2>
       <p class="founders-subtitle">I nostri founders</p>
@@ -368,7 +366,7 @@ const founders = [
   color: #333;
 }
 
-/* ===== HEADER ===== */
+
 .fascia-foto {
   width: 100%;
   height: 70vh;
@@ -415,7 +413,7 @@ const founders = [
   text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-/* ===== TITOLI SEZIONE ===== */
+
 .titolo-sezione {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   color: #00c4b4;
@@ -433,7 +431,7 @@ const founders = [
   color: #555;
 }
 
-/* ===== DESCRIZIONE ===== */
+
 .sezione-descrizione {
   max-width: 1000px;
   margin: 0 auto;
@@ -454,7 +452,7 @@ const founders = [
   color: #d81b60;
 }
 
-/* ===== STEPS ===== */
+
 .sezione-steps {
   background-color: #f9f9f9;
   padding: 80px 5%;
@@ -500,7 +498,7 @@ const founders = [
   opacity: 0.95;
 }
 
-/* ===== INCLUSI ===== */
+
 .sezione-inclusi {
   padding: 80px 5%;
   max-width: 1300px;
@@ -543,7 +541,7 @@ const founders = [
   line-height: 1.5;
 }
 
-/* ===== STATISTICA ===== */
+
 .sezione-statistica {
   background-color: #00c4b4;
   color: white;
@@ -588,7 +586,6 @@ const founders = [
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* ===== RECENSIONI ===== */
 .sezione-recensioni {
   background-color: #f9f9f9;
   padding: 80px 5%;
@@ -648,7 +645,7 @@ const founders = [
   font-weight: normal;
 }
 
-/* CTA scrivi recensione */
+
 .cta-recensione {
   text-align: center;
   margin-top: 40px;
@@ -679,7 +676,7 @@ const founders = [
   font-style: italic;
 }
 
-/* Form recensione */
+
 .form-recensione-wrapper {
   max-width: 700px;
   margin: 40px auto 0 auto;
@@ -818,7 +815,7 @@ const founders = [
   cursor: not-allowed;
 }
 
-/* ===== FOUNDERS ===== */
+
 .sezione-founders {
   padding: 80px 5%;
   max-width: 900px;
@@ -887,7 +884,7 @@ const founders = [
   line-height: 1.6;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 1024px) {
   .steps-grid,
   .recensioni-grid {

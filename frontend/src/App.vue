@@ -92,22 +92,19 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 
 <template>
   
-  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">  //prendo il pulsante home fuori dalla pagina homeView.vue ci riporta alla home
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">  //svg è un tag di html che ci da le coordinate per disegnare l'icona
-     //viewBox="0 0 24 24=  questo è la tela virtuale del disegno, 24 altezza e 24 altezza 
-      //fill="none" = dice che l'intrno della casetta non deve essere colorato
-      //stroke="currentColor" = il colore della casetta deve adattarsi al colore del testo circostante
-      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>  //traccia materialmente le linee del disegno
-    </svg>  //svg viene usato per disegnare elementi grafici
+  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>
+    </svg>
   </RouterLink>
 
-  <nav class="menu-container">  //narra di navigazione del sito
-    <div class="hamburger" @click="toggleMenu">&#9776;</div>  //serve per aprire e chiudere 
+  <nav class="menu-container">
+    <div class="hamburger" @click="toggleMenu">&#9776;</div>
 
-    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">  //si apre il menu ad hamburger
-      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a>  //&#9662; ovvero ▾
+    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">
+      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a>
 
-      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">  //mostrimao il sotto menù solo quando la funzione è vera
+      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">
         <RouterLink to="/viaggi-disponibili" @click="closeMenu">Viaggi disponibili</RouterLink>
         <RouterLink to="/soldout" @click="closeMenu">Viaggi Sold Out</RouterLink>
         <RouterLink to="/viaggi-inarrivo" @click="closeMenu">Viaggi in arrivo</RouterLink>
@@ -117,14 +114,13 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
       <RouterLink to="/chi-siamo" @click="closeMenu">Chi Siamo</RouterLink>
       <RouterLink to="/contattaci" @click="closeMenu">Contattaci</RouterLink>
 
-     //se l'utente non è loggato
       <RouterLink v-if="!userStore.loggato" to="/login" @click="closeMenu">Accedi / Registrati</RouterLink>
       <template v-else>
-        <div class="utente-loggato"> //se l'utente è loggato
+        <div class="utente-loggato">
           Ciao, <strong>{{ userStore.username ?? 'Utente' }}</strong>!
         </div>
         <RouterLink 
-          v-if="userStore.isAdmin" //se l'utente è l'amministratore
+          v-if="userStore.isAdmin"
           to="/admin" 
           @click="closeMenu" 
           class="link-admin"
@@ -137,7 +133,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
         <RouterLink to="/le-mie-prenotazioni" @click="closeMenu" class="link-prenotazioni">
           📋 Le mie prenotazioni
         </RouterLink>
-        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a>  //href="#" = serve al link di non andare su una pagina specifica ma di rimanere nella stessa.@click.prevent="gestisciLogout"= se clicchiamo esci allora si fa la funzione di gestisci Logount e .prevent serve per far resyare il browser nella pagina in cui stiamo
+        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a>
       </template>
     </div>
   </nav>
@@ -146,8 +142,6 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 </template>
 
 <style>
-//bottone della casetta, i colori
-//. è un selettore mentre il nome dietro è il nome di una classe HTML ed è una classe hidden nascosta all'utente
 .btn-home {
   position: fixed;
   top: 15px;
@@ -186,7 +180,6 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #f9f9f9;
 }
 
-// le mie prenotazione, !important forza il browser ad usare questo colore verde scuro
 .link-prenotazioni {
   display: block;
   padding: 14px 20px;
@@ -203,7 +196,6 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #b2dfdb;
 }
 
-// il mio profilo, testo viola
 .link-profilo {
   display: block;
   padding: 14px 20px;
@@ -219,7 +211,6 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 .link-profilo:hover {
   background-color: #d1c4e9;
 }
-//amministrazione
 .link-admin {
   display: block;
   padding: 14px 20px;
@@ -239,7 +230,6 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   color: white !important;
 }
 
-//logout
 .btn-logout {
   display: block;
   padding: 14px 20px;

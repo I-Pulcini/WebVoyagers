@@ -4,10 +4,7 @@ import { useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
 
-/* Abbiamo creato una pagina dove l'utente loggato può:
-   - Vedere i propri dati (username, email, data registrazione)
-   - Cambiare la password (richiedendo la verifica della vecchia)
-   - Consultare le statistiche personali sulle prenotazioni */
+
 
 const router = useRouter()   //var. del router
 
@@ -28,7 +25,7 @@ const formCambioPasswordAperto = ref(false)
 // Abbiamo creato la funzione asincrona che scarica i dati del profilo dal backend
 const caricaProfilo = async () => {
   try {
-    const response = await fetch('/api/profilo', {    //grazie alla funzine fetch() ci colleghiamo ad uno delgi API scritti nel backend
+    const response = await fetch('/api/profilo', {   
       credentials: 'include'
     })
     const data = await response.json()  //alla risposta cambiamo il formato il JSON
@@ -146,7 +143,7 @@ onMounted(() => {
 <template>
   <div class="Profilo-wrapper">
 
-    <!-- HEADER -->
+ 
     <header class="header-profilo">
       <div class="overlay-stelle"></div>
       <div class="header-content">
@@ -162,21 +159,21 @@ onMounted(() => {
 
     <main class="contenuto-principale">
 
-      <!-- CARICAMENTO -->
+ 
       <div v-if="caricamento" class="stato-info">
         <div class="spinner">⏳</div>
         <p>Caricamento profilo...</p>
       </div>
 
-      <!-- ERRORE -->
+     
       <div v-else-if="errore" class="messaggio-errore">
         ⚠️ {{ errore }}
       </div>
 
-      <!-- CONTENUTO PROFILO -->
+     
       <div v-else-if="profilo" class="profilo-content">
 
-        <!-- SEZIONE INFORMAZIONI -->
+      
         <section class="sezione-card">
           <h2 class="sezione-titolo">📌 Informazioni account</h2>
           <div class="info-grid">
@@ -199,7 +196,7 @@ onMounted(() => {
           </div>
         </section>
 
-        <!-- SEZIONE STATISTICHE -->
+     
         <section class="sezione-card">
           <h2 class="sezione-titolo">📊 Le tue statistiche</h2>
           <div class="stats-grid">
@@ -227,7 +224,7 @@ onMounted(() => {
           </div>
         </section>
 
-        <!-- SEZIONE SICUREZZA / CAMBIO PASSWORD -->
+       
         <section class="sezione-card">
           <h2 class="sezione-titolo">🔒 Sicurezza</h2>
 
@@ -241,8 +238,7 @@ onMounted(() => {
             </button>
           </div>
 
-          <!-- Form cambio password -->
-          <form v-else @submit.prevent="cambiaPassword" class="form-cambio-password">
+             <form v-else @submit.prevent="cambiaPassword" class="form-cambio-password">
 
             <div v-if="erroreCambioPassword" class="messaggio-errore-piccolo">
               ⚠️ {{ erroreCambioPassword }}
@@ -326,7 +322,6 @@ onMounted(() => {
   color: #333;
 }
 
-/* ===== HEADER ===== */
 .header-profilo {
   background: linear-gradient(135deg, #00897b 0%, #00c4b4 50%, #4527a0 100%);
   width: 100%;
@@ -387,7 +382,7 @@ onMounted(() => {
   opacity: 0.95;
 }
 
-/* ===== CONTENUTO ===== */
+
 .contenuto-principale {
   width: 100%;
   max-width: 1000px;
@@ -401,7 +396,7 @@ onMounted(() => {
   gap: 30px;
 }
 
-/* ===== STATI ===== */
+
 .stato-info {
   text-align: center;
   padding: 80px 30px;
@@ -430,7 +425,7 @@ onMounted(() => {
   text-align: center;
 }
 
-/* ===== SEZIONE CARD ===== */
+
 .sezione-card {
   background: white;
   border-radius: 15px;
@@ -446,7 +441,7 @@ onMounted(() => {
   padding-bottom: 12px;
 }
 
-/* ===== INFO GRID ===== */
+
 .info-grid {
   display: flex;
   flex-direction: column;
@@ -478,7 +473,7 @@ onMounted(() => {
   font-weight: 600;
 }
 
-/* ===== STATISTICHE ===== */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -547,7 +542,7 @@ onMounted(() => {
   color: #666;
 }
 
-/* ===== SICUREZZA ===== */
+
 .sicurezza-info {
   text-align: center;
 }
@@ -676,7 +671,7 @@ onMounted(() => {
   font-size: 0.95rem;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   .stats-grid {
     grid-template-columns: 1fr;

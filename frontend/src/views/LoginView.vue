@@ -29,14 +29,14 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
   const url = isLoginMode.value ? '/api/login' : '/api/register'  //se isLoginMode è vero,l'url da chiamare è /login altrimenti è /register
   
   
-  const payload = isLoginMode.value 
-    ? { email: email.value, password: password.value }
-    : { username: username.value, email: email.value, password: password.value }
-  //creiamo il payload, il pacco dei dati da spedire al sever, se stiamo facendo il login spediamo solo email e password. se stiamo registrando, aggiungiamo anche l'username
+  const payload = isLoginMode.value //iniziamo la costruzione del pacchetto di dati da spedire tramite la rete
+    ? { email: email.value, password: password.value }  // se stiamo nel Login i pacchetto avrà qeuste cose
+    : { username: username.value, email: email.value, password: password.value }  //se stiamo in modalità Registrazione
+
   try {
    
-    const response = await fetch(url, {   //usiamo AJAX con la chiamata fetch per andare all'URL calcolato prima. Await dice al codice di fermarsi e aspettare la risposta del server
-      method: 'POST',   // è una chiamata di tipo post perche stimao inviando dati sicuri, non li stiamo solo leggendo
+    const response = await fetch(url, {   //await blocca l'esecuzione di questa funzione, aspettadno che il server risponda
+      method: 'POST',   // è una chiamata di tipo post perche stimao inviando dati sicuri al server
       headers: { 'Content-Type': 'application/json' },  //stiamo avvisando il server Node.js che il pacco in formato JSON sta arrivando
       credentials: 'include',  // Abbiamo aggiunto questa opzione per inviare e ricevere i cookie di sessione
       body: JSON.stringify(payload)  //trasformaimo in una stringa il testo JSON pronta per viaggiare su internet

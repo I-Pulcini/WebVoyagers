@@ -84,22 +84,22 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utente fa c
       </section>
 
       <section class="lista-viaggi">
-        <!-- Indicatore di caricamento -->
+      
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>
 
-        <!-- Messaggio di errore -->
+     
         <div v-else-if="errore" class="errore-info">
           ⚠️ {{ errore }}
         </div>
 
-        <!-- Nessun viaggio per il mese selezionato -->
+       
         <div v-else-if="viaggiFiltrati.length === 0" class="nessun-viaggio">
           Nessun viaggio sold out registrato per {{ meseSelezionato }}.
         </div>
 
-        <!-- Lista viaggi -->
+     
         <div v-else v-for="viaggio in viaggiFiltrati" :key="viaggio.id" class="riga-viaggio">
           <div class="colonna-date">
             <span class="periodo">{{ viaggio.periodo }}</span>
@@ -139,7 +139,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utente fa c
   overflow-x: hidden;
 }
 
-/* Fascia foto a tutta larghezza */
+
 .fascia-foto {
   width: 100%;
   height: 70vh;
@@ -153,7 +153,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utente fa c
   text-align: center;
 }
 
-/* Sfumatura scura in alto, per far risaltare il menu hamburger */
+
 .fascia-foto::before {
   content: '';
   position: absolute;

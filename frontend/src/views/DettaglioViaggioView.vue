@@ -174,24 +174,28 @@ watch(viaggio, async (nuovoViaggio) => {
 
 <template>
   <div class="viaggio-wrapper">
+   //schermata
     <div v-if="caricamento" class="loading-box">
       <p>⏳ Caricamento viaggio in corso...</p>
     </div>
 
+   //errori 
     <div v-else-if="erroreCaricamento" class="errore-box">
       <h2>⚠️ Ops!</h2>
       <p>{{ erroreCaricamento }}</p>
       <RouterLink to="/viaggi-disponibili" class="btn-torna">← Torna ai viaggi</RouterLink>
     </div>
 
+   //viaggio caricato
     <template v-else-if="viaggio">
       <header 
         class="fascia-foto"
-        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"
+        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"   //vediamo se è presente un'immagine di sfondo dell'header usando il percorso del database
         >
         <h1 class="fascia-titolo">{{ viaggio.destinazione }}</h1>
         </header>
 
+      //prenota viaggio
       <div class="prenota-bar">
         <div class="prenota-info">
           <span class="prenota-prezzo">{{ viaggio.prezzo }}€</span>
@@ -243,6 +247,7 @@ watch(viaggio, async (nuovoViaggio) => {
           ></div>
         </section>
 
+       //bottone prenota in fondo alla pagina
         <section class="cta-finale">
           <h2>Pronto a partire?</h2>
           <p>Posti limitati. Prenota ora e assicurati il tuo posto in questa avventura.</p>
@@ -252,9 +257,11 @@ watch(viaggio, async (nuovoViaggio) => {
         </section>
       </main>
 
+   //modale aperto
       <div v-if="modaleAperto" class="modale-overlay" @click.self="chiudiModale">
         <div class="modale-content">
 
+       // schermata successo
           <div v-if="successo" class="successo-box">
             <div class="successo-icona">🎉</div>
             <h2>Prenotazione confermata!</h2>
@@ -274,6 +281,7 @@ watch(viaggio, async (nuovoViaggio) => {
             </div>
           </div>
 
+       //form prenotazione
           <div v-else>
             <button @click="chiudiModale" class="btn-chiudi-x" aria-label="Chiudi">×</button>
             <h2 class="modale-titolo">🎒 Prenota: {{ viaggio.destinazione }}</h2>
@@ -353,6 +361,7 @@ watch(viaggio, async (nuovoViaggio) => {
   background: #00897b;
 }
 
+//bottone prenota
 .prenota-bar {
   background: linear-gradient(135deg, #00c4b4 0%, #00897b 100%);
   padding: 25px 5%;

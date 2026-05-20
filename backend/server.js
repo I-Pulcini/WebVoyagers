@@ -200,20 +200,21 @@ app.post('/api/login', async (req, res) => {
     if (erroriLogin.length > 0) {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriLogin });
     }
+  
     // Abbiamo recuperato l'email e la password inserite dall'utente nel form di login
     const { email, password } = req.body;
     // Abbiamo aperto un blocco try per gestire la ricerca dell'utente
     try {
-        // Abbiamo cercato nel database l'utente che possiede l'email indicata
+        // Abbiamo cercato nel database che utente  possiede l'email indicata
         const result = await pool.query('SELECT * FROM utenti WHERE email = $1', [email]);
         
-        // Abbiamo controllato se il database ha restituito zero risultati (utente non esistente)
+        // Abbiamo controllato se il database ha restituito zero risultati 
         if (result.rows.length === 0) {
             // Abbiamo risposto con errore 401 se l'email non è presente nei nostri archivi
             return res.status(401).json({ error: "Utente non trovato." });
         }
 
-        // Abbiamo estratto il primo (e unico) utente trovato dalla lista dei risultati
+        // Abbiamo estratto il primo utente trovato dalla lista dei risultati
         const user = result.rows[0];
         
         // Abbiamo confrontato la password digitata con quella criptata salvata nel database

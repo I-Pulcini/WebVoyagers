@@ -2,10 +2,6 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-/* --- PAGINA SCOPRI IL TUO VIAGGIO --- */
-/* Abbiamo creato una pagina che permette all'utente di inserire il proprio codice prenotazione.
-   Se mancano 7 giorni o meno alla partenza, mostriamo la destinazione misteriosa.
-   Altrimenti mostriamo quanti giorni ancora deve aspettare prima di poter scoprire dove andrà. */
 
 // Abbiamo creato le variabili reattive per gestire il form e il risultato
 const codiceInserito = ref('')
@@ -60,7 +56,7 @@ const nuovaRicerca = () => {
 <template>
   <div class="ScopriViaggio-wrapper">
 
-    <!-- HEADER -->
+
     <header class="header-scopri">
       <div class="overlay-stelle"></div>
       <div class="header-content">
@@ -74,7 +70,7 @@ const nuovaRicerca = () => {
 
     <main class="contenuto-principale">
 
-      <!-- FORM DI RICERCA -->
+    
       <section v-if="!risultato" class="form-section">
         <form @submit.prevent="cercaPrenotazione" class="form-codice">
           <label for="codice">Il tuo codice di prenotazione</label>
@@ -100,7 +96,6 @@ const nuovaRicerca = () => {
         </p>
       </section>
 
-      <!-- RISULTATO: VIAGGIO RIVELATO -->
       <section v-else-if="risultato.rivelato" class="risultato-rivelato">
         <div class="celebration-icon">🎉</div>
         <h2 class="risultato-titolo">È ora di scoprire!</h2>
@@ -145,7 +140,7 @@ const nuovaRicerca = () => {
         </button>
       </section>
 
-      <!-- RISULTATO: ANCORA NASCOSTO -->
+     
       <section v-else class="risultato-nascosto">
         <div class="lock-icon">🔒</div>
         <h2 class="risultato-titolo">Ancora un po' di pazienza!</h2>
@@ -192,7 +187,6 @@ const nuovaRicerca = () => {
   color: #333;
 }
 
-/* ===== HEADER ===== */
 .header-scopri {
   background: linear-gradient(135deg, #1a237e 0%, #4527a0 50%, #6a1b9a 100%);
   width: 100%;
@@ -251,7 +245,7 @@ const nuovaRicerca = () => {
   opacity: 0.95;
 }
 
-/* ===== CONTENUTO ===== */
+
 .contenuto-principale {
   width: 100%;
   max-width: 800px;
@@ -259,7 +253,7 @@ const nuovaRicerca = () => {
   padding: 60px 5%;
 }
 
-/* ===== FORM RICERCA ===== */
+
 .form-section {
   text-align: center;
 }
@@ -345,7 +339,7 @@ const nuovaRicerca = () => {
   font-size: 0.95rem;
 }
 
-/* ===== RISULTATO RIVELATO ===== */
+
 .risultato-rivelato {
   text-align: center;
 }
@@ -448,7 +442,7 @@ const nuovaRicerca = () => {
   margin: 0;
 }
 
-/* ===== RISULTATO NASCOSTO ===== */
+
 .risultato-nascosto {
   text-align: center;
 }
@@ -487,7 +481,7 @@ const nuovaRicerca = () => {
   margin: 25px 0;
 }
 
-/* ===== BOTTONE COMUNE ===== */
+
 .btn-altro-codice {
   background: white;
   color: #6a1b9a;
@@ -507,7 +501,7 @@ const nuovaRicerca = () => {
   transform: translateY(-3px);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 600px) {
   .info-viaggio {
     grid-template-columns: 1fr;

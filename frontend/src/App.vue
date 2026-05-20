@@ -18,7 +18,7 @@ const route = useRoute()
 
 const router = useRouter()  //serve a prendere l'indirizzo in cui si trova l'utente in questo momento
 
-const mostraBottoneHome = computed(() => route.path !== '/')
+const mostraBottoneHome = computed(() => route.path !== '/')  //clicchi il bottone con la casa e ti riporta alla home
 
 
 const toggleMenu = () => {   // Abbiamo creato la funzione che apre/chiude il menu hamburger
@@ -72,37 +72,40 @@ const gestisciLogout = async () => {
   // Abbiamo eseguito il logout completo tramite la funzione dello store
   await userStore.logout()  // await è un'operazione asincrona che blocca l'esecuzione dentro questa funzone finchè non arriva la risposra del server, ma non blovva ilbrowser dell'utente
  
-  router.push('/') //se si fa logout si va nella pagina che ha la URL '/'
+  router.push('/') //se si fa logout si va nella pagina che ha la URL '/' cioè HomeView.vue
 }
 
-/* --- LIFECYCLE HOOKS --- */
-// Abbiamo agganciato la verifica sessione e il listener click al montaggio del componente
+
+
 onMounted(() => {
-  verificaSessione()
-  window.addEventListener('click', closeMenuOnClickOutside)
+  verificaSessione()  //verifichiamo se l'utente è gia loggato
+  window.addEventListener('click', closeMenuOnClickOutside)  //il browser resta in ascolto ed ogni volta che l'utente clicca qualsiasi punto dello schermo deve attivare la fuznione closeMenuOnClickOutside
 })
 
-// Abbiamo rimosso il listener click quando il componente viene distrutto
-onUnmounted(() => {
+
+onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi liberiamo memoria dal computer
   window.removeEventListener('click', closeMenuOnClickOutside)
 })
 </script>
 
 <template>
-  <!-- Abbiamo aggiunto il bottone "Torna alla home" visibile solo fuori dalla homepage -->
-  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>
+  
+  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">  //prendo il pulsante home fuori dalla pagina homeView.vue ci riporta alla home
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">  //svg è un tag di html che ci da le coordinate per disegnare l'icona
+     //viewBox="0 0 24 24=  questo è la tela virtuale del disegno, 24 altezza e 24 altezza 
+      //fill="none" = dice che l'intrno della casetta non deve essere colorato
+      //stroke="currentColor" = il colore della casetta deve adattarsi al colore del testo circostante
+      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>  //traccia materialmente le linee del disegno
     </svg>
   </RouterLink>
 
   <nav class="menu-container">
-    <div class="hamburger" @click="toggleMenu">&#9776;</div>
+    <div class="hamburger" @click="toggleMenu">&#9776;</div>  //serve per aprire e chiudere 
 
-    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">
-      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a>
+    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">  //si apre il menu ad hamburger
+      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a>  //&#9662; ovvero ▾
 
-      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">
+      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">  //mostrimao il sotto menù solo quando la funzione è vera
         <RouterLink to="/viaggi-disponibili" @click="closeMenu">Viaggi disponibili</RouterLink>
         <RouterLink to="/soldout" @click="closeMenu">Viaggi Sold Out</RouterLink>
         <RouterLink to="/viaggi-inarrivo" @click="closeMenu">Viaggi in arrivo</RouterLink>
@@ -112,14 +115,14 @@ onUnmounted(() => {
       <RouterLink to="/chi-siamo" @click="closeMenu">Chi Siamo</RouterLink>
       <RouterLink to="/contattaci" @click="closeMenu">Contattaci</RouterLink>
 
-      <!-- Abbiamo aggiunto la logica condizionale: se l'utente è loggato vede il saluto, le sue prenotazioni e il logout, altrimenti vede il link Accedi -->
+     //se l'utente non è loggato
       <RouterLink v-if="!userStore.loggato" to="/login" @click="closeMenu">Accedi / Registrati</RouterLink>
       <template v-else>
-        <div class="utente-loggato">
+        <div class="utente-loggato"> //se l'utente è loggato
           Ciao, <strong>{{ userStore.username ?? 'Utente' }}</strong>!
         </div>
         <RouterLink 
-          v-if="userStore.isAdmin" 
+          v-if="userStore.isAdmin" //se l'utente è l'amministratore
           to="/admin" 
           @click="closeMenu" 
           class="link-admin"

@@ -60,6 +60,8 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
           isLoginMode.value = true
           messaggio.value = 'Ora puoi effettuare il login!'
         }, 1500)
+
+        // Nel file login view.vue abbiamo una chiamata a fetch con scritto una variabile url. Questa variabile url dipende se l'utente ha fatto il login o se l'utente non l'ha mai fatto. Se l'utente non ha mai fatto il login, allora andiamo a finire nell'api register e quindi nell'api 3. Quindi abbiamo un collegamento client server. Il client invia nel body della richiesta il pacchetto JSON con i dati compilati, quindi username, email e password. E oltre al body abbiamo anche il cookie che è stato aggiunto dal browser. Successivamente, quando arriverà al server questo pacchetto, l'api 3 prende la password, la la cripta, trasformandola in password_hash e inserirà manualmente al database l'username, email e password cifrata. Se il database accetterà il nuovo utente, il server creerà una variabile response con stato 201 e inserisce in rest.json solo il messaggio di di successo, nient'altro, né l'username, né l'email, né la password, solo il messaggio di successo. Questo pacchetto è JSON con il messaggio di successo tornerà indietro al client, il pacchetto quindi tornerà in login view.vue sotto forma di response, se il response è ok, allora vuol dire che ci siamo registrati con successo e dopo 1,5 secondi cambierà automaticamente la visualizzazione passando in modalità login
       }
     } else {  //se respond.ok è false allora ci sta un errore tipo che l'email è gia stata usata
    

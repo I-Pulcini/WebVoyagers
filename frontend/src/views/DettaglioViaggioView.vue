@@ -164,9 +164,9 @@ watch(() => route.params.id, (nuovoId) => {
 
 
 watch(viaggio, async (nuovoViaggio) => {
-  if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {
-    // Aspettiamo che Vue abbia finito di renderizzare il DOM
-    await nextTick()  //
+  if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {  //prendi il viaggio solo se è stato caricato davvero e l'array ha almeno una foto dentro
+ 
+    await nextTick()  //quando la var. viaggio si riempie i dati esistono nella memoria del computer ma Vue non ha ancora avuto il tempo fisico  di prendere quei dati e trasformarli in un tag HTML. Se chiamassimo JQuery cercherebbe la classe .foto-grid nella pagina non troverebbe ancora nulla e l'animaione fallirebbe
     animaGalleria()
   }
 })
@@ -190,7 +190,7 @@ watch(viaggio, async (nuovoViaggio) => {
     <template v-else-if="viaggio">
       <header 
         class="fascia-foto"
-        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"
+        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"   //vediamo se è presente un'immagine di sfondo dell'header usando il percorso del database
         >
         <h1 class="fascia-titolo">{{ viaggio.destinazione }}</h1>
         </header>
@@ -329,7 +329,7 @@ watch(viaggio, async (nuovoViaggio) => {
 </template>
 
 <style scoped>
-/* Schermata caricamento ed errore */
+
 .loading-box, .errore-box {
   text-align: center;
   padding: 80px 20px;
@@ -358,7 +358,7 @@ watch(viaggio, async (nuovoViaggio) => {
   background: #00897b;
 }
 
-/* Bottone Prenota grande - barra fissa sotto l'header */
+//bottone prenota
 .prenota-bar {
   background: linear-gradient(135deg, #00c4b4 0%, #00897b 100%);
   padding: 25px 5%;
@@ -407,7 +407,7 @@ watch(viaggio, async (nuovoViaggio) => {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Sezione CTA finale */
+  
 .cta-finale {
   background: linear-gradient(135deg, #d81b60 0%, #6a1b9a 100%);
   padding: 70px 30px;
@@ -431,7 +431,7 @@ watch(viaggio, async (nuovoViaggio) => {
   color: #d81b60;
 }
 
-/* MODALE */
+
 .modale-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -578,7 +578,7 @@ watch(viaggio, async (nuovoViaggio) => {
   cursor: not-allowed;
 }
 
-/* SUCCESSO */
+
 .successo-box {
   text-align: center;
   padding: 20px 0;

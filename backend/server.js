@@ -571,7 +571,7 @@ app.get('/api/viaggi/:stato', async (req, res) => {
     // Abbiamo estratto lo stato richiesto dai parametri dell'URL
     const { stato } = req.params;
     
-    // Abbiamo verificato che lo stato richiesto sia uno di quelli ammessi (sicurezza anti-injection)
+    // Abbiamo verificato che lo stato richiesto sia uno di quelli ammessi 
     const statiAmmessi = ['disponibile', 'sold_out', 'in_arrivo'];
     if (!statiAmmessi.includes(stato)) {
         return res.status(400).json({ error: "Stato viaggio non valido." });
@@ -588,7 +588,7 @@ app.get('/api/viaggi/:stato', async (req, res) => {
             [stato]
         );
         
-        // Abbiamo restituito l'elenco dei viaggi al frontend
+        // Abbiamo restituito l'elenco dei viaggi 
         res.json({ viaggi: risultato.rows });
         
     } catch (err) {

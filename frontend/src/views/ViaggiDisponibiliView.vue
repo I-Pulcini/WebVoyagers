@@ -112,7 +112,7 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
           ⚠️ {{ errore }}
         </div>
         
-        <!-- Nessun viaggio per il mese selezionato -->
+     
         <div v-else-if="viaggiFiltrati.length === 0" class="nessun-viaggio">
           Nessun viaggio in programma per {{ meseSelezionato }}.
         </div>

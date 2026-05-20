@@ -3,14 +3,12 @@ import { onMounted, ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { prenotazioneStore } from '../stores/prenotazioneStore'
 
-/* --- PAGINA DI CONFERMA VIAGGIO MISTERIOSO --- */
-/* Abbiamo creato una pagina dedicata che mostra il risultato della prenotazione misteriosa:
-   il codice e le 3 destinazioni candidate (quella vera + 2 simili), tutte mescolate. */
 
-// Abbiamo importato il router per poter reindirizzare l'utente se accede senza dati validi
+
+// Abbiamo importato il router 
 const router = useRouter()
 
-// Variabile reattiva con le opzioni mescolate (1, 2 o 3 a seconda dei risultati disponibili)
+// Variabile reattiva 
 const opzioni = ref([])
 const soloUnViaggio = ref(false)
 
@@ -20,18 +18,17 @@ onMounted(() => {
     return
   }
 
-  // Unisce il viaggio scelto con i distrattori (possono essere 0, 1 o 2)
+
   const tutte = [prenotazioneStore.viaggioScelto, ...(prenotazioneStore.viaggiSimili || [])]
 
-  // Se c'è solo il viaggio scelto (partenza entro 7 giorni o nessun distrattore disponibile),
-  // non mescoliamo e mostriamo solo quello
+  
   if (tutte.length === 1) {
     soloUnViaggio.value = true
     opzioni.value = tutte
     return
   }
 
-  // Mescola con Fisher-Yates così l'utente non sa quale è quello vero
+ 
   for (let i = tutte.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[tutte[i], tutte[j]] = [tutte[j], tutte[i]]
@@ -44,7 +41,7 @@ onMounted(() => {
 <template>
   <div class="ConfermaMisteriosa-wrapper">
 
-    <!-- HEADER -->
+   
     <header class="header-conferma">
       <div class="overlay-stelle"></div>
       <div class="header-content">
@@ -59,7 +56,7 @@ onMounted(() => {
 
     <main class="contenuto-principale">
 
-      <!-- CODICE PRENOTAZIONE -->
+      
       <section class="codice-box">
         <p class="codice-label">Il tuo codice di prenotazione:</p>
         <div class="codice-prenotazione">{{ prenotazioneStore.codice }}</div>
@@ -68,7 +65,7 @@ onMounted(() => {
         </p>
       </section>
 
-      <!-- 3 OPZIONI MISTERIOSE -->
+    
       <section class="opzioni-section">
         <h2 class="opzioni-titolo">
           🎲 {{ opzioni.length === 1 ? 'La tua destinazione candidata' : 'Le tue destinazioni candidate' }}
@@ -92,7 +89,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <!-- Bottone per scoprire la destinazione tramite codice -->
+      
         <div class="scopri-cta">
           <p class="scopri-cta-testo">
             Quando mancheranno 7 giorni alla partenza, torna qui per svelare la tua destinazione!
@@ -103,7 +100,7 @@ onMounted(() => {
         </div>
       </section>
 
-      <!-- AZIONI FINALI -->
+     
       <section class="azioni-finali">
         <p class="azioni-testo">
           Nel frattempo... inizia a sognare! 🌍✈️
@@ -137,7 +134,6 @@ onMounted(() => {
   color: #333;
 }
 
-/* ===== HEADER ===== */
 .header-conferma {
   background: linear-gradient(135deg, #1a237e 0%, #4527a0 50%, #6a1b9a 100%);
   width: 100%;
@@ -196,7 +192,7 @@ onMounted(() => {
   opacity: 0.95;
 }
 
-/* ===== CONTENUTO ===== */
+
 .contenuto-principale {
   width: 100%;
   max-width: 1100px;
@@ -204,7 +200,7 @@ onMounted(() => {
   padding: 60px 5%;
 }
 
-/* ===== CODICE PRENOTAZIONE ===== */
+
 .codice-box {
   background: white;
   border-radius: 15px;
@@ -241,7 +237,6 @@ onMounted(() => {
   margin: 0;
 }
 
-/* ===== SEZIONE OPZIONI ===== */
 .opzioni-section {
   margin-bottom: 50px;
 }
@@ -337,7 +332,6 @@ onMounted(() => {
   border-bottom: none;
 }
 
-/* ===== AZIONI FINALI ===== */
 .azioni-finali {
   text-align: center;
   margin-top: 60px;
@@ -393,7 +387,7 @@ onMounted(() => {
   background: #00c4b4;
   color: white;
 }
-/* ===== CTA SCOPRI VIAGGIO ===== */
+
 .scopri-cta {
   text-align: center;
   margin-top: 50px;
@@ -428,7 +422,7 @@ onMounted(() => {
   box-shadow: 0 10px 25px rgba(106, 27, 154, 0.4);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 900px) {
   .opzioni-grid-mistero {
     grid-template-columns: 1fr;

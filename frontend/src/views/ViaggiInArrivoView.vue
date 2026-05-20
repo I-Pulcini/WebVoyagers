@@ -109,7 +109,7 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
           </div>
 
           <div class="colonna-destinazione">
-            <strong>{{ viaggio.destinazione }}</strong>
+            <strong>{{ viaggio.destinazione }}</strong>  //strong serve per mostrare il testo in grassetto
           </div>
 
           <div class="colonna-prezzo">

@@ -168,6 +168,14 @@ const cercaDestinazione = async () => {  //una funzione asincrona che scatterà 
 }
 
 @media (max-width: 600px) {
+  .home-wrapper {
+    background-attachment: scroll !important;
+    background-size: 100% auto !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
   .main-title { -webkit-text-stroke: 2px black; }
   .main-content { padding: 25px 20px; }
 }

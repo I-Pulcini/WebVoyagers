@@ -3,18 +3,16 @@
 import { ref, onMounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
-// Abbiamo importato jQuery (Rif: 11-jquery.pdf) per realizzare alcuni effetti
-// di animazione sulla galleria fotografica. jQuery è un framework JS storico
-// che semplifica selezione DOM, eventi e animazioni cross-browser.
-// Lo usiamo qui in modo dimostrativo: di solito Vue gestisce tutto in modo
-// dichiarativo, ma jQuery offre metodi imperativi (fadeIn, animate, ecc.)
-// molto rapidi da scrivere per piccoli effetti visivi.
-import $ from 'jquery'
 
-/* --- PAGINA DINAMICA DETTAGLIO VIAGGIO --- */
-// Abbiamo creato una sola pagina riusabile per tutti i viaggi disponibili.
-// L'id del viaggio viene preso dall'URL (es. /viaggio/1, /viaggio/2)
-// e i contenuti (descrizione, itinerario, foto) vengono caricati dal backend.
+//onMOunted serve per gestire il ciclo di vita di una variabile
+// watch serve per monitorare il cambiamento dei dati 
+// nextTick attende che Vue abbai terminato l'aggiornamento del grafico del DOM
+// useRoute serve per leggere parametri dell'URL
+// useRouter serve per reindirizzare i programmi via codice
+// RouterLink server per i collegamenti interni
+//userStore abbiamo tutte le informazioni dell'utente
+  
+import $ from 'jquery' //$ è una libreria esterna che viene usata per l'animazione grafica ad effetto cascata sulla libreria fotografica
 
 const route = useRoute()
 const router = useRouter()
@@ -144,20 +142,7 @@ const inviaPrenotazione = async () => {
   }
 }
 
-/* --- ANIMAZIONI CON JQUERY (Rif: 11-jquery.pdf) --- */
-// Abbiamo creato una funzione che usa jQuery per animare la galleria foto
-// con un effetto "fade-in scaglionato": le foto compaiono una alla volta
-// con un piccolo ritardo crescente, creando un effetto cascata.
-// 
-// Note tecniche dimostrate qui:
-// - $('.foto-grid') = selettore jQuery con sintassi CSS (come in JQuery slide 9)
-// - .hide() = metodo jQuery che nasconde gli elementi (display:none)
-// - .each(function(index) {...}) = iterazione su tutti gli elementi selezionati,
-//   l'argomento index è la posizione nella collezione (slide 20)
-// - $(this) = wrapping in oggetto jQuery dell'elemento corrente (slide 11)
-// - .delay(ms) = inserisce un ritardo nella coda delle animazioni
-// - .fadeIn(durata) = effetto di assolvenza (slide 27)
-// - method chaining: $(...).delay().fadeIn() (slide 25)
+
 const animaGalleria = () => {
   // Abbiamo nascosto inizialmente tutte le foto della galleria
   $('.foto-grid').hide()
@@ -181,10 +166,7 @@ watch(() => route.params.id, (nuovoId) => {
   }
 })
 
-// Abbiamo creato un watch su viaggio: quando i dati vengono caricati
-// e il DOM è stato aggiornato da Vue (nextTick), lanciamo l'animazione jQuery.
-// nextTick() è importante perché jQuery deve agire su elementi che esistono
-// già nel DOM, e Vue li renderizza solo dopo che la variabile reattiva è stata aggiornata.
+
 watch(viaggio, async (nuovoViaggio) => {
   if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {
     // Aspettiamo che Vue abbia finito di renderizzare il DOM

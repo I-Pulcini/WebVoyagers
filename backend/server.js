@@ -139,8 +139,8 @@ function validaSchema(dati, schema) {
 }
 
 // API 2: Per la configurazione delle sessioni
-app.use(session({
-    // Abbiamo scelto di salvare le sessioni sul database invece che nella memoria RAM del server
+app.use(session({  //app.use questo è il middleware globale
+    // Abbiamo scelto di salvare le sessioni sul database 
     store: new pgSession({
         pool: pool, // Abbiamo passato il collegamento al database appena creato
         tableName: 'session' // Abbiamo indicato il nome esatto della tabella SQL che abbiamo preparato su Supabase
@@ -153,14 +153,14 @@ app.use(session({
     saveUninitialized: false,
     // Abbiamo configurato le proprietà del cookie di sessione che il browser conserverà
     cookie: { 
-        // Abbiamo stabilito che il login rimanga valido per 30 giorni consecutivi (espressi in millisecondi)
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        // Abbiamo reso il cookie accessibile solo dal server, mai dal codice JavaScript del browser (sicurezza)
-        httpOnly: true,
-        // Abbiamo impostato secure in base all'ambiente: 'auto' usa HTTPS in produzione e HTTP in locale
-        secure: process.env.NODE_ENV === 'production',
-        // Abbiamo permesso al cookie di essere inviato in richieste cross-origin moderate (necessario per il proxy di Vite)
-        sameSite: 'lax'
+       
+        maxAge: 30 * 24 * 60 * 60 * 1000, // massima del coockie, 30 giorni
+     
+        httpOnly: true,  //è un opzione di sicurezza eccezionale, dice al browser che il cookie può essere letto solo dal server tramite la rete internet.
+      
+        secure: process.env.NODE_ENV === 'production',  //impostazione dinamica di sicurezza
+    
+        sameSite: 'lax'  //impedisce di rubare il cookie
     }
 }));
 

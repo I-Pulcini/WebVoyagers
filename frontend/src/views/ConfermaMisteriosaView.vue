@@ -70,9 +70,8 @@ onMounted(() => {
 
       <!-- 3 OPZIONI MISTERIOSE -->
       <section class="opzioni-section">
-        <h2 class="opzioni-titolo">🎲 Le tre destinazioni candidate</h2>
+        <h2 class="opzioni-titolo">🎲 Le tue destinazioni candidate</h2>
         <p class="opzioni-sottotitolo">
-          Una di queste è il tuo viaggio. Le altre due sono solo distrattori.<br>
           La verità ti sarà rivelata <strong>7 giorni prima della partenza</strong>!
         </p>
 

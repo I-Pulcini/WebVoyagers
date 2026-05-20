@@ -191,9 +191,9 @@ const cercaDestinazione = async () => {    //una funzione asincrona che scatter√
 
 @media (max-width: 600px) {
   .home-wrapper{
-   background-size: 100% auto;
-   background-attachment: scroll;
-   background-repeat: no-repeat;
+   background-size: 100% auto  !important;
+   background-attachment: top center !important;
+   background-repeat: no-repeat !important;
    background-color: #222;
   }
   .main-title { -webkit-text-stroke: 2px black; }  

@@ -52,7 +52,9 @@ const verificaSessione = async () => {
     const response = await fetch('/api/me', {
       credentials: 'include'  //serve a ricordare a clinet di mandare il cookie
     })
-   
+
+
+    
     const data = await response.json()  
  
     if (data.loggato) {

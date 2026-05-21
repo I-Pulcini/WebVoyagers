@@ -146,8 +146,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 </template>
 
 <style>
-//bottone della casetta, i colori
-//. è un selettore mentre il nome dietro è il nome di una classe HTML ed è una classe hidden nascosta all'utente
+
 .btn-home {
   position: fixed;
   top: 15px;
@@ -186,7 +185,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #f9f9f9;
 }
 
-// le mie prenotazione, !important forza il browser ad usare questo colore verde scuro
+
 .link-prenotazioni {
   display: block;
   padding: 14px 20px;
@@ -203,7 +202,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   background-color: #b2dfdb;
 }
 
-// il mio profilo, testo viola
+
 .link-profilo {
   display: block;
   padding: 14px 20px;
@@ -219,7 +218,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
 .link-profilo:hover {
   background-color: #d1c4e9;
 }
-//amministrazione
+
 .link-admin {
   display: block;
   padding: 14px 20px;
@@ -239,7 +238,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   color: white !important;
 }
 
-//logout
+
 .btn-logout {
   display: block;
   padding: 14px 20px;

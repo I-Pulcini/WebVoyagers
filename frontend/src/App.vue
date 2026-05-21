@@ -177,7 +177,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
   height: 26px;
 }
 
-/* Stile per il saluto all'utente loggato dentro il menu hamburger */
+
 .utente-loggato {
   padding: 14px 20px;
   font-size: 16px;

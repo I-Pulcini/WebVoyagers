@@ -78,7 +78,7 @@ const cercaDestinazione = async () => {  //una funzione asincrona che scatterà 
             <option v-for="mese in mesi" :key="mese" :value="mese">{{ mese }}</option>
           </select>
         </div>
-
+//il contenitore a tendina si fa combinando i due tag; select che fa da contenitore principale e option che rappresentano le singole voci selezionabili dall'utente
         <div class="form-group">
           <label for="paese">Scegli un paese:</label>
           <select id="paese" v-model="selectedPaese" required>

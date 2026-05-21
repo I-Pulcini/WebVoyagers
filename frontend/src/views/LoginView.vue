@@ -176,6 +176,7 @@ const gestisciSubmit = async () => {    // Abbiamo creato la funzione asincrona 
   font-weight: bold;
 }
 
+  
 .form-group input {
   width: 100%;
   padding: 10px;

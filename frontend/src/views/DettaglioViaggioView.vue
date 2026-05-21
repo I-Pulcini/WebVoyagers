@@ -361,7 +361,7 @@ watch(viaggio, async (nuovoViaggio) => {
   background: #00897b;
 }
 
-//bottone prenota
+
 .prenota-bar {
   background: linear-gradient(135deg, #00c4b4 0%, #00897b 100%);
   padding: 25px 5%;

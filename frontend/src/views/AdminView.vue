@@ -227,7 +227,7 @@ onMounted(async () => {
           {{ messaggioFeedback }}
         </div>
 
-        <!-- TABS -->
+      
         <div class="tabs-container">
           <button 
             @click="tabAttivo = 'stats'"
@@ -802,7 +802,7 @@ onMounted(async () => {
   background: #3a3a4e;
   color: #b0b0d0;
 }
-/* MESSAGGI */
+
 .messaggi-section {
   display: flex;
   flex-direction: column;
@@ -885,7 +885,7 @@ onMounted(async () => {
   justify-content: flex-end;
 }
 
-/* RECENSIONI ADMIN */
+
 .recensioni-admin-section {
   display: flex;
   flex-direction: column;

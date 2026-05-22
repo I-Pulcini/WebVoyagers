@@ -187,7 +187,7 @@ const inviaForm = async () => {
   color: #333;
 }
 
-/* HEADER */
+
 .header-verde {
   background-color: #00c4b4;
   width: 100%;

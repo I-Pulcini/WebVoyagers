@@ -1,12 +1,4 @@
-﻿/* =========================================================
-   VARIABILI CSS GLOBALI 
-   =========================================================
-   Abbiamo definito le variabili CSS principali del brand WebVoyagers
-   per centralizzare i colori, evitare duplicazioni e rendere piu facile
-   un eventuale cambio di tema in futuro. Vengono usate con var(--nome).
-   :root rappresenta l'elemento radice del documento (l'elemento <html>),
-   quindi le variabili definite qui sono accessibili globalmente.
-   ========================================================= */
+
 
 :root {
     /* Colori principali del brand */
@@ -55,9 +47,6 @@
     --transition-normal: 0.3s;
 }
 
-/* =========================================================
-   STILI GLOBALI
-   ========================================================= */
 
 /* --- RESET BASE E TIPOGRAFIA --- */
 body {
@@ -69,9 +58,7 @@ body {
     color: var(--text-primary);
 }
 
-/* =========================================================
-   COMPONENTI DELLA HOME PAGE (index.html)
-   ========================================================= */
+
 
 .home-body {
     background-image: url('/Socotra2.jpg');
@@ -196,9 +183,7 @@ body {
     background-color: var(--color-blue-dark);
 }
 
-/* =========================================================
-   COMPONENTI DELLA PAGINA DI ERRORE (non_disponibile.html)
-   ========================================================= */
+
 
 /* Abbiamo centralizzato nel foglio di stile globale anche le regole della pagina di cortesia, 
    organizzandole in classi semantiche specifiche per evitare conflitti. */
@@ -236,14 +221,7 @@ body {
     background-color: var(--color-blue-dark);
 }
 
-/* =========================================================
-   COMPONENTI DELLA PAGINA DESTINAZIONE
-   ========================================================= */
 
-/* --- APPLICAZIONE FLEXBOX  --- */
-/* Abbiamo implementato Flexbox sull'header definendo 'display: flex'. 
-   Attraverso 'justify-content: center' e 'align-items: center' abbiamo gestito 
-   perfettamente l'allineamento bidirezionale del titolo rispetto alla foto di sfondo. */
 .fascia-foto {
     background-image: url('/algeria.jpg');
     background-size: cover;
@@ -348,10 +326,7 @@ body {
 }
 .testo-giorno b { color: #000; }
 
-/* --- APPLICAZIONE CSS GRID  --- */
-/* Abbiamo scelto CSS Grid anziche' Flexbox per la galleria fotografica perche' 
-   gestisce nativamente i layout bidimensionali. Il comando 'repeat(3, 1fr)' 
-   forza la creazione di tre frazioni uguali per una struttura pulita. */
+
 .galleria-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -369,12 +344,7 @@ body {
     width: 100%;
 }
 
-/* =========================================================
-   MEDIA QUERIES E RESPONSIVE DESIGN 
-   ========================================================= */
-/* Abbiamo inserito un breakpoint CSS a 768px. Al di sotto di questa risoluzione 
-   (tipica degli smartphone), sovrascriviamo le grandezze per mantenere leggibilita'. 
-   Modifichiamo la Grid passando da 3 colonne a una singola ('1fr') impilando le immagini verticalmente. */
+
 @media screen and (max-width: 768px) {
     .main-title, .fascia-titolo { font-size: 2.5em; }
     

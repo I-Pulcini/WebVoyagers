@@ -3,10 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-/* --- DASHBOARD ADMIN --- */
-/* Abbiamo creato la pagina di amministrazione visibile solo agli utenti con flag is_admin = TRUE.
-   Mostra statistiche globali del sito, lista di tutti gli utenti e di tutte le prenotazioni,
-   con possibilità di cambiare lo stato delle prenotazioni. */
+
 
 const router = useRouter()
 

@@ -175,7 +175,7 @@ const totalePrenotazioni = computed(() =>
   prenotazioniViaggi.value.length + prenotazioniMisteriose.value.length
 )
 
-/* --- LIFECYCLE HOOK --- */
+
 onMounted(async () => {
   // Abbiamo verificato che l'utente sia loggato
   if (!userStore.loggato) {
@@ -204,7 +204,7 @@ onMounted(async () => {
 <template>
   <div class="Admin-wrapper">
 
-    <!-- HEADER -->
+  
     <header class="header-admin">
       <div class="header-content">
         <div class="badge-admin">⚡ ADMIN PANEL</div>
@@ -217,7 +217,7 @@ onMounted(async () => {
 
     <main class="contenuto-principale">
 
-      <!-- CARICAMENTO -->
+   
       <div v-if="caricamento" class="stato-info">
         <div class="spinner">⏳</div>
         <p>Caricamento dashboard...</p>
@@ -225,7 +225,7 @@ onMounted(async () => {
 
       <div v-else>
 
-        <!-- MESSAGGIO FEEDBACK CAMBIO STATO -->
+       
         <div v-if="messaggioFeedback" class="feedback-banner">
           {{ messaggioFeedback }}
         </div>
@@ -268,9 +268,6 @@ onMounted(async () => {
             </button>
         </div>
 
-        <!-- ============================== -->
-        <!-- TAB STATISTICHE                -->
-        <!-- ============================== -->
         <div v-if="tabAttivo === 'stats' && stats" class="stats-section">
           <div class="stats-grid">
             <div class="stat-card stat-utenti">
@@ -301,9 +298,7 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- ============================== -->
-        <!-- TAB PRENOTAZIONI               -->
-        <!-- ============================== -->
+       
         <div v-else-if="tabAttivo === 'prenotazioni'" class="prenotazioni-section">
 
           <h3 class="sottotitolo-tab">🎒 Viaggi normali ({{ prenotazioniViaggi.length }})</h3>
@@ -397,9 +392,7 @@ onMounted(async () => {
 
         </div>
 
-        <!-- ============================== -->
-        <!-- TAB UTENTI                     -->
-        <!-- ============================== -->
+      
         <div v-else-if="tabAttivo === 'utenti'" class="utenti-section">
           <div class="tabella-wrapper">
             <table class="tabella-admin">
@@ -428,9 +421,7 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- ============================== -->
-        <!-- TAB MESSAGGI                   -->
-        <!-- ============================== -->
+ 
         <div v-else-if="tabAttivo === 'messaggi'" class="messaggi-section">
           <div v-if="messaggi.length === 0" class="vuoto">
             Nessun messaggio ricevuto.
@@ -470,9 +461,7 @@ onMounted(async () => {
           </div>
         </div>
 
-        <!-- ============================== -->
-        <!-- TAB RECENSIONI                 -->
-        <!-- ============================== -->
+      
         <div v-else-if="tabAttivo === 'recensioni'" class="recensioni-admin-section">
           <div v-if="recensioni.length === 0" class="vuoto">
             Nessuna recensione ancora.
@@ -531,7 +520,7 @@ onMounted(async () => {
   color: #f0f0f0;
 }
 
-/* HEADER */
+
 .header-admin {
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   padding: 90px 5% 60px 5%;
@@ -570,7 +559,6 @@ onMounted(async () => {
   font-size: 1rem;
 }
 
-/* CONTENUTO */
 .contenuto-principale {
   width: 100%;
   max-width: 1300px;
@@ -612,7 +600,7 @@ onMounted(async () => {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* TABS */
+
 .tabs-container {
   display: flex;
   gap: 12px;
@@ -663,7 +651,7 @@ onMounted(async () => {
   background: #d81b60;
 }
 
-/* STATISTICHE */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -707,7 +695,7 @@ onMounted(async () => {
   font-size: 0.9rem;
 }
 
-/* SEZIONI */
+
 .sottotitolo-tab {
   color: #00c4b4;
   margin: 25px 0 15px 0;
@@ -724,7 +712,6 @@ onMounted(async () => {
   margin-bottom: 20px;
 }
 
-/* TABELLE */
 .tabella-wrapper {
   background: #2a2a3e;
   border-radius: 12px;
@@ -993,7 +980,7 @@ onMounted(async () => {
   justify-content: flex-end;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
   .tab-btn {
     flex: 1;

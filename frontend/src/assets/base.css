@@ -258,7 +258,7 @@ body {
 }
 
 @media (hover: none) and (pointer: coarse) {
-    /* Su mobile (iOS/Android) background-attachment: fixed non funziona correttamente */
+
     .fascia-foto {
         background-attachment: scroll;
     }

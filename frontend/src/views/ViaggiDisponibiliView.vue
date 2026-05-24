@@ -1,44 +1,35 @@
 <script setup>
   
 import { ref, computed, onMounted } from 'vue';
-//  ref variabili reattive, che HTML aggiorna da solo 
-// computed: serve per creare variabili che is calcola e aggironano in automatico  in base ad altre variabili
-// onMOunted, per eseguire una funzione appena la pagina web è stata caricata
-import { useRouter } from 'vue-router';  //importimao lo strumento di Vuew Router che ci permette di far cambiare pagina all'utente
 
-const router = useRouter();  //ci salviamo la costante router
+import { useRouter } from 'vue-router'; 
+
+const router = useRouter(); 
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-const meseSelezionato = ref('Gennaio');  //ci creiamo un array statico con tutti i nomi dei mesi che ci serviranno per i bottini e di default impostimao a gennaio 
+const meseSelezionato = ref('Gennaio');  
 
-// è unan variabili reattiva che conterrà i viaggi caricati dal backend
 const viaggi = ref([]);
 
-const caricamento = ref(true); // è una variabile reattiva che parte da true e sever per mostrare un messaggio finchè no non ci arrivano i dati 
+const caricamento = ref(true);
 
-const errore = ref(''); //variabile reattiva vuota che serve per ospitare un testo di errore da mostrare all'untente in caso di errore
+const errore = ref(''); 
 
-// Funzione asincrona che chiama il backend per scaricare i viaggi disponibili
 const caricaViaggi = async () => {
-  try {  //viene chiamato un try-catch per la gestione degli errori
+  try {  
    
-    const response = await fetch('/api/viaggi/disponibile'); // Chiamata all'endpoint che restituisce i viaggi con stato 'disponibile'
-  
+    const response = await fetch('/api/viaggi/disponibile'); 
     const data = await response.json(); //await serve per mettere in pausa l'esecuzione finchè il server non risponde. Aspettiamo ce la risposta sia trasformata dal formato JSON ad un ogetto JavaScirpt
     
-  //il client (Vue) effettua una chiamata fetch() inviando una richiesta HTTP verso il backend, indirizzata all'API dinamica /api/viaggi/:stato. Il server Express riceve la richiesta ed estrae automaticamente il valore dello stato dall'URL tramite l'oggetto req.params.
- //Viene eseguito un controllo di sicurezza: se lo stato non è tra quelli ammessi (statiAmmessi), il server risponde con un errore 400. Se invece lo stato è valido, il server interroga il database su Supabase tramite una query SQL, selezionando l'ID, il mese, il periodo, la destinazione, il prezzo e i posti disponibili di tutti i viaggi corrispondenti a quel criterio.
- //Il server raccoglie queste righe dal database e invoca il metodo res.json() per convertirle in formato JSON e spedirle indietro sulla rete internet. Quando il pacchetto arriva al client, JavaScript riceve l'oggetto di risposta HTTP chiamato response. Verifichiamo subito se la risposta è andata a buon fine tramite la proprietà response.ok.
-//Se il controllo ha successo, eseguiamo l'istruzione await response.json() per spacchettare il testo JSON e trasformarlo in un oggetto JavaScript dentro la variabile data. Infine, utilizziamo la funzione .map() per ciclare ogni viaggio ricevuto e formattare i campi in un nuovo array pronto per essere visualizzato a schermo.
-  
-    if (response.ok) {  //controlliamo se la risposta HTTP del server è un successo
+ 
+    if (response.ok) {  
      
-      viaggi.value = data.viaggi.map(v => ({    //usiamo la funzione map per eseguire un ciclo su ogni viaggio v del database per mapparlo e creare un nuvo array con i nomi dei campi fondamentali
+      viaggi.value = data.viaggi.map(v => ({    
         id: v.id,
         mese: v.mese,
         periodo: v.periodo,
         data: v.data_visualizzata,
-        destinazione: v.destinazione, // Spazio extra rimosso (ora gestito dal CSS)
+        destinazione: v.destinazione, 
         prezzo: `${v.prezzo}€`,
         stato: 'Vedi Viaggio >',
         posti: v.posti_disponibili,
@@ -55,22 +46,21 @@ const caricaViaggi = async () => {
   }
 };
 
-// Agganciamo il caricamento dei viaggi al montaggio della pagina
 onMounted(() => {
   caricaViaggi();
 });
 
-const viaggiFiltrati = computed(() => {   //ci creiamo una varaibil computed che is ricalcola in automatica ongi volta che i dati al suo intenro cambiano
-  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);   //prendiamo tutta la lista dei viaggi, 'viaggi.vue' e la filtrimao tenendo e restituendo solo  i viaggi in cui il mese corrisponde al meseselezazionato dall'utente
+const viaggiFiltrati = computed(() => {  
+  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);   
 });
 
-const cambiaMese = (nuovoMese) => {   //una variabile  che scatterà quando l'utente clicca su un bottone dei mesi 
-  meseSelezionato.value = nuovoMese;   //sostiuiamo il mese attuale con qello nuovo poichè è una variabile reattiva
+const cambiaMese = (nuovoMese) => {  
+  meseSelezionato.value = nuovoMese;  
 };
 
-const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quadno si clicca il bottone 'vedi Viaggio >'
-  if (viaggio.rotta) {  //ci assicurimao che il viaggio cliccato abbiamo una rotta valida 
-    router.push(viaggio.rotta);  //Diciamo al router di Vue di cambiare pagina e portare l'utente all'indirizzo url specifico nella rotta di quel viaggio.
+const apriViaggio = (viaggio) => {   
+  if (viaggio.rotta) { 
+    router.push(viaggio.rotta);  
   }
 };
 </script>
@@ -102,7 +92,6 @@ const apriViaggio = (viaggio) => {    //dichiariamo una funzione che scatta quad
       </section>
 
       <section class="lista-viaggi">
-     //indica il carimento
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>

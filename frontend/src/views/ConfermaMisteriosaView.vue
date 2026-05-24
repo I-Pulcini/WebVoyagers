@@ -5,10 +5,8 @@ import { prenotazioneStore } from '../stores/prenotazioneStore'
 
 
 
-// Abbiamo importato il router 
 const router = useRouter()
 
-// Variabile reattiva 
 const opzioni = ref([])
 const soloUnViaggio = ref(false)
 

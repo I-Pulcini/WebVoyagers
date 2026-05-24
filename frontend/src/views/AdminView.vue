@@ -7,7 +7,7 @@ import { userStore } from '../stores/userStore'
 
 const router = useRouter()
 
-// Abbiamo creato le variabili reattive per i dati della dashboard
+
 const stats = ref(null)
 const prenotazioniViaggi = ref([])
 const prenotazioniMisteriose = ref([])
@@ -17,13 +17,10 @@ const recensioni = ref([])
 const caricamento = ref(true)
 const errore = ref('')
 
-// Abbiamo creato la variabile che gestisce il tab attivo: 'stats', 'prenotazioni', 'utenti'
 const tabAttivo = ref('stats')
 
-// Abbiamo creato il messaggio di feedback per le azioni di cambio stato
 const messaggioFeedback = ref('')
 
-// Abbiamo creato la funzione asincrona che carica le statistiche globali
 const caricaStats = async () => {
   try {
     const response = await fetch('/api/admin/stats', { credentials: 'include' })
@@ -39,7 +36,6 @@ const caricaStats = async () => {
   }
 }
 
-// Abbiamo creato la funzione che carica tutte le prenotazioni del sistema
 const caricaPrenotazioni = async () => {
   try {
     const response = await fetch('/api/admin/prenotazioni', { credentials: 'include' })
@@ -53,7 +49,6 @@ const caricaPrenotazioni = async () => {
   }
 }
 
-// Abbiamo creato la funzione che carica la lista di tutti gli utenti registrati
 const caricaUtenti = async () => {
   try {
     const response = await fetch('/api/admin/utenti', { credentials: 'include' })
@@ -66,7 +61,6 @@ const caricaUtenti = async () => {
   }
 }
 
-// Abbiamo creato la funzione che carica tutti i messaggi del form Contattaci
 const caricaMessaggi = async () => {
   try {
     const response = await fetch('/api/admin/messaggi', { credentials: 'include' })
@@ -79,7 +73,6 @@ const caricaMessaggi = async () => {
   }
 }
 
-// Abbiamo creato la funzione che cambia lo stato di un messaggio (nuovo / letto / risolto)
 const cambiaStatoMessaggio = async (id, nuovoStato) => {
   try {
     const response = await fetch('/api/admin/messaggi/cambia-stato', {
@@ -98,7 +91,6 @@ const cambiaStatoMessaggio = async (id, nuovoStato) => {
   }
 }
 
-// Abbiamo creato la funzione che carica tutte le recensioni del sistema
 const caricaRecensioniAdmin = async () => {
   try {
     const response = await fetch('/api/admin/recensioni', { credentials: 'include' })
@@ -111,7 +103,6 @@ const caricaRecensioniAdmin = async () => {
   }
 }
 
-// Abbiamo creato la funzione che cambia lo stato di una recensione (approva o nasconde)
 const cambiaStatoRecensione = async (id, nuovoStato) => {
   try {
     const response = await fetch('/api/admin/recensioni/cambia-stato', {
@@ -130,7 +121,6 @@ const cambiaStatoRecensione = async (id, nuovoStato) => {
   }
 }
 
-// Abbiamo creato la funzione che cambia lo stato di una prenotazione
 const cambiaStato = async (tipo, id, nuovoStato) => {
   if (!confirm(`Confermi il cambio di stato a "${nuovoStato}"?`)) return
   
@@ -145,9 +135,7 @@ const cambiaStato = async (tipo, id, nuovoStato) => {
     
     if (response.ok) {
       messaggioFeedback.value = '✓ Stato aggiornato!'
-      // Abbiamo ricaricato le prenotazioni per riflettere il cambiamento
       await caricaPrenotazioni()
-      // Abbiamo nascosto il messaggio dopo 3 secondi
       setTimeout(() => { messaggioFeedback.value = '' }, 3000)
     } else {
       messaggioFeedback.value = '❌ ' + (data.error || 'Errore')
@@ -158,7 +146,6 @@ const cambiaStato = async (tipo, id, nuovoStato) => {
   }
 }
 
-// Abbiamo creato una funzione che formatta la data
 const formattaData = (dataIso) => {
   if (!dataIso) return '-'
   return new Date(dataIso).toLocaleDateString('it-IT', { 
@@ -167,26 +154,22 @@ const formattaData = (dataIso) => {
   })
 }
 
-// Abbiamo creato il totale prenotazioni come computed per il badge del tab
 const totalePrenotazioni = computed(() => 
   prenotazioniViaggi.value.length + prenotazioniMisteriose.value.length
 )
 
 
 onMounted(async () => {
-  // Abbiamo verificato che l'utente sia loggato
   if (!userStore.loggato) {
     router.push('/login')
     return
   }
   
-  // Abbiamo verificato che l'utente sia admin
   if (!userStore.isAdmin) {
     router.push('/')
     return
   }
   
-  // Carichiamo tutti i dati in parallelo per velocità
   await Promise.all([
     caricaStats(), 
     caricaPrenotazioni(), 

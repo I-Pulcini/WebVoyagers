@@ -7,34 +7,27 @@ import { userStore } from '../stores/userStore'
 
 const router = useRouter()
 
-// Abbiamo creato le variabili reattive per le due liste di prenotazioni
 const prenotazioniMisteriose = ref([])
 const prenotazioniViaggi = ref([])
 
-// Abbiamo creato le variabili 
 const caricamentoMisteriose = ref(true)
 const caricamentoViaggi = ref(true)
 const erroreMisteriose = ref('')
 const erroreViaggi = ref('')
 
-// Abbiamo creato la variabile che gestisce quale tab è attivo: 'misteriose' o 'viaggi'
 const tabAttivo = ref('viaggi')
 
-// Abbiamo creato le variabili per il modale di annullamento
 const modaleAnnullamentoAperto = ref(false)
 const prenotazioneDaAnnullare = ref(null)
-// Abbiamo aggiunto un flag per sapere se stiamo annullando un viaggio normale o uno misterioso
 const tipoAnnullamento = ref('viaggio')
 const annullamentoInCorso = ref(false)
 const erroreAnnullamento = ref('')
 const messaggioSuccesso = ref('')
 
-// Abbiamo calcolato il numero totale di prenotazioni per il sottotitolo
 const totalePrenotazioni = computed(() => 
   prenotazioniMisteriose.value.length + prenotazioniViaggi.value.length
 )
 
-// Abbiamo creato la funzione asincrona che scarica le prenotazioni misteriose
 const caricaPrenotazioniMisteriose = async () => {
   try {
     const response = await fetch('/api/mie-prenotazioni-misteriose', {
@@ -54,7 +47,6 @@ const caricaPrenotazioniMisteriose = async () => {
   }
 }
 
-// Abbiamo creato la funzione asincrona che scarica le prenotazioni dei viaggi normali
 const caricaPrenotazioniViaggi = async () => {
   try {
     const response = await fetch('/api/mie-prenotazioni-viaggi', {
@@ -74,7 +66,6 @@ const caricaPrenotazioniViaggi = async () => {
   }
 }
 
-// Abbiamo creato la funzione che apre il modale per annullare un viaggio normale
 const apriModaleAnnullamento = (prenotazione) => {
   prenotazioneDaAnnullare.value = prenotazione
   tipoAnnullamento.value = 'viaggio'
@@ -82,7 +73,6 @@ const apriModaleAnnullamento = (prenotazione) => {
   erroreAnnullamento.value = ''
 }
 
-// Abbiamo creato la funzione che apre il modale per annullare un viaggio misterioso
 const apriModaleAnnullamentoMisterioso = (prenotazione) => {
   prenotazioneDaAnnullare.value = prenotazione
   tipoAnnullamento.value = 'misteriosa'
@@ -90,7 +80,6 @@ const apriModaleAnnullamentoMisterioso = (prenotazione) => {
   erroreAnnullamento.value = ''
 }
 
-// Abbiamo creato la funzione che chiude il modale
 const chiudiModaleAnnullamento = () => {
   modaleAnnullamentoAperto.value = false
   prenotazioneDaAnnullare.value = null
@@ -104,7 +93,6 @@ const confermaAnnullamento = async () => {
   annullamentoInCorso.value = true
   erroreAnnullamento.value = ''
   
-  // Abbiamo scelto l'endpoint giusto in base al tipo di prenotazione
   const endpoint = tipoAnnullamento.value === 'misteriosa' 
     ? '/api/annulla-prenotazione-misteriosa' 
     : '/api/annulla-prenotazione'
@@ -124,7 +112,6 @@ const confermaAnnullamento = async () => {
     if (response.ok) {
       messaggioSuccesso.value = `Prenotazione ${prenotazioneDaAnnullare.value.codice} annullata con successo.`
       chiudiModaleAnnullamento()
-      // Abbiamo ricaricato la lista corretta in base al tipo
       if (tipoAnnullamento.value === 'misteriosa') {
         await caricaPrenotazioniMisteriose()
       } else {
@@ -142,7 +129,6 @@ const confermaAnnullamento = async () => {
   }
 }
 
-// Abbiamo creato una funzione che formatta la data in stile italiano
 const formattaData = (dataIso) => {
   return new Date(dataIso).toLocaleDateString('it-IT', { 
     day: 'numeric', 
@@ -151,7 +137,6 @@ const formattaData = (dataIso) => {
   })
 }
 
-// Abbiamo creato una funzione che restituisce il testo da mostrare in base ai giorni alla partenza
 const testoCountdown = (giorni) => {
   if (giorni < 0) return 'Viaggio concluso'
   if (giorni === 0) return 'Si parte oggi!'
@@ -160,7 +145,6 @@ const testoCountdown = (giorni) => {
   return `Mancano ${giorni} giorni`
 }
 
-// Abbiamo creato una funzione che restituisce la classe CSS in base al countdown
 const classeCountdown = (giorni) => {
   if (giorni < 0) return 'countdown-passato'
   if (giorni <= 7) return 'countdown-imminente'
@@ -168,7 +152,6 @@ const classeCountdown = (giorni) => {
   return 'countdown-lontano'
 }
 
-// Abbiamo creato una funzione che restituisce il testo da mostrare per lo stato della prenotazione
 const testoStato = (stato) => {
   if (stato === 'annullata') return '❌ Annullata'
   if (stato === 'completata') return '✅ Completata'
@@ -178,7 +161,6 @@ const testoStato = (stato) => {
   return stato
 }
 
-// Abbiamo creato una funzione che restituisce la classe CSS per il badge stato
 const classeStato = (stato) => {
   if (stato === 'annullata') return 'badge-stato-annullata'
   if (stato === 'completata') return 'badge-stato-completata'
@@ -189,12 +171,10 @@ const classeStato = (stato) => {
 
 
 onMounted(() => {
-  // Se l'utente non è loggato, lo rimandiamo al login
   if (!userStore.loggato) {
     router.push('/login')
     return
   }
-  // Carichiamo entrambi i tipi di prenotazione in parallelo
   caricaPrenotazioniMisteriose()
   caricaPrenotazioniViaggi()
 })

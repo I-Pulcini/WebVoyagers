@@ -3,49 +3,39 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 
-// Abbiamo creato le variabili reattive per gestire il form e il risultato
 const codiceInserito = ref('')
 const errore = ref('')
 const caricamento = ref(false)
 const risultato = ref(null)
 
-// Abbiamo creato la funzione asincrona che chiama il backend per cercare la prenotazione
 const cercaPrenotazione = async () => {
   errore.value = ''
   risultato.value = null
 
-  // Abbiamo verificato che il codice non sia vuoto prima di fare la richiesta
   if (!codiceInserito.value.trim()) {
     errore.value = 'Inserisci il tuo codice prenotazione.'
     return
   }
 
-  // Abbiamo attivato il flag di caricamento per mostrare un feedback all'utente
   caricamento.value = true
 
   try {
-    // Abbiamo chiamato l'endpoint del backend convertendo il codice in maiuscolo per uniformità
     const response = await fetch(`/api/scopri-viaggio/${codiceInserito.value.trim().toUpperCase()}`)
     const data = await response.json()
 
     if (response.ok) {
-      // Abbiamo salvato il risultato che verrà mostrato nel template
       risultato.value = data
     } else {
-      // Abbiamo mostrato l'errore restituito dal backend (es. codice non trovato)
       errore.value = data.error || 'Errore durante la ricerca.'
     }
   } catch (err) {
-    // Abbiamo gestito gli errori di connessione al server
     console.error('Errore nella chiamata al backend:', err)
     errore.value = 'Errore di connessione al server.'
   } finally {
-    // Abbiamo disattivato il flag di caricamento in ogni caso (successo o errore)
     caricamento.value = false
   }
 }
 
-// Abbiamo creato una funzione per ricominciare la ricerca con un altro codice
 const nuovaRicerca = () => {
   codiceInserito.value = ''
   risultato.value = null

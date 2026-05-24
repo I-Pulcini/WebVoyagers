@@ -5,12 +5,9 @@ import { userStore } from '../stores/userStore'
 
 
 
-// Abbiamo creato la variabile reattiva che conterrà le recensioni dal backend
 const recensioni = ref([])
-// Abbiamo creato la variabile per gestire lo stato di caricamento
 const caricamentoRecensioni = ref(true)
 
-// Variabili per il form di nuova recensione
 const formAperto = ref(false)
 const stelleScelte = ref(0)
 const stelleHover = ref(0)
@@ -20,7 +17,6 @@ const erroreRecensione = ref('')
 const successoRecensione = ref('')
 const inviandoRecensione = ref(false)
 
-// Abbiamo creato la funzione asincrona che carica le recensioni dal backend
 const caricaRecensioni = async () => {
   try {
     const response = await fetch('/api/recensioni')
@@ -42,7 +38,6 @@ const votoMedio = computed(() => {
   return (somma / recensioni.value.length).toFixed(1)
 })
 
-// Abbiamo creato la funzione che apre il form di scrittura recensione
 const apriForm = () => {
   if (!userStore.loggato) {
     alert('Devi essere loggato per scrivere una recensione!')
@@ -53,7 +48,6 @@ const apriForm = () => {
   successoRecensione.value = ''
 }
 
-// Abbiamo creato la funzione che chiude il form
 const chiudiForm = () => {
   formAperto.value = false
   stelleScelte.value = 0
@@ -62,7 +56,6 @@ const chiudiForm = () => {
   erroreRecensione.value = ''
 }
 
-// Abbiamo creato la funzione asincrona che invia la recensione al backend
 const inviaRecensione = async () => {
   erroreRecensione.value = ''
   successoRecensione.value = ''
@@ -94,11 +87,9 @@ const inviaRecensione = async () => {
     
     if (response.ok) {
       successoRecensione.value = data.message
-      // Abbiamo svuotato i campi del form
       stelleScelte.value = 0
       titoloRecensione.value = ''
       testoRecensione.value = ''
-      // Abbiamo chiuso il form dopo 3 secondi
       setTimeout(() => {
         chiudiForm()
       }, 3000)
@@ -113,7 +104,6 @@ const inviaRecensione = async () => {
   }
 }
 
-// Abbiamo creato una funzione che formatta il tempo in modo "umano"
 const tempoTrascorso = (dataIso) => {
   const data = new Date(dataIso)
   const ora = new Date()
@@ -128,10 +118,8 @@ const tempoTrascorso = (dataIso) => {
   return `${Math.floor(diffGiorni / 365)} anni fa`
 }
 
-// Abbiamo creato la funzione che restituisce le stelle visualizzate (★★★★☆ ecc.)
 const renderStelle = (numStelle) => '★'.repeat(numStelle) + '☆'.repeat(5 - numStelle)
 
-// Carichiamo le recensioni al montaggio della pagina
 onMounted(() => {
   caricaRecensioni()
 })

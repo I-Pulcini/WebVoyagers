@@ -6,10 +6,8 @@ import { prenotazioneStore } from '../stores/prenotazioneStore'
 
 
 
-// Abbiamo importato il router per reindirizzare l'utente alla pagina di conferma dopo la prenotazione
 const router = useRouter()
 
-// Abbiamo creato le variabili reattive 
 const continente = ref('')
 const dataPartenza = ref('')
 const durata = ref('')
@@ -18,10 +16,8 @@ const tipoEsperienza = ref('')
 const numeroViaggiatori = ref(1)
 const note = ref('')
 
-// Abbiamo creato la variabile per gestire eventuali messaggi di errore del form
 const errore = ref('')
 
-// Abbiamo definito le opzioni selezionabili nei vari menu a tendina
 const continenti = [
   { value: 'qualsiasi', label: 'Sorprendimi! (qualsiasi continente)' },
   { value: 'europa', label: 'Europa' },
@@ -60,23 +56,19 @@ const formValido = computed(() => {
          budget.value && tipoEsperienza.value && numeroViaggiatori.value > 0
 })
 
-// Abbiamo creato la funzione asincrona che gestisce l'invio del form al backend
 const inviaPrenotazione = async () => {
   errore.value = ''
 
-  // Abbiamo verificato che l'utente sia loggato prima di permettere la prenotazione
   if (!userStore.loggato) {
     errore.value = 'Devi essere loggato per prenotare un viaggio misterioso.'
     return
   }
 
-  // Abbiamo verificato che tutti i campi obbligatori siano compilati
   if (!formValido.value) {
     errore.value = 'Compila tutti i campi del form per continuare.'
     return
   }
 
-  // Abbiamo verificato che la data di partenza sia futura
   const oggi = new Date()
   oggi.setHours(0, 0, 0, 0)
   const partenza = new Date(dataPartenza.value)
@@ -86,7 +78,6 @@ const inviaPrenotazione = async () => {
   }
 
   try {
-    // Abbiamo chiamato il backend inviando tutti i dati del form e includendo il cookie di sessione
     const response = await fetch('/api/prenota-misterioso', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -102,11 +93,9 @@ const inviaPrenotazione = async () => {
       })
     })
 
-    // Abbiamo trasformato la risposta JSON in oggetto JavaScript
     const data = await response.json()
 
     if (response.ok) {
-      // Abbiamo costruito un oggetto con i criteri scelti dall'utente per conservarli nello store
       const criteri = {
         continente: continente.value,
         dataPartenza: dataPartenza.value,
@@ -116,16 +105,12 @@ const inviaPrenotazione = async () => {
         numeroViaggiatori: numeroViaggiatori.value,
         note: note.value
       }
-      // Abbiamo salvato tutti i dati della prenotazione nello store globale (criteri, viaggio scelto, simili, codice)
       prenotazioneStore.set(criteri, data.viaggioScelto, data.viaggiSimili, data.codice)
-      // Abbiamo reindirizzato l'utente alla pagina dedicata di conferma con le 3 carte indizio
       router.push('/viaggio-misterioso/conferma')
     } else {
-      // Abbiamo mostrato l'errore restituito dal backend (es. nessuna destinazione compatibile)
       errore.value = data.error || 'Errore durante la prenotazione. Riprova più tardi.'
     }
   } catch (err) {
-    // Abbiamo gestito gli errori di rete che impediscono la comunicazione con il server
     console.error('Errore nella chiamata al backend:', err)
     errore.value = 'Errore di connessione al server. Verifica che il backend sia attivo.'
   }

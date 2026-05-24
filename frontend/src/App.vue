@@ -46,7 +46,6 @@ const verificaSessione = async () => {
     const response = await fetch('/api/me', {
       credentials: 'include'  
     })
-/*Nel file App,vue ci sta una chiamata della funzione fecth() con l'URL api/me, il browser predno il cookie di sessione che contiene ID cifrato e lo allega alla richiesta inviata al server.  Quando la richiesta viene sul file server.js non va subito all'endpint finale ma viene intercettata dal middleware cioè API 2, ed è quei che si fa il lavoro con il database, poichè il server prende l'ID di sessione cifrato dal cookie e interroga la tabella session sul database PostgreSQL deserializza i dati e li inserisce pronti nella variabile req.session.  Da qui poi arriiamo all'API 5, non interroghiamo il database ma ci limitimao a vedere se dentro req.session esiste gia la prorpietà userId, se esiste allora inserimao tutto dentro res.json(). Queso pacchetto torna indietro veros il clinet sotto forma di repsonse  inf ormato json. In App.vue viene spacchettao  in un oggeto javascript e inserito in data */
 
     
     const data = await response.json()  

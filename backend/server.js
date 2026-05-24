@@ -1,32 +1,22 @@
-// Abbiamo caricato le variabili d'ambiente dal file .env in modo che siano disponibili tramite process.env
 require('dotenv').config();
 const path = require('path');
-// Abbiamo importato il modulo 'express' per creare l'architettura del nostro server web
 const express = require('express');
-// Abbiamo importato 'express-session' per gestire le sessioni e i cookie degli utenti
 const session = require('express-session');
-// Abbiamo collegato il gestore delle sessioni al database per salvarle in modo permanente
 const pgSession = require('connect-pg-simple')(session);
-// Abbiamo importato 'Pool' per gestire una coda di connessioni verso il database PostgreSQL
 const { Pool } = require('pg');
-// Abbiamo importato 'bcrypt' per gestire la crittografia delle password in modo sicuro
 const bcrypt = require('bcrypt');
 
-// Abbiamo inizializzato la nostra applicazione chiamandola 'app'
+
 const app = express();
-// Abbiamo detto a Express di fidarsi del proxy di Render 
 app.set('trust proxy', 1);
-// Abbiamo letto la porta dalla variabile d'ambiente, con valore di fallback 3000 se non definita
 const port = process.env.PORT || 3000;
-// Abbiamo definito la cartella dove stanno i file statici buildati del frontend
 const ROOT = path.join(__dirname, 'dist');
 
-// Abbiamo servito i file statici del frontend 
+
 app.use(express.static(ROOT));
-// Abbiamo configurato il server per interpretare automaticamente i dati in formato JSON
 app.use(express.json());
 
-// API 1: Connessione con i Database su Supabase
+// API 1: CONNESSIONE CON I DATABASE SU SUPABASE
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -37,7 +27,6 @@ const pool = new Pool({
 
 
 
-// Abbiamo definito gli schemi JSON Schema per validare i dati in ingresso alle API principali.
 
 
 const schemaRegistrazione = {
@@ -88,8 +77,8 @@ const schemaPrenota_Misterioso = {
     }
 };
 
-// Funzione di validazione: verifica che i dati ricevuti rispettino lo schema JSON Schema dichiarato.
-// Controlla: tipo del valore, campi required, minLength/maxLength, pattern regex, enum, min/max numerici.
+
+
 function validaSchema(dati, schema) {
     const errori = [];
     if (schema.type === "object" && (typeof dati !== "object" || dati === null || Array.isArray(dati))) {
@@ -138,62 +127,58 @@ function validaSchema(dati, schema) {
     return errori;
 }
 
-// API 2: Per la configurazione delle sessioni
-app.use(session({  //app.use questo è il middleware globale
-    // Abbiamo scelto di salvare le sessioni sul database 
+// API 2: CONFIGURAZIONE SESSIONI
+app.use(session({  
+  
     store: new pgSession({
-        pool: pool, // Abbiamo passato il collegamento al database appena creato
-        tableName: 'session' // Abbiamo indicato il nome esatto della tabella SQL che abbiamo preparato su Supabase
+        pool: pool, 
+        tableName: 'session' 
     }),
-    // Abbiamo letto la chiave segreta dal file .env per maggiore sicurezza
+    
     secret: process.env.SESSION_SECRET,
-    // Abbiamo impostato 'resave' su false per evitare di risalvare la sessione se non ci sono state modifiche
     resave: false,
-    // Abbiamo impostato 'saveUninitialized' su false per non creare sessioni vuote per gli utenti non loggati
+    
     saveUninitialized: false,
-    // Abbiamo configurato le proprietà del cookie di sessione che il browser conserverà
+   
     cookie: { 
        
-        maxAge: 30 * 24 * 60 * 60 * 1000, // massima del coockie, 30 giorni
+        maxAge: 30 * 24 * 60 * 60 * 1000, 
      
-        httpOnly: true,  //è un'opzione di sicurezza eccezionale, dice al browser che il cookie può essere letto solo dal server tramite la rete internet.
-      
-        secure: process.env.NODE_ENV === 'production',  //impostazione dinamica di sicurezza
-    
-        sameSite: 'lax'  //impedisce di rubare il cookie
+        httpOnly: true,  
+        secure: process.env.NODE_ENV === 'production',  
+        sameSite: 'lax'  
     }
 }));
 
-// API 3: Per la registrazione dell'utente
+// API 3: REGISTRAZIONE UTENTE
 app.post('/api/register', async (req, res) => {
     const erroriValidazione = validaSchema(req.body, schemaRegistrazione);
     if (erroriValidazione.length > 0) {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriValidazione });
     }
-    // Abbiamo estratto i dati username, email e password dal corpo della richiesta inviata da Vue
+  
     const { username, email, password } = req.body;
-    // Abbiamo iniziato un blocco try-catch per gestire eventuali errori durante l'operazione
+    
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);  //cripta la password
+        const hashedPassword = await bcrypt.hash(password, 10);  
         
-        // Abbiamo eseguito la query SQL per inserire i dati del nuovo utente nel database
+        
         await pool.query(
-            // Abbiamo usato dei segnaposto ($1, $2, $3) per prevenire attacchi di tipo SQL Injection
             'INSERT INTO utenti (username, email, password_hash) VALUES ($1, $2, $3)',
-            // Abbiamo passato i valori reali in un array che andranno a sostituire i segnaposto sopra
+           
             [username, email, hashedPassword]
         );
-        // Abbiamo inviato una risposta di successo con codice 201 indicando che l'utente è stato creato
+        
         res.status(201).json({ message: "Utente registrato con successo!" });
     } catch (err) {
-        // Abbiamo stampato l'errore in console per poter fare debug in caso di problemi
+        
         console.error(err);
-        // Abbiamo risposto con un codice 500 informando l'utente che qualcosa è andato storto
+        
         res.status(500).json({ error: "Errore: Forse questa email è già registrata?" });
     }
 });
 
-// API 4: Per il login
+// API 4: LOGIN
 app.post('/api/login', async (req, res) => {
    
     const erroriLogin = validaSchema(req.body, schemaLogin);
@@ -201,34 +186,33 @@ app.post('/api/login', async (req, res) => {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriLogin });
     }
   
-    // Abbiamo recuperato l'email e la password inserite dall'utente nel form di login
+    
     const { email, password } = req.body;
-    // Abbiamo aperto un blocco try per gestire la ricerca dell'utente
+   
     try {
-        // Abbiamo cercato nel database che utente  possiede l'email indicata
+        
         const result = await pool.query('SELECT * FROM utenti WHERE email = $1', [email]);
         
-        // Abbiamo controllato se il database ha restituito zero risultati 
+       
         if (result.rows.length === 0) {
-            // Abbiamo risposto con errore 401 se l'email non è presente nei nostri archivi
+            
             return res.status(401).json({ error: "Utente non trovato." });
         }
 
-        // Abbiamo estratto il primo utente trovato dalla lista dei risultati
         const user = result.rows[0];
         
-        // Abbiamo confrontato la password digitata con quella criptata salvata nel database
+        
         const match = await bcrypt.compare(password, user.password_hash);
 
-        // Abbiamo verificato se il confronto tra le password ha avuto successo
+        
         if (match) {
-            // Abbiamo creato la sessione attiva salvando l'ID univoco dell'utente appena loggato
+           
             req.session.userId = user.id;
-            // Abbiamo salvato anche lo username nella sessione per poterlo mostrare nel menu di Vue
+          
             req.session.username = user.username;
-            // Abbiamo salvato anche il flag admin nella sessione, così possiamo verificare i permessi
+            
             req.session.isAdmin = user.is_admin;
-            // Abbiamo risposto inviando un messaggio di conferma, lo username e il flag admin al Front-end
+        
             res.json({ 
                 message: "Login effettuato con successo!", 
                 userId: user.id,
@@ -236,19 +220,19 @@ app.post('/api/login', async (req, res) => {
                 isAdmin: user.is_admin
             });
         } else {
-            // Abbiamo risposto con errore 401 se la password non corrisponde a quella salvata
+            
             res.status(401).json({ error: "Password errata." });
         }
     } catch (err) {
-        // Abbiamo registrato l'errore nel terminale del server per monitorare il problema
+        
         console.error(err);
-        // Abbiamo inviato una risposta di errore generico al client in caso di crash del database
+        
         res.status(500).json({ error: "Errore durante il login." });
     }
 });
-// API 5 verfica sessione attiva
-app.get('/api/me', (req, res) => {   //def. un endopoint con la funzione GET
-    if (req.session.userId) {  //controlliamo se dentro la sessione dell'utente  che Express recupera grazie al cookie inviato dal browser esiste una propruetà chiamata userID
+// API 5 : VERIFICA SESSIONE ATTIVA 
+app.get('/api/me', (req, res) => {   
+    if (req.session.userId) { 
         res.json({
             loggato: true,
             userId: req.session.userId,
@@ -256,30 +240,30 @@ app.get('/api/me', (req, res) => {   //def. un endopoint con la funzione GET
             isAdmin: req.session.isAdmin || false
         });
     } else {
-        res.json({ loggato: false });  //l'utente non ha mai effettuato l'accesso
+        res.json({ loggato: false }); 
     }
 });
 
-// API 6 logout 
+// API 6: LOGOUT
 
 app.post('/api/logout', (req, res) => {
-    // Abbiamo distrutto la sessione corrente, eliminando tutti i dati dell'utente dal database
+ 
     req.session.destroy((err) => {
-        // Abbiamo gestito l'eventuale errore che si potrebbe verificare durante la distruzione della sessione
+      
         if (err) {
             console.error("Errore durante il logout:", err);
             return res.status(500).json({ error: "Errore durante il logout." });
         }
-        // Abbiamo cancellato anche il cookie dal browser dell'utente per completare il logout
+        
         res.clearCookie('connect.sid');
-        // Abbiamo inviato una risposta di conferma al frontend
+      
         res.json({ message: "Logout effettuato con successo!" });
     });
 });
-// API 7 prenotazione viaggio misterioso
+// API 7: PRENOTAZIONE VIAGGIO MISTERIOSO 
 
 app.post('/api/prenota-misterioso', async (req, res) => {
-    // Abbiamo verificato subito che l'utente sia loggato controllando la sessione
+ 
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per prenotare un viaggio misterioso." });
     }
@@ -290,7 +274,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriMisterioso });
     }
     
-    // Abbiamo estratto i criteri di ricerca inviati dal form di Vue
+    
     const { 
         continente, 
         dataPartenza, 
@@ -310,7 +294,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         else if (durata === '16+') { durataMin = 16; durataMax = 30; }
         else { durataMin = 1; durataMax = 30; }
         
-        // Abbiamo convertito la fascia di budget in valori numerici min e max
+     
         let budgetMin, budgetMax;
         if (budget === 'economico') { budgetMin = 0; budgetMax = 1500; }
         else if (budget === 'medio') { budgetMin = 1500; budgetMax = 3500; }
@@ -329,39 +313,38 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         `;
         const parametri = [budgetMax, budgetMin, durataMax, durataMin];
         
-        // Abbiamo aggiunto il filtro continente solo se l'utente ne ha scelto uno specifico
+       
         if (continente && continente !== 'qualsiasi') {
             querySQL += ` AND continente = $${parametri.length + 1}`;
             parametri.push(continente);
         }
         
-        // Abbiamo aggiunto il filtro tipo esperienza solo se diverso da "sorpresa"
+       
         if (tipoEsperienza && tipoEsperienza !== 'sorpresa') {
             querySQL += ` AND tipo_esperienza = $${parametri.length + 1}`;
             parametri.push(tipoEsperienza);
         }
         
-        // Abbiamo eseguito la query sul database per trovare le destinazioni compatibili
+        
         const risultato = await pool.query(querySQL, parametri);
         
-        // Abbiamo controllato se ci sono destinazioni disponibili che combaciano con i criteri
+        
         if (risultato.rows.length === 0) {
             return res.status(404).json({ 
                 error: "Non abbiamo trovato un viaggio misterioso che combaci con i tuoi criteri. Prova ad allargare le opzioni!" 
             });
         }
         
-        // Abbiamo scelto una destinazione casuale tra quelle compatibili (è il viaggio "vero" assegnato all'utente)
+        
         const destinazioneScelta = risultato.rows[Math.floor(Math.random() * risultato.rows.length)];
 
-        // Calcoliamo quanti giorni mancano alla partenza per decidere se mostrare i distrattori
+      
         const oggiData = new Date();
         oggiData.setHours(0, 0, 0, 0);
         const partenzaDate = new Date(dataPartenza);
         const giorniAllaPartenza = Math.floor((partenzaDate - oggiData) / (1000 * 60 * 60 * 24));
 
-        // I distrattori vengono mostrati solo se la partenza è tra più di 7 giorni
-        // e rispettano gli stessi filtri scelti dall'utente (continente, budget, durata)
+       
         let distrattoriRows = [];
         if (giorniAllaPartenza > 7) {
             let distrattoriSQL = `
@@ -389,7 +372,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             distrattoriRows = distrattoriQuery.rows;
         }
 
-        // Abbiamo costruito la versione "anonima" del viaggio scelto: solo indizi, niente nome
+        
         const viaggioSceltoAnonimo = {
             continente: destinazioneScelta.continente,
             tipo_esperienza: destinazioneScelta.tipo_esperienza,
@@ -398,7 +381,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             indizio_3: destinazioneScelta.indizio_3
         };
         
-        // Abbiamo costruito la versione anonima dei 2 distrattori, sempre con i soli indizi
+       
         const viaggiSimiliAnonimi = distrattoriRows.map(dest => ({
             continente: dest.continente,
             tipo_esperienza: dest.tipo_esperienza,
@@ -407,7 +390,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             indizio_3: dest.indizio_3
         }));
         
-        // Abbiamo generato un codice prenotazione univoco da mostrare all'utente
+      
         const lettere = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const numeri = '0123456789';
         let codice = 'WV-';
@@ -418,7 +401,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             codice += numeri.charAt(Math.floor(Math.random() * numeri.length));
         }
         
-        // Abbiamo salvato la prenotazione nel database collegandola all'utente loggato e alla destinazione assegnata
+      
         await pool.query(
             `INSERT INTO prenotazioni_misteriose 
                 (codice, id_utente, id_destinazione, continente_richiesto, data_partenza, durata, budget, tipo_esperienza, numero_viaggiatori, note, stato) 
@@ -437,9 +420,7 @@ app.post('/api/prenota-misterioso', async (req, res) => {
             ]
         );
         
-        // Abbiamo risposto al frontend con il codice di prenotazione,
-        // il viaggio scelto (anonimo) e i 2 viaggi simili: tutti senza il nome esatto della destinazione,
-        // così l'utente vede 3 indizi senza sapere quale dei tre è il proprio
+        
         res.status(201).json({ 
             message: "Prenotazione confermata!",
             codice: codice,
@@ -448,17 +429,17 @@ app.post('/api/prenota-misterioso', async (req, res) => {
         });
         
     } catch (err) {
-        // Abbiamo stampato l'errore nel terminale del server per il debug
+        
         console.error("Errore nella prenotazione del viaggio misterioso:", err);
-        // Abbiamo restituito un messaggio generico al client per non esporre dettagli interni
+        
         res.status(500).json({ error: "Errore durante la prenotazione. Riprova più tardi." });
     }
 });
 
-//API 8 : ELENCO PRENOTAZIONI MISTERIOSE DELL'UTENTE LOGGATO 
+// API 8 : ELENCO PRENOTAZIONI MISTERIOSE DELL'UTENTE LOGGATO 
 
 app.get('/api/mie-prenotazioni-misteriose', async (req, res) => {
-    // Abbiamo verificato che l'utente sia loggato prima di restituire dati personali
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per vedere le tue prenotazioni." });
     }
@@ -489,11 +470,11 @@ app.get('/api/mie-prenotazioni-misteriose', async (req, res) => {
             [req.session.userId]
         );
         
-        // Abbiamo restituito l'elenco delle prenotazioni al frontend
+        
         res.json({ prenotazioni: risultato.rows });
         
     } catch (err) {
-        // Abbiamo registrato l'errore nel terminale del server
+        
         console.error("Errore nel recupero delle prenotazioni:", err);
         res.status(500).json({ error: "Errore durante il recupero delle prenotazioni." });
     }
@@ -501,11 +482,11 @@ app.get('/api/mie-prenotazioni-misteriose', async (req, res) => {
 // API 9 : SCOPRI IL TUO VIAGGIO 
 
 app.get('/api/scopri-viaggio/:codice', async (req, res) => {
-    // Abbiamo estratto il codice prenotazione dai parametri dell'URL
+    
     const { codice } = req.params;
     
     try {
-        // Abbiamo cercato la prenotazione facendo un JOIN con la tabella destinazioni per avere il nome
+      
         const risultato = await pool.query(
             `SELECT 
                 p.codice,
@@ -523,18 +504,18 @@ app.get('/api/scopri-viaggio/:codice', async (req, res) => {
             [codice]
         );
         
-        // Abbiamo controllato se il codice esiste nel database
+      
         if (risultato.rows.length === 0) {
             return res.status(404).json({ 
                 error: "Codice prenotazione non trovato. Verifica di averlo digitato correttamente." 
             });
         }
         
-        // Abbiamo estratto i dati della prenotazione trovata
+      
         const prenotazione = risultato.rows[0];
         const giorniMancanti = prenotazione.giorni_alla_partenza;
         
-        // Abbiamo verificato se mancano 7 giorni o meno: in tal caso riveliamo la destinazione
+        
         if (giorniMancanti <= 7) {
             res.json({
                 rivelato: true,
@@ -551,7 +532,7 @@ app.get('/api/scopri-viaggio/:codice', async (req, res) => {
                 }
             });
         } else {
-            // Abbiamo restituito solo il numero di giorni che ancora mancano alla rivelazione
+            
             res.json({
                 rivelato: false,
                 giorniMancanti: giorniMancanti,
@@ -560,7 +541,7 @@ app.get('/api/scopri-viaggio/:codice', async (req, res) => {
         }
         
     } catch (err) {
-        // Abbiamo registrato l'errore nel terminale del server
+       
         console.error("Errore nella ricerca della prenotazione:", err);
         res.status(500).json({ error: "Errore durante la ricerca. Riprova più tardi." });
     }
@@ -568,17 +549,17 @@ app.get('/api/scopri-viaggio/:codice', async (req, res) => {
 // API 10 : ELENCO VIAGGI PER STATO 
 
 app.get('/api/viaggi/:stato', async (req, res) => {
-    // Abbiamo estratto lo stato richiesto dai parametri dell'URL
+   
     const { stato } = req.params;
     
-    // Abbiamo verificato che lo stato richiesto sia uno di quelli ammessi 
+  
     const statiAmmessi = ['disponibile', 'sold_out', 'in_arrivo'];
     if (!statiAmmessi.includes(stato)) {
         return res.status(400).json({ error: "Stato viaggio non valido." });
     }
     
     try {
-        // Abbiamo eseguito la query per ottenere tutti i viaggi attivi con lo stato richiesto
+       
         const risultato = await pool.query(
             `SELECT id, mese, periodo, data_visualizzata, destinazione, 
                     prezzo, stato, posti_disponibili, posti_totali, rotta
@@ -588,11 +569,11 @@ app.get('/api/viaggi/:stato', async (req, res) => {
             [stato]
         );
         
-        // Abbiamo restituito l'elenco dei viaggi 
+      
         res.json({ viaggi: risultato.rows });
         
     } catch (err) {
-        // Abbiamo registrato l'errore nel terminale del server
+       
         console.error("Errore nel recupero dei viaggi:", err);
         res.status(500).json({ error: "Errore durante il recupero dei viaggi." });
     }
@@ -600,15 +581,14 @@ app.get('/api/viaggi/:stato', async (req, res) => {
 // 10b. ENDPOINT PER OTTENERE I DETTAGLI COMPLETI DI UN VIAGGIO
 app.get('/api/viaggi/dettaglio/:id', async (req, res) => {
   try {
-    // Abbiamo letto l'id dal parametro dell'URL e lo abbiamo convertito in numero
+   
     const idViaggio = parseInt(req.params.id)
     
-    // Abbiamo controllato che sia un numero valido
+   
     if (isNaN(idViaggio) || idViaggio < 1) {
       return res.status(400).json({ error: 'ID viaggio non valido.' })
     }
-    
-    // Abbiamo eseguito la query per ottenere il viaggio dal database
+  
     const result = await pool.query(
       `SELECT id, destinazione, mese, periodo, data_visualizzata, prezzo, 
         posti_disponibili, posti_totali, stato, descrizione, 
@@ -618,12 +598,11 @@ app.get('/api/viaggi/dettaglio/:id', async (req, res) => {
       [idViaggio]
     )
     
-    // Abbiamo verificato se il viaggio esiste
+
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Viaggio non trovato.' })
     }
-    
-    // Abbiamo restituito il viaggio al frontend
+
     res.json(result.rows[0])
     
   } catch (err) {
@@ -632,21 +611,17 @@ app.get('/api/viaggi/dettaglio/:id', async (req, res) => {
   }
 })
 // 10c. ENDPOINT PER CERCARE UN VIAGGIO PER MESE E DESTINAZIONE
-// Abbiamo creato questo endpoint per la barra di ricerca della HomeView.
-// Cerchiamo nel DB un viaggio nel mese scelto la cui destinazione contenga (o sia contenuta in) 
-// la parola scelta dall'utente. Per esempio "Svezia" matcha "LAPPONIA SVEDESE", e
-// "Regno Unito" matcha "LONDRA" se aggiunto come parola chiave.
-app.post('/api/cerca-viaggio', async (req, res) => {  //req,la richiesta che arriva mentre res è la risposta che parte
+
+app.post('/api/cerca-viaggio', async (req, res) => {  
   try {
     const { mese, destinazione } = req.body
     
-    // Abbiamo controllato che entrambi i parametri siano stati forniti
+   
     if (!mese || !destinazione) {
       return res.status(400).json({ error: 'Mese e destinazione sono obbligatori.' })
     }
     
-    // Abbiamo cercato il viaggio nel DB con confronto case-insensitive
-    // ILIKE permette pattern matching senza distinguere maiuscole/minuscole
+
     const result = await pool.query(
       `SELECT id, stato, destinazione, mese
        FROM viaggi 
@@ -666,12 +641,12 @@ app.post('/api/cerca-viaggio', async (req, res) => {  //req,la richiesta che arr
       [mese, destinazione]
     )
     
-    // Se non troviamo il viaggio, restituiamo 404
+    
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Nessun viaggio trovato per questa combinazione.' })
     }
     
-    // Abbiamo restituito l'id del viaggio trovato
+    
     res.json({ 
       id: result.rows[0].id, 
       stato: result.rows[0].stato,
@@ -687,7 +662,7 @@ app.post('/api/cerca-viaggio', async (req, res) => {  //req,la richiesta che arr
 // API 11 PRENOTAZIONE VIAGGIO NORMALE 
 
 app.post('/api/prenota-viaggio', async (req, res) => {
-    // Abbiamo verificato subito che l'utente sia loggato
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per prenotare un viaggio." });
     }
@@ -698,7 +673,7 @@ app.post('/api/prenota-viaggio', async (req, res) => {
         return res.status(400).json({ error: "Dati non validi.", dettagli: erroriPrenota });
     }
     
-    // Abbiamo estratto i dati dal corpo della richiesta
+   
     const { 
         idViaggio, 
         numeroViaggiatori, 
@@ -708,13 +683,13 @@ app.post('/api/prenota-viaggio', async (req, res) => {
         note 
     } = req.body;
     
-    // Abbiamo verificato che i campi obbligatori siano presenti
+    
     if (!idViaggio || !numeroViaggiatori || !nomeCompleto || !emailContatto) {
         return res.status(400).json({ error: "Compila tutti i campi obbligatori." });
     }
     
     try {
-        // Abbiamo verificato che il viaggio richiesto esista e sia ancora disponibile (non sold out)
+        
         const viaggioCheck = await pool.query(
             `SELECT id, destinazione, posti_disponibili, stato 
              FROM viaggi 
@@ -728,14 +703,14 @@ app.post('/api/prenota-viaggio', async (req, res) => {
         
         const viaggio = viaggioCheck.rows[0];
         
-        // Abbiamo verificato che il viaggio sia prenotabile (solo se è 'disponibile')
+        
         if (viaggio.stato !== 'disponibile') {
             return res.status(400).json({ 
                 error: "Questo viaggio non è prenotabile al momento (sold out o non ancora aperto)." 
             });
         }
         
-        // Abbiamo verificato che ci siano abbastanza posti per il numero richiesto di viaggiatori
+        
         if (viaggio.posti_disponibili < numeroViaggiatori) {
             return res.status(400).json({ 
                 error: `Posti insufficienti! Disponibili: ${viaggio.posti_disponibili}, richiesti: ${numeroViaggiatori}.` 
@@ -753,7 +728,7 @@ app.post('/api/prenota-viaggio', async (req, res) => {
             codice += numeri.charAt(Math.floor(Math.random() * numeri.length));
         }
         
-        // Abbiamo salvato la prenotazione nel database collegandola all'utente loggato
+      
         await pool.query(
             `INSERT INTO prenotazioni_viaggi 
                 (codice, id_utente, id_viaggio, numero_viaggiatori, nome_completo, email_contatto, telefono, note, stato) 
@@ -770,13 +745,13 @@ app.post('/api/prenota-viaggio', async (req, res) => {
             ]
         );
         
-        // Abbiamo aggiornato i posti disponibili sul viaggio 
+        
         await pool.query(
             `UPDATE viaggi SET posti_disponibili = posti_disponibili - $1 WHERE id = $2`,
             [numeroViaggiatori, idViaggio]
         );
         
-        // Abbiamo verificato se il viaggio è esaurito dopo questa prenotazione: in tal caso lo segniamo sold out
+       
         const checkSoldOut = await pool.query(
             `SELECT posti_disponibili FROM viaggi WHERE id = $1`,
             [idViaggio]
@@ -788,7 +763,7 @@ app.post('/api/prenota-viaggio', async (req, res) => {
             );
         }
         
-        // Abbiamo risposto al frontend con il codice prenotazione e il nome della destinazione
+        
         res.status(201).json({ 
             message: "Prenotazione confermata!",
             codice: codice,
@@ -796,22 +771,22 @@ app.post('/api/prenota-viaggio', async (req, res) => {
         });
         
     } catch (err) {
-        // Abbiamo registrato l'errore nel terminale del server per il debug
+        
         console.error("Errore nella prenotazione del viaggio:", err);
         res.status(500).json({ error: "Errore durante la prenotazione. Riprova più tardi." });
     }
 });
 
-// . API 12 : ELENCO PRENOTAZIONI VIAGGI NORMALI DELL'UTENTE LOGGATO 
+// API 12 : ELENCO PRENOTAZIONI VIAGGI NORMALI DELL'UTENTE LOGGATO 
 
 app.get('/api/mie-prenotazioni-viaggi', async (req, res) => {
-    // Abbiamo verificato che l'utente sia loggato prima di restituire dati personali
+ 
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per vedere le tue prenotazioni." });
     }
     
     try {
-        // Abbiamo eseguito una query con JOIN per recuperare anche i dettagli del viaggio prenotato
+       
         const risultato = await pool.query(
             `SELECT 
                 p.id, 
@@ -836,7 +811,7 @@ app.get('/api/mie-prenotazioni-viaggi', async (req, res) => {
             [req.session.userId]
         );
         
-        // Abbiamo restituito l'elenco delle prenotazioni al frontend
+       
         res.json({ prenotazioni: risultato.rows });
         
     } catch (err) {
@@ -844,11 +819,12 @@ app.get('/api/mie-prenotazioni-viaggi', async (req, res) => {
         res.status(500).json({ error: "Errore durante il recupero delle prenotazioni." });
     }
 });
+
 // 12b. ENDPOINT PER ANNULLARE UNA PRENOTAZIONE DI VIAGGIO NORMALE
 
 
 app.post('/api/annulla-prenotazione', async (req, res) => {
-  // Abbiamo verificato che l'utente sia loggato
+ 
   if (!req.session.userId) {
     return res.status(401).json({ error: 'Devi essere loggato per annullare una prenotazione.' })
   }
@@ -859,14 +835,12 @@ app.post('/api/annulla-prenotazione', async (req, res) => {
     return res.status(400).json({ error: 'Codice prenotazione mancante.' })
   }
   
-  // Abbiamo iniziato una transazione per garantire che tutte le operazioni
-  // (cambio stato + restituzione posti + eventuale ripristino disponibilita) avvengano insieme
+
   const client = await pool.connect()
   
   try {
     await client.query('BEGIN')
     
-    // Abbiamo cercato la prenotazione e verificato che appartenga all'utente loggato
     const prenotazioneResult = await client.query(
       `SELECT id, id_viaggio, numero_viaggiatori, stato, id_utente
        FROM prenotazioni_viaggi
@@ -881,25 +855,24 @@ app.post('/api/annulla-prenotazione', async (req, res) => {
     
     const prenotazione = prenotazioneResult.rows[0]
     
-    // Abbiamo verificato che la prenotazione appartenga all'utente loggato
+  
     if (prenotazione.id_utente !== req.session.userId) {
       await client.query('ROLLBACK')
       return res.status(403).json({ error: 'Non puoi annullare una prenotazione che non e tua.' })
     }
     
-    // Abbiamo verificato che la prenotazione non sia gia annullata
+ 
     if (prenotazione.stato === 'annullata') {
       await client.query('ROLLBACK')
       return res.status(400).json({ error: 'Questa prenotazione e gia stata annullata.' })
     }
-    
-    // Abbiamo aggiornato lo stato della prenotazione ad 'annullata'
+ 
     await client.query(
       `UPDATE prenotazioni_viaggi SET stato = 'annullata' WHERE codice = $1`,
       [codice]
     )
     
-    // Abbiamo restituito i posti al viaggio
+
     await client.query(
       `UPDATE viaggi 
        SET posti_disponibili = posti_disponibili + $1
@@ -907,8 +880,7 @@ app.post('/api/annulla-prenotazione', async (req, res) => {
       [prenotazione.numero_viaggiatori, prenotazione.id_viaggio]
     )
     
-    // Se il viaggio era sold_out, lo riportiamo a 'disponibile'
-    // (perche ora ci sono di nuovo posti liberi)
+    
     await client.query(
       `UPDATE viaggi 
        SET stato = 'disponibile'
@@ -932,12 +904,11 @@ app.post('/api/annulla-prenotazione', async (req, res) => {
     client.release()
   }
 })
+
 // 12c. ENDPOINT PER ANNULLARE UNA PRENOTAZIONE MISTERIOSA
-// Abbiamo creato questo endpoint per permettere all'utente di annullare una propria
-// prenotazione misteriosa. La prenotazione resta nel DB ma viene marcata come 'annullata'.
-// Non e possibile annullare se la destinazione e gia stata svelata (mancano <= 7 giorni).
+
 app.post('/api/annulla-prenotazione-misteriosa', async (req, res) => {
-  // Abbiamo verificato che l'utente sia loggato
+  
   if (!req.session.userId) {
     return res.status(401).json({ error: 'Devi essere loggato per annullare una prenotazione.' })
   }
@@ -949,7 +920,7 @@ app.post('/api/annulla-prenotazione-misteriosa', async (req, res) => {
   }
   
   try {
-    // Abbiamo cercato la prenotazione e calcolato i giorni alla partenza
+    
     const prenotazioneResult = await pool.query(
       `SELECT id, id_utente, stato, data_partenza,
               data_partenza - CURRENT_DATE AS giorni_alla_partenza
@@ -963,26 +934,24 @@ app.post('/api/annulla-prenotazione-misteriosa', async (req, res) => {
     }
     
     const prenotazione = prenotazioneResult.rows[0]
-    
-    // Abbiamo verificato che la prenotazione appartenga all'utente loggato
+   
     if (prenotazione.id_utente !== req.session.userId) {
       return res.status(403).json({ error: 'Non puoi annullare una prenotazione che non e tua.' })
     }
     
-    // Abbiamo verificato che la prenotazione non sia gia annullata
+    
     if (prenotazione.stato === 'annullata') {
       return res.status(400).json({ error: 'Questa prenotazione e gia stata annullata.' })
     }
     
-    // Abbiamo verificato che la destinazione non sia gia stata svelata
-    // (regola di business: dopo la rivelazione non si puo piu annullare)
+    
     if (prenotazione.giorni_alla_partenza <= 7) {
       return res.status(400).json({ 
         error: 'Non puoi piu annullare: la destinazione e stata svelata o il viaggio e troppo vicino.' 
       })
     }
     
-    // Abbiamo aggiornato lo stato della prenotazione ad 'annullata'
+  
     await pool.query(
       `UPDATE prenotazioni_misteriose SET stato = 'annullata' WHERE codice = $1`,
       [codice]
@@ -999,17 +968,17 @@ app.post('/api/annulla-prenotazione-misteriosa', async (req, res) => {
     res.status(500).json({ error: 'Errore del server durante l\'annullamento.' })
   }
 })
+
 // API 13 : PROFILO UTENTE 
-// Abbiamo creato una rotta GET che restituisce i dati del profilo dell'utente loggato
-// insieme alle sue statistiche personali (totale prenotazioni)
+
 app.get('/api/profilo', async (req, res) => {
-    // Abbiamo verificato che l'utente sia loggato
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per vedere il profilo." });
     }
     
     try {
-        // Abbiamo recuperato i dati base dell'utente dal database
+        
         const utenteResult = await pool.query(
             `SELECT id, username, email, data_registrazione 
              FROM utenti 
@@ -1023,19 +992,19 @@ app.get('/api/profilo', async (req, res) => {
         
         const utente = utenteResult.rows[0];
         
-        // Abbiamo contato il numero di prenotazioni misteriose dell'utente
+      
         const countMisterioseResult = await pool.query(
             `SELECT COUNT(*) AS totale FROM prenotazioni_misteriose WHERE id_utente = $1`,
             [req.session.userId]
         );
         
-        // Abbiamo contato il numero di prenotazioni di viaggi normali dell'utente
+       
         const countViaggiResult = await pool.query(
             `SELECT COUNT(*) AS totale FROM prenotazioni_viaggi WHERE id_utente = $1`,
             [req.session.userId]
         );
         
-        // Abbiamo restituito tutti i dati al frontend
+        
         res.json({
             id: utente.id,
             username: utente.username,
@@ -1056,31 +1025,31 @@ app.get('/api/profilo', async (req, res) => {
 //  API 14:  CAMBIO PASSWORD 
 
 app.post('/api/cambia-password', async (req, res) => {
-    // Abbiamo verificato che l'utente sia loggato
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per cambiare password." });
     }
     
-    // Abbiamo estratto le password dalla richiesta
+    
     const { passwordAttuale, passwordNuova } = req.body;
     
-    // Abbiamo verificato che entrambe le password siano state inviate
+   
     if (!passwordAttuale || !passwordNuova) {
         return res.status(400).json({ error: "Inserisci sia la password attuale sia quella nuova." });
     }
     
-    // Abbiamo verificato che la nuova password sia abbastanza lunga (sicurezza minima)
+  
     if (passwordNuova.length < 6) {
         return res.status(400).json({ error: "La nuova password deve essere di almeno 6 caratteri." });
     }
     
-    // Abbiamo verificato che la nuova password sia diversa dalla vecchia
+   
     if (passwordAttuale === passwordNuova) {
         return res.status(400).json({ error: "La nuova password deve essere diversa da quella attuale." });
     }
     
     try {
-        // Abbiamo recuperato l'hash della password attuale dal database
+  
         const result = await pool.query(
             `SELECT password_hash FROM utenti WHERE id = $1`,
             [req.session.userId]
@@ -1092,22 +1061,21 @@ app.post('/api/cambia-password', async (req, res) => {
         
         const hashAttuale = result.rows[0].password_hash;
         
-        // Abbiamo verificato che la password attuale inserita combaci con quella salvata
+      
         const match = await bcrypt.compare(passwordAttuale, hashAttuale);
         if (!match) {
             return res.status(401).json({ error: "La password attuale non è corretta." });
         }
         
-        // Abbiamo criptato la nuova password con bcrypt 
         const nuovoHash = await bcrypt.hash(passwordNuova, 10);
         
-        // Abbiamo aggiornato l'hash della password nel database
+       
         await pool.query(
             `UPDATE utenti SET password_hash = $1 WHERE id = $2`,
             [nuovoHash, req.session.userId]
         );
         
-        // Abbiamo risposto con conferma di successo
+    
         res.json({ message: "Password cambiata con successo!" });
         
     } catch (err) {
@@ -1115,17 +1083,16 @@ app.post('/api/cambia-password', async (req, res) => {
         res.status(500).json({ error: "Errore durante il cambio password." });
     }
 });
+
 //  MIDDLEWARE 15 : VERIFICA ADMIN 
-// Abbiamo creato un middleware che verifica se l'utente è admin prima di permettere l'accesso
-// agli endpoint protetti. Lo riutilizziamo in tutte le rotte admin per non duplicare il codice
+
 const verificaAdmin = async (req, res, next) => {
-    // Abbiamo verificato prima che l'utente sia loggato
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato." });
     }
     
-    // Abbiamo verificato che l'utente loggato sia effettivamente admin (controllo dal database)
-    // Non ci affidiamo solo alla sessione per maggiore sicurezza
+    
     try {
         const result = await pool.query(
             `SELECT is_admin FROM utenti WHERE id = $1`,
@@ -1136,7 +1103,7 @@ const verificaAdmin = async (req, res, next) => {
             return res.status(403).json({ error: "Accesso negato. Permessi insufficienti." });
         }
         
-        // Abbiamo passato il controllo, l'utente è admin: proseguiamo con la rotta
+      
         next();
     } catch (err) {
         console.error("Errore nella verifica admin:", err);
@@ -1145,16 +1112,16 @@ const verificaAdmin = async (req, res, next) => {
 };
 
 //  API ADMIN 16 : STATISTICHE GLOBALI 
-// Abbiamo creato una rotta GET che restituisce le statistiche del sito 
+
 app.get('/api/admin/stats', verificaAdmin, async (req, res) => {
     try {
-        // Abbiamo eseguito le query in parallelo per essere più veloci
+      
         const [utentiTot, prenViaggi, prenMisteriose, viaggiAttivi, incassoViaggi] = await Promise.all([
             pool.query(`SELECT COUNT(*) AS totale FROM utenti`),
             pool.query(`SELECT COUNT(*) AS totale FROM prenotazioni_viaggi`),
             pool.query(`SELECT COUNT(*) AS totale FROM prenotazioni_misteriose`),
             pool.query(`SELECT COUNT(*) AS totale FROM viaggi WHERE attivo = TRUE`),
-            // Abbiamo calcolato l'incasso totale moltiplicando prezzo per numero viaggiatori
+            
             pool.query(`
                 SELECT COALESCE(SUM(v.prezzo * p.numero_viaggiatori), 0) AS totale 
                 FROM prenotazioni_viaggi p 
@@ -1178,10 +1145,10 @@ app.get('/api/admin/stats', verificaAdmin, async (req, res) => {
 });
 
 // API ADMIN 17 : TUTTE LE PRENOTAZIONI 
-// Abbiamo creato una rotta GET che restituisce TUTTE le prenotazioni di TUTTI gli utenti (solo admin)
+
 app.get('/api/admin/prenotazioni', verificaAdmin, async (req, res) => {
     try {
-        // Abbiamo recuperato tutte le prenotazioni di viaggi normali con JOIN su utenti e viaggi
+       
         const prenViaggi = await pool.query(`
             SELECT 
                 p.id, p.codice, p.numero_viaggiatori, p.nome_completo, 
@@ -1194,7 +1161,7 @@ app.get('/api/admin/prenotazioni', verificaAdmin, async (req, res) => {
             ORDER BY p.data_prenotazione DESC
         `);
         
-        // Abbiamo recuperato tutte le prenotazioni misteriose con JOIN su utenti e destinazioni
+        
         const prenMisteriose = await pool.query(`
             SELECT 
                 p.id, p.codice, p.numero_viaggiatori, p.continente_richiesto,
@@ -1220,7 +1187,7 @@ app.get('/api/admin/prenotazioni', verificaAdmin, async (req, res) => {
 });
 
 // API ADMIN 18 : LISTA UTENTI 
-// Abbiamo creato una rotta GET che restituisce tutti gli utenti registrati (solo admin)
+
 app.get('/api/admin/utenti', verificaAdmin, async (req, res) => {
     try {
         const result = await pool.query(`
@@ -1238,23 +1205,23 @@ app.get('/api/admin/utenti', verificaAdmin, async (req, res) => {
 });
 
 //  API ADMIN 19 : CAMBIA STATO PRENOTAZIONE 
-// Abbiamo creato una rotta POST che permette all'admin di cambiare lo stato di una prenotazione
+
 app.post('/api/admin/cambia-stato', verificaAdmin, async (req, res) => {
     const { tipo, id, nuovoStato } = req.body;
     
-    // Abbiamo verificato che il tipo di prenotazione sia valido
+    
     if (!['viaggio', 'misteriosa'].includes(tipo)) {
         return res.status(400).json({ error: "Tipo di prenotazione non valido." });
     }
     
-    // Abbiamo verificato che il nuovo stato sia uno di quelli permessi
+ 
     const statiAmmessi = ['in_attesa', 'confermata', 'completata', 'annullata', 'rivelata'];
     if (!statiAmmessi.includes(nuovoStato)) {
         return res.status(400).json({ error: "Stato non valido." });
     }
     
     try {
-        // Abbiamo scelto la tabella corretta in base al tipo di prenotazione
+        
         const tabella = tipo === 'viaggio' ? 'prenotazioni_viaggi' : 'prenotazioni_misteriose';
         
         const result = await pool.query(
@@ -1276,32 +1243,31 @@ app.post('/api/admin/cambia-stato', verificaAdmin, async (req, res) => {
         res.status(500).json({ error: "Errore durante l'aggiornamento dello stato." });
     }
 });
+
 //  API 20 : INVIO MESSAGGIO CONTATTACI 
-// Abbiamo creato una rotta POST che riceve i dati dal form Contattaci e li salva nel database.
-// Non richiede autenticazione: anche i visitatori non loggati possono scrivere.
-// Se l'utente è loggato, salviamo anche l'id_utente per collegare il messaggio al profilo
+
 app.post('/api/contattaci', async (req, res) => {
-    // Abbiamo estratto i dati dal corpo della richiesta
+    
     const { nome, email, telefono, motivo, messaggio } = req.body;
     
-    // Abbiamo verificato che i campi obbligatori siano stati compilati
+    
     if (!nome || !email || !motivo || !messaggio) {
         return res.status(400).json({ error: "Compila tutti i campi obbligatori." });
     }
     
-    // Abbiamo verificato che l'email abbia un formato base corretto
+   
     const emailValida = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!emailValida) {
         return res.status(400).json({ error: "Indirizzo email non valido." });
     }
     
-    // Abbiamo limitato la lunghezza del messaggio per evitare abusi
+    
     if (messaggio.length > 5000) {
         return res.status(400).json({ error: "Il messaggio è troppo lungo (max 5000 caratteri)." });
     }
     
     try {
-        // Abbiamo salvato il messaggio nel database, includendo id_utente solo se l'utente è loggato
+       
         await pool.query(
             `INSERT INTO messaggi_contatto 
                 (nome, email, telefono, motivo, messaggio, id_utente, stato) 
@@ -1316,7 +1282,7 @@ app.post('/api/contattaci', async (req, res) => {
             ]
         );
         
-        // Abbiamo risposto con conferma di ricezione
+        
         res.status(201).json({ 
             message: "Messaggio inviato con successo! Ti risponderemo al più presto." 
         });
@@ -1328,10 +1294,10 @@ app.post('/api/contattaci', async (req, res) => {
 });
 
 // API ADMIN 21: LISTA MESSAGGI CONTATTO 
-// Abbiamo creato una rotta GET che restituisce tutti i messaggi ricevuti (solo admin)
+
 app.get('/api/admin/messaggi', verificaAdmin, async (req, res) => {
     try {
-        // Abbiamo recuperato i messaggi con LEFT JOIN su utenti per avere lo username (se loggato al momento dell'invio)
+        
         const result = await pool.query(`
             SELECT 
                 m.id, m.nome, m.email, m.telefono, m.motivo, m.messaggio,
@@ -1351,18 +1317,18 @@ app.get('/api/admin/messaggi', verificaAdmin, async (req, res) => {
 });
 
 // API ADMIN 22: CAMBIA STATO MESSAGGIO
-// Abbiamo creato una rotta POST che permette all'admin di marcare un messaggio come letto/risolto
+
 app.post('/api/admin/messaggi/cambia-stato', verificaAdmin, async (req, res) => {
     const { id, nuovoStato } = req.body;
     
-    // Abbiamo verificato che il nuovo stato sia tra quelli ammessi
+    
     const statiAmmessi = ['nuovo', 'letto', 'risolto'];
     if (!statiAmmessi.includes(nuovoStato)) {
         return res.status(400).json({ error: "Stato non valido." });
     }
     
     try {
-        // Abbiamo aggiornato lo stato del messaggio
+     
         const result = await pool.query(
             `UPDATE messaggi_contatto SET stato = $1 WHERE id = $2 RETURNING id, stato`,
             [nuovoStato, id]
@@ -1382,12 +1348,12 @@ app.post('/api/admin/messaggi/cambia-stato', verificaAdmin, async (req, res) => 
         res.status(500).json({ error: "Errore durante l'aggiornamento." });
     }
 });
+
 //  API 23: ELENCO RECENSIONI PUBBLICATE 
-// Abbiamo creato una rotta GET pubblica (non serve essere loggati) che restituisce
-// solo le recensioni con stato 'pubblicata'. Mostriamo anche lo username dell'autore tramite JOIN
+
 app.get('/api/recensioni', async (req, res) => {
     try {
-        // Abbiamo recuperato le recensioni pubblicate con JOIN su utenti per avere lo username
+        
         const result = await pool.query(`
             SELECT 
                 r.id, r.stelle, r.titolo, r.testo, r.data_creazione,
@@ -1408,23 +1374,22 @@ app.get('/api/recensioni', async (req, res) => {
 });
 
 // API 24: INVIO NUOVA RECENSIONE 
-// Abbiamo creato una rotta POST che permette agli utenti loggati di scrivere una recensione.
-// Per scrivere serve avere almeno una prenotazione (regola anti-spam molto importante)
+
 app.post('/api/recensioni', async (req, res) => {
-    // Abbiamo verificato che l'utente sia loggato
+   
     if (!req.session.userId) {
         return res.status(401).json({ error: "Devi essere loggato per scrivere una recensione." });
     }
     
-    // Abbiamo estratto i dati dalla richiesta
+    
     const { stelle, titolo, testo } = req.body;
     
-    // Abbiamo validato le stelle (devono essere tra 1 e 5)
+    
     if (!stelle || stelle < 1 || stelle > 5) {
         return res.status(400).json({ error: "Devi assegnare un voto da 1 a 5 stelle." });
     }
     
-    // Abbiamo validato titolo e testo
+    
     if (!titolo || !testo) {
         return res.status(400).json({ error: "Compila sia il titolo che il testo della recensione." });
     }
@@ -1438,7 +1403,7 @@ app.post('/api/recensioni', async (req, res) => {
     }
     
     try {
-        // Abbiamo verificato che l'utente abbia almeno una prenotazione (anti-spam)
+       
         const prenCheck = await pool.query(`
             SELECT 
                 (SELECT COUNT(*) FROM prenotazioni_viaggi WHERE id_utente = $1) +
@@ -1451,14 +1416,14 @@ app.post('/api/recensioni', async (req, res) => {
             });
         }
         
-        // Abbiamo inserito la nuova recensione con stato 'in_attesa' (l'admin la approverà poi)
+      
         await pool.query(
             `INSERT INTO recensioni (id_utente, stelle, titolo, testo, stato) 
              VALUES ($1, $2, $3, $4, 'in_attesa')`,
             [req.session.userId, stelle, titolo, testo]
         );
         
-        // Abbiamo risposto con conferma
+       
         res.status(201).json({ 
             message: "Recensione inviata! Sarà visibile dopo l'approvazione dello staff." 
         });
@@ -1470,7 +1435,7 @@ app.post('/api/recensioni', async (req, res) => {
 });
 
 // API ADMIN 25: LISTA TUTTE LE RECENSIONI
-// Abbiamo creato una rotta GET che restituisce TUTTE le recensioni indipendentemente dallo stato (solo admin)
+
 app.get('/api/admin/recensioni', verificaAdmin, async (req, res) => {
     try {
         const result = await pool.query(`
@@ -1491,11 +1456,11 @@ app.get('/api/admin/recensioni', verificaAdmin, async (req, res) => {
 });
 
 // API ADMIN 26: CAMBIA STATO RECENSIONE 
-// Abbiamo creato una rotta POST che permette all'admin di approvare o nascondere una recensione
+
 app.post('/api/admin/recensioni/cambia-stato', verificaAdmin, async (req, res) => {
     const { id, nuovoStato } = req.body;
     
-    // Abbiamo verificato che il nuovo stato sia tra quelli ammessi
+
     const statiAmmessi = ['in_attesa', 'pubblicata', 'nascosta'];
     if (!statiAmmessi.includes(nuovoStato)) {
         return res.status(400).json({ error: "Stato non valido." });
@@ -1521,14 +1486,14 @@ app.post('/api/admin/recensioni/cambia-stato', verificaAdmin, async (req, res) =
         res.status(500).json({ error: "Errore durante l'aggiornamento." });
     }
 });
-// Per ogni richiesta GET non gestita dagli endpoint sopra, restituiamo index.html
-// così Vue Router può gestire le rotte client-side
+
+
 app.use((req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
 });
 
-// Abbiamo impostato il server in modalità ascolto per iniziare a ricevere il traffico web
+
 app.listen(port, () => {
-    // Abbiamo stampato un messaggio di conferma che indica su quale indirizzo il server sta girando
+   
     console.log(`Server Back-end in esecuzione su http://localhost:${port}`);
 });

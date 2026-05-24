@@ -1,30 +1,21 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-//importiamo ref per le var.reattive
-//importiamo computed per le var. che si ricalcolao
-//imoprtimao onMounted che serve per eseguire azioni all'avvio della pagina
+
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
 const meseSelezionato = ref('Gennaio');
-//creaiamo un array statico con tutti i mesi, impostimao di defaul Gennaio
 
-// Abbiamo creato la variabile reattiva che conterrà i viaggi caricati dal backend
 const viaggi = ref([]);
-// Abbiamo creato la variabile per gestire lo stato di caricamento
 const caricamento = ref(true);
-// Abbiamo creato la variabile per gestire eventuali errori
 const errore = ref('');
 
-// Abbiamo creato la funzione asincrona che chiama il backend per scaricare i viaggi in arrivo
 const caricaViaggi = async () => {
   try {
-    // Abbiamo chiamato l'endpoint che restituisce i viaggi con stato 'in_arrivo'
     const response = await fetch('/api/viaggi/in_arrivo');
     const data = await response.json();
 
     if (response.ok) {
-      // Abbiamo trasformato i dati del backend nel formato richiesto dal template
       viaggi.value = data.viaggi.map(v => ({
         id: v.id,
         mese: v.mese,
@@ -33,10 +24,10 @@ const caricaViaggi = async () => {
         destinazione: ' ' + v.destinazione,
         prezzo: v.prezzo + '€'
       }));
-    } else {  //se il server risponde con qualche errore
+    } else {  
       errore.value = data.error || 'Errore nel caricamento dei viaggi.';
     }
-  } catch (err) {  //gestione errori
+  } catch (err) { 
     console.error('Errore nella chiamata al backend:', err);
     errore.value = 'Errore di connessione al server.';
   } finally {
@@ -44,17 +35,16 @@ const caricaViaggi = async () => {
   }
 };
 
-// Abbiamo agganciato il caricamento dei viaggi al montaggio della pagina
 onMounted(() => {
-  caricaViaggi();  //funzione che va a scaricare i dati dal database
+  caricaViaggi();  
 });
 
-const viaggiFiltrati = computed(() => {   //è una var che si ricalcola in automatico ogni volta che una var. al suo interno cambia
-  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);  //prende l'intera ista di viaggi scaricati dal sevrer e la filtra, restituendo solo i viaggi in cui il mese corrisponde al mese cliccato dall'utente
+const viaggiFiltrati = computed(() => {   
+  return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value); 
 });
 
-const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa click su uno dei bottini dei mesi
-  meseSelezionato.value = nuovoMese;  //cambia la var.reattiva con il nuovo mese cliccato
+const cambiaMese = (nuovoMese) => {   
+  meseSelezionato.value = nuovoMese;  
 };
 </script>
 
@@ -85,22 +75,18 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
       </section>
 
       <section class="lista-viaggi">
-        <!-- Indicatore di caricamento -->
         <div v-if="caricamento" class="caricamento-info">
           ⏳ Caricamento viaggi in corso...
         </div>
 
-        <!-- Messaggio di errore -->
         <div v-else-if="errore" class="errore-info">
           ⚠️ {{ errore }}
         </div>
 
-        <!-- Nessun viaggio per il mese selezionato -->
         <div v-else-if="viaggiFiltrati.length === 0" class="nessun-viaggio">
           Nessun viaggio in arrivo per {{ meseSelezionato }}.
         </div>
 
-        <!-- Lista viaggi -->
         <div v-else v-for="viaggio in viaggiFiltrati" :key="viaggio.id" class="riga-viaggio">
           <div class="colonna-date">
             <span class="periodo">{{ viaggio.periodo }}</span>
@@ -142,7 +128,6 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   overflow-x: hidden;
 }
 
-/* Fascia foto a tutta larghezza */
 .fascia-foto {
   width: 100%;
   height: 70vh;
@@ -156,7 +141,6 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   text-align: center;
 }
 
-/* Sfumatura scura in alto, per far risaltare il menu hamburger */
 .fascia-foto:before {
   content: '';
   position: absolute;
@@ -281,7 +265,6 @@ const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utenten fa 
   display: flex;
   justify-content: flex-end;
 }
-/* Bottone "Vedi Viaggio" - stile uguale ai viaggi disponibili */
 .btn-vedi-viaggio {
   background: linear-gradient(135deg, #00c4b4 0%, #00897b 100%);
   color: white;

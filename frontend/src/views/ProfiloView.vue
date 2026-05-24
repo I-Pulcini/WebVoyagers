@@ -6,14 +6,12 @@ import { userStore } from '../stores/userStore'
 
 
 
-const router = useRouter()   //var. del router
+const router = useRouter()   
 
-// Abbiamo creato le variabili reattive per gestire i dati del profilo
 const profilo = ref(null)
 const caricamento = ref(true)
 const errore = ref('')
 
-// Abbiamo creato le variabili per il form di cambio password
 const passwordAttuale = ref('')
 const passwordNuova = ref('')
 const passwordConferma = ref('')
@@ -22,37 +20,34 @@ const successoCambioPassword = ref('')
 const cambiandoPassword = ref(false)
 const formCambioPasswordAperto = ref(false)
 
-// Abbiamo creato la funzione asincrona che scarica i dati del profilo dal backend
 const caricaProfilo = async () => {
   try {
     const response = await fetch('/api/profilo', {   
       credentials: 'include'
     })
-    const data = await response.json()  //alla risposta cambiamo il formato il JSON
+    const data = await response.json() 
     
     if (response.ok) {
-      profilo.value = data  //inserimao i dati nel profilo
-    } else {   //se il server ha un errore
+      profilo.value = data  
+    } else {   
       errore.value = data.error || 'Errore nel caricamento del profilo.'
     }
   } catch (err) {
     console.error('Errore nella chiamata al backend:', err)
     errore.value = 'Errore di connessione al server.'
   } finally {
-    caricamento.value = false  //rimuovimao lo stato di caricamento generale della pagina
+    caricamento.value = false  
   } 
 }
 
-// Abbiamo creato la funzione che formatta la data di registrazione in italiano
-const formattaData = (dataIso) => {   //funzione che riceve dal database una stringa di data in formato ISO
-  return new Date(dataIso).toLocaleDateString('it-IT', { //creiamo un oggetto Date nativo di JAVASCRIPT e invochaimo il metodo di formattazione per la localizzazione italiana
+const formattaData = (dataIso) => {   
+  return new Date(dataIso).toLocaleDateString('it-IT', { 
     day: 'numeric', 
     month: 'long', 
     year: 'numeric' 
   })
 }
 
-// Abbiamo creato la funzione che apre il form di cambio password svuotando i campi
 const apriCambioPassword = () => {
   formCambioPasswordAperto.value = true
   passwordAttuale.value = ''
@@ -62,31 +57,26 @@ const apriCambioPassword = () => {
   successoCambioPassword.value = ''
 }
 
-// Abbiamo creato la funzione che chiude il form di cambio password
 const chiudiCambioPassword = () => {
   formCambioPasswordAperto.value = false
   erroreCambioPassword.value = ''
   successoCambioPassword.value = ''
 }
 
-// Abbiamo creato la funzione asincrona che invia la richiesta di cambio password al backend
 const cambiaPassword = async () => {
   erroreCambioPassword.value = ''
   successoCambioPassword.value = ''
   
-  // Abbiamo verificato che tutti i campi siano compilati
   if (!passwordAttuale.value || !passwordNuova.value || !passwordConferma.value) {
     erroreCambioPassword.value = 'Compila tutti i campi.'
-    return   //interropiamo la funione se non ci sono tutti i campi
+    return   
   }
   
-  // Abbiamo verificato che le due nuove password coincidano
   if (passwordNuova.value !== passwordConferma.value) {
     erroreCambioPassword.value = 'Le due nuove password non coincidono.'
     return
   }
   
-  // Abbiamo verificato che la nuova password sia abbastanza lunga
   if (passwordNuova.value.length < 6) {
     erroreCambioPassword.value = 'La nuova password deve essere di almeno 6 caratteri.'
     return
@@ -95,26 +85,24 @@ const cambiaPassword = async () => {
   cambiandoPassword.value = true
   
   try {
-    const response = await fetch('/api/cambia-password', {  //svolgiamo la chiamata HTTP verso l'endpoint dedicato 
-      method: 'POST',   //specifichaimo che stiamo inviando un payload per alterare in modo sicuro uno stato sul server
-      headers: { 'Content-Type': 'application/json' }, // Dichiariamo che il body della richiesta conterrà una stringa formattata JSON
+    const response = await fetch('/api/cambia-password', {  
+      method: 'POST',  
+      headers: { 'Content-Type': 'application/json' }, 
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include', // Invio obbligatorio del cookie di sessione
-      body: JSON.stringify({   // Serializziamo l'oggetto contenente le credenziali da far verificare al server
+      credentials: 'include', 
+      body: JSON.stringify({   
         passwordAttuale: passwordAttuale.value,
         passwordNuova: passwordNuova.value
       })
     })
     
-    const data = await response.json() // Convertiamo la risposta in oggetto JS.
+    const data = await response.json() 
     
     if (response.ok) {
       successoCambioPassword.value = data.message
-      // Abbiamo svuotato i campi del form dopo il successo
       passwordAttuale.value = ''
       passwordNuova.value = ''
       passwordConferma.value = ''
-      // Abbiamo chiuso automaticamente il form dopo 2 secondi
       setTimeout(() => {
         chiudiCambioPassword()
       }, 2000)
@@ -129,14 +117,12 @@ const cambiaPassword = async () => {
   }
 }
 
-// LIFECYCLE HOOK, eseguiamo questa porzione di codice nel momento in cui il componente viene integrato nel DOM visibile dle browser
 onMounted(() => {
-  // Se l'utente non è loggato, lo rimandiamo al login
   if (!userStore.loggato) {
-    router.push('/login')  //andiamo nella pagina login
+    router.push('/login')  
     return
   }
-  caricaProfilo()  //se l'utente è gia loggato, usimao la funzione asincrona che ci serve per scaricare i dati dal server
+  caricaProfilo()  
 })
 </script>
 
@@ -228,7 +214,6 @@ onMounted(() => {
         <section class="sezione-card">
           <h2 class="sezione-titolo">🔒 Sicurezza</h2>
 
-          <!-- Pulsante per aprire il form -->
           <div v-if="!formCambioPasswordAperto" class="sicurezza-info">
             <p class="sicurezza-testo">
               Per la tua sicurezza, ti consigliamo di cambiare periodicamente la password.

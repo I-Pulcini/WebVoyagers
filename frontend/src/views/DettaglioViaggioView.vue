@@ -4,28 +4,18 @@ import { ref, onMounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { userStore } from '../stores/userStore'
 
-//onMOunted serve per gestire il ciclo di vita di una variabile
-// watch serve per monitorare il cambiamento dei dati 
-// nextTick attende che Vue abbai terminato l'aggiornamento del grafico del DOM
-// useRoute serve per leggere parametri dell'URL
-// useRouter serve per reindirizzare i programmi via codice
-// RouterLink server per i collegamenti interni
-//userStore abbiamo tutte le informazioni dell'utente
+
   
-import $ from 'jquery' //$ è una libreria esterna che viene usata per l'animazione grafica ad effetto cascata sulla libreria fotografica
+import $ from 'jquery' 
+const route = useRoute()  
+const router = useRouter()  
 
-const route = useRoute()  //permette di accedere alle informazioni della rotta attiva
-const router = useRouter()  //ci permette di cambiare pagina
-
-// Abbiamo creato le variabili reattive per i dati del viaggio
 const viaggio = ref(null)
 const caricamento = ref(true)
 const erroreCaricamento = ref('')
 
-// Abbiamo creato un array reattivo che tiene traccia di quali giorni sono aperti
 const giorniAperti = ref([])
 
-// Abbiamo creato le variabili reattive per il modale di prenotazione
 const modaleAperto = ref(false)
 const numeroViaggiatori = ref(1)
 const nomeCompleto = ref('')
@@ -37,7 +27,7 @@ const inviando = ref(false)
 const successo = ref(null)
 
 
-const caricaViaggio = async (id) => {  //funzione asincrona che accetta come argomento ID del viaggio da recuperare
+const caricaViaggio = async (id) => {  /
   caricamento.value = true
   erroreCaricamento.value = ''
   viaggio.value = null
@@ -63,18 +53,16 @@ const caricaViaggio = async (id) => {  //funzione asincrona che accetta come arg
   }
 }
 
-// Abbiamo creato la funzione che apre/chiude un singolo giorno dell'itinerario
-const toggleGiorno = (index) => {   //index sarebbe il numero del giorno
-  const posizione = giorniAperti.value.indexOf(index)  //cerchiamo l'indice del giorno selezionato dentro l'array giorniAperti
-  if (posizione === -1) {  //quel giorno era chiuso e non era presente nell'array
+const toggleGiorno = (index) => {   
+  const posizione = giorniAperti.value.indexOf(index)  
+  if (posizione === -1) { 
   
-    giorniAperti.value.push(index)  //aggiungiamo l'indice del giorno 
+    giorniAperti.value.push(index)  
   } else {
-    giorniAperti.value.splice(posizione, 1)  //se l'indice era già presente, quindi il giorno era già aperto e l'utente ha cliccato per richiuderlo, quini si fa splice per richiudere il pannelle
+    giorniAperti.value.splice(posizione, 1) 
   }
 }
 
-// Abbiamo creato la funzione che apre la prenotazione
 const apriModale = () => {
   if (!userStore.loggato) {
     errore.value = ''
@@ -86,13 +74,11 @@ const apriModale = () => {
   successo.value = null
 }
 
-// Abbiamo creato la funzione che chiude il modale e resetta i campi
 const chiudiModale = () => {
   modaleAperto.value = false
   errore.value = ''
 }
 
-// Abbiamo creato la funzione asincrona che invia la prenotazione al backend
 const inviaPrenotazione = async () => {
   errore.value = ''
   
@@ -106,9 +92,9 @@ const inviaPrenotazione = async () => {
   try {
     const response = await fetch('/api/prenota-viaggio', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },   //tutti i dati sono in formato JSON
+      headers: { 'Content-Type': 'application/json' },   
       credentials: 'include',
-      body: JSON.stringify({   //si converte l'oggett javascritp in una stringa json
+      body: JSON.stringify({   
         idViaggio: viaggio.value.id,
         numeroViaggiatori: numeroViaggiatori.value,
         nomeCompleto: nomeCompleto.value,
@@ -142,20 +128,18 @@ const inviaPrenotazione = async () => {
 }
 
 
-const animaGalleria = () => {  //definiamo l'animazione della galeria, inizialmente non si vedono le foto
+const animaGalleria = () => {   //abbiamo usato Jquery al posto di Vue
  
   $('.foto-grid').hide()  //serve per rascondere tutte le foto nella pagina
-  $('.foto-grid').each(function(index) {  //poi fai un ciclo su ogni singola foto trovata e della prima foto l'indice sarà 0 ecc
+  $('.foto-grid').each(function(index) {  //poi facciamo un ciclo su ogni singola foto trovata e della prima foto l'indice sarà 0 ecc
     $(this).delay(index * 150).fadeIn(800)  //selezionato la singola foto specifica e si aprirà nel tempo di index*150 ms mentre .fadeIn(800) fa apparire la foto con una sfumatura 
   })
 }
 
-//appena la pagina è pronta scarica i dati del viaggio dal database
 onMounted(() => {
   caricaViaggio(route.params.id)
 })
 
-//se l'utente clicca un altro viaggio, watch se ne accorge e intercetta il nuovoId e lancia di nuovo caricaViggaio per aggiornare i testi ecc
 watch(() => route.params.id, (nuovoId) => {
   if (nuovoId) {
     caricaViaggio(nuovoId)
@@ -164,9 +148,9 @@ watch(() => route.params.id, (nuovoId) => {
 
 
 watch(viaggio, async (nuovoViaggio) => {
-  if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {  //prendi il viaggio solo se è stato caricato davvero e l'array ha almeno una foto dentro
+  if (nuovoViaggio && nuovoViaggio.galleria_foto && nuovoViaggio.galleria_foto.length > 0) {  
  
-    await nextTick()  //quando la var. viaggio si riempie i dati esistono nella memoria del computer ma Vue non ha ancora avuto il tempo fisico  di prendere quei dati e trasformarli in un tag HTML. Se chiamassimo JQuery cercherebbe la classe .foto-grid nella pagina non troverebbe ancora nulla e l'animaione fallirebbe
+    await nextTick()  
     animaGalleria()
   }
 })
@@ -186,11 +170,11 @@ watch(viaggio, async (nuovoViaggio) => {
       <RouterLink to="/viaggi-disponibili" class="btn-torna">← Torna ai viaggi</RouterLink>
     </div>
 
-   //viaggio caricato
+  
     <template v-else-if="viaggio">
       <header 
         class="fascia-foto"
-        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"   //vediamo se è presente un'immagine di sfondo dell'header usando il percorso del database
+        :style="viaggio.foto_header ? { backgroundImage: `url('${viaggio.foto_header}')` } : {}"   
         >
         <h1 class="fascia-titolo">{{ viaggio.destinazione }}</h1>
         </header>
@@ -257,7 +241,6 @@ watch(viaggio, async (nuovoViaggio) => {
         </section>
       </main>
 
-   //modale aperto
       <div v-if="modaleAperto" class="modale-overlay" @click.self="chiudiModale">
         <div class="modale-content">
 

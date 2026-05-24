@@ -1,59 +1,51 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-//importa ref per le variabile rattive 
-//computed per variabili che si ricalcolano
-//onMountend per eseguire azioni all'avvio della pagina
+
 
 const mesi = ['Gennaio','Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
 const meseSelezionato = ref('Gennaio');
-//creiamo un array statico con tutti i mesi, e in default mettiamo Gennaio
 
-// Abbiamo creato la variabile reattiva che conterrà i viaggi caricati dal backend
 const viaggi = ref([]);
-// Abbiamo creato la variabile per gestire lo stato di caricamento
 const caricamento = ref(true);
-// Abbiamo creato la variabile per gestire eventuali errori
 const errore = ref('');
 
-// Abbiamo creato la funzione asincrona che chiama il backend per scaricare i viaggi sold out
 const caricaViaggi = async () => {
   try {
-    // Abbiamo chiamato l'endpoint che restituisce i viaggi con stato 'sold_out'
-    const response = await fetch('/api/viaggi/sold_out');  // usiamo fetch() per interrogare l'API che abbiamo scritto nel backend,l'esecuzione è in pausa finchè il server non risponde
-    const data = await response.json();  //convertiamo la risposta in formato JSON
+    const response = await fetch('/api/viaggi/sold_out'); 
+    const data = await response.json();  
 
-    if (response.ok) {  //se il server risponde correttamente
+    if (response.ok) {  
    
-      viaggi.value = data.viaggi.map(v => ({  //riempiano l'array reattivo con i viaggi e le sue informazioni
+      viaggi.value = data.viaggi.map(v => ({  
         id: v.id,
-        mese: v.mese,  //mese in cui avverrà il viaggio
+        mese: v.mese,  
         periodo: v.periodo,
         data: v.data_visualizzata,
         destinazione: ' ' + v.destinazione,
         prezzo: v.prezzo + '€'
       }));
-    } else {  //se il server risponde con un errore
+    } else {  
       errore.value = data.error || 'Errore nel caricamento dei viaggi.';
     }
-  } catch (err) {   //gestione errrore
+  } catch (err) {   
     console.error('Errore nella chiamata al backend:', err);
     errore.value = 'Errore di connessione al server.';
-  } finally {  //viene eseguito SEMPRE alla fine fi tutto, sia se il server risponde correttamente sia se non lo fa
+  } finally {  
     caricamento.value = false;
   }
 };
 
 
-onMounted(() => {   //abbiamo agganciato il caricamento dei viaggi al montaggio della pagina
-  caricaViaggi();  //funzione che va a scaricare i dati dal database
+onMounted(() => {   
+  caricaViaggi();  
 });
 
 const viaggiFiltrati = computed(() => {
   return viaggi.value.filter(viaggio => viaggio.mese === meseSelezionato.value);
 });
 
-const cambiaMese = (nuovoMese) => {   //funzione che scatta quando l'utente fa click su uno dei bottoni del mese
-  meseSelezionato.value = nuovoMese;  //aggioriamo la var. con il mese selezionato
+const cambiaMese = (nuovoMese) => {   
+  meseSelezionato.value = nuovoMese;  
 };
 </script>
 

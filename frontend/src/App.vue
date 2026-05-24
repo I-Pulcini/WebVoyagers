@@ -2,64 +2,58 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { RouterView, RouterLink, useRoute, useRouter } from 'vue-router'
 import { userStore } from './stores/userStore'
-// abbiamo importato RouterView cioè il contenitore in cui verranno messe le pagine Home,Errore ecc
-//RouterLink il tag di Vue che serve per creare link sena far ricaricare il browser
-// useRoute server per sapere le info sulla pafina attuale 
-// useRouter, il comando per deviare l'utente su un'altra pagina via codice
-//userStore, è un contenitore in cui vengono salvati i dati dell'utente loggato cosi da leggerli in qualsiasi parte del sito senza perderli
 
 
 
-const isMenuOpen = ref(false)  //var.reattiva che imposta il menù hambuger chiuso
-const isSubmenuOpen = ref(false)  //var.reattiva che imposta l'aperta del sottomenu
+const isMenuOpen = ref(false)  
+const isSubmenuOpen = ref(false)  
 
 
 const route = useRoute() 
 
-const router = useRouter()  //serve a prendere l'indirizzo in cui si trova l'utente in questo momento
+const router = useRouter()  
 
-const mostraBottoneHome = computed(() => route.path !== '/')  //clicchi il bottone con la casa e ti riporta alla home
+const mostraBottoneHome = computed(() => route.path !== '/')  
 
 
-const toggleMenu = () => {   // Abbiamo creato la funzione che apre/chiude il menu hamburger
+const toggleMenu = () => {   
   isMenuOpen.value = !isMenuOpen.value
 }
 
 
-const toggleSubmenu = (event) => {  // Abbiamo creato la funzione che apre/chiude il sottomenu "Esplora"
+const toggleSubmenu = (event) => {  
   event.preventDefault()
   isSubmenuOpen.value = !isSubmenuOpen.value
 }
 
 
-const closeMenu = () => {   // Abbiamo creato la funzione che chiude completamente tutti i menu
+const closeMenu = () => {   
   isMenuOpen.value = false
   isSubmenuOpen.value = false
 }
 
 
-const closeMenuOnClickOutside = (event) => {   // Abbiamo creato la funzione che chiude il menu se si clicca fuori
+const closeMenuOnClickOutside = (event) => {   
   if (!event.target.matches('.hamburger') && !event.target.closest('.menu-dropdown')) {
     isMenuOpen.value = false
     isSubmenuOpen.value = false
   }
 }
 
-// Abbiamo creato una funzione asincrona che chiama il backend per sapere se c'è una sessione attiva
+
 const verificaSessione = async () => {
   try {
-    //il client invia una richiesta di tipo GET all'endpoint del server 
     const response = await fetch('/api/me', {
-      credentials: 'include'  //serve a ricordare a clinet di mandare il cookie
+      credentials: 'include'  
     })
-/*Nel file App,vue ci sta una chiamata della funzione fecth() con l'URL api/me, il browser predno il cookie di sessione che contiene ID cifrato e lo allega alla richiesta inviata al server.  Quando la richiesta viene sul file server.js non va subito all'endpint finale ma viene intercettata dal middleware cioè API 2, ed è quei che si fa il lavoro con il database, poichè il server prende l'ID di sessione cifrato dal cookie e interroga la tabella session sul database PostgreSQL deserializza i dati e li inserisce pronti nella variabile req.session.  Da qui poi arriiamo all'API 5, non interroghiamo il database ma ci limitimao a vedere se dentro req.session esiste gia la prorpietà userId, se esiste allora inserimao tutto dentro res.json(). Queso pacchetto torna indietro veros il clinet sotto forma di repsonse (HTTP) inf ormato json. In App.vue viene spacchettao  in un oggeto javascript e inserito in data */
+/*Nel file App,vue ci sta una chiamata della funzione fecth() con l'URL api/me, il browser predno il cookie di sessione che contiene ID cifrato e lo allega alla richiesta inviata al server.  Quando la richiesta viene sul file server.js non va subito all'endpint finale ma viene intercettata dal middleware cioè API 2, ed è quei che si fa il lavoro con il database, poichè il server prende l'ID di sessione cifrato dal cookie e interroga la tabella session sul database PostgreSQL deserializza i dati e li inserisce pronti nella variabile req.session.  Da qui poi arriiamo all'API 5, non interroghiamo il database ma ci limitimao a vedere se dentro req.session esiste gia la prorpietà userId, se esiste allora inserimao tutto dentro res.json(). Queso pacchetto torna indietro veros il clinet sotto forma di repsonse  inf ormato json. In App.vue viene spacchettao  in un oggeto javascript e inserito in data */
 
     
     const data = await response.json()  
  
     if (data.loggato) {
     
-      userStore.setUser(data.userId, data.username, data.isAdmin)  //prende i dati inviate dal server, cosi tutto il sito sa chi è l'utente
+      userStore.setUser(data.userId, data.username, data.isAdmin)  
     }
   } catch (err) {
     console.error('Errore nella verifica sessione:', err)
@@ -67,47 +61,40 @@ const verificaSessione = async () => {
 }
 
    
-// Abbiamo creato la funzione che esegue il logout chiamando lo store e poi reindirizza alla home
 const gestisciLogout = async () => {
-  // Abbiamo prima chiuso il menu hamburger
   closeMenu()
-  // Abbiamo eseguito il logout completo tramite la funzione dello store
-  await userStore.logout()  // await è un'operazione asincrona che blocca l'esecuzione dentro questa funzone finchè non arriva la risposra del server, ma non blovva ilbrowser dell'utente
+  await userStore.logout() 
  
-  router.push('/') //se si fa logout si va nella pagina che ha la URL '/' cioè HomeView.vue
+  router.push('/') 
 }
 
 
 
 onMounted(() => {
-  verificaSessione()  //verifichiamo se l'utente è gia loggato
-  window.addEventListener('click', closeMenuOnClickOutside)  //il browser resta in ascolto ed ogni volta che l'utente clicca qualsiasi punto dello schermo deve attivare la fuznione closeMenuOnClickOutside
-})
+  verificaSessione()  
+  window.addEventListener('click', closeMenuOnClickOutside)  
 
 
-onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi liberiamo memoria dal computer
+onUnmounted(() => {  
   window.removeEventListener('click', closeMenuOnClickOutside)
 })
 </script>
 
 <template>
   
-  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">  //prendo il pulsante home fuori dalla pagina homeView.vue ci riporta alla home
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">  //svg è un tag di html che ci da le coordinate per disegnare l'icona
-     //viewBox="0 0 24 24=  questo è la tela virtuale del disegno, 24 altezza e 24 altezza 
-      //fill="none" = dice che l'intrno della casetta non deve essere colorato
-      //stroke="currentColor" = il colore della casetta deve adattarsi al colore del testo circostante
-      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>  //traccia materialmente le linee del disegno
-    </svg>  //svg viene usato per disegnare elementi grafici
+  <RouterLink v-if="mostraBottoneHome" to="/" class="btn-home" aria-label="Torna alla home">  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">  
+      <path d="M3 9.5L12 2l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V9.5z"/>  
+    </svg>  
   </RouterLink>
 
-  <nav class="menu-container">  //narra di navigazione del sito
-    <div class="hamburger" @click="toggleMenu">&#9776;</div>  //serve per aprire e chiudere 
+  <nav class="menu-container">  
+    <div class="hamburger" @click="toggleMenu">&#9776;</div> 
 
-    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">  //si apre il menu ad hamburger
-      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a>  //&#9662; ovvero ▾
+    <div class="menu-dropdown" :class="{ 'show': isMenuOpen }">  
+      <a href="#" @click="toggleSubmenu">Esplora &#9662;</a> 
 
-      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">  //mostrimao il sotto menù solo quando la funzione è vera
+      <div class="submenu-content" :class="{ 'show': isSubmenuOpen }">  
         <RouterLink to="/viaggi-disponibili" @click="closeMenu">Viaggi disponibili</RouterLink>
         <RouterLink to="/soldout" @click="closeMenu">Viaggi Sold Out</RouterLink>
         <RouterLink to="/viaggi-inarrivo" @click="closeMenu">Viaggi in arrivo</RouterLink>
@@ -124,7 +111,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
           Ciao, <strong>{{ userStore.username ?? 'Utente' }}</strong>!
         </div>
         <RouterLink 
-          v-if="userStore.isAdmin" //se l'utente è l'amministratore
+          v-if="userStore.isAdmin" 
           to="/admin" 
           @click="closeMenu" 
           class="link-admin"
@@ -137,7 +124,7 @@ onUnmounted(() => {  //quando al pagina viene chiusa, rimuovimao il click cosi l
         <RouterLink to="/le-mie-prenotazioni" @click="closeMenu" class="link-prenotazioni">
           📋 Le mie prenotazioni
         </RouterLink>
-        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a>  //href="#" = serve al link di non andare su una pagina specifica ma di rimanere nella stessa.@click.prevent="gestisciLogout"= se clicchiamo esci allora si fa la funzione di gestisci Logount e .prevent serve per far resyare il browser nella pagina in cui stiamo
+        <a href="#" @click.prevent="gestisciLogout" class="btn-logout">Esci</a> 
       </template>
     </div>
   </nav>

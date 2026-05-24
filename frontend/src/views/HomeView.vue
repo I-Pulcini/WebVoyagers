@@ -1,49 +1,48 @@
 <script setup>
-import { ref, onMounted } from 'vue'  //importiamo la libreria ref e onMounted, ref serve per creare delle variabili reattive mentre onMounted serve per costruire HTML
-import { useRouter } from 'vue-router'  //importiamo la funzione che serve per spostare l'utente da una pagina all'altra programmaticamente
+import { ref, onMounted } from 'vue'  
+import { useRouter } from 'vue-router'  
 
-const router = useRouter()  //variabile in cui salviamo il router
+const router = useRouter()  
 
 const mesi = ref([])
-const paesi = ref([])  //creiamo due array reattivi vuoti, che servono per mostrare i paesi ed i mesi a tendina del form
+const paesi = ref([])  
 
 const selectedMese = ref("")
-const selectedPaese = ref("")  //sono due stringhe reattive vuote che verranno riempite quando l'utente selezionerà il mese ed il paese in tempo reale
+const selectedPaese = ref("") 
 
-const erroreRicerca = ref('')  //var. reattiva per un eventuale messaggio di errore
+const erroreRicerca = ref('') 
 
-onMounted(async () => {  //il codice qua dentro viene eseguito una sola volta, appena la pagina finisce di caricare. async permette di usare await al suo interno
+onMounted(async () => {  
 
   try {
-    const response = await fetch('/destinazioni.json')  //invia una richiesta HTTP GET al file 'destinazioni.json' e si mette in attesa della risposta del server senza bloccare il resto del browser
-    if (response.ok) {  //se la risposta del server è andata a buon fine
-      const data = await response.json()  //convertiamo il testo da JSON ad un oggetto JavaScript
-      mesi.value = data.mesi  //assegna l'array dei mesi ricevuto dal JSON alla variabile reattiva mesi, aggiornando automaticamente l'interfaccia HTML
+    const response = await fetch('/destinazioni.json')  
+    if (response.ok) {  
+      const data = await response.json()  
+      mesi.value = data.mesi  
       paesi.value = data.paesi
     } else {
-      console.error("Errore Fetch:", response.status)  //stampiamo l'errore se il server risponde con un codice diverso da 200
+      console.error("Errore Fetch:", response.status)  
     }
   } catch (err) {
-    console.error("Errore di connessione:", err)  //catturiamo eventuali errori di rete
+    console.error("Errore di connessione:", err)  
   }
 })
 
-const cercaDestinazione = async () => {  //una funzione asincrona che scatterà quando l'utente clicca il bottone Cerca
-  if (!selectedMese.value || !selectedPaese.value) return  //se l'utente non ha selezionato il mese o il paese usciamo subito
+const cercaDestinazione = async () => {  
+  if (!selectedMese.value || !selectedPaese.value) return  
 
   erroreRicerca.value = ''
 
-  localStorage.setItem("ultimaMeta", selectedPaese.value)  //salviamo il paese cercato nel LocalStorage
-
+  localStorage.setItem("ultimaMeta", selectedPaese.value)  
   try {
     const opzioniBase = {
-      method: 'POST',  //richiesta POST, usata per inviare dati al server
-      headers: { 'Content-Type': 'application/json' }  //informiamo il server che i dati che stiamo per mandare sono in formato JSON
+      method: 'POST',  
+      headers: { 'Content-Type': 'application/json' }  
     }
-    const response = await fetch('/api/cerca-viaggio', {  //fetch() invia una richiesta HTTP al backend e si mette in attesa della risposta
-      ...opzioniBase,  //dentro ci sta la copia di tutte le opzioniBase (method e headers), ... = spread operator
-      body: JSON.stringify({  //convertiamo l'oggetto JavaScript in una stringa JSON
-        mese: selectedMese.value ?? '',  //prendiamo il valore del mese selezionato; se è null o undefined, l'operatore ?? usa come fallback una stringa vuota
+    const response = await fetch('/api/cerca-viaggio', {  
+      ...opzioniBase,  
+      body: JSON.stringify({ 
+        mese: selectedMese.value ?? '',  
         destinazione: selectedPaese.value ?? ''
       })
     })
@@ -51,9 +50,9 @@ const cercaDestinazione = async () => {  //una funzione asincrona che scatterà 
     const data = await response.json()
 
     if (response.ok) {
-      router.push(`/viaggio/${data.id}`)  //viaggio trovato: router.push() serve per cambiare pagina
+      router.push(`/viaggio/${data.id}`)
     } else {
-      router.push('/non-disponibile')  //nessun viaggio trovato: reindirizza alla pagina di errore
+      router.push('/non-disponibile')  
     }
   } catch (err) {
     console.error('Errore nella ricerca viaggio:', err)

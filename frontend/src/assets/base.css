@@ -1,54 +1,54 @@
 
 
 :root {
-    /* Colori principali del brand */
-    --color-primary: #00c4b4;          /* turchese WebVoyagers */
-    --color-primary-dark: #00897b;     /* turchese scuro */
-    --color-secondary: #d81b60;        /* magenta accent */
-    --color-secondary-dark: #b01650;   /* magenta scuro */
-    --color-accent: #6a1b9a;           /* viola accent */
-    --color-blue: #007bff;             /* blu CTA */
-    --color-blue-dark: #0056b3;        /* blu CTA hover */
+   
+    --color-primary: #00c4b4;          
+    --color-primary-dark: #00897b;     
+    --color-secondary: #d81b60;        
+    --color-secondary-dark: #b01650;   
+    --color-accent: #6a1b9a;           
+    --color-blue: #007bff;             
+    --color-blue-dark: #0056b3;       
 
-    /* Colori funzionali */
+ 
     --color-success: #2e7d32;
     --color-warning: #f57c00;
     --color-error: #ff4d4d;
     --color-info: #1976d2;
 
-    /* Sfondi */
+    //SFONDI
     --bg-page: #fafafa;
     --bg-light: #f4f4f9;
     --bg-card: #ffffff;
     --bg-overlay: rgba(100, 100, 100, 0.4);
     --bg-text-day: rgba(255, 255, 255, 0.6);
 
-    /* Testi */
+    //TESTI 
     --text-primary: #333333;
     --text-secondary: #666666;
     --text-muted: #999999;
     --text-light: #ffffff;
     --text-accordion: #20b2aa;
 
-    /* Bordi e ombre */
+  //BORDI
     --border-light: #eeeeee;
     --border-medium: #cccccc;
     --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.05);
     --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.2);
     --shadow-strong: 0 8px 20px rgba(0, 0, 0, 0.2);
 
-    /* Border radius */
+ 
     --radius-sm: 5px;
     --radius-md: 8px;
     --radius-lg: 12px;
 
-    /* Transizioni */
+    //TRANSIZIONI
     --transition-fast: 0.2s;
     --transition-normal: 0.3s;
 }
 
 
-/* --- RESET BASE E TIPOGRAFIA --- */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -78,7 +78,7 @@ body {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
 }
 
-/* --- MENU DI NAVIGAZIONE --- */
+
 .menu-container {
     position: fixed;
     top: 15px;
@@ -135,7 +135,7 @@ body {
     font-size: 15px;
 }
 
-/* --- FORM DI RICERCA --- */
+
 .main-content {
     margin-top: 25vh; 
     max-width: 600px;
@@ -185,8 +185,7 @@ body {
 
 
 
-/* Abbiamo centralizzato nel foglio di stile globale anche le regole della pagina di cortesia, 
-   organizzandole in classi semantiche specifiche per evitare conflitti. */
+
 .error-body {
     background-color: var(--bg-light);
     text-align: center;
@@ -275,7 +274,7 @@ body {
     text-transform: uppercase;
 }
 
-/* --- STILI ACCORDION --- */
+
 .itinerario-container {
     max-width: 1000px;
     margin: 0 auto 80px auto; 
@@ -362,17 +361,17 @@ body {
         aspect-ratio: 4 / 3;
         background-size: cover;
         background-position: center;
-        background-attachment: scroll; /* fix iOS */
+        background-attachment: scroll; 
         width: 100%;
     }
 
     .fascia-foto {
         height: 50vh;
-        background-attachment: scroll; /* fix iOS parallax */
+        background-attachment: scroll; 
     }
 
     .panel {
         min-height: 220px;
-        background-attachment: scroll; /* fix iOS */
+        background-attachment: scroll; 
     }
 }
